@@ -18,7 +18,7 @@ import pickle
 import re
 import requests
 
-MAX_DECKLIST_ID = 48745  # latest decklist
+MAX_DECKLIST_ID = 49173  # latest decklist
 
 # if 'ALLOW', allow all decklists irrespective of taboo
 # if 'CURRENT', use most recent taboo and filter out all decklists with cards
@@ -249,7 +249,7 @@ def pack_to_group(pack_code):  # convert pack code to group number
   if pack_code in ('core', 'promo', 'cotr', 'coh', 'lol', 'books', 'iotv', 
                     'tftbw', 'tdg', 'guardians', 'hotel', 'blob', 'rod', 'bob', 
                     'aon', 'dre', 'bad', 'wog', 'btb', 'rcore', 'rtr', 'mtt',
-                    'otr', 'ltr', 'ptr', 'rop', 'blbe', 'hfa'):
+                    'otr', 'ltr', 'ptr', 'rop', 'blbe', 'hfa', 'fof'):
     return 0
   if pack_code in DUNWICH:  # 2017-01: The Dunwich Legacy
     return 10 + DUNWICH.index(pack_code)
