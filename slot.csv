@@ -1,463 +1,463 @@
 Investigator,Slot,Mean
+Norman Withers,Accessory,1.1822729955586488
+Norman Withers,Ally,3.3293131687553985
+Norman Withers,Arcane,2.7078814730417258
+Norman Withers,Body,0.4906852169590044
+Norman Withers,Hand,4.364699136360234
+Norman Withers,Tarot,0.0466649574101661
+Tommy Muldoon,Accessory,1.8971960646287567
+Tommy Muldoon,Ally,4.792455074573027
+Tommy Muldoon,Arcane,0.6490906409638874
+Tommy Muldoon,Body,1.7749652146217567
+Tommy Muldoon,Hand,6.585963512859624
+Tommy Muldoon,Tarot,0.23626158816188755
+Preston Fairmont,Accessory,1.324853942988116
+Preston Fairmont,Ally,2.5592865046817592
+Preston Fairmont,Arcane,0.5358725186668954
+Preston Fairmont,Body,0.5830499738820153
+Preston Fairmont,Hand,2.651757496267719
+Preston Fairmont,Tarot,0.12293711544848672
+Monterey Jack,Accessory,1.2862824825545396
+Monterey Jack,Ally,2.1706944197664395
+Monterey Jack,Arcane,0.3560421630050727
+Monterey Jack,Body,0.7435339632736352
+Monterey Jack,Hand,4.462186567492744
+Monterey Jack,Tarot,0.08167306674692476
+Rita Young,Accessory,0.9285926960153256
+Rita Young,Ally,1.9643863616338295
+Rita Young,Arcane,0.5415542210576605
+Rita Young,Body,0.7824883563551327
+Rita Young,Hand,3.7729596075961673
+Rita Young,Tarot,0.0075977723175568055
+Agatha Crane,Accessory,1.8421052631578945
+Agatha Crane,Ally,2.7105263157894735
+Agatha Crane,Arcane,4.289473684210524
+Agatha Crane,Body,0.5526315789473683
+Agatha Crane,Hand,4.1842105263157885
+Agatha Crane,Tarot,0.2894736842105262
+Lola Hayes,Accessory,1.5459544197124078
+Lola Hayes,Ally,2.8102400104636476
+Lola Hayes,Arcane,1.545558455190035
+Lola Hayes,Body,0.9061064595786151
+Lola Hayes,Hand,5.061264424112177
+Lola Hayes,Tarot,0.2523261235908422
+Daisy Walker,Accessory,0.9995028536868023
+Daisy Walker,Ally,3.555368638880335
+Daisy Walker,Arcane,1.3097866636690076
+Daisy Walker,Body,0.4096767261801052
+Daisy Walker,Hand,7.441186517035787
+Daisy Walker,Tarot,0.06511162211267962
+Hank Samson,Accessory,1.8372612762187233
+Hank Samson,Ally,2.6866388389957057
+Hank Samson,Arcane,0.2711203870014314
+Hank Samson,Body,1.6899172540618377
+Hank Samson,Hand,9.442696982274834
+Hank Samson,Tarot,0.045186731166905234
+Vincent Lee,Accessory,1.3410485348329293
+Vincent Lee,Ally,2.4659715517751697
+Vincent Lee,Arcane,0.6269814490523612
+Vincent Lee,Body,1.2818739097278415
+Vincent Lee,Hand,6.122237459361719
+Vincent Lee,Tarot,0.09673689901890603
+Wendy Adams,Accessory,1.9800792420457984
+Wendy Adams,Ally,2.1050476956255477
+Wendy Adams,Arcane,0.6140568008606869
+Wendy Adams,Body,0.738690836417432
+Wendy Adams,Hand,4.103743385244715
+Wendy Adams,Tarot,0.13379176034637488
+Sister Mary,Accessory,1.7834363811800278
+Sister Mary,Ally,2.1786875931111753
+Sister Mary,Arcane,3.151930538779529
+Sister Mary,Body,1.0213451283788544
+Sister Mary,Hand,5.657132098918463
+Sister Mary,Tarot,0.1444436026456176
+Winifred Habbamock,Accessory,1.6660869137746703
+Winifred Habbamock,Ally,1.6799177559531762
+Winifred Habbamock,Arcane,0.19877808070841507
+Winifred Habbamock,Body,1.0233684041761395
+Winifred Habbamock,Hand,4.075752756305067
+Winifred Habbamock,Tarot,0.06699821948523164
+Kōhaku Narukami,Accessory,1.923105653147887
+Kōhaku Narukami,Ally,1.801797513756418
+Kōhaku Narukami,Arcane,3.4357045200722647
+Kōhaku Narukami,Body,0.7859909517019882
+Kōhaku Narukami,Hand,3.759925787649334
+Kōhaku Narukami,Tarot,0.03929954758509941
+"""Ashcan"" Pete",Accessory,1.5759861579307914
+"""Ashcan"" Pete",Ally,2.510867757640985
+"""Ashcan"" Pete",Arcane,0.3778316928820273
+"""Ashcan"" Pete",Body,0.6852711515058172
+"""Ashcan"" Pete",Hand,4.020113927531274
+"""Ashcan"" Pete",Tarot,0.021022743762975197
+Gloria Goldberg,Accessory,1.9420093700010184
+Gloria Goldberg,Ally,2.4429972289447055
+Gloria Goldberg,Arcane,4.896427315549965
+Gloria Goldberg,Body,0.4820515816442165
+Gloria Goldberg,Hand,2.9284494600425917
+Gloria Goldberg,Tarot,0.10113880140499185
+George Barnaby,Accessory,1.8305084745762707
+George Barnaby,Ally,2.5932203389830493
+George Barnaby,Arcane,0.6440677966101693
+George Barnaby,Body,0.20338983050847448
+George Barnaby,Hand,5.169491525423723
+George Barnaby,Tarot,0.0
+Luke Robinson,Accessory,1.4647158255253814
+Luke Robinson,Ally,2.469893031827068
+Luke Robinson,Arcane,2.971513051235388
+Luke Robinson,Body,0.4172758722414241
+Luke Robinson,Hand,3.077457733568329
+Luke Robinson,Tarot,0.2128052186770277
+Stella Clark,Accessory,1.9034328074390225
+Stella Clark,Ally,2.297391373256997
+Stella Clark,Arcane,0.12002264176776842
+Stella Clark,Body,0.5191206656853954
+Stella Clark,Hand,5.121454262296845
+Stella Clark,Tarot,0.032810580375495085
+Parallel Daisy Walker,Accessory,0.9309825556681918
+Parallel Daisy Walker,Ally,3.329035455453381
+Parallel Daisy Walker,Arcane,1.0029251110538577
+Parallel Daisy Walker,Body,1.3397622376583052
+Parallel Daisy Walker,Hand,7.778985749859972
+Parallel Daisy Walker,Tarot,0.008582942838033798
+Diana Stanley,Accessory,1.8821610838194311
+Diana Stanley,Ally,2.4672544322337875
+Diana Stanley,Arcane,4.940022649491877
+Diana Stanley,Body,0.8437653433150275
+Diana Stanley,Hand,4.370428946716854
+Diana Stanley,Tarot,0.1308477315862506
+Bob Jenkins,Accessory,1.4261895277183974
+Bob Jenkins,Ally,2.1452652758684767
+Bob Jenkins,Arcane,0.5704273135305357
+Bob Jenkins,Body,1.6639437426495205
+Bob Jenkins,Hand,5.080305155109414
+Bob Jenkins,Tarot,0.0
+Subject 5U-21,Accessory,2.191728655465132
+Subject 5U-21,Ally,3.4306291021591404
+Subject 5U-21,Arcane,4.316829583847086
+Subject 5U-21,Body,1.5486168357999792
+Subject 5U-21,Hand,7.775036198072981
+Subject 5U-21,Tarot,0.08907183305163457
+Jenny Barnes,Accessory,1.1033340786834998
+Jenny Barnes,Ally,2.2796611929864192
+Jenny Barnes,Arcane,0.3102674845605301
+Jenny Barnes,Body,1.0096339547382585
+Jenny Barnes,Hand,5.586201358447314
+Jenny Barnes,Tarot,0.057112501854220996
+Finn Edwards,Accessory,1.219599418460486
+Finn Edwards,Ally,2.2872420225030896
+Finn Edwards,Arcane,0.2379964947050575
+Finn Edwards,Body,0.7555897442767584
+Finn Edwards,Hand,5.904934848308253
+Finn Edwards,Tarot,0.09243543511240059
+Michael McGlen,Accessory,1.6336633663366331
+Michael McGlen,Ally,2.4356435643564374
+Michael McGlen,Arcane,0.2574257425742576
+Michael McGlen,Body,1.4455445544554466
+Michael McGlen,Hand,8.623762376237632
+Michael McGlen,Tarot,0.02970297029702974
+Parallel Jenny Barnes,Accessory,1.0786797943705748
+Parallel Jenny Barnes,Ally,1.26323434446555
+Parallel Jenny Barnes,Arcane,0.131617172232775
+Parallel Jenny Barnes,Body,0.6180196915558624
+Parallel Jenny Barnes,Hand,5.210296966603351
+Parallel Jenny Barnes,Tarot,0.0
+Amanda Sharpe,Accessory,0.7242114567359562
+Amanda Sharpe,Ally,2.575047441219435
+Amanda Sharpe,Arcane,1.2103556320930118
+Amanda Sharpe,Body,0.1552982769902575
+Amanda Sharpe,Hand,3.3674319871637084
+Amanda Sharpe,Tarot,0.13595257382073195
+Mandy Thompson,Accessory,1.6795146300172312
+Mandy Thompson,Ally,4.594542986582555
+Mandy Thompson,Arcane,0.7842363368790785
+Mandy Thompson,Body,0.8173649226267317
+Mandy Thompson,Hand,5.712981242419646
+Mandy Thompson,Tarot,0.11499515582806642
+Father Mateo,Accessory,2.022561534763558
+Father Mateo,Ally,2.1199659225717777
+Father Mateo,Arcane,6.221620897836125
+Father Mateo,Body,0.7050940660035067
+Father Mateo,Hand,4.347441155887334
+Father Mateo,Tarot,0.26505806689901795
+Patrice Hathaway,Accessory,1.7472705601214216
+Patrice Hathaway,Ally,2.300526595559341
+Patrice Hathaway,Arcane,3.5261718088653073
+Patrice Hathaway,Body,0.8048695701103454
+Patrice Hathaway,Hand,3.9094758423466067
+Patrice Hathaway,Tarot,0.16946740029054574
+"""Skids"" O'Toole",Accessory,1.1018131275558138
+"""Skids"" O'Toole",Ally,2.4637913876745174
+"""Skids"" O'Toole",Arcane,0.5319113589462384
+"""Skids"" O'Toole",Body,0.8930161279628853
+"""Skids"" O'Toole",Hand,5.452985495573247
+"""Skids"" O'Toole",Tarot,0.27387665775083997
 Parallel Rex Murphy,Accessory,1.0
 Parallel Rex Murphy,Ally,3.0
 Parallel Rex Murphy,Arcane,0.9090909090909091
 Parallel Rex Murphy,Body,0.2727272727272727
 Parallel Rex Murphy,Hand,3.727272727272727
 Parallel Rex Murphy,Tarot,0.09090909090909091
-Dexter Drake,Accessory,1.877197276579472
-Dexter Drake,Ally,2.8999034935161028
-Dexter Drake,Arcane,5.996058596978414
-Dexter Drake,Body,0.9453932277547471
-Dexter Drake,Hand,4.275669192425992
-Dexter Drake,Tarot,0.2690908919681178
-Parallel Wendy Adams,Accessory,2.0218625901966982
-Parallel Wendy Adams,Ally,1.7607216301214326
-Parallel Wendy Adams,Arcane,1.9088798154037794
-Parallel Wendy Adams,Body,0.7714096770189479
-Parallel Wendy Adams,Hand,2.256477668396585
+Jim Culver,Accessory,1.9705309040544818
+Jim Culver,Ally,2.5606481566782198
+Jim Culver,Arcane,4.419980473536436
+Jim Culver,Body,1.0735116656806927
+Jim Culver,Hand,4.814691937004169
+Jim Culver,Tarot,0.17936719553173858
+Agnes Baker,Accessory,2.5617513915835675
+Agnes Baker,Ally,2.4382182597083824
+Agnes Baker,Arcane,5.154081644602043
+Agnes Baker,Body,0.8672925789444696
+Agnes Baker,Hand,2.7694259754098445
+Agnes Baker,Tarot,0.08108547623017939
+Dexter Drake,Accessory,1.8472947265800839
+Dexter Drake,Ally,3.0542036833732875
+Dexter Drake,Arcane,6.179995287085599
+Dexter Drake,Body,0.9632541981730689
+Dexter Drake,Hand,4.346431457206288
+Dexter Drake,Tarot,0.2506144625737158
+Jacqueline Fine,Accessory,1.9167129277396355
+Jacqueline Fine,Ally,2.4589578235138356
+Jacqueline Fine,Arcane,5.586325388446244
+Jacqueline Fine,Body,1.0366436767401286
+Jacqueline Fine,Hand,3.0312401560720037
+Jacqueline Fine,Tarot,0.1394012190281913
+Calvin Wright,Accessory,1.476457381277712
+Calvin Wright,Ally,2.675595897318167
+Calvin Wright,Arcane,1.2197832552855594
+Calvin Wright,Body,0.7394542675099399
+Calvin Wright,Hand,4.101088737715574
+Calvin Wright,Tarot,0.6185829679598588
+Amina Zidane,Accessory,1.9100389649177059
+Amina Zidane,Ally,3.0433810319408496
+Amina Zidane,Arcane,4.00876221582639
+Amina Zidane,Body,1.4386818607357361
+Amina Zidane,Hand,5.438401511760038
+Amina Zidane,Tarot,0.1307006191980968
+Joe Diamond,Accessory,1.1746754592716093
+Joe Diamond,Ally,3.0493022799561813
+Joe Diamond,Arcane,0.7797177031504803
+Joe Diamond,Body,0.8492618458227978
+Joe Diamond,Hand,8.611362808528206
+Joe Diamond,Tarot,0.1409032621254127
+Carson Sinclair,Accessory,0.9308475980294448
+Carson Sinclair,Ally,2.136101016605285
+Carson Sinclair,Arcane,0.4653603779331774
+Carson Sinclair,Body,1.1173322225533686
+Carson Sinclair,Hand,2.9518191196039645
+Carson Sinclair,Tarot,0.06373597541353514
+Roland Banks,Accessory,0.9374359571660009
+Roland Banks,Ally,2.8649585682107865
+Roland Banks,Arcane,0.5298796207044618
+Roland Banks,Body,0.6829892733131423
+Roland Banks,Hand,6.655674334250244
+Roland Banks,Tarot,0.12001941983428664
+Trish Scarborough,Accessory,1.3230448749191857
+Trish Scarborough,Ally,2.4165385831112065
+Trish Scarborough,Arcane,1.059081406588255
+Trish Scarborough,Body,0.6079150535126326
+Trish Scarborough,Hand,3.5592118418579375
+Trish Scarborough,Tarot,0.07100750743651969
+Akachi Onyele,Accessory,2.068068141542683
+Akachi Onyele,Ally,2.194274720479682
+Akachi Onyele,Arcane,7.3160755802912405
+Akachi Onyele,Body,1.0979198031584207
+Akachi Onyele,Hand,3.714002968542842
+Akachi Onyele,Tarot,0.21916250990269767
+Carolyn Fern,Accessory,1.6229726578303438
+Carolyn Fern,Ally,3.020758689498434
+Carolyn Fern,Arcane,1.3893585838939053
+Carolyn Fern,Body,0.5959015445509264
+Carolyn Fern,Hand,3.9592950682766896
+Carolyn Fern,Tarot,0.20488420968404872
+Lily Chen,Accessory,1.7036333655746596
+Lily Chen,Ally,1.8612908284808698
+Lily Chen,Arcane,4.739487390794553
+Lily Chen,Body,1.166512465248778
+Lily Chen,Hand,5.649435365457506
+Lily Chen,Tarot,0.19745033362098985
+Marion Tavares,Accessory,0.9818181818181817
+Marion Tavares,Ally,1.836363636363636
+Marion Tavares,Arcane,0.30909090909090875
+Marion Tavares,Body,0.5999999999999994
+Marion Tavares,Hand,2.4181818181818153
+Marion Tavares,Tarot,0.109090909090909
+Parallel Father Mateo,Accessory,1.9329887762580062
+Parallel Father Mateo,Ally,1.8565564059264283
+Parallel Father Mateo,Arcane,3.4313939798356334
+Parallel Father Mateo,Body,1.1057590077152413
+Parallel Father Mateo,Hand,3.7602185448007694
+Parallel Father Mateo,Tarot,0.16334908486765323
+Parallel Jim Culver,Accessory,1.9219123968252914
+Parallel Jim Culver,Ally,1.8564726123940756
+Parallel Jim Culver,Arcane,4.738713202945813
+Parallel Jim Culver,Body,1.0229584961000948
+Parallel Jim Culver,Hand,3.504919168342964
+Parallel Jim Culver,Tarot,0.262220980286995
+Leo Anderson,Accessory,1.3932597082858031
+Leo Anderson,Ally,6.557861872933686
+Leo Anderson,Arcane,0.4988176599553684
+Leo Anderson,Body,0.7898101684522074
+Leo Anderson,Hand,4.752939600027465
+Leo Anderson,Tarot,0.1886519743045001
+Mark Harrigan,Accessory,1.2264463913858947
+Mark Harrigan,Ally,2.6850264092192653
+Mark Harrigan,Arcane,0.5403097867872783
+Mark Harrigan,Body,1.0664332450408653
+Mark Harrigan,Hand,5.387482362286665
+Mark Harrigan,Tarot,0.07876197411354655
+Lucius Galloway,Accessory,1.3437499999999998
+Lucius Galloway,Ally,2.4687499999999996
+Lucius Galloway,Arcane,0.75
+Lucius Galloway,Body,0.5937499999999999
+Lucius Galloway,Hand,4.5625
+Lucius Galloway,Tarot,0.0625
+Nathaniel Cho,Accessory,1.0488754492400176
+Nathaniel Cho,Ally,2.6105443815345337
+Nathaniel Cho,Arcane,0.5087480028051982
+Nathaniel Cho,Body,1.0522209712463642
+Nathaniel Cho,Hand,4.788377204177833
+Nathaniel Cho,Tarot,0.11365299865445666
+Alessandra Zorzi,Accessory,1.3714506827265678
+Alessandra Zorzi,Ally,1.8936116529530425
+Alessandra Zorzi,Arcane,1.6013100858459048
+Alessandra Zorzi,Body,1.9286126895271407
+Alessandra Zorzi,Hand,3.4843894590030513
+Alessandra Zorzi,Tarot,0.0767543983638954
+Tony Morgan,Accessory,1.6580157453812236
+Tony Morgan,Ally,2.2486588576531825
+Tony Morgan,Arcane,0.3608082567767254
+Tony Morgan,Body,1.189148481204785
+Tony Morgan,Hand,5.96679824395239
+Tony Morgan,Tarot,0.026292355650600938
+Harvey Walters,Accessory,0.9630786469493753
+Harvey Walters,Ally,3.5624636998711914
+Harvey Walters,Arcane,1.9599168642757574
+Harvey Walters,Body,0.3400883644133805
+Harvey Walters,Hand,5.360002825906809
+Harvey Walters,Tarot,0.08971991766136408
+Kate Winthrop,Accessory,1.656591317729352
+Kate Winthrop,Ally,2.681485813541037
+Kate Winthrop,Arcane,0.8091839722085096
+Kate Winthrop,Body,0.4085906493544488
+Kate Winthrop,Hand,4.692449754311729
+Kate Winthrop,Tarot,0.05718464058341241
+Parallel Agnes Baker,Accessory,1.8633654640829715
+Parallel Agnes Baker,Ally,2.072831221004947
+Parallel Agnes Baker,Arcane,4.382904932004795
+Parallel Agnes Baker,Body,1.2757514034176043
+Parallel Agnes Baker,Hand,2.150497852638843
+Parallel Agnes Baker,Tarot,0.19265296431699475
+Silas Marsh,Accessory,1.567961781934199
+Silas Marsh,Ally,2.046560395777719
+Silas Marsh,Arcane,0.17445992109628256
+Silas Marsh,Body,0.5530820419038242
+Silas Marsh,Hand,5.749201080084515
+Silas Marsh,Tarot,0.016685196429236084
+Parallel Zoey Samaras,Accessory,2.9502167073024923
+Parallel Zoey Samaras,Ally,2.260398166171783
+Parallel Zoey Samaras,Arcane,1.1666853238228923
+Parallel Zoey Samaras,Body,0.8859018290492391
+Parallel Zoey Samaras,Hand,4.379360030331228
+Parallel Zoey Samaras,Tarot,0.13158318030590002
+Charlie Kane,Accessory,0.8967233130010375
+Charlie Kane,Ally,11.113063142448807
+Charlie Kane,Arcane,0.824593318190931
+Charlie Kane,Body,0.4402109252884644
+Charlie Kane,Hand,3.204670855907918
+Charlie Kane,Tarot,0.031047162862798797
+Marie Lambeau,Accessory,1.7029411904500489
+Marie Lambeau,Ally,4.369301647030439
+Marie Lambeau,Arcane,4.086763425070552
+Marie Lambeau,Body,0.5633144320733884
+Marie Lambeau,Hand,4.08416928334196
+Marie Lambeau,Tarot,0.15267895154311886
+Parallel Roland Banks,Accessory,1.0479600104274296
+Parallel Roland Banks,Ally,2.696183561300352
+Parallel Roland Banks,Arcane,0.46981120191382203
+Parallel Roland Banks,Body,0.41032537673889874
+Parallel Roland Banks,Hand,5.136208681127286
+Parallel Roland Banks,Tarot,0.2186396569926177
+Minh Thi Phan,Accessory,1.3319442954121028
+Minh Thi Phan,Ally,2.341572469150113
+Minh Thi Phan,Arcane,0.9200203503642609
+Minh Thi Phan,Body,0.1742814426722177
+Minh Thi Phan,Hand,4.9191107946825765
+Minh Thi Phan,Tarot,0.0886342663319734
+Daniela Reyes,Accessory,1.5249014208360043
+Daniela Reyes,Ally,3.1126852119540644
+Daniela Reyes,Arcane,1.5730976158532723
+Daniela Reyes,Body,1.1383556615485328
+Daniela Reyes,Hand,5.752238350470712
+Daniela Reyes,Tarot,0.07599080146648621
+"Parallel ""Skids"" O'Toole",Accessory,1.313560191493541
+"Parallel ""Skids"" O'Toole",Ally,1.6016397239804216
+"Parallel ""Skids"" O'Toole",Arcane,0.1720039795159346
+"Parallel ""Skids"" O'Toole",Body,0.6351440948967305
+"Parallel ""Skids"" O'Toole",Hand,3.2681001501141633
+"Parallel ""Skids"" O'Toole",Tarot,0.15340098778605982
+Darrell Simmons,Accessory,1.0531547379493111
+Darrell Simmons,Ally,1.9891332318734194
+Darrell Simmons,Arcane,0.325084763492954
+Darrell Simmons,Body,0.7541237867197836
+Darrell Simmons,Hand,4.183294799207747
+Darrell Simmons,Tarot,0.32364467148953224
+Parallel Wendy Adams,Accessory,2.020705427813553
+Parallel Wendy Adams,Ally,1.8071813305116449
+Parallel Wendy Adams,Arcane,1.7031130598773927
+Parallel Wendy Adams,Body,0.7731533330818803
+Parallel Wendy Adams,Hand,1.9925945533736424
 Parallel Wendy Adams,Tarot,0.0
-Vincent Lee,Accessory,1.2940572488368673
-Vincent Lee,Ally,2.4073466064805205
-Vincent Lee,Arcane,0.5521217669723135
-Vincent Lee,Body,1.3685061740601792
-Vincent Lee,Hand,6.104969406504108
-Vincent Lee,Tarot,0.08920706928089195
-Charlie Kane,Accessory,0.9547126956332473
-Charlie Kane,Ally,11.002387471629282
-Charlie Kane,Arcane,0.8215068239632932
-Charlie Kane,Body,0.4306582097406286
-Charlie Kane,Hand,3.177736356912537
-Charlie Kane,Tarot,0.03038766524238108
-"""Ashcan"" Pete",Accessory,1.627269689227015
-"""Ashcan"" Pete",Ally,2.4654291669816204
-"""Ashcan"" Pete",Arcane,0.44131942205119257
-"""Ashcan"" Pete",Body,0.6935812556492092
-"""Ashcan"" Pete",Hand,4.137319620855786
-"""Ashcan"" Pete",Tarot,0.026934955588140262
-Sefina Rousseau,Accessory,1.600206921922516
-Sefina Rousseau,Ally,1.9082174457778338
-Sefina Rousseau,Arcane,1.699522040012102
-Sefina Rousseau,Body,0.9276952293563389
-Sefina Rousseau,Hand,2.6056939567183113
-Sefina Rousseau,Tarot,0.2975961896759991
-Trish Scarborough,Accessory,1.442694459025062
-Trish Scarborough,Ally,2.3046663785228843
-Trish Scarborough,Arcane,1.036645336614296
-Trish Scarborough,Body,0.5338409633304615
-Trish Scarborough,Hand,3.756819555007031
-Trish Scarborough,Tarot,0.08153704668838413
-Calvin Wright,Accessory,1.5799118217929942
-Calvin Wright,Ally,2.6574976415817515
-Calvin Wright,Arcane,1.3649362704443933
-Calvin Wright,Body,0.7878901192933366
-Calvin Wright,Hand,4.143142751799797
-Calvin Wright,Tarot,0.6171733341423619
-Amina Zidane,Accessory,1.897698837511954
-Amina Zidane,Ally,3.1717168862338134
-Amina Zidane,Arcane,3.756664117785417
-Amina Zidane,Body,1.432597123937035
-Amina Zidane,Hand,5.616010247163273
-Amina Zidane,Tarot,0.13518660123032342
-Rita Young,Accessory,0.8102523799596149
-Rita Young,Ally,1.9859289039885082
-Rita Young,Arcane,0.5482581631689584
-Rita Young,Body,0.8089541497847511
-Rita Young,Hand,3.7419440592050117
-Rita Young,Tarot,0.007496445898557283
-Agnes Baker,Accessory,2.566255298065764
-Agnes Baker,Ally,2.503458772646275
-Agnes Baker,Arcane,5.257260796889685
-Agnes Baker,Body,0.857819526226253
-Agnes Baker,Hand,2.8403444206214354
-Agnes Baker,Tarot,0.09477397217417476
-Minh Thi Phan,Accessory,1.328113478353912
-Minh Thi Phan,Ally,1.999298978326465
-Minh Thi Phan,Arcane,0.8841288348160735
-Minh Thi Phan,Body,0.08582977066457881
-Minh Thi Phan,Hand,5.130488062303841
-Minh Thi Phan,Tarot,0.06518725658902425
-Amanda Sharpe,Accessory,0.7765042562116768
-Amanda Sharpe,Ally,2.581784293263024
-Amanda Sharpe,Arcane,1.1997382444235443
-Amanda Sharpe,Body,0.1601587414126922
-Amanda Sharpe,Hand,3.329190246250536
-Amanda Sharpe,Tarot,0.08124840770142248
-Daisy Walker,Accessory,1.0448313509459435
-Daisy Walker,Ally,3.527998884503992
-Daisy Walker,Arcane,1.351574717224123
-Daisy Walker,Body,0.43811144959625437
-Daisy Walker,Hand,7.314228873181674
-Daisy Walker,Tarot,0.07948707715910105
-Marion Tavares,Accessory,1.0714285714285718
-Marion Tavares,Ally,1.821428571428572
-Marion Tavares,Arcane,0.3214285714285715
-Marion Tavares,Body,0.42857142857142877
-Marion Tavares,Hand,2.642857142857144
-Marion Tavares,Tarot,0.10714285714285718
-Carson Sinclair,Accessory,0.962585539726869
-Carson Sinclair,Ally,2.139996019662894
-Carson Sinclair,Arcane,0.4729505878829445
-Carson Sinclair,Body,1.0437337597438254
-Carson Sinclair,Hand,2.7154004304000345
-Carson Sinclair,Tarot,0.07003194019973111
-Norman Withers,Accessory,1.1585363064185128
-Norman Withers,Ally,3.216200148970988
-Norman Withers,Arcane,2.6238172602852385
-Norman Withers,Body,0.49052843627695336
-Norman Withers,Hand,4.368018570919925
-Norman Withers,Tarot,0.03423076653803151
-Tony Morgan,Accessory,1.7410086700405678
-Tony Morgan,Ally,2.2017610142299473
-Tony Morgan,Arcane,0.335020857609637
-Tony Morgan,Body,1.1990658258717968
-Tony Morgan,Hand,6.104467822861707
-Tony Morgan,Tarot,0.03777645566188022
-Parallel Father Mateo,Accessory,2.2413375119221617
-Parallel Father Mateo,Ally,2.0846090995797537
-Parallel Father Mateo,Arcane,3.6297330575095783
-Parallel Father Mateo,Body,1.3009670378677152
-Parallel Father Mateo,Hand,4.263497677416415
-Parallel Father Mateo,Tarot,0.15672841234240775
-Preston Fairmont,Accessory,1.1688324087502882
-Preston Fairmont,Ally,2.457598310889811
-Preston Fairmont,Arcane,0.6212424898775991
-Preston Fairmont,Body,0.7226165254891251
-Preston Fairmont,Hand,2.440001297583474
-Preston Fairmont,Tarot,0.15874923053918238
-Mark Harrigan,Accessory,1.1962981537681006
-Mark Harrigan,Ally,2.6590760466589236
-Mark Harrigan,Arcane,0.6020639282450586
-Mark Harrigan,Body,1.0670880761070953
-Mark Harrigan,Hand,5.463909698748241
-Mark Harrigan,Tarot,0.08638241220394308
-Kymani Jones,Accessory,1.5810152677295757
-Kymani Jones,Ally,1.8849376619798015
-Kymani Jones,Arcane,0.40270068407222165
-Kymani Jones,Body,1.1202406605895803
-Kymani Jones,Hand,5.436213868691715
-Kymani Jones,Tarot,0.3038064158809389
-Sister Mary,Accessory,1.8098680360537398
-Sister Mary,Ally,2.1977726868631593
-Sister Mary,Arcane,3.1728873739889494
-Sister Mary,Body,1.0226479524893073
-Sister Mary,Hand,5.690162694071069
-Sister Mary,Tarot,0.10601873797550186
-Parallel Monterey Jack,Accessory,4.187576764653608
-Parallel Monterey Jack,Ally,1.9617696049316606
-Parallel Monterey Jack,Arcane,1.0912609785907283
-Parallel Monterey Jack,Body,0.6245466710927127
-Parallel Monterey Jack,Hand,5.025209602998424
+Rex Murphy,Accessory,1.7355979003775432
+Rex Murphy,Ally,2.7911640947974186
+Rex Murphy,Arcane,0.7216765067058744
+Rex Murphy,Body,0.699262146102288
+Rex Murphy,Hand,4.582493904748855
+Rex Murphy,Tarot,0.33286627147270686
+Kymani Jones,Accessory,1.5630927156588703
+Kymani Jones,Ally,1.8277389668857777
+Kymani Jones,Arcane,0.3843466704996065
+Kymani Jones,Body,1.057619855117163
+Kymani Jones,Hand,5.322495921192483
+Kymani Jones,Tarot,0.3042401080032563
+William Yorick,Accessory,2.0809002435079806
+William Yorick,Ally,2.6885400818679015
+William Yorick,Arcane,0.6215640325023662
+William Yorick,Body,1.7783810766876174
+William Yorick,Hand,6.45014485403178
+William Yorick,Tarot,0.12701717977629215
+"Parallel ""Ashcan"" Pete",Accessory,0.8453177548167914
+"Parallel ""Ashcan"" Pete",Ally,1.2578022385162657
+"Parallel ""Ashcan"" Pete",Arcane,0.4681934495392945
+"Parallel ""Ashcan"" Pete",Body,0.5114577630428634
+"Parallel ""Ashcan"" Pete",Hand,3.9460701662980835
+"Parallel ""Ashcan"" Pete",Tarot,0.05353603043692648
+Sefina Rousseau,Accessory,1.5886860134972172
+Sefina Rousseau,Ally,1.8103610654615494
+Sefina Rousseau,Arcane,1.7920033827961863
+Sefina Rousseau,Body,0.8730967370027956
+Sefina Rousseau,Hand,2.619504233425305
+Sefina Rousseau,Tarot,0.2604505847401245
+Zoey Samaras,Accessory,1.7653172804810968
+Zoey Samaras,Ally,2.6983550515500303
+Zoey Samaras,Arcane,1.355742422019253
+Zoey Samaras,Body,1.2584290273018328
+Zoey Samaras,Hand,5.600454104803015
+Zoey Samaras,Tarot,0.1369121035124357
+Ursula Downs,Accessory,1.9216867691877826
+Ursula Downs,Ally,3.7571183016666136
+Ursula Downs,Arcane,0.4615751473483815
+Ursula Downs,Body,0.5489332953435593
+Ursula Downs,Hand,4.706269593296456
+Ursula Downs,Tarot,0.06811838821603379
+Parallel Monterey Jack,Accessory,4.20032255371195
+Parallel Monterey Jack,Ally,1.958988258243483
+Parallel Monterey Jack,Arcane,1.0843376172336192
+Parallel Monterey Jack,Body,0.6084815154728974
+Parallel Monterey Jack,Hand,5.0564821493132115
 Parallel Monterey Jack,Tarot,0.0
-Silas Marsh,Accessory,1.5256815534082235
-Silas Marsh,Ally,2.158395150494237
-Silas Marsh,Arcane,0.18779759473496735
-Silas Marsh,Body,0.5816106151879442
-Silas Marsh,Hand,5.31476291747378
-Silas Marsh,Tarot,0.017808666787113795
-Jim Culver,Accessory,1.9577664477250154
-Jim Culver,Ally,2.4675000819570383
-Jim Culver,Arcane,4.388615740759368
-Jim Culver,Body,1.0774225738343997
-Jim Culver,Hand,4.844584061392459
-Jim Culver,Tarot,0.18960801998247243
-Alessandra Zorzi,Accessory,1.4484536925828557
-Alessandra Zorzi,Ally,1.8189738879737432
-Alessandra Zorzi,Arcane,1.5200662995340812
-Alessandra Zorzi,Body,1.956062831482177
-Alessandra Zorzi,Hand,3.417403100919319
-Alessandra Zorzi,Tarot,0.09167890648530663
-Lola Hayes,Accessory,1.516842283034102
-Lola Hayes,Ally,2.753444751601678
-Lola Hayes,Arcane,1.5157861985098275
-Lola Hayes,Body,1.0506444919117952
-Lola Hayes,Hand,5.257425628525099
-Lola Hayes,Tarot,0.2828741200768916
-Finn Edwards,Accessory,1.3451326305483582
-Finn Edwards,Ally,2.247258008493522
-Finn Edwards,Arcane,0.10729014107751193
-Finn Edwards,Body,0.8256497491444337
-Finn Edwards,Hand,5.646718617694428
-Finn Edwards,Tarot,0.053778908066833636
-Subject 5U-21,Accessory,2.242076336701504
-Subject 5U-21,Ally,3.2648546023706198
-Subject 5U-21,Arcane,4.13033693282674
-Subject 5U-21,Body,1.6160948997467786
-Subject 5U-21,Hand,7.933587554973419
-Subject 5U-21,Tarot,0.09407496461615864
-Zoey Samaras,Accessory,1.7903109286711174
-Zoey Samaras,Ally,2.7490759799582323
-Zoey Samaras,Arcane,1.3507902801969602
-Zoey Samaras,Body,1.3125845187494685
-Zoey Samaras,Hand,5.650545351397207
-Zoey Samaras,Tarot,0.14070505272383518
-Patrice Hathaway,Accessory,1.698219380878225
-Patrice Hathaway,Ally,2.3381569482263043
-Patrice Hathaway,Arcane,3.688722939230101
-Patrice Hathaway,Body,0.9264540962017553
-Patrice Hathaway,Hand,3.2711716359289946
-Patrice Hathaway,Tarot,0.16812174991432072
-Lily Chen,Accessory,1.7089132795273214
-Lily Chen,Ally,1.8610782365684195
-Lily Chen,Arcane,4.6921480540901825
-Lily Chen,Body,1.2335861911560908
-Lily Chen,Hand,5.630556570726033
-Lily Chen,Tarot,0.22497723482197732
-Parallel Jim Culver,Accessory,1.9212847124156474
-Parallel Jim Culver,Ally,1.9528019415430915
-Parallel Jim Culver,Arcane,4.872908414107002
-Parallel Jim Culver,Body,0.9188342485435965
-Parallel Jim Culver,Hand,3.45191016218713
-Parallel Jim Culver,Tarot,0.24416415952933782
-Kate Winthrop,Accessory,1.660029712206515
-Kate Winthrop,Ally,2.753618202132472
-Kate Winthrop,Arcane,0.8798350211618197
-Kate Winthrop,Body,0.41908596918955254
-Kate Winthrop,Hand,4.735198795496096
-Kate Winthrop,Tarot,0.06552054426965523
-Diana Stanley,Accessory,1.9107343108207906
-Diana Stanley,Ally,2.3361071290514253
-Diana Stanley,Arcane,4.933174819122337
-Diana Stanley,Body,0.8890182167398913
-Diana Stanley,Hand,4.396903663771016
-Diana Stanley,Tarot,0.13692606111313477
-Darrell Simmons,Accessory,1.1084599052623567
-Darrell Simmons,Ally,1.9821371709090179
-Darrell Simmons,Arcane,0.34003587625378323
-Darrell Simmons,Body,0.7619576422266321
-Darrell Simmons,Hand,4.105253236638088
-Darrell Simmons,Tarot,0.3465022630357248
-Mandy Thompson,Accessory,1.7718766677639273
-Mandy Thompson,Ally,4.522356691099643
-Mandy Thompson,Arcane,0.7912658167633884
-Mandy Thompson,Body,0.81556688566742
-Mandy Thompson,Hand,5.8146149944615955
-Mandy Thompson,Tarot,0.11653404329315654
-Jenny Barnes,Accessory,1.166809248795343
-Jenny Barnes,Ally,2.2625319925025074
-Jenny Barnes,Arcane,0.26043166633159437
-Jenny Barnes,Body,1.2131467836200533
-Jenny Barnes,Hand,5.322873721369925
-Jenny Barnes,Tarot,0.07322425134460678
-Marie Lambeau,Accessory,1.5400083146492807
-Marie Lambeau,Ally,4.570111415973827
-Marie Lambeau,Arcane,3.9366598828101664
-Marie Lambeau,Body,0.5163802858327627
-Marie Lambeau,Hand,3.655507086866588
-Marie Lambeau,Tarot,0.17708398147119
-Michael McGlen,Accessory,1.4727272727272718
-Michael McGlen,Ally,2.2727272727272725
-Michael McGlen,Arcane,0.16363636363636347
-Michael McGlen,Body,1.5818181818181816
-Michael McGlen,Hand,8.581818181818175
-Michael McGlen,Tarot,0.0
-Luke Robinson,Accessory,1.527324598714351
-Luke Robinson,Ally,2.436416065777262
-Luke Robinson,Arcane,2.984608099009423
-Luke Robinson,Body,0.3659903521700532
-Luke Robinson,Hand,3.0796777401976496
-Luke Robinson,Tarot,0.21649603335452747
-Bob Jenkins,Accessory,1.4663293584765347
-Bob Jenkins,Ally,2.25701768377862
-Bob Jenkins,Arcane,0.5083386118932808
-Bob Jenkins,Body,1.829745130494495
-Bob Jenkins,Hand,5.48708163140027
-Bob Jenkins,Tarot,0.0
-"""Skids"" O'Toole",Accessory,1.1407940133094112
-"""Skids"" O'Toole",Ally,2.4633867434395094
-"""Skids"" O'Toole",Arcane,0.489745798797038
-"""Skids"" O'Toole",Body,0.8755491834343877
-"""Skids"" O'Toole",Hand,5.438003588241494
-"""Skids"" O'Toole",Tarot,0.2899375685745742
-Tommy Muldoon,Accessory,1.6790726730598173
-Tommy Muldoon,Ally,4.7958684445332
-Tommy Muldoon,Arcane,0.6231193337302626
-Tommy Muldoon,Body,1.7779537074998726
-Tommy Muldoon,Hand,6.622530315270588
-Tommy Muldoon,Tarot,0.24717212753041437
-Agatha Crane,Accessory,1.851851851851853
-Agatha Crane,Ally,2.777777777777779
-Agatha Crane,Arcane,4.037037037037038
-Agatha Crane,Body,0.6666666666666669
-Agatha Crane,Hand,3.407407407407408
-Agatha Crane,Tarot,0.03703703703703705
-Father Mateo,Accessory,2.023364158368535
-Father Mateo,Ally,2.05245390548641
-Father Mateo,Arcane,6.315277718534126
-Father Mateo,Body,0.6721182147740999
-Father Mateo,Hand,4.326397912582912
-Father Mateo,Tarot,0.2636241016668946
-Carolyn Fern,Accessory,1.5588235348219774
-Carolyn Fern,Ally,3.01517472595437
-Carolyn Fern,Arcane,1.415985357708286
-Carolyn Fern,Body,0.5832370689641214
-Carolyn Fern,Hand,3.9944823986105367
-Carolyn Fern,Tarot,0.21510735592838934
-William Yorick,Accessory,2.0965682684720632
-William Yorick,Ally,2.746120811392308
-William Yorick,Arcane,0.6463279148357219
-William Yorick,Body,1.8914825327756268
-William Yorick,Hand,6.47597990624533
-William Yorick,Tarot,0.12266483130275646
-Parallel Daisy Walker,Accessory,0.9398143541066626
-Parallel Daisy Walker,Ally,3.1347583123718183
-Parallel Daisy Walker,Arcane,1.1938342660676973
-Parallel Daisy Walker,Body,1.3772604692315928
-Parallel Daisy Walker,Hand,7.799330548138512
-Parallel Daisy Walker,Tarot,0.009311573899933579
-Hank Samson,Accessory,1.8001443284731915
-Hank Samson,Ally,2.766422519157787
-Hank Samson,Arcane,0.20305249825838295
-Hank Samson,Body,1.7905538482784678
-Hank Samson,Hand,9.600288656946383
-Hank Samson,Tarot,0.01845931802348936
-Jacqueline Fine,Accessory,1.9876668865959912
-Jacqueline Fine,Ally,2.3277541076077854
-Jacqueline Fine,Arcane,5.59978514447429
-Jacqueline Fine,Body,1.060050670686932
-Jacqueline Fine,Hand,3.1376480848769854
-Jacqueline Fine,Tarot,0.16254184205065644
-Parallel Roland Banks,Accessory,1.05866724810433
-Parallel Roland Banks,Ally,2.8025054457558802
-Parallel Roland Banks,Arcane,0.45520351164296385
-Parallel Roland Banks,Body,0.4314706326889291
-Parallel Roland Banks,Hand,5.2082533855521955
-Parallel Roland Banks,Tarot,0.23309588959962868
-Akachi Onyele,Accessory,2.0838133205245537
-Akachi Onyele,Ally,2.2422855953661465
-Akachi Onyele,Arcane,7.170306079741191
-Akachi Onyele,Body,1.1595148243389053
-Akachi Onyele,Hand,3.6928212059485808
-Akachi Onyele,Tarot,0.2676555780032267
-Kōhaku Narukami,Accessory,1.874359778336497
-Kōhaku Narukami,Ally,1.7754943702527417
-Kōhaku Narukami,Arcane,3.125640221663503
-Kōhaku Narukami,Body,0.8123176857365485
-Kōhaku Narukami,Hand,3.5918314567509144
-Kōhaku Narukami,Tarot,0.023209076735329955
-Wilson Richards,Accessory,1.470675181707107
-Wilson Richards,Ally,1.913961808318583
-Wilson Richards,Arcane,0.21425052168998043
-Wilson Richards,Body,1.7501231740850685
-Wilson Richards,Hand,11.428993739720235
-Wilson Richards,Tarot,0.025205943728232993
-Ursula Downs,Accessory,1.9765817936520866
-Ursula Downs,Ally,3.7799686670037214
-Ursula Downs,Arcane,0.4521970341372785
-Ursula Downs,Body,0.5115359385562106
-Ursula Downs,Hand,4.763092723443489
-Ursula Downs,Tarot,0.06891850968959953
-Parallel Jenny Barnes,Accessory,0.9230769230769231
-Parallel Jenny Barnes,Ally,1.2307692307692308
-Parallel Jenny Barnes,Arcane,0.15384615384615385
-Parallel Jenny Barnes,Body,0.46153846153846156
-Parallel Jenny Barnes,Hand,5.384615384615385
-Parallel Jenny Barnes,Tarot,0.0
-Parallel Agnes Baker,Accessory,1.8561092812285696
-Parallel Agnes Baker,Ally,2.033773845274345
-Parallel Agnes Baker,Arcane,4.775003740138366
-Parallel Agnes Baker,Body,1.0963795459223278
-Parallel Agnes Baker,Hand,2.0150722931694243
-Parallel Agnes Baker,Tarot,0.1560044847806741
-Daniela Reyes,Accessory,1.5167408182880726
-Daniela Reyes,Ally,3.0834676798133773
-Daniela Reyes,Arcane,1.5781005536296449
-Daniela Reyes,Body,1.2841698087055513
-Daniela Reyes,Hand,6.050278489138346
-Daniela Reyes,Tarot,0.011479207654059352
-Winifred Habbamock,Accessory,1.6833009308300175
-Winifred Habbamock,Ally,1.7125019215552826
-Winifred Habbamock,Arcane,0.19103911180167546
-Winifred Habbamock,Body,1.0222201959323511
-Winifred Habbamock,Hand,3.8666225985666265
-Winifred Habbamock,Tarot,0.055828856405833675
-Nathaniel Cho,Accessory,1.1448026359533052
-Nathaniel Cho,Ally,2.562160985785866
-Nathaniel Cho,Arcane,0.604488133306821
-Nathaniel Cho,Body,1.0179804236609915
-Nathaniel Cho,Hand,4.5785270594585015
-Nathaniel Cho,Tarot,0.10008119165725692
-Gloria Goldberg,Accessory,2.0079305751216605
-Gloria Goldberg,Ally,2.7770161862358904
-Gloria Goldberg,Arcane,5.401041267168568
-Gloria Goldberg,Body,0.613851540384861
-Gloria Goldberg,Hand,3.1892388957929376
-Gloria Goldberg,Tarot,0.16958637441419144
-Rex Murphy,Accessory,1.6716874177220356
-Rex Murphy,Ally,2.7150084523602764
-Rex Murphy,Arcane,0.8232034041503484
-Rex Murphy,Body,0.8248032571852476
-Rex Murphy,Hand,4.472553848488629
-Rex Murphy,Tarot,0.3854193471171271
-Stella Clark,Accessory,2.1982323445378693
-Stella Clark,Ally,2.5270472862448496
-Stella Clark,Arcane,0.20444184427478926
-Stella Clark,Body,0.5600024370053864
-Stella Clark,Hand,5.48572685493046
-Stella Clark,Tarot,0.04456389714001618
-George Barnaby,Accessory,2.0
-George Barnaby,Ally,2.628571428571428
-George Barnaby,Arcane,0.5714285714285713
-George Barnaby,Body,0.2571428571428571
-George Barnaby,Hand,5.199999999999998
-George Barnaby,Tarot,0.0
-Wendy Adams,Accessory,1.9726916896181486
-Wendy Adams,Ally,2.1071914220265677
-Wendy Adams,Arcane,0.6670509856556353
-Wendy Adams,Body,0.8068455687817429
-Wendy Adams,Hand,4.4720511899571145
-Wendy Adams,Tarot,0.06944330569595214
-"Parallel ""Ashcan"" Pete",Accessory,0.8777448859991208
-"Parallel ""Ashcan"" Pete",Ally,1.3198869059375828
-"Parallel ""Ashcan"" Pete",Arcane,0.5080192839173632
-"Parallel ""Ashcan"" Pete",Body,0.49851986996043984
-"Parallel ""Ashcan"" Pete",Hand,3.9056244941503286
-"Parallel ""Ashcan"" Pete",Tarot,0.07833693801494494
-Monterey Jack,Accessory,1.1916022916849056
-Monterey Jack,Ally,2.1494927978446774
-Monterey Jack,Arcane,0.43061091194613205
-Monterey Jack,Body,0.7110492373564864
-Monterey Jack,Hand,4.399763054729866
-Monterey Jack,Tarot,0.11267362166044427
-Joe Diamond,Accessory,1.2104972614285343
-Joe Diamond,Ally,3.056508703886534
-Joe Diamond,Arcane,0.8155299961342103
-Joe Diamond,Body,0.8930468595920319
-Joe Diamond,Hand,8.604315084769453
-Joe Diamond,Tarot,0.12887696513999217
-"Parallel ""Skids"" O'Toole",Accessory,1.3394107599009881
-"Parallel ""Skids"" O'Toole",Ally,1.4472967371069367
-"Parallel ""Skids"" O'Toole",Arcane,0.14166504460130194
-"Parallel ""Skids"" O'Toole",Body,0.7189783883330131
-"Parallel ""Skids"" O'Toole",Hand,3.010382927953075
-"Parallel ""Skids"" O'Toole",Tarot,0.12302664269681467
-Lucius Galloway,Accessory,1.2222222222222223
-Lucius Galloway,Ally,2.5
-Lucius Galloway,Arcane,0.44444444444444453
-Lucius Galloway,Body,0.6666666666666667
-Lucius Galloway,Hand,4.333333333333334
-Lucius Galloway,Tarot,0.055555555555555566
-Roland Banks,Accessory,1.0391442797199715
-Roland Banks,Ally,2.8886856693422662
-Roland Banks,Arcane,0.5804196169961603
-Roland Banks,Body,0.7414742895548094
-Roland Banks,Hand,6.640137432863426
-Roland Banks,Tarot,0.1378151469846076
-Harvey Walters,Accessory,1.03071445651815
-Harvey Walters,Ally,3.468047424122128
-Harvey Walters,Arcane,1.6968471620881278
-Harvey Walters,Body,0.3726559265641939
-Harvey Walters,Hand,4.955544405924402
-Harvey Walters,Tarot,0.08609317804312168
-Parallel Zoey Samaras,Accessory,3.1402956497993197
-Parallel Zoey Samaras,Ally,2.2415215709752387
-Parallel Zoey Samaras,Arcane,1.2519922464812399
-Parallel Zoey Samaras,Body,0.7929279356978131
-Parallel Zoey Samaras,Hand,4.575852820408606
-Parallel Zoey Samaras,Tarot,0.1355645909293789
-Leo Anderson,Accessory,1.3233821409347708
-Leo Anderson,Ally,6.434628653917754
-Leo Anderson,Arcane,0.4679080522066937
-Leo Anderson,Body,0.8401054034189429
-Leo Anderson,Hand,4.736173225598377
-Leo Anderson,Tarot,0.18339524766165563
+Wilson Richards,Accessory,1.4229110550253086
+Wilson Richards,Ally,1.8971287755289328
+Wilson Richards,Arcane,0.1986288611430753
+Wilson Richards,Body,1.7218680156968074
+Wilson Richards,Hand,11.334009112637926
+Wilson Richards,Tarot,0.023368101310950035
