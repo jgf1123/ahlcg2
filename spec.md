@@ -279,8 +279,11 @@ C4. For each option, calculate `xp` and `taboo_set`:
 For each decklist:
 
 D1. Map its `investigator_front` and `investigator_back` to `Decklist.canonical_front` and `Decklist.canonical_back`. Simiilarly, for each `card_id` in `slots`, replace it with its `canonical_id`.
-D2. Let `Decklist.cycle` equal to the max over its non-`None` `CanonicalCard.cycle` values in `slots`, or `None` if all are out-of-order.
-D3. Let `Decklist.xp_cost` be the total XP cost of each decklist (reminder: customizable, exceptional, and myriad cases).
+
+D2. Let `Decklist.cycle` equal the max over its non-`None` `CanonicalCard.cycle` values in `slots`, or `None` if all are out-of-order.
+
+D3. Let `Decklist.xp_cost` be the total XP cost of the decklist (reminder: customizable, exceptional, and myriad cases).
+
 D4. Set `Decklist.is_ignore=False` if the `Decklist.taboo_id` is in every `CanonicalCard.taboo_set` in its `slots`; otherwise True.
 
 ## Initial Cycle Data Prep
@@ -303,7 +306,7 @@ Y2b. Enforce monotonicity: after computing `raw_cycle_weight`, let `Cycle.weight
 
 ## Bias compensation
 
-Empirical analysis shows confounding beyond P1/Y2:
+Empirical analysis shows confounding beyond Y2 and P1 below:
 
 1. **Core overhang** — cycle-1 slot share stays ~20–40% even at high `Decklist.cycle`.
 2. **Investigator–cycle coupling** — `inv_cycle = Decklist.cycle` is ~2–3× more common than investigator-pool share would predict.
@@ -313,15 +316,15 @@ Empirical analysis shows confounding beyond P1/Y2:
 Rejected approaches:
 
 - **Global (C, I, k) normalization** — overfits sparse cells and penalizes genuinely strong cards (e.g. if cycle-9 cards are above-average, many decks will legitimately run more of them; shrinking all cycle-9 popularity to a stratum average would be wrong).
-- **Exclude k = C slot copies** — invalid under P1: only `Decklist.cycle = C` can include `CanonicalCard.cycle = C` at all.
+- **Exclude k = C slot copies** — invalid under P1: only `Decklist.cycle = 12` can include `CanonicalCard.cycle = 12` at all.
 
 ### B1. Stratify by `Decklist.cycle`, weight toward high C
 
 For each `Decklist.cycle = C`, compute popularity statistics P3/P4/P5 **within that stratum only** (still applying P1/P2 inside the stratum). Combine:
 
-\[
+$$
 \text{pop}(option) = \frac{\sum_C g(C)\, \text{pop}_C(option)}{\sum_C g(C)}
-\]
+$$
 
 where `g(C)` is increasing. Rationale: decklists with higher `Decklist.cycle` draw from a larger card pool and are more informative about utility at the margin. This is separate from Y2: Y2 equalizes *within*-stratum contribution; `g(C)` tilts the *between*-stratum blend.
 
