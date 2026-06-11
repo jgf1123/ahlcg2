@@ -347,15 +347,15 @@ Let `P(inv_cycle = i | Decklist.cycle = C)` be the empirical fraction among non-
 $$
 w'_\text{deck} = w_\text{deck} \times \begin{cases}
 1 & \text{if } i \neq C \\
-\min\!\left(1,\; \dfrac{1/C}{P(i \mid C)}\right) & \text{if } i = C
+\min \left(1, \dfrac{1/C}{P(i \mid C)}\right) & \text{if } i = C
 \end{cases}
 $$
 
-Rationale: novelty coupling inflates **same-cycle** investigators (`i = C`) above a uniform `1/C` share. Down-weight those decks only; do **not** up-weight decks with `i \neq C` when older investigators are under-represented at stratum `C` (that would inflate legacy picks). Cap at 1 so under-represented same-cycle investigators are never boosted.
+Rationale: novelty coupling inflates **same-cycle** investigators (`i = C`) above a uniform `1/C` share. Down-weight those decks only; do **not** up-weight decks with `i != C` when older investigators are under-represented at stratum `C` (that would inflate legacy picks). Cap at 1 so under-represented same-cycle investigators are never boosted.
 
-### B3. Per-deck novelty tilt (not per-card, not (C, I, k))
+### B3. Per-deck novelty tilt (not per-card)
 
-Fix a **structural reference composition** `b_C(k)`: expected fraction of slot copies from `CanonicalCard.cycle = k` **absent novelty skew** — pool spread plus Core basis only. Use **(C, k)** only — never (C, I, k). Novelty (extra cycle-`C` cards) is **not** baked into `b_C(C)`; decks that over-represent cycle `C` relative to this baseline are down-weighted via `tilt_d(C)` when scoring cycle-`C` cards.
+Fix a **structural reference composition** `b_C(k)`: expected fraction of slot copies from `CanonicalCard.cycle = k` **absent novelty skew** — pool spread plus Core basis only. Use (C, k) over (C, I, k). Novelty (extra cycle-`C` cards) is **not** baked into `b_C(C)`; decks that over-represent cycle `C` relative to this baseline are down-weighted via `tilt_d(C)` when scoring cycle-`C` cards.
 
 Sources (in order of preference):
 
@@ -363,23 +363,20 @@ Sources (in order of preference):
 
    For `Decklist.cycle = C` (except the cycle-7 stratum row; see B4):
 
-   \[
+   $$
    b_C(k) = \frac{0.76/C + 0.22 \cdot I(k=1)}{0.98}
-   \]
+   $$
 
-   where `I(x)` is 1 if `x` is true else 0. The numerator is the ~98% structural mass (uniform across cycles 1…C plus Core bump); divide by `0.98` so \(\sum_{k=1}^{C} b_C(k) = 1\). The omitted ~2% corresponds to the empirical novelty share at cycle `C`, which tilt detects when `p_d(C) > b_C(C)`.
+   where `I(B)` is 1 if `B` is true else 0. The numerator is the ~98% structural mass (uniform across cycles 1…C plus Core bump); divide by `0.98` so $\sum_{k=1}^{C} b_C(k) = 1$. The omitted ~2% corresponds to the empirical novelty share at cycle `C`, which tilt detects when `p_d(C) > b_C(C)`.
 
 2. Column marginals from the `Decklist.cycle` × `CanonicalCard.cycle` pivot (Cell 5), with `Decklist.cycle = 7` as its own row — useful for calibration, not required if the prior is trusted.
 
 For deck `d` with `Decklist.cycle = C`, let `p_d(k)` = its slot-copy share from card cycle `k`. When deck `d` contributes to popularity of options whose cards have `CanonicalCard.cycle = k`:
 
-\[
-\text{tilt}_d(k) = \min\!\left(1,\; \frac{b_C(k)}{p_d(k)}\right)
-\]
-
-\[
+$$
+\text{tilt}_d(k) = \min \left(1, \frac{b_C(k)}{p_d(k)}\right) \\
 w''_\text{deck} = w'_\text{deck} \times \text{tilt}_d(k) \quad \text{(for P3/P4 involving cycle-}k \text{ cards only)}
-\]
+$$
 
 Properties:
 
@@ -407,9 +404,9 @@ Treat `Decklist.cycle = 7` as a separate stratum in B1 (its own `pop_7`, own `b_
 
 ### Combined deck weight
 
-\[
+$$
 w_\text{deck} = \text{user\_weight} \times \text{Cycle.weight} \times \text{inv\_adjust} \times \text{tilt}_d(k)
-\]
+$$
 
 with `inv_adjust` from B2 (diagonal-only, capped at 1) and `tilt_d(k)` from B3 when scoring cycle-`k` cards. Apply B1 when aggregating across `Decklist.cycle` after per-stratum P5.
 
@@ -418,9 +415,13 @@ with `inv_adjust` from B2 (diagonal-only, capped at 1) and `tilt_d(k)` from B3 w
 For a given (`canonical_front`, `canonical_back`) tuple, slice the decklists with that tuple and with `is_ignore=False` and do the following for each option:
 
 P1. Slice all decklists with `Decklist.cycle >= CanonicalCard.cycle`. When `CanonicalCard.cycle` is `None` (out-of-order card), treat the card as available in **all** cycles: skip the cycle comparison and include every non-ignored decklist that has a defined `Decklist.cycle`.
+
 P2. If `CanonicalCard.has_xp_cost`, further restrict the DataFrame to decklists where `Decklist.xp_cost >= min_xp_cost`. (See Implementation Notes about `min_xp_cost`)
-P3. These are all the decklists that could include the option. Calculate the total weight of these decklists. Base weight is `Decklist.user_weight * Cycle.weight` (Y1/Y2). With bias compensation enabled, multiply by B2 `inv_adjust` (diagonal-only) and `tilt_d(k)` for the option's card cycle `k` (B3). Compute P3/P4/P5 **within each `Decklist.cycle` stratum**, then blend strata with `g(C) = C` (B1).
+
+P3. These are all the decklists that *could* include the option. Calculate the total weight of these decklists. Base weight is `Decklist.user_weight * Cycle.weight` (Y1/Y2). With bias compensation enabled, multiply by B2 `inv_adjust` (diagonal-only) and `tilt_d(k)` for the option's card cycle `k` (B3). Compute P3/P4/P5 **within each `Decklist.cycle` stratum**, then blend strata with `g(C) = C` (B1).
+
 P4. Similarly, calculate the total weight of the decklists that include the option. See "Definition of a decklist containing an option" below.
+
 P5. An option's popularity is P4=(weight of decklists with it) over P3=(weight of decklists that had the opportunity to use it).
 
 Return P4, P3, and P5. `prepare_arkham_data.ipynb` does this as a DataFrame.
@@ -469,7 +470,7 @@ Then decklists B and D have upgrade Y; decklists C and D have upgrade Z.
 
 ## Caveat
 
-NOTE: `prepare_arkham_data.ipynb` uses concepts of group and pack index. A group corresponds to an option described above, that is each unique tuple of given column names identifies the option the player has chosen for the decklist. (To further complicate this, `prepare_arkham_data.ipynb` was created by combining two different sources that used different meanings of "group". Here, we refer to `groupby_cols` and not the group ID that estabilishes temporal order.) Pack index corresponds to `cycle` / `Decklist.cycle`, that is it divides time into ordered intervals and identifies to which interval the decklist or card belongs to. However, the nomenclature of groups is not intuitive, so this spec suggests new variable names.
+NOTE: Earlier versions of `prepare_arkham_data.ipynb` used concepts of group and pack index. A group corresponds to an option described above, that is each unique tuple of `groupby_cols` -- a set of column names identifing the option the player has chosen -- for the decklist. (To further complicate this, `prepare_arkham_data.ipynb` was created by combining two different sources that used different meanings of "group". Here, we refer to `groupby_cols` and not the group ID that estabilishes temporal order.) Pack index corresponds to `cycle` / `Decklist.cycle`, that is it divides time into ordered intervals and identifies to which interval the decklist or card belongs to. However, the nomenclature of groups is not intuitive, so this spec suggests new variable names.
 
 ## Implementation Notes
 
@@ -485,14 +486,10 @@ Decklists also have a `sideSlots` field. These are not cards in the decklist but
 
 `combined.ipynb` applied a penalty based on the number of decklists in a cycle while `prepare_arkham_data.ipynb` implements a new algorithm that does not. The above describes a third algorithm.
 
-Legacy: The spec once used this. This accounts for number of cards published up to the cycle but not for more decklists being made for lower cycles.
-
-1. For each cycle, find the number of cards with the same `CanonicalCard.cycle`.
-2. For each cycle, calculate the cumulative number of cards published in all cycles up to it. Then let `Cycle.weight` equal to its cumulative counts normalized so that `MAX_CYCLE` (currently 12) has `Cycle.weight=1`.
-
-Legacy: The spec also once used this. This has been superceded by `user_weight`, which does something similar but also accounts for users that make multiple decklists for the same investigator.
+Legacy: The spec also once used the following to compensate for chained upgrades of decklists. This has been superceded by `user_weight`, which does something similar but also accounts for users that make multiple decklists for the same investigator.
 
 Y1. Some decklists form upgrade chains identified by `previous_deck` and `next_deck`. Give each decklist an `Decklist.chain_weight` that is 1 over the number of decklists in its upgrade chain. For decklists not in a chain, consider it to be in a chain of 1 decklist.
+
 Y2. For each `cycle`, find all decklist with `Decklist.cycle = cycle`. Let `sum_chain_weight` be the sum of `Decklist.chain_weight`. Let `Cycle.weight = 1 / sum_chain_weight`.
 
 # Other Useful Functions
@@ -517,8 +514,11 @@ I1. Let `inv_cycle` = `CanonicalCard.cycle` of `canonical_front` (the investigat
 For each `cycle` from 1 to `MAX_CYCLE`, and for each `(canonical_front, canonical_back)` with `inv_cycle = cycle`:
 
 I2. Slice all decklists with `Decklist.cycle >= cycle` and `is_ignore = False`.
+
 I3. Total weight of those decklists = Σ (`Decklist.user_weight` × `Cycle.weight` at `Decklist.cycle`).
+
 I4. Total weight of decklists using this `(canonical_front, canonical_back)` tuple (same slice, same weight formula).
+
 I5. Popularity = I4 / I3.
 
 ## Decklist Scrapper
