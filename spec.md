@@ -342,13 +342,16 @@ where `g(C)` is increasing. Rationale: decklists with higher `Decklist.cycle` dr
 
 ### B2. Investigator–cycle reweighting
 
-Let `P(inv_cycle = i | Decklist.cycle = C)` be the empirical fraction among non-ignored decks (or a smoothed prior). When a deck has investigator cycle `i`:
+Let `P(inv_cycle = i | Decklist.cycle = C)` be the empirical fraction among non-ignored decks (with a floor on `P` when `i = C` to avoid division by zero). When a deck has investigator cycle `i`:
 
 $$
-w'_\text{deck} = w_\text{deck} / P(i \mid C)
+w'_\text{deck} = w_\text{deck} \times \begin{cases}
+1 & \text{if } i \neq C \\
+\min\!\left(1,\; \dfrac{1/C}{P(i \mid C)}\right) & \text{if } i = C
+\end{cases}
 $$
 
-(optionally cap the divisor to avoid exploding weight for rare pairs). Rationale: down-weight decks that are "expected" from novelty coupling (playing the new cycle's investigator) relative to decks that are not.
+Rationale: novelty coupling inflates **same-cycle** investigators (`i = C`) above a uniform `1/C` share. Down-weight those decks only; do **not** up-weight decks with `i \neq C` when older investigators are under-represented at stratum `C` (that would inflate legacy picks). Cap at 1 so under-represented same-cycle investigators are never boosted.
 
 ### B3. Per-deck novelty tilt (not per-card, not (C, I, k))
 
@@ -408,7 +411,7 @@ Treat `Decklist.cycle = 7` as a separate stratum in B1 (its own `pop_7`, own `b_
 w_\text{deck} = \text{user\_weight} \times \text{Cycle.weight} \times \text{inv\_adjust} \times \text{tilt}_d(k)
 \]
 
-with `inv_adjust = 1 / P(inv_cycle | Decklist.cycle)` from B2 and `tilt_d(k)` from B3 when scoring cycle-`k` cards. Apply B1 when aggregating across `Decklist.cycle` after per-stratum P5.
+with `inv_adjust` from B2 (diagonal-only, capped at 1) and `tilt_d(k)` from B3 when scoring cycle-`k` cards. Apply B1 when aggregating across `Decklist.cycle` after per-stratum P5.
 
 ## Popularity by Investigator
 
@@ -416,7 +419,7 @@ For a given (`canonical_front`, `canonical_back`) tuple, slice the decklists wit
 
 P1. Slice all decklists with `Decklist.cycle >= CanonicalCard.cycle`. When `CanonicalCard.cycle` is `None` (out-of-order card), treat the card as available in **all** cycles: skip the cycle comparison and include every non-ignored decklist that has a defined `Decklist.cycle`.
 P2. If `CanonicalCard.has_xp_cost`, further restrict the DataFrame to decklists where `Decklist.xp_cost >= min_xp_cost`. (See Implementation Notes about `min_xp_cost`)
-P3. These are all the decklists that could include the option. Calculate the total weight of these decklists. Base weight is `Decklist.user_weight * Cycle.weight` (Y1/Y2). With bias compensation enabled, multiply by `1 / P(inv_cycle | Decklist.cycle)` (B2) and `tilt_d(k)` for the option's card cycle `k` (B3). Compute P3/P4/P5 **within each `Decklist.cycle` stratum**, then blend strata with `g(C) = C` (B1).
+P3. These are all the decklists that could include the option. Calculate the total weight of these decklists. Base weight is `Decklist.user_weight * Cycle.weight` (Y1/Y2). With bias compensation enabled, multiply by B2 `inv_adjust` (diagonal-only) and `tilt_d(k)` for the option's card cycle `k` (B3). Compute P3/P4/P5 **within each `Decklist.cycle` stratum**, then blend strata with `g(C) = C` (B1).
 P4. Similarly, calculate the total weight of the decklists that include the option. See "Definition of a decklist containing an option" below.
 P5. An option's popularity is P4=(weight of decklists with it) over P3=(weight of decklists that had the opportunity to use it).
 

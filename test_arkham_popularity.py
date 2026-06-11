@@ -9,6 +9,7 @@ from pathlib import Path
 from arkham_canonical import CanonicalMapper, build_canonical_map
 from arkham_popularity import (
     ArkhamPopularityEngine,
+    InvCycleIndex,
     UpgradeGraph,
     baseline_composition,
     build_canonical_card_infos,
@@ -68,6 +69,19 @@ class BiasCompensationTests(unittest.TestCase):
 
     def test_tilt_none_for_unordered_cards(self):
         self.assertEqual(tilt_factor(5, None, {1: 1.0}), 1.0)
+
+    def test_inv_cycle_adjust_only_on_diagonal(self):
+        index = InvCycleIndex.__new__(InvCycleIndex)
+        index._prob = {(10, 1): 0.07, (10, 10): 0.35}
+        self.assertEqual(index.adjust(10, 1), 1.0)
+        self.assertAlmostEqual(index.adjust(10, 10), min(1.0, 0.1 / 0.35))
+
+    def test_inv_cycle_adjust_caps_at_one(self):
+        index = InvCycleIndex.__new__(InvCycleIndex)
+        index._prob = {(10, 10): 0.05}
+        self.assertEqual(index.adjust(10, 10), 1.0)
+        index._prob = {(10, 10): 0.5}
+        self.assertAlmostEqual(index.adjust(10, 10), 0.2)
 
     def test_bias_off_matches_legacy_pooling(self):
         cards = {

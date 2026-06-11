@@ -20,9 +20,8 @@ UPGRADE_PATTERN = re.compile(r"\d+\|\d+.*")
 
 # Spec B3: floor on p_d(k) when computing tilt (one slot in a 30-card deck).
 P_D_FLOOR = 1.0 / 30.0
-# Spec B2: avoid division by zero / exploding weights for rare (deck_cycle, inv_cycle) pairs.
+# Spec B2: floor on P(i|C) when i = C to avoid division by zero.
 INV_PROB_FLOOR = 0.01
-MAX_INV_ADJUST = 10.0
 
 
 def stratum_blend_weight(deck_cycle: int) -> float:
@@ -112,10 +111,13 @@ class InvCycleIndex:
         inv_cycle: int | None,
         *,
         prob_floor: float = INV_PROB_FLOOR,
-        max_adjust: float = MAX_INV_ADJUST,
     ) -> float:
+        """Spec B2: down-weight only when inv_cycle matches deck stratum."""
+        if inv_cycle is None or inv_cycle != deck_cycle:
+            return 1.0
         probability = max(self.prob(deck_cycle, inv_cycle), prob_floor)
-        return min(1.0 / probability, max_adjust)
+        uniform_share = 1.0 / deck_cycle
+        return min(1.0, uniform_share / probability)
 
 
 def enforce_monotonic_cycle_weights(
