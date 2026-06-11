@@ -323,7 +323,7 @@ Rejected approaches:
 For each `Decklist.cycle = C`, compute popularity statistics P3/P4/P5 **within that stratum only** (still applying P1/P2 inside the stratum). Combine:
 
 $$
-\text{pop}(option) = \frac{\sum_C g(C)\, \text{pop}_C(option)}{\sum_C g(C)}
+\text{pop}(option) = \frac{\sum_C g(C) \cdot \text{pop}_C(option)}{\sum_C g(C)}
 $$
 
 where `g(C)` is increasing. Rationale: decklists with higher `Decklist.cycle` draw from a larger card pool and are more informative about utility at the margin. This is separate from Y2: Y2 equalizes *within*-stratum contribution; `g(C)` tilts the *between*-stratum blend.
@@ -344,9 +344,9 @@ where `g(C)` is increasing. Rationale: decklists with higher `Decklist.cycle` dr
 
 Let `P(inv_cycle = i | Decklist.cycle = C)` be the empirical fraction among non-ignored decks (or a smoothed prior). When a deck has investigator cycle `i`:
 
-\[
+$$
 w'_\text{deck} = w_\text{deck} / P(i \mid C)
-\]
+$$
 
 (optionally cap the divisor to avoid exploding weight for rare pairs). Rationale: down-weight decks that are "expected" from novelty coupling (playing the new cycle's investigator) relative to decks that are not.
 
