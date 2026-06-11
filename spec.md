@@ -2,18 +2,18 @@
 
 The goal is identify the most popular cards used by various investigators in the customizable card game Arkham Horror: The Card Game. Players craft decklists that use a particular investigator and a deck of cards. A naive approach to calculate the popularity of a `card_id` for investigator (`canonical_front`, `canonical_back`) tuple is to find all decklists with (`canonical_front`, `canonical_back`) and sum the number of copies of `card_id` in those decklists. We will modify this approach to reflect various aspects of the game.
 
-The following has similarities to what exists in `prepare_arkham_data.ipynb` and `combined.ipynb` but describes a third variation on the same idea.
+The following has similarities to `combined.ipynb` and `from_earthborne_rangers\prepare_data.ipynb` and an earlier version of `prepare_arkham_data.ipynb` but describes a new variation on the same idea.
 
 # Data
 
-The cells 2 and 4 in combined.ipynb were used to scrape decklist and card data, respectively, from the arkhamdb API. The data arrives in json format, the json is converted to Python dict, then stored as {`decklist_id`: dict} and {`card_id`: dict}. To avoid overloading the API, we load previously scraped data, request only the new data, and save the updated data as a pickle file. While the structure of decklist dict's are almost uniform, there are variations, so we save the raw data as a dict using pickle.
+The cells 2 and 4 in `combined.ipynb` are used to scrape decklist and card data, respectively, from the arkhamdb API. To avoid overloading the API, we load previously scraped data, request only the new data, and save the updated data as a pickle file. While the structure of decklist dict's are almost uniform, there are variations, so we save the raw data as a dict using pickle.
 
 Only the scrapper functions are allowed to overwrite the pickled data. The functions that calculate popularity are forbidden from saving pickled data.
 
 ## Scraping and cleaning
 
 - **Decklists:** scrape via `combined.ipynb` (cell 2) or equivalent; store as `{decklist_id: dict}` in `decklist_json.pickle`. Drop empty entries (`None`). Remove known joke decklists (`44599`, `43839`).
-- **Cards:** scrape via `combined.ipynb` (cell 4); store as `{card_id: dict}` in `card_json.pickle`. Re-scrape before canonicalization.
+- **Cards:** scrape via `combined.ipynb` (cell 4); store as `{card_id: dict}` in `card_json.pickle`. (Done: ~~Re-scrape before canonicalization.~~)
 - **Taboo:** fetch `taboo.json` separately from the API.
 - Only scraper code may overwrite pickles. Popularity code may write CSV outputs but must not overwrite pickles.
 
@@ -23,11 +23,11 @@ Only the scrapper functions are allowed to overwrite the pickled data. The funct
 
 When the game was first published, all players needed the Core set (`pack_code='core'`).
 
-The game was then expanded with cycles. Originally, each cycle contained a campaign set and then 6 mythos packs. You can see the legacy of this in cell 5 of `prepare_arkham_data.ipynb`.
+The game was then expanded with cycles. Originally, each cycle contained a deluxe expansion and then 6 mythos packs. (Some legacy of this is now in `arkham_canonical.py`.)
 
 After cycle 8 (that is, if we treat the Core set as cycle #1, Investigator Starter decks as cycle #7, and the first 6 expansions as cycles #2-6, 8), cycles were instead released as two `pack_code`s, an Investigator Expansion and a Campaign Expansion. By and large, players will build decklists using cards from the Investigator Expansion but under special circumstances add cards from the Campaign Expansion.
 
-At some point, arkhamdb deprecated the old mythos pack organization. We should scrape the card data again to make sure we are using the most current data.
+At some point, arkhamdb deprecated the old mythos pack organization. Done: ~~We should scrape the card data again to make sure we are using the most current data.~~
 
 There are also "Return to the..." card sets. While they are related to a particular cycle (e.g., "The Dunwich Legacy" with `pack_code='dwl'` and "Return to the Dunwich Legacy with `pack_code='rtdwl`), treat them as separate packs.
 
@@ -35,7 +35,7 @@ There are also "Return to the..." card sets. While they are related to a particu
 
 ArkhamDB assigns a distinct `card_id` to many printings of the same physical card (Core vs Revised Core, investigator starters, etc.) and to genuinely different cards that share a `name`. We map every `card_id` to a **`canonical_id`**. Popularity, cycle assignment, and upgrade logic all use `canonical_id`, not raw `card_id`.
 
-Note: legacy code in `prepare_arkham_data.ipynb` uses `mythos` where this spec uses **`cycle`**. Refactor toward `cycle` when implementing.
+Note: previously, legacy code in `prepare_arkham_data.ipynb` used `mythos` where this spec uses **`cycle`**. Refactor toward `cycle` when implementing.
 
 ### Choosing `canonical_id`
 
@@ -63,22 +63,21 @@ Two `card_id`s belong to the same `canonical_id` if **all** of the following mat
 
 ```coalesce(normalize(text), normalize(real_text), '')```
 
-- coalesce: use text when not null; otherwise real_text; otherwise ''.
 - normalize: collapse whitespace; normalize [[Trait]] → [Trait]; normalize chaos-token symbols (-, −, –, skull icons) to a single form.
 
-Do **not** use real_text alone: for taboo-placeholder reprints, text is often null on both printings while real_text may be '' vs null.
+Do **not** use `real_text` alone: for taboo-placeholder reprints, `text` is often null on both printings while `real_text` may be '' vs null.
 
 ### Authoritative merge: `duplicate_of_code`
 
-If ArkhamDB sets `duplicate_of_code`, that `card_id` belongs to the same `canonical_id` as `duplicate_of_code`, regardless of minor text encoding differences (e.g. Sure Gamble `01056` / `01556`). After re-scraping cards, apply fingerprint grouping first, then merge any card with `duplicate_of_code` into its target's class.
+If ArkhamDB sets `duplicate_of_code`, that `card_id` belongs to the same `canonical_id` as `duplicate_of_code`, regardless of minor text encoding differences (e.g. Sure Gamble `01056` / `01556`). Apply fingerprint grouping first, then merge any card with `duplicate_of_code` into its target's class.
 
 ### Separate `canonical_id` (do not merge)
 
-Keep distinct canonical_ids when any of the following hold:
+Keep distinct `canonical_id`s when any of the following hold:
 
 - Different `xp` (upgrades are separate canonical nodes, linked later by upgrade family — see Popularity Calculation).
 - Same `name`, `subname`, and `xp` but **different compare text** (after normalization). This includes:
-  - **Advanced** signature cards (`90019` Advanced Dark Memory vs `01013` Dark Memory)
+  - **Advanced** signature cards (`90019` Dark Memory with "Advanced" in `text` vs `01013` Dark Memory)
   - **Same-XP upgrade branches** without subname (e.g. `05186` / `05187` .45 Thompson; `05188` / `05189` Scroll of Secrets)
   - Tekeli-li encounter weaknesses (seven different effects, same name)
 - Different **enumerable fields** (e.g. `04236` On Your Own vs `53010`: permanent / exceptional; `11007` / `11008` Agatha Crane: `faction_code` = seeker vs mystic back)
@@ -110,10 +109,6 @@ When picking the representative `card_id` in an equivalence class, sort by first
 - **Chapter 1 vs Chapter 2** cards are never merged across chapters (see Core 2026).
 - Manual `merge_cards` dicts in old notebooks are **deprecated**; replace with this algorithm after re-scrape.
 
-### Data prerequisite
-
-Re-scrape card data from the ArkhamDB API before locking `canonical_id` mappings. The current pickle is missing packs (e.g. `core_2026`, new split expansion codes) and may have stale `pack_code` values.
-
 ## Core 2026
 
 There is a new Core set (`pack_code='core_2026'`) and 5 more Investigator Decks (`tom`, `car`, `and`, `mar`, `mig`). Some of the cards are identical to earlier cards. Some of the cards may be tweaked versions of earlier cards. These are not intended to be mixed with cards that came before. Everything that came before `core_2026` is Chapter 1 (cycles 1 to 12) and `core_2026` onward is Chapter 2 (cycles 13 and up).
@@ -124,7 +119,7 @@ For the purposes of this project, we will filter out all Chapter 2 cards and fil
 
 The publication order of the packs is:
 
-- `core` (cycle 1) / `rcore`
+- `core` (cycle 1)
 - `dwl` (cycle 2)
 - `ptc` (cycle 3)
 - `rtnotz`
@@ -137,6 +132,7 @@ The publication order of the packs is:
 - The Investigator Starter Decks (`nat`, `har`, `win`, `jac`, `ste`) (we will call this cycle 7)
 - `tic` (cycle 8) 
 - `rttcu`
+- `rcore` (cycle 1 except for publication order purposes)
 - `eoe` (cycle 9)
 - `tsk` (cycle 10)
 - `fhv` (cycle 11)
@@ -158,10 +154,10 @@ NOTE: Previous iterations described temporal order using "group" and "mythos". G
 
 When a player creates a decklist, they do not always consider all cards published to date. Typically, players will buy cycles in order and build decklists from the packs they own, i.e., players own cycles 1 through X and build decklists using cards from 1 through X. Let the `Decklist.cycle` of a decklist be the maximum ordered `cycle` among the `canonical_id`s it contains (ignore slots whose `CanonicalCard.cycle` is `None`). If every slot is out-of-order, `Decklist.cycle = None`. This creates a bias because players who have access to a larger pool of cards are more likely to make better decks.
 
-Furthermore, for a player building a decklist using cards from cycles 1 through X, we observe that, a *very rough* estimate is that ~76% of cards are evenly divided between cycles 1 through X, cycle 1 receives an additional ~22%, and cycle X receives ~2% novelty on top (recalibrated after the `rcore` card-cycle fix). Only the structural portion (~98%) enters `b_C(k)`; see B3.
+Furthermore, for a player building a decklist using cards from cycles 1 through X, we observe that, a *very rough* estimate is that ~76% of cards are evenly divided between cycles 1 through X, cycle 1 receives an additional ~22%, and cycle X receives ~2% for players picking cards because of novelty instead of utility (done: ~~recalibrated after the `rcore` card-cycle fix~~). Only the structural portion (~98%) enters `b_C(k)`; see B3.
 
 - Exception: cycle 7, the Investigator Starter Decks, include many cards intended to work well with their investigator.
-- The ~22% in cycle 1 is at least partially explained by it being the Core (`pack_code='core'`) set, which is intended to form the basis of deck construction.
+- The ~22% in cycle 1 is at least partially explained by it being the Core (`pack_code='core'` or `rcore`) set, which is intended to form the basis of deck construction.
 - The ~2% in cycle X is treated as **novelty**, not part of `b_C(k)` — tilt at `k = C` down-weights decks that exceed the structural baseline.
 
 Legacy: We previously asserted
@@ -220,7 +216,7 @@ Third, the 1+ XP cards that are bought first are more useful.
 Fourth, when players upgrade their deck, usually they replace a 0 XP card with a 1+ XP card. We can conjecture at least two scenarios:
 
 - The player picks a less useful card with the 1+ XP card, which signals a weak card.
-- Due to deck building restrictions, in general players have a limit to how many cards with the same `name` can be included in a deck. So if a decklist starts with 2 copies of card A and then replaces them with 2 copies of upgrade card A1, this is not necessarily a signal that card A is weak.
+- Due to deck building restrictions, players have a limit to how many cards with the same `name` can be included in a deck, generally 2. So if a decklist starts with 2 copies of card A and then replaces them with 2 copies of upgrade card A1, this is not necessarily a signal that card A is weak.
 
 Note: cards A and A1 will have distinct `canonical_id`.
 
@@ -229,7 +225,7 @@ Upgrade families are defined **after** reprint canonicalization. Cards with diff
 There are some edge cases to do with calculating XP cost of decklists:
 
 - If the card has `exceptional=True`, then its actual XP cost is twice its `xp` field
-- If the card has `myriad=True`, the XP cost of all of the card indices together is its `xp` field. (E.g., Card A1 is not myriad and has `xp=3`. If a decklist contains 2 copies of A1, then they cost a total of 6 XP. Card B1 is myriad and has `xp=2`. If a decklist contains 3 copies of B1, then they cost a total of 2 XP.)
+- If the card has `myriad=True`, the XP cost of all of the card indices together is its `xp` field. (E.g., Card A3 is not myriad and has `xp=3`. If a decklist contains 2 copies of A3, then they cost a total of 6 XP. Card B2 is myriad and has `xp=2`. If a decklist contains 3 copies of B2, then they cost a total of 2 XP.)
 
 Note: the `cost` field in each card json means something unrelated to XP cost.
 
@@ -237,7 +233,7 @@ Note: the `cost` field in each card json means something unrelated to XP cost.
 
 Based on player experience, it was discovered after publication that a card is too powerful, rarely not powerful enough. The preferred approach is to alter the XP cost. A less common approach is to alter the text of the card. It is too difficult to parse if a change in wording makes a card significantly stronger or weaker. Instead, we will base our filtering on taboo XP cost, irrespective of wording changes.
 
-The Taboo list is now up to version 10; all 10 are contained in `taboo.json`, which was fetched from the arkhamdb API. Players choose which taboo version to use for each decklist, which is stored in the `taboo_id` field. It is common for a decklist to built with taboo X when X was the most current version but, when newer versions of the taboo were released, players did not go back and update the decklist to fit the new taboo, so we cannot just ignore all decklists that do not have the current `taboo_id`.
+The Taboo list is now up to version 10; all 10 are contained in `taboo.json`, which was fetched from the arkhamdb API. Players choose which taboo version to use for each decklist, which is stored in the `taboo_id` field. It is common for a decklist to built with taboo T when T was the most current version but, when newer versions of the taboo were released, players did not go back and update the decklist to fit the new taboo, so we cannot just ignore all decklists that do not have the current `taboo_id`.
 
 For each `canonical_id`, check if its XP has been modified in the most recent taboo. A decklist only includes the current `canonical_id` if, according to the decklist's `taboo_id`, it paid at least that much XP for `canonical_id`. Treat missing `taboo_id` as **`0`** (no taboo list selected).
 
@@ -253,15 +249,9 @@ Some `card_id` are customizable. You can see code related to this in cell 6 of `
 
 Two different lineage concepts:
 
-**Copy / inspiration (not available).** Unlike Earthborne Rangers (`original_deck`), ArkhamDB does **not** link a decklist copied from another user's deck. We cannot weight inspiration vs copy. No weighting for this.
+**Copy / inspiration (not available).** Unlike Earthborne Rangers (`original_deck`), ArkhamDB does **not** link a decklist copied from another user's deck. We cannot weight decks that inspired others vs decks that copied others. No weighting for this.
 
 **Same-user upgrade chains (available).** ArkhamDB sets `previous_deck` and `next_deck` when a user upgrades their own published deck. These form disjoint chains (no branching, no cross-user links). See Initial Cycle Data Prep (`user_weight`).
-
-# Deck Lineage
-
-Unlike rangerdb, the arkhamdb API does not provide which decklists are derived from an existing decklist. If we had that information, we would want to weight more the decklist that was the inspiration and weight less the derived decklist. Since arkhamdb does not provide this information, we will not do such weighting.
-
-arkhamdb does provide `previous_deck` and `next_deck`, which allows us to reconstruct chains of deck upgrades. We will account for this using `upgrade_weight` as described below.
 
 # Popularity Calculation
 
