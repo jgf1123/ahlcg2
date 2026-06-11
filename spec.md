@@ -265,14 +265,14 @@ C2. Let `CanonicalCard.cycle` be the first publication order cycle among constit
 
 C3. Identify decklist options:
 
-    - For non-customizable cards, construct an upgrade graph of `canonical_id` (see "Definition of a decklist containing an option" below).
-    - For customizable cards, identify the possible set of purchasable upgrades.
+- For non-customizable cards, construct an upgrade graph of `canonical_id` (see "Definition of a decklist containing an option" below).
+- For customizable cards, identify the possible set of purchasable upgrades.
 
 C4. For each option, calculate `xp` and `taboo_set`:
 
-    i. Create a mapping `taboo_index -> taboo_xp`. If the option is in `taboo_index`, use the XP cost in the taboo; otherwise fall back to the `xp` cost in `card_id = canonical_id`.
-    ii. Let `CanonicalCard.xp` be its `taboo_xp` for the current taboo. Let `CanonicalCard.has_xp_cost = (xp > 0)`
-    iii. Let `CanonicalCard.taboo_set` be the set of `taboo_index` where the `taboo_xp` is greater than or equal to `CanonicalCard.xp`. (Note: if the card is never in a taboo, then `taboo_set` should be the set of all `taboo_index`.)
+i. Create a mapping `taboo_index -> taboo_xp`. If the option is in `taboo_index`, use the XP cost in the taboo; otherwise fall back to the `xp` cost in `card_id = canonical_id`.
+ii. Let `CanonicalCard.xp` be its `taboo_xp` for the current taboo. Let `CanonicalCard.has_xp_cost = (xp > 0)`
+iii. Let `CanonicalCard.taboo_set` be the set of `taboo_index` where the `taboo_xp` is greater than or equal to `CanonicalCard.xp`. (Note: if the card is never in a taboo, then `taboo_set` should be the set of all `taboo_index`.)
 
 ## Initial Decklist Data Prep
 
