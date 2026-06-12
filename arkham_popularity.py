@@ -7,6 +7,7 @@ import json
 import re
 from collections import defaultdict
 from dataclasses import dataclass, field
+from pathlib import Path
 from typing import Any
 
 from arkham_canonical import (
@@ -22,6 +23,161 @@ UPGRADE_PATTERN = re.compile(r"\d+\|\d+.*")
 P_D_FLOOR = 1.0 / 30.0
 # Spec B2: floor on P(i|C) when i = C to avoid division by zero.
 INV_PROB_FLOOR = 0.01
+
+# Scraping/cleaning: manually confirmed joke decklists.
+KNOWN_JOKE_DECKLIST_IDS = frozenset({43839, 44599, 45550})
+
+
+def build_taboo_card_lookup(
+    taboo_json: list[dict[str, Any]],
+) -> dict[int, dict[str, dict[str, Any]]]:
+    """Map taboo_id -> card_code -> taboo entry (per printing, not canonical)."""
+    lookup: dict[int, dict[str, dict[str, Any]]] = {}
+    for taboo in taboo_json:
+        taboo_id = taboo["id"]
+        lookup[taboo_id] = {
+            entry["code"]: entry for entry in json.loads(taboo["cards"])
+        }
+    return lookup
+
+
+def effective_deck_limit(
+    card: dict[str, Any],
+    taboo_id: int | None,
+    taboo_lookup: dict[int, dict[str, dict[str, Any]]],
+) -> int:
+    """Max copies of card_id allowed in a deck under the decklist's taboo list."""
+    code = card["code"]
+    limit = card.get("deck_limit")
+    if taboo_id is not None and taboo_id in taboo_lookup:
+        entry = taboo_lookup[taboo_id].get(code)
+        if entry is not None:
+            if entry.get("text") == "Forbidden.":
+                return 0
+            if "deck_limit" in entry:
+                limit = entry["deck_limit"]
+    if limit is None:
+        if card.get("myriad"):
+            return 3
+        if card.get("exceptional"):
+            return 1
+        return 2
+    return int(limit)
+
+
+def deck_limit_violations(
+    decklist: dict[str, Any],
+    card_json: dict[str, dict[str, Any]],
+    taboo_lookup: dict[int, dict[str, dict[str, Any]]],
+) -> list[dict[str, Any]]:
+    """Return slot copy counts that exceed deck_limit for their card_id."""
+    violations: list[dict[str, Any]] = []
+    taboo_id = decklist.get("taboo_id")
+    for card_code, count in (decklist.get("slots") or {}).items():
+        card = card_json.get(card_code)
+        if card is None:
+            continue
+        limit = effective_deck_limit(card, taboo_id, taboo_lookup)
+        if count > limit:
+            violations.append(
+                {
+                    "card_code": card_code,
+                    "name": card.get("name"),
+                    "count": count,
+                    "limit": limit,
+                }
+            )
+    return violations
+
+
+def clean_decklist_json(
+    decklist_json: dict[Any, dict[str, Any] | None],
+    card_json: dict[str, dict[str, Any]],
+    taboo_json: list[dict[str, Any]] | str | Path,
+    *,
+    known_jokes: frozenset[int] = KNOWN_JOKE_DECKLIST_IDS,
+    min_violation_count: int = 4,
+) -> tuple[dict[Any, dict[str, Any]], list[tuple[Any, str, str]]]:
+    """Drop empty decks, known jokes, and extreme deck_limit violators."""
+    if isinstance(taboo_json, (str, Path)):
+        taboo_json = json.loads(Path(taboo_json).read_text(encoding="utf-8"))
+    taboo_lookup = build_taboo_card_lookup(taboo_json)
+
+    removed: list[tuple[Any, str, str]] = []
+    cleaned: dict[Any, dict[str, Any]] = {}
+    for deck_id, deck in decklist_json.items():
+        if not deck:
+            removed.append((deck_id, "empty", ""))
+            continue
+        if deck_id in known_jokes:
+            removed.append((deck_id, "known_joke", deck.get("name", "")))
+            continue
+        violations = deck_limit_violations(deck, card_json, taboo_lookup)
+        extreme = [v for v in violations if v["count"] >= min_violation_count]
+        if extreme:
+            detail = ", ".join(
+                f"{v['count']}x {v['name']!r} (limit {v['limit']})"
+                for v in extreme
+            )
+            removed.append((deck_id, "deck_limit", detail))
+            continue
+        cleaned[deck_id] = deck
+    return cleaned, removed
+
+
+def slot_display_label(
+    slot: str | None,
+    real_slot: str | None,
+) -> str:
+    """Return asset slot label for display; empty string if the card takes no slot."""
+    label = slot or real_slot
+    return label.strip() if label else ""
+
+
+SLED_DOG_CANONICAL_ID = "08127"
+STANDARD_ASSET_SLOT_TYPES = (
+    "Accessory",
+    "Ally",
+    "Arcane",
+    "Body",
+    "Hand",
+    "Head",
+    "Tarot",
+)
+
+
+def is_sled_dog(canonical_id: str, name: str | None = None) -> bool:
+    return canonical_id == SLED_DOG_CANONICAL_ID or name == "Sled Dog"
+
+
+def asset_slot_counts(
+    canonical_id: str,
+    slot: str | None,
+    real_slot: str | None,
+    copies: int,
+    *,
+    name: str | None = None,
+) -> dict[str, float]:
+    """Map asset slot type -> copies used (spec: Number of assets in each slot)."""
+    if copies <= 0:
+        return {}
+    if is_sled_dog(canonical_id, name):
+        return {"Ally": copies / 2}
+    label = slot_display_label(slot, real_slot)
+    if not label:
+        return {}
+    counts: dict[str, float] = {}
+    for part in label.split(". "):
+        part = part.strip()
+        if not part:
+            continue
+        slot_copies = float(copies)
+        if part.endswith(" x2"):
+            part = part[:-3].strip()
+            slot_copies *= 2
+        if part:
+            counts[part] = counts.get(part, 0.0) + slot_copies
+    return counts
 
 
 def stratum_blend_weight(deck_cycle: int) -> float:
@@ -769,7 +925,9 @@ class ArkhamPopularityEngine:
                         "option_index": None,
                         "name": card_info.name,
                         "xp": card_info.xp if card_info.has_xp_cost else None,
-                        "slot": card_info.slot or card_info.real_slot,
+                        "slot": slot_display_label(
+                            card_info.slot, card_info.real_slot
+                        ),
                         "is_customizable": False,
                         "p3_opportunity_weight": p3,
                         "p4_choice_weight": p4,
@@ -801,7 +959,9 @@ class ArkhamPopularityEngine:
                         "option_index": option.option_index,
                         "name": card_info.name,
                         "xp": None,
-                        "slot": card_info.slot or card_info.real_slot,
+                        "slot": slot_display_label(
+                            card_info.slot, card_info.real_slot
+                        ),
                         "is_customizable": True,
                         "p3_opportunity_weight": p3,
                         "p4_choice_weight": p4,
@@ -911,6 +1071,7 @@ class ArkhamPopularityEngine:
         canonical_front: str,
         canonical_back: str,
     ) -> list[dict[str, Any]]:
+        """Weighted average asset copies per asset slot type (spec: assets in each slot)."""
         inv_decks = [
             deck
             for deck in decks
@@ -930,26 +1091,34 @@ class ArkhamPopularityEngine:
                 continue
             total_weight += weight
             for canonical_id, count in deck.slots.items():
+                card = self.cards.get(canonical_id)
+                if card is None or card.get("type_code") != "asset":
+                    continue
                 info = self.canonical_cards.get(canonical_id)
                 if info is None:
                     continue
-                slot_label = info.slot or info.real_slot
-                if not slot_label:
-                    continue
-                for slot_type in slot_label.split("."):
-                    slot_type = slot_type.strip()
-                    if slot_type:
-                        slot_totals[slot_type] += weight * count
+                per_slot = asset_slot_counts(
+                    canonical_id,
+                    info.slot,
+                    info.real_slot,
+                    count,
+                    name=info.name,
+                )
+                for slot_type, slot_copies in per_slot.items():
+                    slot_totals[slot_type] += weight * slot_copies
 
         if not total_weight:
             return []
         return [
             {
+                "canonical_front": canonical_front,
+                "canonical_back": canonical_back,
                 "slot_type": slot_type,
-                "weighted_avg": slot_totals[slot_type] / total_weight,
+                "weighted_avg": slot_totals.get(slot_type, 0.0) / total_weight,
+                "deck_count": len(inv_decks),
                 "total_weight": total_weight,
             }
-            for slot_type in sorted(slot_totals)
+            for slot_type in STANDARD_ASSET_SLOT_TYPES
         ]
 
     @staticmethod

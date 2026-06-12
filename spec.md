@@ -12,7 +12,7 @@ Only the scrapper functions are allowed to overwrite the pickled data. The funct
 
 ## Scraping and cleaning
 
-- **Decklists:** scrape via `combined.ipynb` (cell 2) or equivalent; store as `{decklist_id: dict}` in `decklist_json.pickle`. Drop empty entries (`None`). Remove known joke decklists (`44599`, `43839`).
+- **Decklists:** scrape via `combined.ipynb` (cell 2) or equivalent; store as `{decklist_id: dict}` in `decklist_json.pickle`. Drop empty entries (`None`). Remove known joke decklists (`43839`, `44599`, `45550`) and any deck with a slot copy count `≥ 4` above `deck_limit` for that `card_id` (see `clean_decklist_json` in `arkham_popularity.py`).
 - **Cards:** scrape via `combined.ipynb` (cell 4); store as `{card_id: dict}` in `card_json.pickle`. (Done: ~~Re-scrape before canonicalization.~~)
 - **Taboo:** fetch `taboo.json` separately from the API.
 - Only scraper code may overwrite pickles. Popularity code may write CSV outputs but must not overwrite pickles.
@@ -498,12 +498,14 @@ Y2. For each `cycle`, find all decklist with `Decklist.cycle = cycle`. Let `sum_
 
 Note: slot here means something different from the `slots` field in decklist json.
 
-See cell 13 in `combined.ipynb`. A card json may have a `slot` field, indicating limited capacity that it takes up. I believe there are now 7 different slots: 'Accessory', 'Ally', 'Arcane', 'Body', 'Hand', 'Hat' and 'Tarot'; we should double check that. Most items that take a slot only take up 1, but there are exceptions that can take up 2 Hands, 2 Arcane, or combinations of multiple types.
+See cell 13 in `combined.ipynb`. A card json may have a `slot` or `real_slot` field when the asset occupies one or more **asset slot types** (`Accessory`, `Ally`, `Arcane`, `Body`, `Hand`, `Head`, `Tarot` — note `Body` is a slot type name, not a generic term for all slots). Most assets use one slot; exceptions take 2 of one type or combinations (e.g. `Hand. Arcane`, `Hand x2`).
 
 For each (`canonical_front`, `canonical_back`) tuple:
 
-1. For each of its decklists (same set of decklists in Popularity by Investigator), count the number of slots of each type used by all of its cards. E.g., if a decklist has 2 copies of a card that takes up 1 Hand slot, together they account for 2 Hand slots.
+1. For each of its decklists (same set of decklists in Popularity by Investigator), count **asset slot** usage by **assets** only (`type_code = asset`). E.g., if a decklist has 2 copies of a card that takes up 1 Hand slot, together they account for 2 Hand slots. Parse ArkhamDB `slot` / `real_slot`: split on `". "`, treat a trailing `" x2"` as doubling that slot type, and count Sled Dog (`08127`) as half an Ally slot per copy.
 2. For each slot type, calculate the weighted average using the same decklist weight as Popularity by Investigator: `Decklist.user_weight * Cycle.weight` for `Decklist.cycle`.
+
+Implemented in `ArkhamPopularityEngine.slot_usage_for_investigator()`; notebook helper `show_slot_usage_for_investigator()`.
 
 ## Investigator Popularity
 
@@ -521,16 +523,99 @@ I4. Total weight of decklists using this `(canonical_front, canonical_back)` tup
 
 I5. Popularity = I4 / I3.
 
-## Decklist Scrapper
+# Automatic Decklist Generation
 
-Given `MAX_DECKLIST_ID`, use the arkhamdb API to scrape public decklists we have not already scraped and update the pickle (or save a new file). Note that even when limiting requests to 1 per second, arkhamdb sometimes will stop responding.
+**Plain language:** Build a synthetic 0 XP decklist for an investigator by following what the community actually plays. Use the same popularity ranking as `show_investigator_card_popularity` and the same per-slot averages as `show_slot_usage_for_investigator`. Fill required signature cards first, then add popular assets until each asset-slot type hits its typical count, then fill remaining deck slots with popular events/skills (and more assets if slot caps allow). Output is a display table like the popularity viewer, not a new scraped decklist.
 
-Also, we can check if a decklist is legal by checking it follows the `exceptional` and `myriad` keywords. However, a card's text can also change the maximum number of copies allowed in a deck, so it is difficult to make this error-proof.
+**Status:** Spec only (not yet implemented). Notebook helpers `show_investigator_card_popularity` and `show_slot_usage_for_investigator` are the inputs.
 
-# Action Items
+## Inputs
 
-- Re-scrape arkhamdb **card** data **only once**; verify pack list against API (`/api/public/packs/`)
-- Implement `card_id` → `canonical_id` per fingerprint + `duplicate_of_code` rules above; add unit tests for confirmed cases (Physical Training, Sure Gamble, Evidence!/Cherished Keepsake upgrades, Tekeli-li ×7, FGG branches, Agatha fronts/backs, taboo placeholders)
-- Implement `investigator_front` / `investigator_back` → `canonical_front` / `canonical_back`
-- Remove manual `merge_cards` dict once algorithm is validated
-- Map ordered `pack_code`s → `cycle` (split expansion packs, Return packs, Core); leave Side Stories / Promotional / Parallel / unknown packs as `None`
+G0. **Card popularity** — 0 XP options from P1–P5 for `(canonical_front, canonical_back)`, sorted by P5 descending (same slice and weights as Popularity by Investigator: `is_ignore=False` decks only).
+
+G0b. **Slot averages** — `E[t]` = weighted average asset copies per asset-slot type `t`, from the assets-in-each-slot function. These averages **include** required signature assets in the training decks (same as current slot-usage implementation).
+
+G0c. **Investigator rules** — `deck_requirements` and `deck_options` from the `canonical_front` investigator card in `card_json`. **Assumption:** rules are read from `canonical_front`; when front = back (typical case) this matches ArkhamDB. Parallel-only `(canonical_front, canonical_back)` tuples are out of scope for v1.
+
+## Taboo: training vs generation
+
+| Purpose | Taboo rule |
+|---------|------------|
+| Popularity / slot averages (training) | Existing D4: decklist `taboo_id` must be legal for every card in `slots`; else `is_ignore=True` and excluded from P3/P4 and slot averages. |
+| Decklist generation (output) | Evaluate legality at **current taboo** (`MAX_TABOO`): hard-exclude **Forbidden** cards; apply taboo XP when considering 1+ XP cards (future). Wording-only taboo changes do not exclude 0 XP cards. |
+
+Decklists that contain `08125` (*In the Thick of It*) remain in popularity training data. Generated decklists **must not** include `08125` in v1 (0 XP construction only).
+
+## Investigator scope (v1)
+
+**Include:** Original `(canonical_front, canonical_back)` pairs with a **standard** `deck_options` tree: investigator faction(s) + `neutral`, level `min`/`max`, no unparsed structure.
+
+**Same algorithm, different deck size:** Non-30 `deck_requirements.size` (33, 35, 40, …) — only the deck-size stop changes.
+
+**Defer (after v1):** Investigators whose legal pool needs extra selection logic not yet implemented:
+
+- Secondary class (`faction_select` / “Secondary Class” option)
+- Off-class copy `limit` subtrees (e.g. Zoey 5 off-class)
+- Trait-scoped option subtrees
+
+**Defer (after v1):** Parallel investigators as generation targets (insufficient popularity training data; use original canonical ids only).
+
+## Slot vectors and targets
+
+Parse each asset’s slot usage the same way as assets-in-each-slot: `asset_slot_counts()` — `. ` split, `" x2"` doubles that type, Sled Dog (`08127`) = half an Ally slot per copy. An asset maps to a **slot vector** `{t: copies}` over asset slot types `t` (possibly multiple types per card).
+
+Let `current[t]` be asset-slot usage while building (starts at 0).
+
+**Required signatures (phase 0):** Add all `deck_requirements.card` entries. They do **not** count toward `deck_requirements.size`. Only **assets** among requirements increment `current[t]`. Non-asset requirements (e.g. weaknesses) do not affect `current[t]`.
+
+**Random basic weakness:** Omit from generated output (or use a placeholder only). Weakness is chosen at end of deck construction and does not affect slot-driven card selection.
+
+**Targets** from average `E[t]`:
+
+- Normally: phase 1 goal = `floor(E[t])`; phase 2 ceiling = `ceil(E[t])`.
+- **Integer tie-break** when `E[t] == floor(E[t]) == ceil(E[t])`: phase 1 goal = `ceil(E[t] - 1)`; phase 2 ceiling = `floor(E[t] + 1)`. (E.g. `E=0` → aim for 0, allow up to 1; `E=2` → aim for 1, allow up to 3.)
+
+Apply targets to **global** `current[t]` (requirements count toward `current` before phase 1).
+
+## Phase 1 — fill slot floors (0 XP assets only)
+
+Walk 0 XP asset options in P5 order. For each `(canonical_id, card_index)` not yet included:
+
+- Must pass **deck_options** filter (v1: standard tree only) and **current-taboo** legality.
+- Must respect **deck_limit** and name-level copy limits.
+- **Customizable** cards: allowed at base, no customization indices, no XP upgrades.
+- Let `v` = slot vector of one copy. Add if for **all** slot types `t`: `current[t] + v[t] ≤ floor(E[t])` (integer tie-break above when applicable).
+- Stop phase 1 when every `t` has `current[t] ≥` phase 1 goal, or the list is exhausted.
+
+Multi-slot assets are allowed in phase 1 when the inequality holds for every coordinate (strict floor on global counts).
+
+## Phase 2 — fill deck size (0 XP)
+
+Walk the **full** 0 XP popularity list (assets, events, skills). Skip options already included.
+
+- **Events / skills:** Does not interact with slot ceilings; each copy counts 1 toward `deck_requirements.size` unless `permanent=True`.
+- **Assets:** Add only if for all `t`: `current[t] + v[t] ≤` phase 2 ceiling (integer tie-break when applicable).
+- **Permanent:** Does not count toward deck size (v1: treat as not consuming asset slots; slot-capacity permanents like Charisma deferred).
+- Stop when non-permanent cards in deck = `deck_requirements.size`, or list exhausted.
+
+## Legality
+
+Generated lists must be legal under `deck_options` (v1 scope), current-taboo forbidden/XP rules, and copy limits. Popularity training decks may be illegal under current taboo; those are already excluded via `is_ignore`.
+
+## Output
+
+Display table per generated deck (similar columns to `show_investigator_card_popularity`):
+
+- `canonical_id`, `card_index` (or copy count), `name`, `cycle`, `slot`
+- When 1+ XP cards are included (future): also `xp`
+
+One generated list per in-scope `(canonical_front, canonical_back)` for v1.
+
+## Future: XP upgrades
+
+Not in v1. Planned behavior:
+
+- Optional `08125` at construction (+3 XP budget).
+- Purchase 1+ XP options by popularity; **swap** out least popular eligible card (lowest P5), not add past deck size.
+- Swap constraints: same-`name` limit, slot ceiling, legality.
+- **Conditional slot averages** when deck includes slot-modifying cards (e.g. Charisma) — v1 uses unconditional `E[t]` only.

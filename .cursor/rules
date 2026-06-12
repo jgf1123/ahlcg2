@@ -1,0 +1,34 @@
+# User Background
+
+User has a data analysis background, not software engineering. Prefer simple data structures over abstractions. Explain architectural decisions as if talking to someone who thinks in dataframes and SQL, not class hierarchies.
+
+# Clarification
+
+If a requirement seems underspecified, ask a clarifying question before implementing.
+
+# Updating Spec
+
+When making a decision not explcitly covered by the spec, flag it rather than silently resolve it.
+
+If code written during development contradicts or outgrows spec, flag the discrepancy to be resolved in the spec rather than Cursor silently updating the spec to match the code.
+
+# Cursor Responsibilities
+
+Spec updates can include terse, technical language easy for Cursor to parse but accompany it with a plain language translation. Similarly, dense code blocks should have inline comments clarifying intent and/or approach.
+
+When Cursor updates specs:
+
+- **Important:** If a spec update resolves an ambiguity that the user never explicitly decided, flag it as an assumption rather than stating it as fact.
+- record what technical decisions were made
+- what approach was chosen and why
+- constraints and complications that emerged during development
+- factual record of what currently exists
+- data structure definitions and function signatures, where appropriate
+
+# User Responsibilities
+
+User has ultimate control over the following; do not update these sections yourself. Cursor may draft changes in agent chat but explicitly prompt the user to address them before continuing:
+
+- priorities and questions being asked
+- what done looks like for current version
+- Open Questions / Known Unknowns section

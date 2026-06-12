@@ -71,6 +71,7 @@ for decklist_id in sorted(decklist_json.keys()):
     
 decklist_json.pop(44599)  # joke decklist
 decklist_json.pop(43839)  # 9 Power Words?
+decklist_json.pop(45550)  # 16 Overzealous
 
 ### Scrape cards
 CARD_JSON_PICKLE = 'card_json.pickle'

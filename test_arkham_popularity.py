@@ -10,11 +10,16 @@ from arkham_canonical import CanonicalMapper, build_canonical_map
 from arkham_popularity import (
     ArkhamPopularityEngine,
     InvCycleIndex,
+    KNOWN_JOKE_DECKLIST_IDS,
     UpgradeGraph,
     baseline_composition,
     build_canonical_card_infos,
+    clean_decklist_json,
+    effective_deck_limit,
     enforce_monotonic_cycle_weights,
     parse_customizable,
+    asset_slot_counts,
+    slot_display_label,
     tilt_factor,
 )
 
@@ -45,6 +50,70 @@ def _card(
         "real_text": name,
         **extra,
     }
+
+
+class SlotDisplayTests(unittest.TestCase):
+    def test_slot_display_label_prefers_slot(self):
+        self.assertEqual(slot_display_label("Hand", None), "Hand")
+
+    def test_slot_display_label_uses_real_slot(self):
+        self.assertEqual(slot_display_label(None, "Body"), "Body")
+
+    def test_slot_display_label_empty_when_no_slot(self):
+        self.assertEqual(slot_display_label(None, None), "")
+        self.assertEqual(slot_display_label(None, ""), "")
+
+    def test_asset_slot_counts_hand_x2(self):
+        self.assertEqual(
+            asset_slot_counts("01016", "Hand x2", None, 1),
+            {"Hand": 2.0},
+        )
+
+    def test_asset_slot_counts_multi_slot(self):
+        self.assertEqual(
+            asset_slot_counts("X", "Hand. Arcane", None, 2),
+            {"Hand": 2.0, "Arcane": 2.0},
+        )
+
+    def test_asset_slot_counts_sled_dog(self):
+        from arkham_popularity import SLED_DOG_CANONICAL_ID
+
+        self.assertEqual(
+            asset_slot_counts(SLED_DOG_CANONICAL_ID, "Ally", None, 4),
+            {"Ally": 2.0},
+        )
+        self.assertEqual(
+            asset_slot_counts("99999", "Ally", None, 4, name="Sled Dog"),
+            {"Ally": 2.0},
+        )
+
+
+class DecklistCleaningTests(unittest.TestCase):
+    def test_effective_deck_limit_exceptional_fallback(self):
+        card = {"code": "X", "exceptional": True}
+        self.assertEqual(effective_deck_limit(card, None, {}), 1)
+
+    def test_clean_decklist_json_removes_known_jokes_and_extreme_violations(self):
+        cards = {
+            "01086": _card("01086", name="Knife"),
+            "03040": _card("03040", name="Overzealous"),
+            "01017": _card("01017", name="Physical Training"),
+        }
+        taboo = [{"id": 1, "cards": "[]"}]
+        decks = {
+            1: {"id": 1, "slots": {"01017": 2}, "taboo_id": None},
+            44599: {"id": 44599, "name": "Knife-Vestigator", "slots": {"01086": 35}, "taboo_id": None},
+            45550: {"id": 45550, "name": "Dexter", "slots": {"03040": 16}, "taboo_id": None},
+            99: {"id": 99, "name": "borderline", "slots": {"01017": 3}, "taboo_id": None},
+            None: None,
+        }
+        cleaned, removed = clean_decklist_json(decks, cards, taboo)
+        self.assertEqual(set(cleaned), {1, 99})
+        reasons = {deck_id: reason for deck_id, reason, _ in removed}
+        self.assertEqual(reasons[44599], "known_joke")
+        self.assertEqual(reasons[45550], "known_joke")
+        self.assertNotIn(99, reasons)
+        self.assertIn(45550, KNOWN_JOKE_DECKLIST_IDS)
 
 
 class BiasCompensationTests(unittest.TestCase):
