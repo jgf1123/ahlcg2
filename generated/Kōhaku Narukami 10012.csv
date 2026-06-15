@@ -1,0 +1,67 @@
+rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
+1,10013,1,,Book of Living Myths,Chronicle of Wonders,11,Hand,1.0,True,1
+2,10014,1,,Weeping Yurei,,11,,1.0,True,1
+3,01000,1,,Random Basic Weakness,,1,,0.9143188359047987,False,0
+4,07028,1,,Faustian Bargain,,8,,0.8024795675704249,True,2
+5,07023,1,,Deep Knowledge,,8,,0.7518707433129594,True,2
+6,01059,1,,Holy Rosary,,1,Accessory,0.5619523737747542,True,1
+7,07028,2,,Faustian Bargain,,8,,0.5484655609406095,True,2
+8,08125,1,,In the Thick of It,,9,,0.53084192307808,False,0
+9,07023,2,,Deep Knowledge,,8,,0.5260792939818187,True,2
+10,07117,1,,Armageddon,,8,Arcane,0.45745102591982006,True,1
+11,07017,1,,Book of Psalms,,8,Hand,0.4119010465167046,True,2
+12,07017,2,,Book of Psalms,,8,Hand,0.39261796171083924,True,2
+13,07037,1,,Tempt Fate,,8,,0.3859818045891518,True,2
+14,07037,2,,Tempt Fate,,8,,0.3802112797441533,True,2
+15,04109,1,,Arcane Research,,4,,0.3697841769096163,True,1
+16,07034,1,,Keep Faith,,8,,0.36975614641018495,True,2
+17,07118,1,,Eye of Chaos,,8,Arcane,0.3595703899814063,True,1
+18,07034,2,,Keep Faith,,8,,0.3491571213574328,True,2
+19,01088,1,,Emergency Cache,,1,,0.33399205699917517,True,2
+20,06201,1,,Spectral Razor,,6,,0.3313273598976453,True,2
+21,01088,2,,Emergency Cache,,1,,0.3135113813502459,True,2
+22,06201,2,,Spectral Razor,,6,,0.308668685311244,True,2
+23,01065,1,,Ward of Protection,,1,,0.3069252199241401,True,2
+24,60419,1,,Prescient,,7,,0.2970953530260269,True,2
+25,10095,1,,Accursed,,11,,0.2865394948891037,True,2
+26,01065,2,,Ward of Protection,,1,,0.2864725340839386,True,2
+27,11066,1,,Breath of the Sleeper,,12,Arcane,0.28571428571428575,True,1
+28,11068a,1,,The Great Work,Divide and Unite,12,,0.28571428571428575,True,1
+29,07018,1,,Blessed Blade,,8,Hand,0.2799254878695263,True,1
+30,10095,2,,Accursed,,11,,0.2777542940921775,True,2
+31,60419,2,,Prescient,,7,,0.2737926806813399,True,2
+32,07032,1,,Promise of Power,,8,,0.26880324451426757,True,2
+33,07032,2,,Promise of Power,,8,,0.26880324451426757,True,2
+34,06117,1,,Read the Signs,,6,,0.26463623637805084,True,1
+35,06117,2,,Read the Signs,,6,,0.25675106644656487,False,1
+36,07031,1,,Ward of Radiance,,8,,0.2492296962051506,False,0
+37,07031,2,,Ward of Radiance,,8,,0.24755099806842376,False,0
+38,10075,1,,Diabolical Luck,,11,,0.24575968461696893,False,0
+39,02111,1,,Delve Too Deep,,2,,0.24314857719429928,False,0
+40,07117,2,,Armageddon,,8,Arcane,0.24215121062565054,False,1
+41,01089,1,,Guts,,1,,0.23797396925391942,False,0
+42,07035,1,,Predestined,,8,,0.23675341779427136,False,0
+43,07029,1,,Sword Cane,,8,Hand,0.23559714891269137,False,0
+44,60416,1,,Voice of Ra,,7,,0.22908256957064904,False,0
+45,05116,1,,Scroll of Secrets,,5,Hand,0.2275566567709376,False,0
+46,02111,2,,Delve Too Deep,,2,,0.22743462670355316,False,0
+47,07020,1,,Hand of Fate,,8,,0.2238917522260206,False,0
+48,01089,2,,Guts,,1,,0.22274164924399997,False,0
+49,07020,2,,Hand of Fate,,8,,0.22001783344895867,False,0
+50,60416,2,,Voice of Ra,,7,,0.19878909552255597,False,0
+51,05116,2,,Scroll of Secrets,,5,Hand,0.19605668956619607,False,0
+52,10019,1,,Ancestral Token,,11,Accessory,0.19434300021348908,True,1
+53,05032,1,,Deny Existence,,5,,0.1940465966470683,False,0
+54,10046,1,,Control Variable,,11,,0.18838579738738295,False,0
+55,01090,1,,Perception,,1,,0.18393008360559618,False,0
+56,01090,2,,Perception,,1,,0.18393008360559618,False,0
+57,05032,2,,Deny Existence,,5,,0.1733174020766366,False,0
+58,07018,2,,Blessed Blade,,8,Hand,0.1676932419748164,False,1
+59,07118,2,,Eye of Chaos,,8,Arcane,0.1624315073633805,False,1
+60,03158,1,,Calling in Favors,,3,,0.16140789654278437,False,0
+61,03158,2,,Calling in Favors,,3,,0.16140789654278437,False,0
+62,08116,1,,Talisman of Protection,,9,Arcane,0.1562029575843443,False,0
+63,60408,1,,Clairvoyance,,7,Arcane,0.1542733274868076,False,0
+64,60407,1,,Azure Flame,,7,Arcane,0.148645811376356,False,0
+65,10075,2,,Diabolical Luck,,11,,0.1470105536126675,False,0
+66,01063,1,,Arcane Initiate,,1,Ally,0.13907436053552025,True,1

@@ -1,0 +1,41 @@
+rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
+1,07006,1,,Guardian Angel,,8,,1.0,True,1
+2,07007,1,,Crisis of Faith,,8,,1.0,True,1
+3,01000,1,,Random Basic Weakness,,1,,0.8380443473233842,False,0
+4,01059,1,,Holy Rosary,,1,Accessory,0.5057366956298087,True,2
+5,07018,1,,Blessed Blade,,8,Hand,0.4788988887070167,True,2
+6,07019,1,,Rite of Sanctification,,8,Arcane,0.46087040699440235,True,2
+7,01025,1,,Vicious Blow,,1,,0.43304753407726965,True,2
+8,02184,1,,Prepared for the Worst,,2,,0.40452717250989295,True,2
+9,07019,2,,Rite of Sanctification,,8,Arcane,0.39657733692018665,True,2
+10,01059,2,,Holy Rosary,,1,Accessory,0.3924160210373895,True,2
+11,08125,1,,In the Thick of It,,9,,0.379838429952749,False,0
+12,01025,2,,Vicious Blow,,1,,0.3780843720224383,True,2
+13,01088,1,,Emergency Cache,,1,,0.3693234566836494,True,1
+14,01089,1,,Guts,,1,,0.3532282084234326,True,2
+15,06201,1,,Spectral Razor,,6,,0.3388379109062995,True,2
+16,07018,2,,Blessed Blade,,8,Hand,0.3360567083978315,True,2
+17,10019,1,,Ancestral Token,,11,Accessory,0.33555133345526833,False,0
+18,07031,1,,Ward of Radiance,,8,,0.32402790683625055,True,2
+19,01065,1,,Ward of Protection,,1,,0.32145988389399427,True,2
+20,11071,1,,Spectral Shield,,12,,0.32008538836485956,True,2
+21,11071,2,,Spectral Shield,,12,,0.32008538836485956,True,2
+22,05032,1,,Deny Existence,,5,,0.3089867142830417,True,1
+23,01091,1,,Overpower,,1,,0.30880271139009,True,1
+24,01089,2,,Guts,,1,,0.30526903732407235,True,2
+25,06201,2,,Spectral Razor,,6,,0.3029932116685077,True,2
+26,11067,1,,Eyes of the Dreamer,,12,Arcane,0.30274234021877844,True,1
+27,10023,1,,Wolf Mask,The Moon's Sire,11,Mask,0.2832426591379917,True,1
+28,02184,2,,Prepared for the Worst,,2,,0.27603048915394157,True,2
+29,01065,2,,Ward of Protection,,1,,0.27432620149311226,True,2
+30,60118,1,,Stand Together,,7,,0.2717327683814301,True,1
+31,07031,2,,Ward of Radiance,,8,,0.2716138364430514,True,2
+32,01091,2,,Overpower,,1,,0.2634259584581944,False,1
+33,07020,1,,Hand of Fate,,8,,0.2607012360406599,False,0
+34,07017,1,,Book of Psalms,,8,Hand,0.2525134379176573,True,1
+35,01088,2,,Emergency Cache,,1,,0.24452236271583128,False,1
+36,04197,1,,Olive McBride,Will Try Anything Once,4,Ally,0.23150884127341625,True,2
+37,05032,2,,Deny Existence,,5,,0.23122410113182407,False,1
+38,10019,2,,Ancestral Token,,11,Accessory,0.22297356930927661,False,0
+39,06195,1,,.35 Winchester,,6,Hand x2,0.21922827858701383,True,1
+40,04197,2,,Olive McBride,Will Try Anything Once,4,Ally,0.20823927973875378,True,2

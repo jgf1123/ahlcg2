@@ -1,0 +1,83 @@
+rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
+1,06016,1,,Patrice's Violin,My Muse,6,Hand,0.9995641654337754,True,1
+2,06017,1,,Watcher from Another Dimension,,6,,0.9995641654337754,True,1
+3,01000,1,,Random Basic Weakness,,1,,0.7315125530817426,False,0
+4,01093,1,,Unexpected Courage,,1,,0.6795035781925567,True,2
+5,04036,1,,Last Chance,,4,,0.6760168969537608,True,2
+6,04036,2,,Last Chance,,4,,0.6672649895968767,True,2
+7,01093,2,,Unexpected Courage,,1,,0.6405569399732831,True,2
+8,01065,1,,Ward of Protection,,1,,0.6057846186540222,True,2
+9,04272,1,,Winging It,,4,,0.5907026448065087,True,2
+10,01065,2,,Ward of Protection,,1,,0.5731787861979522,True,2
+11,04272,2,,Winging It,,4,,0.5563157186661422,True,2
+12,06203,1,,Moonstone,,6,Accessory,0.525297083299566,True,1
+13,07032,1,,Promise of Power,,8,,0.5028564398540641,True,2
+14,07032,2,,Promise of Power,,8,,0.48591303587492746,True,2
+15,01064,1,,Drawn to the Flame,,1,,0.47322568357600714,True,2
+16,05032,1,,Deny Existence,,5,,0.45991147095045426,True,2
+17,03039,1,,Resourceful,,3,,0.444930760590403,True,2
+18,01067,1,,Fearless,,1,,0.4415753394339619,True,2
+19,03039,2,,Resourceful,,3,,0.43774701965587737,True,2
+20,10111,1,,Sparrow Mask,The Wanderer's Companion,11,Mask,0.42846973549355555,True,1
+21,11088,1,,Contemplative,,12,,0.4252082141660291,True,2
+22,05032,2,,Deny Existence,,5,,0.4212959656655362,True,2
+23,08125,1,,In the Thick of It,,9,,0.4130037758230455,False,0
+24,01089,1,,Guts,,1,,0.41138750976044397,True,1
+25,01064,2,,Drawn to the Flame,,1,,0.40858284817734963,True,2
+26,01067,2,,Fearless,,1,,0.3999789964982739,True,2
+27,01088,1,,Emergency Cache,,1,,0.38566532044827506,True,2
+28,04033,1,,Improvised Weapon,,4,,0.38424632930644836,True,2
+29,01080,1,,Lucky!,,1,,0.3779816115860688,True,2
+30,01079,1,,"""Look what I found!""",,1,,0.360243342157593,True,2
+31,11088,2,,Contemplative,,12,,0.3589078927172469,True,2
+32,01080,2,,Lucky!,,1,,0.354623403440014,True,2
+33,06201,1,,Spectral Razor,,6,,0.34976926589113627,True,1
+34,01079,2,,"""Look what I found!""",,1,,0.34136994505921986,True,2
+35,04033,2,,Improvised Weapon,,4,,0.33380249844203946,True,2
+36,01088,2,,Emergency Cache,,1,,0.3283765836525917,True,2
+37,04312,1,,Impromptu Barrier,,4,,0.32493368958087365,True,1
+38,06117,1,,Read the Signs,,6,,0.31616173360250416,True,1
+39,05034,1,,Prophesy,,5,,0.31320402785033397,True,1
+40,01089,2,,Guts,,1,,0.31099845332596066,False,1
+41,04200,1,,Live and Learn,,4,,0.3099136524781267,False,0
+42,10116,1,,Long Shot,,11,,0.30446167207710934,False,0
+43,06201,2,,Spectral Razor,,6,,0.29466413339371755,False,1
+44,04200,2,,Live and Learn,,4,,0.2930870361283247,False,0
+45,06117,2,,Read the Signs,,6,,0.29064439833150457,False,1
+46,06203,2,,Moonstone,,6,Accessory,0.28988437172200177,False,1
+47,05034,2,,Prophesy,,5,,0.28727230237235846,False,1
+48,03198,1,,Madame Labranche,Mysterious Benefactress,3,Ally,0.2856310566292389,True,1
+49,09103,1,,Improvised Shield,,10,Hand,0.28337370187793404,True,1
+50,08071,1,,Short Supply,,9,,0.27817124033650764,False,0
+51,02033,1,,Peter Sylvestre,Big Man on Campus,2,Ally,0.2778083026628945,True,1
+52,60416,1,,Voice of Ra,,7,,0.2736645383378517,False,0
+53,05158,1,,Sixth Sense,,5,Arcane,0.2730746280579678,True,2
+54,01090,1,,Perception,,1,,0.26434946976346513,False,0
+55,60416,2,,Voice of Ra,,7,,0.26335195236305176,False,0
+56,10116,2,,Long Shot,,11,,0.25848684483100565,False,0
+57,60513,1,,A Test of Will,,7,,0.2492866823683826,False,0
+58,60513,2,,A Test of Will,,7,,0.2361761942501421,False,0
+59,03196,1,,Quantum Flux,,3,,0.23205641111817504,False,0
+60,01090,2,,Perception,,1,,0.23068425823089966,False,0
+61,02190,1,,Defiance,,2,,0.2227655883635313,False,0
+62,05158,2,,Sixth Sense,,5,Arcane,0.2206587664734736,True,2
+63,02190,2,,Defiance,,2,,0.21682468628112278,False,0
+64,06034,1,,Fortuitous Discovery,,6,,0.21342479137190717,False,0
+65,06034,2,,Fortuitous Discovery,,6,,0.21342479137190717,False,0
+66,04199,1,,Premonition,,4,,0.20878094021614318,False,0
+67,06034,3,,Fortuitous Discovery,,6,,0.20839967315697128,False,0
+68,02033,2,,Peter Sylvestre,Big Man on Campus,2,Ally,0.20800328883774094,False,1
+69,02192,1,,Rise to the Occasion,,2,,0.20770134853865876,False,0
+70,11085,1,,Profane Idol,,12,Accessory,0.20586277144549592,False,0
+71,04029,1,,Mists of R'lyeh,,4,Arcane,0.2057806989035027,True,1
+72,03198,2,,Madame Labranche,Mysterious Benefactress,3,Ally,0.2043613581238016,False,1
+73,01060,1,,Shrivelling,,1,Arcane,0.20376419047257877,False,0
+74,01092,1,,Manual Dexterity,,1,,0.20253813382080918,False,0
+75,04199,2,,Premonition,,4,,0.20194816990800335,False,0
+76,01092,2,,Manual Dexterity,,1,,0.19305150038872942,False,0
+77,04029,2,,Mists of R'lyeh,,4,Arcane,0.1844319946871562,False,1
+78,01072,1,,Leather Coat,,1,Body,0.1819933505933075,False,0
+79,02192,2,,Rise to the Occasion,,2,,0.1817922129974276,False,0
+80,01060,2,,Shrivelling,,1,Arcane,0.18169825999202271,False,0
+81,01091,1,,Overpower,,1,,0.1737172945179744,False,0
+82,02032,1,,Fire Axe,,2,Hand,0.16825895517898562,True,1

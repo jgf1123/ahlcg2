@@ -1,0 +1,10 @@
+resolution_kind,option_name,choice,weighted_total,weight_share,selected
+faction_select,Class Choice,guardian,0.912983161457502,0.3106962391456481,True
+faction_select,Class Choice,seeker,0.6265855558689364,0.21323260266999555,False
+faction_select,Class Choice,rogue,0.5678987724099939,0.19326097156221062,False
+faction_select,Class Choice,survivor,0.561576780275472,0.19110954176259787,False
+faction_select,Class Choice,mystic,0.26946301275412227,0.09170064485954782,False
+faction_select,Class Choice,rogue,0.8768077082222983,0.29838541267692775,True
+faction_select,Class Choice,seeker,0.8750402823325639,0.29778394202545105,False
+faction_select,Class Choice,survivor,0.8319766421594916,0.28312900466128826,False
+faction_select,Class Choice,mystic,0.3546826500516717,0.12070164063633283,False

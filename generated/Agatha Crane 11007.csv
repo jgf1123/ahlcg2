@@ -1,0 +1,40 @@
+rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
+1,01000,1,,Random Basic Weakness,,1,,0.9351718297443729,False,0
+2,11009,1,,Ocula Obscura,Esoteric Eyepiece,12,Accessory,0.8594138144771607,True,1
+3,11010,1,,Glimpse the Void,,12,,0.8594138144771607,True,1
+4,01090,1,,Perception,,1,,0.6463917986056702,True,2
+5,01039,1,,Deduction,,1,,0.5694588189291342,True,2
+6,01039,2,,Deduction,,1,,0.53999146881294,True,2
+7,01090,2,,Perception,,1,,0.5362328782368949,True,2
+8,11040,1,,Correlate All Its Contents,,12,,0.512850416098178,True,2
+9,10043,1,,Mouse Mask,The Meek Watcher,11,Mask,0.43543586691024033,True,1
+10,11040,2,,Correlate All Its Contents,,12,,0.4141034815088294,True,2
+11,03231,1,,Eureka!,,3,,0.408048112519439,True,2
+12,11067,1,,Eyes of the Dreamer,,12,Arcane,0.4047635989401079,True,2
+13,01030,1,,Magnifying Glass,,1,Hand,0.3867612482087306,True,2
+14,01030,2,,Magnifying Glass,,1,Hand,0.3867612482087306,True,2
+15,03231,2,,Eureka!,,3,,0.3777025446238113,True,2
+16,01033,1,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.3753650714145227,True,2
+17,01064,1,,Drawn to the Flame,,1,,0.37529217753668415,True,1
+18,60215,1,,Cryptic Writings,,7,,0.3548023365618845,True,2
+19,60214,1,,Burning the Midnight Oil,,7,,0.3333456891353938,True,2
+20,11067,2,,Eyes of the Dreamer,,12,Arcane,0.3310256791162079,True,2
+21,01033,2,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.32789944185418074,True,2
+22,01089,1,,Guts,,1,,0.3164303711821343,True,1
+23,02186,1,,Preposterous Sketches,,2,,0.3124568668046929,True,1
+24,60215,2,,Cryptic Writings,,7,,0.3043667496996494,True,2
+25,05116,1,,Scroll of Secrets,,5,Hand,0.2899067358387289,True,2
+26,05154,1,,Hawk-Eye Folding Camera,,5,Hand,0.28558893106383165,True,2
+27,60214,2,,Burning the Midnight Oil,,7,,0.2829101022731586,True,2
+28,05116,2,,Scroll of Secrets,,5,Hand,0.26105105957072966,True,2
+29,11039,1,,Uncanny Specimen,,12,Arcane,0.2548894473591483,True,1
+30,06164,1,,Ethereal Form,,6,,0.25439140180521214,True,2
+31,06164,2,,Ethereal Form,,6,,0.25439140180521214,True,2
+32,02022,1,,Shortcut,,2,,0.25172165690204545,True,1
+33,08125,1,,In the Thick of It,,9,,0.24642444239487662,False,0
+34,09044,1,,Grim Memoir,,10,Hand,0.245782947846644,True,1
+35,05154,2,,Hawk-Eye Folding Camera,,5,Hand,0.24093856883861178,True,2
+36,06117,1,,Read the Signs,,6,,0.23395247266967456,True,1
+37,11066,1,,Breath of the Sleeper,,12,Arcane,0.23075805510288172,True,1
+38,04199,1,,Premonition,,4,,0.22822792284477111,True,1
+39,01037,1,,Working a Hunch,,1,,0.22802832083355193,True,1

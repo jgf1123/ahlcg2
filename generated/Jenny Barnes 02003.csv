@@ -1,0 +1,36 @@
+rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
+1,02011,1,,Searching for Izzie,,2,,0.8532077106977225,True,1
+2,02010,1,,Jenny's Twin .45s,A Perfect Fit,2,Hand x2,0.8468502663827618,True,1
+3,01000,1,,Random Basic Weakness,,1,,0.76836039314337,False,0
+4,01048,1,,Leo De Luca,The Louisiana Lion,1,Ally,0.6454311698819648,True,2
+5,02188,1,,Lone Wolf,,2,,0.574907884217089,True,2
+6,10069,1,,Bank Job,,11,,0.5200576007480465,True,2
+7,01048,2,,Leo De Luca,The Louisiana Lion,1,Ally,0.42036985990289377,True,2
+8,01091,1,,Overpower,,1,,0.3897959896217125,True,2
+9,01088,1,,Emergency Cache,,1,,0.38401168817902204,True,2
+10,01093,1,,Unexpected Courage,,1,,0.3798753896857408,True,2
+11,60311,1,,Streetwise,,7,,0.3782028685768896,True,1
+12,01089,1,,Guts,,1,,0.37132131518999023,True,1
+13,01047,1,,.41 Derringer,,1,Hand,0.3660095615085014,True,1
+14,01049,1,,Hard Knocks,,1,,0.36174396799863795,True,1
+15,01090,1,,Perception,,1,,0.3525541285308813,True,1
+16,01087,1,,Flashlight,,1,Hand,0.33893436431189433,True,2
+17,10069,2,,Bank Job,,11,,0.33823321483738267,True,2
+18,05111,1,,Intel Report,,5,,0.33597155183944466,True,1
+19,11068a,1,,The Great Work,Divide and Unite,12,,0.3353884093711467,True,1
+20,04107,1,,Lucky Cigarette Case,,4,Accessory,0.32681164788677003,True,1
+21,01050,1,,Elusive,,1,,0.31389804062314164,True,1
+22,02229,1,,Quick Thinking,,2,,0.3116981715682775,True,1
+23,07028,1,,Faustian Bargain,,8,,0.30606537856877514,True,1
+24,01093,2,,Unexpected Courage,,1,,0.30431232844614026,True,2
+25,02188,2,,Lone Wolf,,2,,0.289040363763478,True,2
+26,05028,1,,Well Connected,,5,,0.28444477361897064,True,1
+27,01092,1,,Manual Dexterity,,1,,0.2810348376337938,True,1
+28,01088,2,,Emergency Cache,,1,,0.27921034228748687,True,2
+29,08125,1,,In the Thick of It,,9,,0.2781408311091812,False,0
+30,01051,1,,Backstab,,1,,0.27408846102986684,True,1
+31,60305,1,,Lockpicks,,7,Hand,0.273415612768948,True,1
+32,01087,2,,Flashlight,,1,Hand,0.2663253165896598,True,2
+33,03233,1,,"""Watch this!""",,3,,0.2657799746032581,True,1
+34,01052,1,,Sneak Attack,,1,,0.25569191963692817,True,1
+35,01091,2,,Overpower,,1,,0.24598551308722344,True,2

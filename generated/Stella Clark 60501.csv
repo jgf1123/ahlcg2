@@ -1,0 +1,36 @@
+rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
+1,60502,1,,Neither Rain nor Snow,,7,,1.0,True,3
+2,60502,2,,Neither Rain nor Snow,,7,,1.0,True,3
+3,60502,3,,Neither Rain nor Snow,,7,,1.0,True,3
+4,60503,1,,Called by the Mists,,7,,1.0,True,1
+5,04201,1,,Take Heart,,4,,0.9863649610415498,True,2
+6,04201,2,,Take Heart,,4,,0.9848161862337016,True,2
+7,04200,1,,Live and Learn,,4,,0.9127139002132965,True,2
+8,04200,2,,Live and Learn,,4,,0.8911463927699786,True,2
+9,01075,1,,Rabbit's Foot,,1,Accessory,0.8307545829858736,True,2
+10,01079,1,,"""Look what I found!""",,1,,0.8002135210478538,True,2
+11,03039,1,,Resourceful,,3,,0.7938579563957514,True,2
+12,01079,2,,"""Look what I found!""",,1,,0.7775504504729426,True,2
+13,03039,2,,Resourceful,,3,,0.770692087942138,True,2
+14,01000,1,,Random Basic Weakness,,1,,0.7379616193006616,False,0
+15,01080,1,,Lucky!,,1,,0.7312231855929364,True,2
+16,01080,2,,Lucky!,,1,,0.7077424808315161,True,2
+17,01075,2,,Rabbit's Foot,,1,Accessory,0.6807730886396482,True,2
+18,60507,1,,Old Keyring,,7,Hand,0.6601298646631473,True,2
+19,60507,2,,Old Keyring,,7,Hand,0.620091145160634,True,2
+20,60505,1,,.18 Derringer,,7,Hand,0.5961424583872296,True,2
+21,60505,2,,.18 Derringer,,7,Hand,0.5724906963613072,True,2
+22,05036,1,,Track Shoes,,5,,0.5600103384980893,True,1
+23,60508,1,,Granny Orne,Tough Old Bird,7,Ally,0.5113261140455247,True,2
+24,10111,1,,Sparrow Mask,The Wanderer's Companion,11,Mask,0.505590782457423,True,1
+25,10116,1,,Long Shot,,11,,0.4383236476861598,True,2
+26,10116,2,,Long Shot,,11,,0.4383236476861598,True,2
+27,60508,2,,Granny Orne,Tough Old Bird,7,Ally,0.4254538724483021,True,2
+28,01088,1,,Emergency Cache,,1,,0.37544726698019903,True,1
+29,60515,1,,Grit Your Teeth,,7,,0.3724622717368044,True,2
+30,60515,2,,Grit Your Teeth,,7,,0.3319556179324309,True,2
+31,11096,1,,Short Rest,,12,,0.3238636363636363,True,3
+32,11096,2,,Short Rest,,12,,0.3238636363636363,True,3
+33,11096,3,,Short Rest,,12,,0.3238636363636363,True,3
+34,02033,1,,Peter Sylvestre,Big Man on Campus,2,Ally,0.3213695052331183,True,1
+35,60513,1,,A Test of Will,,7,,0.3211281201461099,True,1

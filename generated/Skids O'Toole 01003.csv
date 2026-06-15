@@ -1,0 +1,38 @@
+rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
+1,01010,1,,On the Lam,,1,,0.9675929049071644,True,1
+2,01011,1,,Hospital Debts,,1,,0.9670920565718544,True,1
+3,01000,1,,Random Basic Weakness,,1,,0.765388115432204,False,0
+4,01048,1,,Leo De Luca,The Louisiana Lion,1,Ally,0.48582284550572663,True,2
+5,01088,1,,Emergency Cache,,1,,0.4756270385648955,True,2
+6,01025,1,,Vicious Blow,,1,,0.40613042413478706,True,2
+7,01088,2,,Emergency Cache,,1,,0.3953783949357334,True,2
+8,02188,1,,Lone Wolf,,2,,0.38783508681125367,True,1
+9,01092,1,,Manual Dexterity,,1,,0.3732187878263784,True,2
+10,01051,1,,Backstab,,1,,0.352465320330568,True,2
+11,01052,1,,Sneak Attack,,1,,0.3439821681984196,True,2
+12,10067,1,,Fox Mask,The Wise Trickster,11,Mask,0.343149002538197,True,1
+13,01087,1,,Flashlight,,1,Hand,0.3385364106736019,True,1
+14,60305,1,,Lockpicks,,7,Hand,0.3241000405176322,True,1
+15,11050,1,,Luger P08,,12,Hand,0.32358490566037734,True,2
+16,11050,2,,Luger P08,,12,Hand,0.32358490566037734,True,2
+17,11054,1,,"""You've had worse...""",,12,,0.32358490566037734,True,1
+18,03233,1,,"""Watch this!""",,3,,0.31201740485399193,True,2
+19,01025,2,,Vicious Blow,,1,,0.3092004934951828,True,2
+20,10023,1,,Wolf Mask,The Moon's Sire,11,Mask,0.2987590930753941,False,0
+21,09064,1,,Thieves' Kit,,10,Hand,0.288627785294679,True,1
+22,01046,1,,Pickpocketing,,1,,0.28729505295983393,True,1
+23,01050,1,,Elusive,,1,,0.28238255458881173,True,1
+24,01048,2,,Leo De Luca,The Louisiana Lion,1,Ally,0.2811746430334581,True,2
+25,01092,2,,Manual Dexterity,,1,,0.2775883109829503,True,2
+26,01047,1,,.41 Derringer,,1,Hand,0.2773472890131284,True,1
+27,01087,2,,Flashlight,,1,Hand,0.26722626338428507,False,1
+28,01093,1,,Unexpected Courage,,1,,0.26321381489098616,True,1
+29,02229,1,,Quick Thinking,,2,,0.257494586536802,True,2
+30,01051,2,,Backstab,,1,,0.25162710710442393,True,2
+31,07025,1,,.25 Automatic,,8,Hand,0.25134692558427424,False,0
+32,03233,2,,"""Watch this!""",,3,,0.24782709187902702,True,2
+33,60305,2,,Lockpicks,,7,Hand,0.24588099610515105,False,1
+34,10069,1,,Bank Job,,11,,0.24572451921660132,True,1
+35,02229,2,,Quick Thinking,,2,,0.23359157238518558,True,2
+36,01052,2,,Sneak Attack,,1,,0.2292316076838429,True,2
+37,01091,1,,Overpower,,1,,0.2291087996585977,True,1

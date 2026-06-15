@@ -498,7 +498,9 @@ Y2. For each `cycle`, find all decklist with `Decklist.cycle = cycle`. Let `sum_
 
 Note: slot here means something different from the `slots` field in decklist json.
 
-See cell 13 in `combined.ipynb`. A card json may have a `slot` or `real_slot` field when the asset occupies one or more **asset slot types** (`Accessory`, `Ally`, `Arcane`, `Body`, `Hand`, `Head`, `Tarot` — note `Body` is a slot type name, not a generic term for all slots). Most assets use one slot; exceptions take 2 of one type or combinations (e.g. `Hand. Arcane`, `Hand x2`).
+See cell 13 in `combined.ipynb`. A card json may have a `slot` or `real_slot` field when the asset occupies one or more **asset slot types** (`Accessory`, `Ally`, `Arcane`, `Body`, `Hand`, `Head`, `Mask`, `Tarot` — note `Body` is a slot type name, not a generic term for all slots). Most assets use one slot; exceptions take 2 of one type or combinations (e.g. `Hand. Arcane`, `Hand x2`).
+
+**Runtime patch (not saved to pickle):** After loading `card_json`, assets with the **Mask** trait and no `slot` / `real_slot` are patched in memory to `slot = real_slot = 'Mask'`. ArkhamDB omits a slot field for these cards, but the game limits each investigator to one Mask; treating Mask as an asset slot type lets Phase 1/2 enforce that limit like other slots.
 
 For each (`canonical_front`, `canonical_back`) tuple:
 
@@ -527,7 +529,7 @@ I5. Popularity = I4 / I3.
 
 **Plain language:** Build a synthetic 0 XP decklist for an investigator by following what the community actually plays. Use the same popularity ranking as `show_investigator_card_popularity` and the same per-slot averages as `show_slot_usage_for_investigator`. Fill required signature cards first, then add popular assets until each asset-slot type hits its typical count, then fill remaining deck slots with popular events/skills (and more assets if slot caps allow). Output is a display table like the popularity viewer, not a new scraped decklist.
 
-**Status:** Spec only (not yet implemented). Notebook helpers `show_investigator_card_popularity` and `show_slot_usage_for_investigator` are the inputs.
+**Status:** Implemented in `ArkhamPopularityEngine.generate_decklist()`; notebook helper `show_generated_decklist()`.
 
 ## Inputs
 
@@ -546,19 +548,39 @@ G0c. **Investigator rules** — `deck_requirements` and `deck_options` from the 
 
 Decklists that contain `08125` (*In the Thick of It*) remain in popularity training data. Generated decklists **must not** include `08125` in v1 (0 XP construction only).
 
-## Investigator scope (v1)
+## Investigator scope (v1 → v2)
 
-**Include:** Original `(canonical_front, canonical_back)` pairs with a **standard** `deck_options` tree: investigator faction(s) + `neutral`, level `min`/`max`, no unparsed structure.
+**v1 (standard tree):** Original `(canonical_front, canonical_back)` pairs whose `deck_options` are only `faction` + `level` blocks.
+
+**v2 (extended):** Also supports investigators whose `deck_options` use:
+
+- `trait`, `tag`, `text`, `uses`, `type`, `not` filters
+- Per-option `limit` counting (off-class caps, trait pools, …)
+- `faction_select` resolved from weighted training-deck popularity (secondary class)
+- `deck_size_select` resolved from weighted training-deck mode (e.g. Mandy 30/40/50)
+
+Implemented in `arkham_deck_options.py` (`DeckOptionsValidator`, `resolve_deck_options()`).
+
+### Resolving `faction_select` / `deck_size_select`
+
+When an investigator’s `deck_options` include `faction_select` or `deck_size_select`, generation must pick one branch before building the deck. **Implementation decision (user-approved):** use the same decklist weights as popularity (`user_weight × Cycle.weight` per `Decklist`), not raw card-copy totals.
+
+For each `(canonical_front, canonical_back)` with training decks:
+
+1. Compute `deck_weight` for every non-ignored training decklist (same formula as P3/P4).
+2. **`faction_select`:** For each training deck and each candidate faction, count copies that would match that branch’s constraints (level, `type`, etc.). Split that deck’s weight across factions in proportion to those copy counts. Sum across decks; pick the faction with the highest **weighted total**. Tie-break: alphabetical faction name. Multiple `faction_select` blocks (e.g. Charlie Kane) resolve sequentially, excluding factions already chosen.
+3. **`deck_size_select`:** Add each deck’s weight to its player-card-count bucket (among allowed sizes). Pick the size with the highest weighted total; tie-break: larger size.
+
+**Diagnostics:** `export_generated_decklist_csvs(..., diagnostics=True)` also writes `generated/{name} {canonical_front} resolution.csv` listing each candidate choice, its `weighted_total`, `weight_share`, and whether it was `selected`.
+
+**Still deferred:**
+
+- `option_select` trait branches (Marion Tavares, …)
+- `atleast` multi-faction minimums (Lola Hayes, …)
+- Parallel investigators as generation targets (`canonical_front != canonical_back`)
+- Complex fan-content rules (`base_level`, `permanent`, …)
 
 **Same algorithm, different deck size:** Non-30 `deck_requirements.size` (33, 35, 40, …) — only the deck-size stop changes.
-
-**Defer (after v1):** Investigators whose legal pool needs extra selection logic not yet implemented:
-
-- Secondary class (`faction_select` / “Secondary Class” option)
-- Off-class copy `limit` subtrees (e.g. Zoey 5 off-class)
-- Trait-scoped option subtrees
-
-**Defer (after v1):** Parallel investigators as generation targets (insufficient popularity training data; use original canonical ids only).
 
 ## Slot vectors and targets
 
@@ -566,7 +588,7 @@ Parse each asset’s slot usage the same way as assets-in-each-slot: `asset_slot
 
 Let `current[t]` be asset-slot usage while building (starts at 0).
 
-**Required signatures (phase 0):** Add all `deck_requirements.card` entries. They do **not** count toward `deck_requirements.size`. Only **assets** among requirements increment `current[t]`. Non-asset requirements (e.g. weaknesses) do not affect `current[t]`.
+**Required signatures (phase 0):** Add all `deck_requirements.card` entries, each at its required copy count (`quantity` on the requirement card in `card_json`, default 1). They do **not** count toward `deck_requirements.size`. Only **assets** among requirements increment `current[t]` (per copy). Non-asset requirements (e.g. weaknesses) do not affect `current[t]`.
 
 **Random basic weakness:** Omit from generated output (or use a placeholder only). Weakness is chosen at end of deck construction and does not affect slot-driven card selection.
 
@@ -581,9 +603,10 @@ Apply targets to **global** `current[t]` (requirements count toward `current` be
 
 Walk 0 XP asset options in P5 order. For each `(canonical_id, card_index)` not yet included:
 
-- Must pass **deck_options** filter (v1: standard tree only) and **current-taboo** legality.
+- Must pass **deck_options** filter and **current-taboo** legality.
 - Must respect **deck_limit** and name-level copy limits.
 - **Customizable** cards: allowed at base, no customization indices, no XP upgrades.
+- **Skip slotless assets:** Phase 1 only adds assets whose slot vector is non-empty (they consume at least one asset slot type). Other slotless assets (e.g. Safeguard) are deferred to Phase 2. Mask-trait assets without an ArkhamDB slot are patched to the Mask slot type at load time (see assets-in-each-slot).
 - Let `v` = slot vector of one copy. Add if for **all** slot types `t`: `current[t] + v[t] ≤ floor(E[t])` (integer tie-break above when applicable).
 - Stop phase 1 when every `t` has `current[t] ≥` phase 1 goal, or the list is exhausted.
 
@@ -600,7 +623,7 @@ Walk the **full** 0 XP popularity list (assets, events, skills). Skip options al
 
 ## Legality
 
-Generated lists must be legal under `deck_options` (v1 scope), current-taboo forbidden/XP rules, and copy limits. Popularity training decks may be illegal under current taboo; those are already excluded via `is_ignore`.
+Generated lists must be legal under `deck_options`, current-taboo forbidden/XP rules, and copy limits. Popularity training decks may be illegal under current taboo; those are already excluded via `is_ignore`.
 
 ## Output
 
@@ -610,6 +633,8 @@ Display table per generated deck (similar columns to `show_investigator_card_pop
 - When 1+ XP cards are included (future): also `xp`
 
 One generated list per in-scope `(canonical_front, canonical_back)` for v1.
+
+**CSV export:** `export_generated_decklist_csvs()` writes `generated/{name} {canonical_front}.csv` for each supported investigator with training decks. Each file lists 0 XP popularity options through the last row with `included_in_generated=True`, with `subname`, `included_in_generated`, and `generated_count` columns. Deck cards absent from the popularity list are appended at the end. Pass `diagnostics=True` to also write `{name} {canonical_front} resolution.csv` for `faction_select` / `deck_size_select` weight calculations.
 
 ## Future: XP upgrades
 

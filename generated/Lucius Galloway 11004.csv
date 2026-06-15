@@ -1,0 +1,47 @@
+rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
+1,11005,1,,Book of Verse,Un-Commonplace Book,12,,1.0,True,1
+2,11006,1,,Dreams of the Flood,,12,,1.0,True,1
+3,01000,1,,Random Basic Weakness,,1,,0.7470108039289466,False,0
+4,01092,1,,Manual Dexterity,,1,,0.5830974855628441,True,2
+5,01046,1,,Pickpocketing,,1,,0.5805377232935476,True,2
+6,01039,1,,Deduction,,1,,0.4736859325666229,True,2
+7,01090,1,,Perception,,1,,0.47168431395003013,True,2
+8,03231,1,,Eureka!,,3,,0.46695252024474326,True,2
+9,11036,1,,Forensic Kit,,12,Hand,0.4185124479225115,True,2
+10,11033,1,,Alton O'Connell,Ghost Hunter,12,Ally,0.38274730238265114,True,2
+11,01039,2,,Deduction,,1,,0.37762844761966124,True,2
+12,10067,1,,Fox Mask,The Wise Trickster,11,Mask,0.37695847875012206,True,1
+13,03191,1,,Logical Reasoning,,3,,0.3435000572288763,True,1
+14,02229,1,,Quick Thinking,,2,,0.3350983873851386,True,2
+15,11052,1,,String Along,,12,,0.31662783051348503,True,1
+16,01051,1,,Backstab,,1,,0.3056856554194301,True,1
+17,09064,1,,Thieves' Kit,,10,Hand,0.2993678915116767,True,2
+18,01046,2,,Pickpocketing,,1,,0.28488806813971645,True,2
+19,11033,2,,Alton O'Connell,Ghost Hunter,12,Ally,0.28173217204659956,True,2
+20,01092,2,,Manual Dexterity,,1,,0.27777366120102864,True,2
+21,11036,2,,Forensic Kit,,12,Hand,0.27273361978436056,True,2
+22,08125,1,,In the Thick of It,,9,,0.2619588403460246,False,0
+23,01033,1,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.25222992824004764,True,1
+24,02229,2,,Quick Thinking,,2,,0.2463687235595148,True,2
+25,01030,1,,Magnifying Glass,,1,Hand,0.2446083804307134,True,1
+26,09068,1,,Kicking the Hornet's Nest,,10,,0.23611983817899188,True,1
+27,10050,1,,Transmogrify,,11,,0.23529603052937142,True,1
+28,01090,2,,Perception,,1,,0.23527775826413447,True,2
+29,09064,2,,Thieves' Kit,,10,Hand,0.23408305397984833,True,2
+30,03231,2,,Eureka!,,3,,0.22845819680571097,True,2
+31,02227,1,,Inquiring Mind,,2,,0.22258124875987587,True,1
+32,04028,1,,"""You handle this one!""",,4,,0.22149898283556815,True,1
+33,11034,1,,Artistic Inspiration,,12,,0.21368395879742033,True,1
+34,02022,1,,Shortcut,,2,,0.2113126677235175,False,0
+35,03233,1,,"""Watch this!""",,3,,0.20898243684276538,False,0
+36,05110,1,,Crack the Case,,5,,0.20793610292810016,False,0
+37,09062,1,,Disguise,,10,,0.19169199344945734,False,0
+38,05110,2,,Crack the Case,,5,,0.18971956113288937,False,0
+39,60305,1,,Lockpicks,,7,Hand,0.18484729904625033,False,0
+40,01052,1,,Sneak Attack,,1,,0.182216580908215,False,0
+41,09067,1,,"""I'll take that!""",,10,,0.17635326923696656,False,0
+42,10042,1,,Microscope,,11,Hand,0.17492034965263048,False,0
+43,07114,1,,Breaking and Entering,,8,,0.17073144292459466,False,0
+44,11053,1,,"""Where's the party?""",,12,,0.16846592239070204,False,0
+45,04232,1,,Slip Away,,4,,0.16164923703944079,False,0
+46,04107,1,,Lucky Cigarette Case,,4,Accessory,0.15625739319773463,True,1

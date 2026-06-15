@@ -1,0 +1,44 @@
+rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
+1,11018,1,,Grim Resolve,,12,,0.9718298161932822,True,3
+2,11018,2,,Grim Resolve,,12,,0.9718298161932822,True,3
+3,11018,3,,Grim Resolve,,12,,0.9718298161932822,True,3
+4,11019,1,,Cast Adrift,,12,,0.9718298161932822,True,1
+5,01039,1,,Deduction,,1,,0.8488586721507766,True,2
+6,11084,1,,Nautical Charts,,12,Hand,0.8229215179130348,True,2
+7,03039,1,,Resourceful,,3,,0.8216182976207262,True,2
+8,03039,2,,Resourceful,,3,,0.8179602694232025,True,2
+9,01039,2,,Deduction,,1,,0.7961772165541494,True,2
+10,01000,1,,Random Basic Weakness,,1,,0.7905035459346076,False,0
+11,11083,1,,Lawrence Carlisle,Sculpting His Dreams,12,Ally,0.7579970182476695,True,2
+12,09102,1,,Idol of Xanatos,Watcher Beyond Time,10,Accessory,0.7373739085406501,True,2
+13,11084,2,,Nautical Charts,,12,Hand,0.7238372514918195,True,2
+14,01090,1,,Perception,,1,,0.6861180833245365,True,2
+15,11034,1,,Artistic Inspiration,,12,,0.6755438096995946,True,2
+16,01090,2,,Perception,,1,,0.6742677788521506,True,2
+17,11083,2,,Lawrence Carlisle,Sculpting His Dreams,12,Ally,0.6580349898945947,True,2
+18,04272,1,,Winging It,,4,,0.6498374856778593,True,2
+19,01093,1,,Unexpected Courage,,1,,0.6385657135922328,True,2
+20,04272,2,,Winging It,,4,,0.6132313613677401,True,2
+21,01093,2,,Unexpected Courage,,1,,0.603014800175075,True,2
+22,11088,1,,Contemplative,,12,,0.595789717195694,True,2
+23,11088,2,,Contemplative,,12,,0.595789717195694,True,2
+24,04036,1,,Last Chance,,4,,0.5082600690235581,True,2
+25,11034,2,,Artistic Inspiration,,12,,0.487808691972014,True,2
+26,04036,2,,Last Chance,,4,,0.4816867343391757,True,2
+27,02229,1,,Quick Thinking,,2,,0.4668673209070427,True,2
+28,04201,1,,Take Heart,,4,,0.46226889795987686,True,2
+29,02229,2,,Quick Thinking,,2,,0.4426215568557721,True,2
+30,08031,1,,Forced Learning,,9,,0.4417409701499691,True,1
+31,09102,2,,Idol of Xanatos,Watcher Beyond Time,10,Accessory,0.4392407143872184,True,2
+32,04201,2,,Take Heart,,4,,0.4115015581974119,True,2
+33,11082,1,,Hand Hook,,12,Hand,0.3779178448779297,True,2
+34,08125,1,,In the Thick of It,,9,,0.36702543025877526,False,0
+35,04033,1,,Improvised Weapon,,4,,0.3644065038567476,True,2
+36,11081,1,,Anchor Chain,,12,Hand,0.32666001872879125,True,1
+37,06245,1,,A Glimmer of Hope,,6,,0.31881006835637954,True,3
+38,06245,2,,A Glimmer of Hope,,6,,0.31881006835637954,True,3
+39,06245,3,,A Glimmer of Hope,,6,,0.31881006835637954,True,3
+40,04033,2,,Improvised Weapon,,4,,0.3169541204917786,True,2
+41,10116,1,,Long Shot,,11,,0.3166859639895183,True,1
+42,10116,2,,Long Shot,,11,,0.3027733675592781,False,1
+43,11082,2,,Hand Hook,,12,Hand,0.30254378205493626,True,2

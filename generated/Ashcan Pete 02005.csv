@@ -1,0 +1,41 @@
+rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
+1,02015,1,,Wracked by Nightmares,,2,,1.0,True,1
+2,02014,1,,Duke,Loyal Hound,2,,0.9969112284711085,True,1
+3,01000,1,,Random Basic Weakness,,1,,0.7903413391055092,False,0
+4,01080,1,,Lucky!,,1,,0.732354064767416,True,2
+5,01080,2,,Lucky!,,1,,0.6411115129292196,True,2
+6,03039,1,,Resourceful,,3,,0.59375190803281,True,2
+7,03039,2,,Resourceful,,3,,0.5594638525185825,True,2
+8,01090,1,,Perception,,1,,0.5553656320052329,True,2
+9,01091,1,,Overpower,,1,,0.48965047542233875,True,2
+10,01090,2,,Perception,,1,,0.4885241302071515,True,2
+11,01093,1,,Unexpected Courage,,1,,0.4604601832822648,True,2
+12,10116,1,,Long Shot,,11,,0.4545643967884387,True,2
+13,01079,1,,"""Look what I found!""",,1,,0.4509781127264742,True,2
+14,10116,2,,Long Shot,,11,,0.4405627159372235,True,2
+15,01093,2,,Unexpected Courage,,1,,0.4137022195949823,True,2
+16,04201,1,,Take Heart,,4,,0.4092443447129295,True,2
+17,08125,1,,In the Thick of It,,9,,0.3891264063718878,False,0
+18,10023,1,,Wolf Mask,The Moon's Sire,11,Mask,0.3755258169192351,True,1
+19,01091,2,,Overpower,,1,,0.350377819638876,True,2
+20,01079,2,,"""Look what I found!""",,1,,0.34852127113111586,True,2
+21,01088,1,,Emergency Cache,,1,,0.32616020419381864,True,2
+22,05036,1,,Track Shoes,,5,,0.3261392584707316,True,1
+23,04201,2,,Take Heart,,4,,0.32362134084473276,True,2
+24,02033,1,,Peter Sylvestre,Big Man on Campus,2,Ally,0.31161854576482617,True,2
+25,02234,1,,Dark Horse,,2,,0.3097741683054909,True,1
+26,01075,1,,Rabbit's Foot,,1,Accessory,0.3008522579889636,True,1
+27,01089,1,,Guts,,1,,0.29285676581348913,True,1
+28,02032,1,,Fire Axe,,2,Hand,0.2851533569043252,True,2
+29,06165,1,,Scrounge for Supplies,,6,,0.2827038608645974,True,1
+30,01088,2,,Emergency Cache,,1,,0.26952046970656923,True,2
+31,01072,1,,Leather Coat,,1,Body,0.26421063579569126,True,1
+32,08071,1,,Short Supply,,9,,0.259648442841471,False,0
+33,02234,2,,Dark Horse,,2,,0.250424471060152,False,1
+34,06165,2,,Scrounge for Supplies,,6,,0.24972717434930755,False,1
+35,60511,1,,Scrapper,,7,,0.2487238320831238,False,0
+36,11068a,1,,The Great Work,Divide and Unite,12,,0.24224966157902086,False,0
+37,02032,2,,Fire Axe,,2,Hand,0.2408364850899051,True,2
+38,04200,1,,Live and Learn,,4,,0.23877995957951978,False,0
+39,02033,2,,Peter Sylvestre,Big Man on Campus,2,Ally,0.23824555330269362,True,2
+40,01030,1,,Magnifying Glass,,1,Hand,0.2338666286694214,True,1

@@ -1,0 +1,41 @@
+rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
+1,09005,1,,Bonesaw,,10,Hand,1.0,True,1
+2,09006,1,,On the Mend,,10,,1.0,True,4
+3,09007,1,,Wounded Bystander,On Death's Doorstep,10,,1.0,True,1
+4,09006,2,,On the Mend,,10,,0.9488817985408334,True,4
+5,09006,3,,On the Mend,,10,,0.9275214452476237,True,4
+6,09006,4,,On the Mend,,10,,0.9259676867306631,True,4
+7,01000,1,,Random Basic Weakness,,1,,0.8059111262357137,False,0
+8,08073,1,,Bandages,,9,,0.7620963391713117,True,2
+9,08125,1,,In the Thick of It,,9,,0.7376310924089127,False,0
+10,08073,2,,Bandages,,9,,0.7253535109570428,True,2
+11,01039,1,,Deduction,,1,,0.6861682199076768,True,2
+12,01039,2,,Deduction,,1,,0.6742636762579441,True,2
+13,01025,1,,Vicious Blow,,1,,0.541771152947122,True,2
+14,01025,2,,Vicious Blow,,1,,0.5266103410685354,True,2
+15,01088,1,,Emergency Cache,,1,,0.39511706887223874,True,2
+16,05313,1,,Hallowed Mirror,,5,Accessory,0.3939167319398741,True,1
+17,09046,1,,Bizarre Diagnosis,,10,,0.3766859387987006,True,2
+18,01030,1,,Magnifying Glass,,1,Hand,0.37522003741258453,True,2
+19,04037,1,,Backpack,,4,Body,0.36893750546247756,True,1
+20,09046,2,,Bizarre Diagnosis,,10,,0.35919756590878216,True,2
+21,01088,2,,Emergency Cache,,1,,0.34939816110407357,True,2
+22,11021,1,,Crowbar,,12,Hand,0.34013015184381773,True,2
+23,11021,2,,Crowbar,,12,Hand,0.34013015184381773,True,2
+24,11034,1,,Artistic Inspiration,,12,,0.34013015184381773,True,2
+25,11034,2,,Artistic Inspiration,,12,,0.34013015184381773,True,2
+26,01030,2,,Magnifying Glass,,1,Hand,0.3111906511626947,True,2
+27,05110,1,,Crack the Case,,5,,0.3082736445937797,True,2
+28,04037,2,,Backpack,,4,Body,0.3071167264448773,False,1
+29,01080,1,,Lucky!,,1,,0.29819928806169077,True,2
+30,03231,1,,Eureka!,,3,,0.29501862619128816,True,2
+31,03231,2,,Eureka!,,3,,0.2922796159258199,True,2
+32,01080,2,,Lucky!,,1,,0.27613949259479154,True,2
+33,03039,1,,Resourceful,,3,,0.24381816079221236,True,1
+34,01033,1,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.24346656728659313,True,2
+35,01090,1,,Perception,,1,,0.23697077324904156,True,1
+36,10109,1,,Pelt Shipment,,11,,0.22748275404789087,True,2
+37,10109,2,,Pelt Shipment,,11,,0.22748275404789087,True,2
+38,05110,2,,Crack the Case,,5,,0.22681507265962472,True,2
+39,03039,2,,Resourceful,,3,,0.2242402304591333,False,1
+40,01033,2,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.21722298161891723,True,2

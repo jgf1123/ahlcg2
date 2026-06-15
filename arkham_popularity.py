@@ -3,7 +3,9 @@
 
 from __future__ import annotations
 
+import csv
 import json
+import math
 import re
 from collections import defaultdict
 from dataclasses import dataclass, field
@@ -15,6 +17,13 @@ from arkham_canonical import (
     CanonicalMapper,
     is_chapter_2_pack,
     parse_investigator_front_back,
+)
+from arkham_deck_options import (
+    DeckOptionResolution,
+    DeckOptionsValidator,
+    card_has_trait,
+    deck_options_support,
+    resolve_deck_options,
 )
 
 UPGRADE_PATTERN = re.compile(r"\d+\|\d+.*")
@@ -135,6 +144,8 @@ def slot_display_label(
 
 
 SLED_DOG_CANONICAL_ID = "08127"
+IN_THE_THICK_OF_IT_CANONICAL_ID = "08125"
+STANDARD_DECK_OPTION_KEYS = frozenset({"faction", "level"})
 STANDARD_ASSET_SLOT_TYPES = (
     "Accessory",
     "Ally",
@@ -142,8 +153,22 @@ STANDARD_ASSET_SLOT_TYPES = (
     "Body",
     "Hand",
     "Head",
+    "Mask",
     "Tarot",
 )
+
+
+def apply_runtime_card_patches(cards: dict[str, dict[str, Any]]) -> None:
+    """In-memory card fixes after pickle load; never persisted to pickle."""
+    for card in cards.values():
+        if card.get("type_code") != "asset":
+            continue
+        if not card_has_trait(card, "Mask"):
+            continue
+        if slot_display_label(card.get("slot"), card.get("real_slot")):
+            continue
+        card["slot"] = "Mask"
+        card["real_slot"] = "Mask"
 
 
 def is_sled_dog(canonical_id: str, name: str | None = None) -> bool:
@@ -178,6 +203,68 @@ def asset_slot_counts(
         if part:
             counts[part] = counts.get(part, 0.0) + slot_copies
     return counts
+
+
+def slot_phase_targets(weighted_avg: float) -> tuple[int, int, int]:
+    """Return (phase1_goal, phase1_cap, phase2_ceiling) per spec tie-break rules."""
+    floor_e = math.floor(weighted_avg)
+    ceil_e = math.ceil(weighted_avg)
+    if floor_e == ceil_e:
+        if weighted_avg == 0:
+            phase1_goal = 0
+        else:
+            phase1_goal = math.ceil(weighted_avg - 1)
+        phase1_cap = floor_e
+        phase2_ceiling = math.floor(weighted_avg + 1)
+    else:
+        phase1_goal = floor_e
+        phase1_cap = floor_e
+        phase2_ceiling = ceil_e
+    return phase1_goal, phase1_cap, phase2_ceiling
+
+
+def card_restricted_to_investigator(
+    card: dict[str, Any],
+    investigator_code: str,
+) -> bool:
+    """True when card.restrictions limits it to a specific investigator."""
+    restrictions = card.get("restrictions") or {}
+    investigators = restrictions.get("investigator")
+    if not investigators:
+        return False
+    return investigator_code not in investigators
+
+
+@dataclass
+class GeneratedDecklist:
+    canonical_front: str
+    canonical_back: str
+    investigator_name: str
+    deck_size: int
+    slots: dict[str, int]
+    entries: list[dict[str, Any]]
+    slot_targets: dict[str, dict[str, float | int]]
+    deck_count: int
+    skipped_reason: str | None = None
+    first_add_phase: dict[str, str] = field(default_factory=dict)
+    option_resolutions: list[DeckOptionResolution] = field(default_factory=list)
+
+
+_FILENAME_INVALID_RE = re.compile(r'[<>:"/\\|?*]')
+
+
+def sanitize_export_filename(name: str) -> str:
+    """Remove characters invalid on common filesystems."""
+    cleaned = _FILENAME_INVALID_RE.sub("", name)
+    return cleaned.strip() or "investigator"
+
+
+def generation_export_filename(name: str, canonical_front: str) -> str:
+    return f"{sanitize_export_filename(name)} {canonical_front}.csv"
+
+
+def resolution_export_filename(name: str, canonical_front: str) -> str:
+    return f"{sanitize_export_filename(name)} {canonical_front} resolution.csv"
 
 
 def stratum_blend_weight(deck_cycle: int) -> float:
@@ -297,6 +384,7 @@ def enforce_monotonic_cycle_weights(
 class CanonicalCardInfo:
     canonical_id: str
     name: str
+    subname: str
     cycle: int | None
     xp: int
     has_xp_cost: bool
@@ -369,6 +457,28 @@ class TabooIndex:
         if entry is None:
             return False
         return entry.get("text") == "Forbidden." or entry.get("deck_limit") == 0
+
+    def deck_limit_at_taboo(
+        self,
+        card: dict[str, Any],
+        canonical_id: str,
+        taboo_id: int | None,
+    ) -> int:
+        """Max copies allowed under taboo (mirrors effective_deck_limit)."""
+        entry = self.entry(canonical_id, taboo_id)
+        if entry is not None:
+            if entry.get("text") == "Forbidden.":
+                return 0
+            if "deck_limit" in entry:
+                return int(entry["deck_limit"])
+        limit = card.get("deck_limit")
+        if limit is None:
+            if card.get("myriad"):
+                return 3
+            if card.get("exceptional"):
+                return 1
+            return 2
+        return int(limit)
 
 
 class UpgradeGraph:
@@ -470,6 +580,7 @@ def build_canonical_card_infos(
         infos[canonical_id] = CanonicalCardInfo(
             canonical_id=canonical_id,
             name=card.get("name", canonical_id),
+            subname=card.get("subname") or "",
             cycle=mapper.cycle_for_slot(canonical_id),
             xp=xp,
             has_xp_cost=xp > 0,
@@ -524,6 +635,7 @@ class ArkhamPopularityEngine:
         self.taboo = TabooIndex(taboo_json, mapper)
         self.min_xp_cost = min_xp_cost
         self.bias_compensation = bias_compensation
+        apply_runtime_card_patches(cards)
         self.canonical_cards = build_canonical_card_infos(cards, mapper, self.taboo)
         self.upgrades = UpgradeGraph(self.canonical_cards)
 
@@ -924,6 +1036,7 @@ class ArkhamPopularityEngine:
                         "card_index": option.card_index,
                         "option_index": None,
                         "name": card_info.name,
+                        "subname": card_info.subname,
                         "xp": card_info.xp if card_info.has_xp_cost else None,
                         "slot": slot_display_label(
                             card_info.slot, card_info.real_slot
@@ -958,6 +1071,7 @@ class ArkhamPopularityEngine:
                         "card_index": None,
                         "option_index": option.option_index,
                         "name": card_info.name,
+                        "subname": card_info.subname,
                         "xp": None,
                         "slot": slot_display_label(
                             card_info.slot, card_info.real_slot
@@ -1132,6 +1246,588 @@ class ArkhamPopularityEngine:
         if isinstance(option, NonCustomOption):
             return (0, option.canonical_id, option.card_index)
         return (1, option.canonical_id, option.option_index)
+
+    def supports_decklist_generation(
+        self,
+        canonical_front: str,
+        canonical_back: str,
+    ) -> tuple[bool, str | None]:
+        """Return (supported, skip_reason) for automatic decklist generation."""
+        if canonical_front != canonical_back:
+            return False, "parallel investigator (canonical_front != canonical_back)"
+        inv_card = self.cards.get(canonical_front)
+        if inv_card is None or inv_card.get("type_code") != "investigator":
+            return False, "missing investigator card"
+        return deck_options_support(inv_card.get("deck_options"))
+
+    def list_generatable_investigators(
+        self,
+        decks: list[PreparedDecklist] | None = None,
+    ) -> list[dict[str, Any]]:
+        """Return investigators supported for generation, with optional training counts."""
+        deck_counts: dict[str, int] = defaultdict(int)
+        if decks is not None:
+            for deck in decks:
+                if deck.is_ignore:
+                    continue
+                if deck.canonical_front != deck.canonical_back:
+                    continue
+                deck_counts[deck.canonical_front] += 1
+        rows: list[dict[str, Any]] = []
+        for canonical_id, card in sorted(self.cards.items()):
+            if card.get("type_code") != "investigator":
+                continue
+            supported, skip_reason = self.supports_decklist_generation(
+                canonical_id, canonical_id
+            )
+            rows.append(
+                {
+                    "canonical_front": canonical_id,
+                    "canonical_back": canonical_id,
+                    "name": card.get("name", canonical_id),
+                    "supported": supported,
+                    "skip_reason": skip_reason,
+                    "training_decks": deck_counts.get(canonical_id, 0),
+                }
+            )
+        return rows
+
+    def _deck_limit_at_current_taboo(self, card: dict[str, Any], canonical_id: str) -> int:
+        return self.taboo.deck_limit_at_taboo(
+            card, canonical_id, self.taboo.max_taboo
+        )
+
+    def _xp_at_current_taboo(self, card: dict[str, Any], canonical_id: str) -> int:
+        return _effective_xp(
+            card,
+            canonical_id,
+            self.taboo.max_taboo,
+            self.taboo,
+            use_max_taboo=True,
+        )
+
+    def _generation_eligible_row(
+        self,
+        row: dict[str, Any],
+        *,
+        investigator_code: str,
+        options_validator: DeckOptionsValidator,
+        requirement_ids: set[str],
+    ) -> bool:
+        canonical_id = row["canonical_id"]
+        if canonical_id in requirement_ids:
+            return False
+        if canonical_id == IN_THE_THICK_OF_IT_CANONICAL_ID:
+            return False
+        if self.taboo.is_forbidden(canonical_id, self.taboo.max_taboo):
+            return False
+        card = self.cards.get(canonical_id)
+        if card is None:
+            return False
+        if card.get("type_code") == "investigator":
+            return False
+        if card.get("type_code") in ("treachery", "enemy"):
+            return False
+        if card.get("subtype_code") == "basicweakness":
+            return False
+        if card_restricted_to_investigator(card, investigator_code):
+            return False
+        if row.get("is_customizable"):
+            option_index = row.get("option_index")
+            if option_index is not None and str(option_index) != "0":
+                return False
+        xp = self._xp_at_current_taboo(card, canonical_id)
+        if xp != 0:
+            return False
+        if not options_validator.is_card_allowed(card, xp):
+            return False
+        return True
+
+    def _row_already_satisfied(self, row: dict[str, Any], slots: dict[str, int]) -> bool:
+        canonical_id = row["canonical_id"]
+        if row.get("is_customizable"):
+            return slots.get(canonical_id, 0) >= 1
+        card_index = row.get("card_index")
+        if card_index is None:
+            return slots.get(canonical_id, 0) >= 1
+        return self.upgrades.count_option_in_slots(slots, canonical_id) >= int(card_index)
+
+    def _can_add_generation_copy(
+        self,
+        canonical_id: str,
+        slots: dict[str, int],
+    ) -> bool:
+        card = self.cards.get(canonical_id)
+        if card is None:
+            return False
+        limit = self._deck_limit_at_current_taboo(card, canonical_id)
+        count = self.upgrades.count_option_in_slots(slots, canonical_id)
+        return count < limit
+
+    def _slot_vector_for_card(self, canonical_id: str) -> dict[str, float]:
+        card = self.cards.get(canonical_id)
+        info = self.canonical_cards.get(canonical_id)
+        if card is None or info is None or card.get("type_code") != "asset":
+            return {}
+        return asset_slot_counts(
+            canonical_id,
+            info.slot,
+            info.real_slot,
+            1,
+            name=info.name,
+        )
+
+    def _slot_targets_for_investigator(
+        self,
+        decks: list[PreparedDecklist],
+        canonical_front: str,
+        canonical_back: str,
+    ) -> dict[str, dict[str, float | int]]:
+        usage = self.slot_usage_for_investigator(
+            decks, canonical_front, canonical_back
+        )
+        avg_by_slot = {row["slot_type"]: row["weighted_avg"] for row in usage}
+        targets: dict[str, dict[str, float | int]] = {}
+        for slot_type in STANDARD_ASSET_SLOT_TYPES:
+            avg = avg_by_slot.get(slot_type, 0.0)
+            goal, cap, ceiling = slot_phase_targets(avg)
+            targets[slot_type] = {
+                "weighted_avg": avg,
+                "phase1_goal": goal,
+                "phase1_cap": cap,
+                "phase2_ceiling": ceiling,
+            }
+        return targets
+
+    def _zero_xp_popularity_rows(
+        self,
+        decks: list[PreparedDecklist],
+        canonical_front: str,
+        canonical_back: str,
+    ) -> list[dict[str, Any]]:
+        rows = self.popularity_for_investigator(
+            decks, canonical_front, canonical_back
+        )
+        return [row for row in rows if (row.get("xp") or 0) == 0]
+
+    def _build_generation_entries(
+        self,
+        slots: dict[str, int],
+        requirement_ids: set[str],
+        *,
+        include_weaknesses: bool = False,
+    ) -> list[dict[str, Any]]:
+        entries: list[dict[str, Any]] = []
+        for canonical_id, count in sorted(
+            slots.items(),
+            key=lambda item: (-item[1], item[0]),
+        ):
+            card = self.cards.get(canonical_id)
+            info = self.canonical_cards.get(canonical_id)
+            if card is None or info is None:
+                continue
+            if not include_weaknesses and card.get("type_code") in ("treachery", "enemy"):
+                continue
+            entries.append(
+                {
+                    "canonical_id": canonical_id,
+                    "count": count,
+                    "name": info.name,
+                    "cycle": info.cycle,
+                    "slot": slot_display_label(info.slot, info.real_slot),
+                    "xp": 0,
+                    "type_code": card.get("type_code"),
+                    "is_requirement": canonical_id in requirement_ids,
+                }
+            )
+        return entries
+
+    def generate_decklist(
+        self,
+        decks: list[PreparedDecklist],
+        canonical_front: str,
+        canonical_back: str,
+    ) -> GeneratedDecklist:
+        """Build a synthetic 0 XP decklist per spec Automatic Decklist Generation."""
+        supported, skip_reason = self.supports_decklist_generation(
+            canonical_front, canonical_back
+        )
+        inv_card = self.cards.get(canonical_front) or {}
+        inv_name = inv_card.get("name", canonical_front)
+        requirements = inv_card.get("deck_requirements") or {}
+        deck_size_target = int(requirements.get("size", 30))
+        deck_options = inv_card.get("deck_options") or []
+
+        if not supported:
+            return GeneratedDecklist(
+                canonical_front=canonical_front,
+                canonical_back=canonical_back,
+                investigator_name=inv_name,
+                deck_size=deck_size_target,
+                slots={},
+                entries=[],
+                slot_targets={},
+                deck_count=0,
+                skipped_reason=skip_reason,
+            )
+
+        slot_targets = self._slot_targets_for_investigator(
+            decks, canonical_front, canonical_back
+        )
+        popularity_rows = self._zero_xp_popularity_rows(
+            decks, canonical_front, canonical_back
+        )
+        inv_decks = [
+            deck
+            for deck in decks
+            if deck.canonical_front == canonical_front
+            and deck.canonical_back == canonical_back
+            and not deck.is_ignore
+        ]
+        active_inv = [
+            deck for deck in inv_decks if deck.cycle is not None
+        ]
+        user_weights = self.assign_user_weights(decks)
+        cycle_weights = self.assign_cycle_weights(active_inv, user_weights)
+        weighted_decks = [
+            (
+                deck.slots,
+                self.deck_weight(deck, user_weights, cycle_weights),
+            )
+            for deck in active_inv
+        ]
+        deck_options, deck_size_target, option_resolutions = resolve_deck_options(
+            deck_options,
+            weighted_decks=weighted_decks,
+            cards=self.cards,
+            default_deck_size=deck_size_target,
+            xp_for_card=self._xp_at_current_taboo,
+        )
+
+        slots: dict[str, int] = {}
+        current_slots: dict[str, float] = defaultdict(float)
+        requirement_ids: set[str] = set()
+        first_add_phase: dict[str, str] = {}
+
+        for card_code in (requirements.get("card") or {}):
+            canonical_id = self.mapper.to_canonical(card_code)
+            requirement_ids.add(canonical_id)
+            card = self.cards.get(canonical_id)
+            copy_count = int(card.get("quantity") or 1) if card is not None else 1
+            slots[canonical_id] = slots.get(canonical_id, 0) + copy_count
+            first_add_phase[canonical_id] = "requirement"
+            if card is not None and card.get("type_code") == "asset":
+                for slot_type, amount in self._slot_vector_for_card(canonical_id).items():
+                    current_slots[slot_type] += amount * copy_count
+
+        options_validator = DeckOptionsValidator.from_options(deck_options)
+        options_validator.seed_counts_from_slots(
+            slots,
+            self.cards,
+            requirement_ids=requirement_ids,
+            xp_for_card=self._xp_at_current_taboo,
+        )
+
+        def phase1_goals_met() -> bool:
+            return all(
+                current_slots.get(slot_type, 0.0) >= slot_targets[slot_type]["phase1_goal"]
+                for slot_type in STANDARD_ASSET_SLOT_TYPES
+            )
+
+        def fits_phase1_cap(slot_vector: dict[str, float]) -> bool:
+            for slot_type in STANDARD_ASSET_SLOT_TYPES:
+                addition = slot_vector.get(slot_type, 0.0)
+                if addition == 0:
+                    continue
+                cap = int(slot_targets[slot_type]["phase1_cap"])
+                if current_slots.get(slot_type, 0.0) + addition > cap:
+                    return False
+            return True
+
+        def fits_phase2_ceiling(slot_vector: dict[str, float]) -> bool:
+            for slot_type in STANDARD_ASSET_SLOT_TYPES:
+                addition = slot_vector.get(slot_type, 0.0)
+                if addition == 0:
+                    continue
+                ceiling = int(slot_targets[slot_type]["phase2_ceiling"])
+                if current_slots.get(slot_type, 0.0) + addition > ceiling:
+                    return False
+            return True
+
+        def non_permanent_count() -> int:
+            total = 0
+            for canonical_id, count in slots.items():
+                if canonical_id in requirement_ids:
+                    continue
+                card = self.cards.get(canonical_id)
+                if card is None or card.get("permanent"):
+                    continue
+                total += count
+            return total
+
+        def try_add_copy(canonical_id: str, phase: str) -> bool:
+            card = self.cards.get(canonical_id)
+            if card is None:
+                return False
+            if not self._can_add_generation_copy(canonical_id, slots):
+                return False
+            xp = self._xp_at_current_taboo(card, canonical_id)
+            if not options_validator.can_add_copy(card, xp):
+                return False
+            if canonical_id not in first_add_phase:
+                first_add_phase[canonical_id] = phase
+            slots[canonical_id] = slots.get(canonical_id, 0) + 1
+            for slot_type, amount in self._slot_vector_for_card(canonical_id).items():
+                current_slots[slot_type] += amount
+            options_validator.add_copy(card, xp)
+            return True
+
+        if not phase1_goals_met():
+            for row in popularity_rows:
+                if phase1_goals_met():
+                    break
+                if self._row_already_satisfied(row, slots):
+                    continue
+                if not self._generation_eligible_row(
+                    row,
+                    investigator_code=canonical_front,
+                    options_validator=options_validator,
+                    requirement_ids=requirement_ids,
+                ):
+                    continue
+                canonical_id = row["canonical_id"]
+                card = self.cards[canonical_id]
+                if card.get("type_code") != "asset":
+                    continue
+                slot_vector = self._slot_vector_for_card(canonical_id)
+                if not slot_vector:
+                    continue
+                if not fits_phase1_cap(slot_vector):
+                    continue
+                try_add_copy(canonical_id, "phase1")
+
+        for row in popularity_rows:
+            if non_permanent_count() >= deck_size_target:
+                break
+            if self._row_already_satisfied(row, slots):
+                continue
+            if not self._generation_eligible_row(
+                row,
+                investigator_code=canonical_front,
+                options_validator=options_validator,
+                requirement_ids=requirement_ids,
+            ):
+                continue
+            canonical_id = row["canonical_id"]
+            card = self.cards[canonical_id]
+            if card.get("permanent"):
+                try_add_copy(canonical_id, "phase2")
+                continue
+            if card.get("type_code") == "asset":
+                slot_vector = self._slot_vector_for_card(canonical_id)
+                if not fits_phase2_ceiling(slot_vector):
+                    continue
+            try_add_copy(canonical_id, "phase2")
+
+        entries = self._build_generation_entries(
+            slots, requirement_ids, include_weaknesses=False
+        )
+        return GeneratedDecklist(
+            canonical_front=canonical_front,
+            canonical_back=canonical_back,
+            investigator_name=inv_name,
+            deck_size=deck_size_target,
+            slots=slots,
+            entries=entries,
+            slot_targets=slot_targets,
+            deck_count=non_permanent_count(),
+            skipped_reason=None,
+            first_add_phase=first_add_phase,
+            option_resolutions=option_resolutions,
+        )
+
+    def _requirement_ids_for_investigator(self, canonical_front: str) -> set[str]:
+        inv_card = self.cards.get(canonical_front) or {}
+        requirements = inv_card.get("deck_requirements") or {}
+        return {
+            self.mapper.to_canonical(card_code)
+            for card_code in (requirements.get("card") or {})
+        }
+
+    def _popularity_row_in_generated(
+        self,
+        row: dict[str, Any],
+        slots: dict[str, int],
+    ) -> bool:
+        canonical_id = row["canonical_id"]
+        count = self.upgrades.count_option_in_slots(slots, canonical_id)
+        if row.get("is_customizable"):
+            return count >= 1
+        card_index = row.get("card_index")
+        if card_index is None:
+            return count >= 1
+        return count >= int(card_index)
+
+    def generation_popularity_table(
+        self,
+        decks: list[PreparedDecklist],
+        canonical_front: str,
+        canonical_back: str,
+        *,
+        generated: GeneratedDecklist | None = None,
+    ) -> list[dict[str, Any]]:
+        """0 XP popularity rows through the last included generated option."""
+        if generated is None:
+            generated = self.generate_decklist(
+                decks, canonical_front, canonical_back
+            )
+        if generated.skipped_reason:
+            return []
+
+        popularity_rows = self._zero_xp_popularity_rows(
+            decks, canonical_front, canonical_back
+        )
+        deck_ids = {
+            canonical_id
+            for canonical_id, count in generated.slots.items()
+            if count > 0
+        }
+
+        last_index = -1
+        for index, row in enumerate(popularity_rows):
+            if self._popularity_row_in_generated(row, generated.slots):
+                last_index = index
+
+        truncated = popularity_rows[: last_index + 1] if last_index >= 0 else []
+        covered_ids = {
+            row["canonical_id"]
+            for row in truncated
+            if self._popularity_row_in_generated(row, generated.slots)
+        }
+        missing_ids = sorted(deck_ids - covered_ids)
+
+        export_rows: list[dict[str, Any]] = []
+        for rank, row in enumerate(truncated, start=1):
+            canonical_id = row["canonical_id"]
+            info = self.canonical_cards.get(canonical_id)
+            export_rows.append(
+                {
+                    "rank": rank,
+                    "canonical_id": canonical_id,
+                    "card_index": row.get("card_index"),
+                    "option_index": row.get("option_index"),
+                    "name": row.get("name"),
+                    "subname": row.get("subname") or (info.subname if info else ""),
+                    "cycle": info.cycle if info else None,
+                    "slot": row.get("slot"),
+                    "p5_popularity": row.get("p5_popularity"),
+                    "included_in_generated": self._popularity_row_in_generated(
+                        row, generated.slots
+                    ),
+                    "generated_count": generated.slots.get(canonical_id, 0),
+                }
+            )
+
+        next_rank = len(export_rows) + 1
+        for canonical_id in missing_ids:
+            card = self.cards.get(canonical_id)
+            info = self.canonical_cards.get(canonical_id)
+            if card is None or info is None:
+                continue
+            export_rows.append(
+                {
+                    "rank": next_rank,
+                    "canonical_id": canonical_id,
+                    "card_index": None,
+                    "option_index": None,
+                    "name": info.name,
+                    "subname": info.subname,
+                    "cycle": info.cycle,
+                    "slot": slot_display_label(info.slot, info.real_slot),
+                    "p5_popularity": None,
+                    "included_in_generated": True,
+                    "generated_count": generated.slots.get(canonical_id, 0),
+                }
+            )
+            next_rank += 1
+
+        return export_rows
+
+    def export_generated_decklist_csvs(
+        self,
+        decks: list[PreparedDecklist],
+        output_dir: str | Path = "generated",
+        *,
+        diagnostics: bool = False,
+    ) -> list[Path]:
+        """Write one CSV per supported investigator with training data."""
+        out = Path(output_dir)
+        out.mkdir(parents=True, exist_ok=True)
+        written: list[Path] = []
+        fieldnames = [
+            "rank",
+            "canonical_id",
+            "card_index",
+            "option_index",
+            "name",
+            "subname",
+            "cycle",
+            "slot",
+            "p5_popularity",
+            "included_in_generated",
+            "generated_count",
+        ]
+        resolution_fieldnames = [
+            "resolution_kind",
+            "option_name",
+            "choice",
+            "weighted_total",
+            "weight_share",
+            "selected",
+        ]
+
+        for investigator in self.list_generatable_investigators(decks):
+            if not investigator["supported"]:
+                continue
+            if investigator["training_decks"] <= 0:
+                continue
+            canonical_front = investigator["canonical_front"]
+            canonical_back = investigator["canonical_back"]
+            generated = self.generate_decklist(
+                decks, canonical_front, canonical_back
+            )
+            rows = self.generation_popularity_table(
+                decks,
+                canonical_front,
+                canonical_back,
+                generated=generated,
+            )
+            filename = generation_export_filename(
+                investigator["name"], canonical_front
+            )
+            path = out / filename
+            with path.open("w", newline="", encoding="utf-8") as handle:
+                writer = csv.DictWriter(handle, fieldnames=fieldnames)
+                writer.writeheader()
+                for row in rows:
+                    writer.writerow(row)
+            written.append(path)
+
+            if diagnostics and generated.option_resolutions:
+                resolution_path = out / resolution_export_filename(
+                    investigator["name"], canonical_front
+                )
+                resolution_rows: list[dict[str, Any]] = []
+                for resolution in generated.option_resolutions:
+                    resolution_rows.extend(resolution.to_csv_rows())
+                with resolution_path.open("w", newline="", encoding="utf-8") as handle:
+                    writer = csv.DictWriter(handle, fieldnames=resolution_fieldnames)
+                    writer.writeheader()
+                    for row in resolution_rows:
+                        writer.writerow(row)
+                written.append(resolution_path)
+
+        return written
 
 
 def prepared_decks_to_dataframe(prepared: list[PreparedDecklist]):

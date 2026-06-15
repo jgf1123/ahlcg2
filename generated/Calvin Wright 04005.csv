@@ -1,0 +1,40 @@
+rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
+1,04015,1,,Until the End of Time,,4,,1.0,True,1
+2,04016,1,,Voice of the Messenger,,4,,1.0,True,1
+3,08125,1,,In the Thick of It,,9,,0.7985247990803833,False,0
+4,11082,1,,Hand Hook,,12,Hand,0.7539163685703714,True,2
+5,05114,1,,Meat Cleaver,,5,Hand,0.7224678838149329,True,2
+6,05114,2,,Meat Cleaver,,5,Hand,0.7061033837354247,True,2
+7,01000,1,,Random Basic Weakness,,1,,0.6949558310765829,False,0
+8,10111,1,,Sparrow Mask,The Wanderer's Companion,11,Mask,0.6658564089713069,True,1
+9,02033,1,,Peter Sylvestre,Big Man on Campus,2,Ally,0.6622876283902895,True,2
+10,01065,1,,Ward of Protection,,1,,0.6578054712453071,True,2
+11,01065,2,,Ward of Protection,,1,,0.5935936848978013,True,2
+12,08020,1,,Toe to Toe,,9,,0.5929103298363585,True,2
+13,03039,1,,Resourceful,,3,,0.5664205842485595,True,2
+14,03039,2,,Resourceful,,3,,0.5529691506300186,True,2
+15,04201,1,,Take Heart,,4,,0.5292733074566213,True,2
+16,02033,2,,Peter Sylvestre,Big Man on Campus,2,Ally,0.5160973468807613,True,2
+17,08020,2,,Toe to Toe,,9,,0.5129268417381848,True,2
+18,10111,2,,Sparrow Mask,The Wanderer's Companion,11,Mask,0.5064361191162344,False,1
+19,01080,1,,Lucky!,,1,,0.504239931237287,True,2
+20,04201,2,,Take Heart,,4,,0.4997496263058512,True,2
+21,02192,1,,Rise to the Occasion,,2,,0.47701622721622733,True,2
+22,01080,2,,Lucky!,,1,,0.4613468490209415,True,2
+23,02192,2,,Rise to the Occasion,,2,,0.4589661139858129,True,2
+24,08116,1,,Talisman of Protection,,9,Arcane,0.43750261201745116,True,1
+25,11082,2,,Hand Hook,,12,Hand,0.43517947452818556,True,2
+26,01072,1,,Leather Coat,,1,Body,0.39898725437548654,True,1
+27,03155,1,,Fight or Flight,,3,,0.3890112534792417,True,2
+28,01079,1,,"""Look what I found!""",,1,,0.37795998493956756,True,2
+29,08116,2,,Talisman of Protection,,9,Arcane,0.35064697105976905,False,1
+30,01079,2,,"""Look what I found!""",,1,,0.3302464914404883,True,2
+31,04111,1,,Perseverance,,4,,0.3212038442578885,True,1
+32,03155,2,,Fight or Flight,,3,,0.30253199025582245,True,2
+33,01072,2,,Leather Coat,,1,Body,0.2894737281699655,False,1
+34,01087,1,,Flashlight,,1,Hand,0.28502126797038635,True,1
+35,03114,1,,Cherished Keepsake,,3,Accessory,0.2627715201782868,True,1
+36,05036,1,,Track Shoes,,5,,0.2615573819418097,True,1
+37,01087,2,,Flashlight,,1,Hand,0.25325052754108374,False,1
+38,60507,1,,Old Keyring,,7,Hand,0.24944183250721913,False,0
+39,11024,1,,Ready for Anything,,12,,0.24608363142962875,True,1

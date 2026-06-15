@@ -7,6 +7,7 @@ import unittest
 from pathlib import Path
 
 from arkham_canonical import CanonicalMapper, build_canonical_map
+from arkham_deck_options import is_standard_deck_options
 from arkham_popularity import (
     ArkhamPopularityEngine,
     InvCycleIndex,
@@ -19,7 +20,9 @@ from arkham_popularity import (
     enforce_monotonic_cycle_weights,
     parse_customizable,
     asset_slot_counts,
+    apply_runtime_card_patches,
     slot_display_label,
+    slot_phase_targets,
     tilt_factor,
 )
 
@@ -86,6 +89,34 @@ class SlotDisplayTests(unittest.TestCase):
             asset_slot_counts("99999", "Ally", None, 4, name="Sled Dog"),
             {"Ally": 2.0},
         )
+
+    def test_apply_runtime_card_patches_assigns_mask_slot(self):
+        cards = {
+            "10023": {
+                "code": "10023",
+                "name": "Wolf Mask",
+                "type_code": "asset",
+                "traits": "Item. Charm. Mask.",
+            },
+            "12068": {
+                "code": "12068",
+                "name": "Mask of Silenus",
+                "type_code": "asset",
+                "traits": "Item. Mask. Relic.",
+                "slot": "Head",
+                "real_slot": "Head",
+            },
+            "60110": {
+                "code": "60110",
+                "name": "Safeguard",
+                "type_code": "asset",
+            },
+        }
+        apply_runtime_card_patches(cards)
+        self.assertEqual(cards["10023"]["slot"], "Mask")
+        self.assertEqual(cards["10023"]["real_slot"], "Mask")
+        self.assertEqual(cards["12068"]["slot"], "Head")
+        self.assertNotIn("slot", cards["60110"])
 
 
 class DecklistCleaningTests(unittest.TestCase):
@@ -202,9 +233,9 @@ class UpgradeGraphTests(unittest.TestCase):
         from arkham_popularity import CanonicalCardInfo
 
         cards = {
-            "A": CanonicalCardInfo("A", "Family", 1, 0, False, frozenset({0}), False, None, None),
-            "A2": CanonicalCardInfo("A2", "Family", 1, 2, True, frozenset({0}), False, None, None),
-            "A3": CanonicalCardInfo("A3", "Family", 1, 3, True, frozenset({0}), False, None, None),
+            "A": CanonicalCardInfo("A", "Family", "", 1, 0, False, frozenset({0}), False, None, None),
+            "A2": CanonicalCardInfo("A2", "Family", "", 1, 2, True, frozenset({0}), False, None, None),
+            "A3": CanonicalCardInfo("A3", "Family", "", 1, 3, True, frozenset({0}), False, None, None),
         }
         graph = UpgradeGraph(cards)
         self.assertEqual(graph.upgrades_of("A"), frozenset({"A", "A2", "A3"}))
@@ -215,10 +246,10 @@ class UpgradeGraphTests(unittest.TestCase):
         from arkham_popularity import CanonicalCardInfo
 
         cards = {
-            "A00": CanonicalCardInfo("A00", "Branch", 1, 0, False, frozenset({0}), False, None, None),
-            "A01": CanonicalCardInfo("A01", "Branch", 1, 0, False, frozenset({0}), False, None, None),
-            "A20": CanonicalCardInfo("A20", "Branch", 1, 2, True, frozenset({0}), False, None, None),
-            "A21": CanonicalCardInfo("A21", "Branch", 1, 2, True, frozenset({0}), False, None, None),
+            "A00": CanonicalCardInfo("A00", "Branch", "", 1, 0, False, frozenset({0}), False, None, None),
+            "A01": CanonicalCardInfo("A01", "Branch", "", 1, 0, False, frozenset({0}), False, None, None),
+            "A20": CanonicalCardInfo("A20", "Branch", "", 1, 2, True, frozenset({0}), False, None, None),
+            "A21": CanonicalCardInfo("A21", "Branch", "", 1, 2, True, frozenset({0}), False, None, None),
         }
         graph = UpgradeGraph(cards)
         self.assertEqual(graph.upgrades_of("A00"), frozenset({"A00", "A20", "A21"}))
@@ -305,6 +336,113 @@ class ArkhamPopularityEngineTests(unittest.TestCase):
         self.assertAlmostEqual(pt["p4_choice_weight"], 0.5)
 
 
+class DeckGenerationTests(unittest.TestCase):
+    def test_slot_phase_targets_integer_tie_break(self):
+        self.assertEqual(slot_phase_targets(0), (0, 0, 1))
+        self.assertEqual(slot_phase_targets(2), (1, 2, 3))
+        self.assertEqual(slot_phase_targets(2.3), (2, 2, 3))
+
+    def test_is_standard_deck_options(self):
+        self.assertTrue(
+            is_standard_deck_options(
+                [{"faction": ["mystic", "neutral"], "level": {"min": 0, "max": 5}}]
+            )
+        )
+        self.assertFalse(
+            is_standard_deck_options(
+                [
+                    {
+                        "faction": ["guardian", "neutral"],
+                        "level": {"min": 0, "max": 5},
+                        "limit": 5,
+                    }
+                ]
+            )
+        )
+
+    def _engine(self, cards: dict, decklists: dict, taboo=None):
+        mapper = CanonicalMapper(cards, chapter=1)
+        taboo_json = taboo or [{"id": 1, "cards": "[]"}]
+        return ArkhamPopularityEngine(cards, mapper, taboo_json, bias_compensation=False)
+
+    def test_generate_skips_option_select_investigator(self):
+        cards = {
+            "11001": _card(
+                "11001",
+                name="Marion",
+                type_code="investigator",
+                faction_code="guardian",
+                deck_options=[
+                    {"faction": ["guardian", "neutral"], "level": {"min": 0, "max": 5}},
+                    {
+                        "name": "Trait Choice",
+                        "option_select": [{"id": "improvised", "trait": ["improvised"]}],
+                        "limit": 10,
+                    },
+                ],
+                deck_requirements={"size": 30, "card": {}},
+            ),
+        }
+        engine = self._engine(cards, {})
+        result = engine.generate_decklist([], "11001", "11001")
+        self.assertIsNotNone(result.skipped_reason)
+
+    def test_generate_fills_deck_for_minimal_investigator(self):
+        cards = {
+            "01004": _card(
+                "01004",
+                name="Agnes",
+                type_code="investigator",
+                faction_code="mystic",
+                deck_options=[
+                    {"faction": ["mystic", "neutral"], "level": {"min": 0, "max": 5}},
+                ],
+                deck_requirements={
+                    "size": 2,
+                    "card": {"01012": {"01012": "01012"}},
+                },
+            ),
+            "01012": _card(
+                "01012",
+                name="Heirloom",
+                type_code="asset",
+                faction_code="mystic",
+                slot="Hand",
+                restrictions={"investigator": {"01004": "01004"}},
+            ),
+            "01017": _card("01017", name="Physical Training", faction_code="neutral"),
+            "01023": _card(
+                "01023",
+                name="Dodge",
+                type_code="event",
+                faction_code="neutral",
+            ),
+        }
+        decklists = {
+            1: {
+                "id": 1,
+                "user_id": 1,
+                "investigator_code": "01004",
+                "investigator_name": "Agnes",
+                "slots": {"01012": 1, "01017": 2, "01023": 2},
+            },
+            2: {
+                "id": 2,
+                "user_id": 2,
+                "investigator_code": "01004",
+                "investigator_name": "Agnes",
+                "slots": {"01012": 1, "01017": 1, "01023": 1},
+            },
+        }
+        engine = self._engine(cards, decklists)
+        prepared = engine.prepare_all(decklists)
+        result = engine.generate_decklist(prepared, "01004", "01004")
+        self.assertIsNone(result.skipped_reason)
+        self.assertEqual(result.deck_count, 2)
+        self.assertIn("01012", result.slots)
+        self.assertNotIn("08125", result.slots)
+
+
 @unittest.skipUnless(CARD_JSON.exists() and TABOO_JSON.exists(), "data files missing")
 class IntegrationTests(unittest.TestCase):
     @classmethod
@@ -328,6 +466,45 @@ class IntegrationTests(unittest.TestCase):
         pt = self.engine.upgrades.upgrades_of("01017")
         ev = self.engine.upgrades.upgrades_of("01022")
         self.assertNotEqual(pt, ev)
+
+    def test_generate_leo_anderson_deck(self):
+        with Path(__file__).with_name("decklist_json.pickle").open("rb") as file:
+            decklist_json = pickle.load(file)
+        prepared = self.engine.prepare_all(decklist_json)
+        result = self.engine.generate_decklist(prepared, "04001", "04001")
+        self.assertIsNone(result.skipped_reason)
+        self.assertEqual(result.deck_count, result.deck_size)
+        self.assertIn("04006", result.slots)
+        self.assertNotIn("08125", result.slots)
+        requirement_ids = {"04006", "04007"}
+        player_types = {
+            self.engine.cards[cid].get("type_code")
+            for cid in result.slots
+            if cid not in requirement_ids
+        }
+        self.assertTrue(player_types <= {"asset", "event", "skill"})
+
+    def test_generate_tony_morgan_includes_two_long_colts(self):
+        with Path(__file__).with_name("decklist_json.pickle").open("rb") as file:
+            decklist_json = pickle.load(file)
+        prepared = self.engine.prepare_all(decklist_json)
+        result = self.engine.generate_decklist(prepared, "06003", "06003")
+        self.assertIsNone(result.skipped_reason)
+        self.assertEqual(result.slots.get("06011"), 2)
+
+    def test_generate_lily_chen_includes_at_most_one_mask(self):
+        with Path(__file__).with_name("decklist_json.pickle").open("rb") as file:
+            decklist_json = pickle.load(file)
+        prepared = self.engine.prepare_all(decklist_json)
+        result = self.engine.generate_decklist(prepared, "08010", "08010")
+        self.assertIsNone(result.skipped_reason)
+        mask_copies = sum(
+            count
+            for canonical_id, count in result.slots.items()
+            if (info := self.engine.canonical_cards.get(canonical_id))
+            and info.slot == "Mask"
+        )
+        self.assertLessEqual(mask_copies, 1)
 
 
 if __name__ == "__main__":

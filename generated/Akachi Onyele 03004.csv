@@ -1,0 +1,49 @@
+rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
+1,03014,1,,Spirit-Speaker,Envoy of the Alusi,3,,0.9961269164273965,True,1
+2,03015,1,,Angered Spirits,,3,,0.9961269164273965,True,1
+3,01000,1,,Random Basic Weakness,,1,,0.7645664300203321,False,0
+4,03033,1,,Uncage the Soul,,3,,0.7296352044617251,True,2
+5,01065,1,,Ward of Protection,,1,,0.665574349911261,True,2
+6,03033,2,,Uncage the Soul,,3,,0.6544769948389308,True,2
+7,01060,1,,Shrivelling,,1,Arcane,0.6409887759971844,True,2
+8,01063,1,,Arcane Initiate,,1,Ally,0.6324540961033028,True,2
+9,01059,1,,Holy Rosary,,1,Accessory,0.617575439442204,True,2
+10,01089,1,,Guts,,1,,0.5935369115584789,True,2
+11,01065,2,,Ward of Protection,,1,,0.5752407621681122,True,2
+12,01060,2,,Shrivelling,,1,Arcane,0.5424908317070792,True,2
+13,11071,1,,Spectral Shield,,12,,0.5052987681075404,True,2
+14,01089,2,,Guts,,1,,0.5033724384846735,True,2
+15,01063,2,,Arcane Initiate,,1,Ally,0.5030882636495569,True,2
+16,11067,1,,Eyes of the Dreamer,,12,Arcane,0.4983345432304446,True,2
+17,02028,1,,Rite of Seeking,,2,Arcane,0.4981851479234637,True,2
+18,01059,2,,Holy Rosary,,1,Accessory,0.4553693394065989,True,2
+19,11071,2,,Spectral Shield,,12,,0.4550505632981152,True,2
+20,02028,2,,Rite of Seeking,,2,Arcane,0.4145517843457471,True,2
+21,01093,1,,Unexpected Courage,,1,,0.3971807331469876,True,2
+22,01088,1,,Emergency Cache,,1,,0.39503695555947776,True,2
+23,11067,2,,Eyes of the Dreamer,,12,Arcane,0.38858188535722654,True,2
+24,01067,1,,Fearless,,1,,0.37165943350085373,True,1
+25,04109,1,,Arcane Research,,4,,0.3701757243740904,True,1
+26,01064,1,,Drawn to the Flame,,1,,0.3630091371296209,True,1
+27,05032,1,,Deny Existence,,5,,0.3559704266906573,True,1
+28,03032,1,,Alchemical Transmutation,,3,Arcane,0.3457023736563162,True,1
+29,10084,1,,Cat Mask,The Capricious Meddler,11,Mask,0.3392449129239719,True,1
+30,01093,2,,Unexpected Courage,,1,,0.33181561735317683,True,2
+31,60412,1,,Robes of Endless Night,,7,Body,0.32332473759040226,True,1
+32,08060,1,,Dragon Pole,,9,Hand x2,0.31055947963994207,True,1
+33,01088,2,,Emergency Cache,,1,,0.3097199278279152,True,2
+34,06201,1,,Spectral Razor,,6,,0.2984239694643845,False,0
+35,03153,1,,Storm of Spirits,,3,,0.2906001236778018,False,0
+36,08060,2,,Dragon Pole,,9,Hand x2,0.2895604389481623,False,1
+37,10094,1,,Drain Essence,,11,,0.28760067052278837,False,0
+38,04109,2,,Arcane Research,,4,,0.2781223493601456,False,1
+39,01064,2,,Drawn to the Flame,,1,,0.2744726471263859,False,1
+40,01067,2,,Fearless,,1,,0.26899156840041594,False,1
+41,60408,1,,Clairvoyance,,7,Arcane,0.26743038115263656,False,0
+42,03235,1,,Torrent of Power,,3,,0.2633996803662148,False,0
+43,02111,1,,Delve Too Deep,,2,,0.2611476956345864,False,0
+44,03032,2,,Alchemical Transmutation,,3,Arcane,0.2598328089675988,False,1
+45,60407,1,,Azure Flame,,7,Arcane,0.25922177528042956,False,0
+46,06201,2,,Spectral Razor,,6,,0.2564437195343085,False,0
+47,05032,2,,Deny Existence,,5,,0.2550636115502721,False,1
+48,05112,1,,Sign Magick,,5,Hand,0.24640060620702922,True,1

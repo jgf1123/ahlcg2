@@ -1,0 +1,34 @@
+rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
+1,08017,1,,Shrewd Dealings,,9,,1.0,True,1
+2,08018,1,,Greed,,9,,1.0,True,1
+3,08072,1,,Schoffner's Catalogue,,9,,0.8971955086033079,True,2
+4,10108,1,,Matchbox,,11,,0.8685076589676662,True,2
+5,10108,2,,Matchbox,,11,,0.7986560183925058,True,2
+6,01000,1,,Random Basic Weakness,,1,,0.7575893575907555,False,0
+7,08072,2,,Schoffner's Catalogue,,9,,0.6925101429717635,True,2
+8,11087,1,,Unconventional Method,,12,,0.6522462562396006,True,1
+9,01080,1,,Lucky!,,1,,0.6127131365114078,True,2
+10,04037,1,,Backpack,,4,Body,0.597538887212312,True,2
+11,01088,1,,Emergency Cache,,1,,0.5574232667339465,True,2
+12,01080,2,,Lucky!,,1,,0.5309710680431357,True,2
+13,04037,2,,Backpack,,4,Body,0.4726866840478004,True,2
+14,10111,1,,Sparrow Mask,The Wanderer's Companion,11,Mask,0.4558160210142178,True,1
+15,01087,1,,Flashlight,,1,Hand,0.433914585046327,True,2
+16,05036,1,,Track Shoes,,5,,0.4196879489674275,True,2
+17,60507,1,,Old Keyring,,7,Hand,0.41932448991781146,True,2
+18,08073,1,,Bandages,,9,,0.41357603820514943,True,1
+19,01088,2,,Emergency Cache,,1,,0.41113957428881504,True,2
+20,01087,2,,Flashlight,,1,Hand,0.4088284882557656,True,2
+21,60507,2,,Old Keyring,,7,Hand,0.36074701142484306,True,2
+22,01079,1,,"""Look what I found!""",,1,,0.35502851091766824,True,1
+23,01075,1,,Rabbit's Foot,,1,Accessory,0.3492206453459949,True,1
+24,11083,1,,Lawrence Carlisle,Sculpting His Dreams,12,Ally,0.3477537437603993,True,2
+25,11083,2,,Lawrence Carlisle,Sculpting His Dreams,12,Ally,0.3477537437603993,True,2
+26,11084,1,,Nautical Charts,,12,Hand,0.3477537437603993,True,2
+27,11084,2,,Nautical Charts,,12,Hand,0.3477537437603993,True,2
+28,06165,1,,Scrounge for Supplies,,6,,0.3254659498404998,True,2
+29,05036,2,,Track Shoes,,5,,0.30859725235464286,True,2
+30,10109,1,,Pelt Shipment,,11,,0.2971490481003041,True,1
+31,03114,1,,Cherished Keepsake,,3,Accessory,0.2914248749583408,True,1
+32,06165,2,,Scrounge for Supplies,,6,,0.2906968116951189,True,2
+33,01090,1,,Perception,,1,,0.28779576297053283,True,1

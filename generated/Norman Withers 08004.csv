@@ -1,0 +1,45 @@
+rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
+1,08005,1,,Livre d'Eibon,Hyperborean Grimoire,9,Hand,0.9191441707264164,True,1
+2,08006,1,,The Harbinger,,9,,0.9178788545858917,True,1
+3,01039,1,,Deduction,,1,,0.790197924102388,True,2
+4,01039,2,,Deduction,,1,,0.7257980053626277,True,2
+5,01000,1,,Random Basic Weakness,,1,,0.7071038748027639,False,0
+6,01036,1,,Mind over Matter,,1,,0.6621890062044853,True,2
+7,01036,2,,Mind over Matter,,1,,0.5463242438388001,True,2
+8,08034,1,,Written in the Stars,,9,,0.5387236209492523,True,2
+9,08034,2,,Written in the Stars,,9,,0.5152855395935211,True,2
+10,01033,1,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.5105708592014155,True,2
+11,98009,1,,Vengeful Hound,,,,0.49085933056731623,False,0
+12,98008,1,,Split the Angle,Ire of the Void,,,0.4898991359678775,True,1
+13,02022,1,,Shortcut,,2,,0.4616023923752964,True,2
+14,03231,1,,Eureka!,,3,,0.4269372589463501,True,2
+15,01032,1,,Research Librarian,,1,Ally,0.404657416529872,True,1
+16,03231,2,,Eureka!,,3,,0.3923871828581964,True,2
+17,01090,1,,Perception,,1,,0.37617787671498165,True,2
+18,02022,2,,Shortcut,,2,,0.3735673226803416,True,2
+19,01037,1,,Working a Hunch,,1,,0.3701660330322166,True,2
+20,01088,1,,Emergency Cache,,1,,0.36675365110636504,True,1
+21,01030,1,,Magnifying Glass,,1,Hand,0.3617651346027699,True,2
+22,02107,1,,"""I've got a plan!""",,2,,0.35711352321497736,True,1
+23,01065,1,,Ward of Protection,,1,,0.3545439318867226,True,1
+24,03269,1,,St. Hubert's Key,Cleansing Fire,3,Accessory,0.34421702174628743,True,1
+25,01090,2,,Perception,,1,,0.3399517252665195,True,2
+26,01033,2,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.33199915363699706,True,2
+27,01037,2,,Working a Hunch,,1,,0.3285289226490934,True,2
+28,01089,1,,Guts,,1,,0.32141486533706914,True,1
+29,60214,1,,Burning the Midnight Oil,,7,,0.3104610325673372,True,1
+30,05110,1,,Crack the Case,,5,,0.29860804585403494,True,1
+31,02227,1,,Inquiring Mind,,2,,0.2893724760812957,False,0
+32,01093,1,,Unexpected Courage,,1,,0.28162025568469934,False,0
+33,60205,1,,Arcane Enlightenment,,7,Arcane,0.2800984590360473,True,1
+34,02107,2,,"""I've got a plan!""",,2,,0.27759843183771954,False,1
+35,01060,1,,Shrivelling,,1,Arcane,0.2730812952640122,True,1
+36,01030,2,,Magnifying Glass,,1,Hand,0.27017837997726624,True,2
+37,03191,1,,Logical Reasoning,,3,,0.2607314707604696,False,0
+38,01089,2,,Guts,,1,,0.2528545185235426,False,1
+39,01065,2,,Ward of Protection,,1,,0.2525598173596663,False,1
+40,01088,2,,Emergency Cache,,1,,0.25126227417178165,False,1
+41,01032,2,,Research Librarian,,1,Ally,0.24623885298045128,False,1
+42,60214,2,,Burning the Midnight Oil,,7,,0.24471394147719527,False,1
+43,11037,1,,Mortar and Pestle,,12,,0.2380960461219034,False,0
+44,09044,1,,Grim Memoir,,10,Hand,0.23798493056697162,True,1

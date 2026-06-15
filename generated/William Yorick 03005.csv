@@ -1,0 +1,40 @@
+rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
+1,03016,1,,Bury Them Deep,,3,,1.0,True,1
+2,03017,1,,Graveyard Ghouls,,3,,0.9990622765176647,True,1
+3,01000,1,,Random Basic Weakness,,1,,0.8131738746009534,False,0
+4,01025,1,,Vicious Blow,,1,,0.7237774576089087,True,2
+5,01025,2,,Vicious Blow,,1,,0.6523091307268128,True,2
+6,01080,1,,Lucky!,,1,,0.588607155836236,True,2
+7,03039,1,,Resourceful,,3,,0.5861899932616919,True,2
+8,08072,1,,Schoffner's Catalogue,,9,,0.5468128696828133,True,2
+9,01088,1,,Emergency Cache,,1,,0.5405401591712585,True,2
+10,08071,1,,Short Supply,,9,,0.5309882532882548,True,1
+11,03039,2,,Resourceful,,3,,0.5297947540179938,True,2
+12,03114,1,,Cherished Keepsake,,3,Accessory,0.5155781298536002,True,2
+13,01080,2,,Lucky!,,1,,0.47807346682857466,True,2
+14,08072,2,,Schoffner's Catalogue,,9,,0.4540980201061607,True,2
+15,01088,2,,Emergency Cache,,1,,0.4504019313244973,True,2
+16,01091,1,,Overpower,,1,,0.4303721490233727,True,2
+17,01072,1,,Leather Coat,,1,Body,0.411604217616943,True,1
+18,03114,2,,Cherished Keepsake,,3,Accessory,0.39343685359587605,True,2
+19,01021,1,,Guard Dog,,1,Ally,0.36753798291281714,True,2
+20,01091,2,,Overpower,,1,,0.36505858783670725,True,2
+21,05037,1,,Act of Desperation,,5,,0.33818279274409885,True,2
+22,03037,1,,Gravedigger's Shovel,,3,Hand,0.33497629726264894,True,2
+23,10023,1,,Wolf Mask,The Moon's Sire,11,Mask,0.3205085124240598,True,1
+24,05037,2,,Act of Desperation,,5,,0.2988570550018914,True,2
+25,04201,1,,Take Heart,,4,,0.2738749512467567,True,1
+26,01021,2,,Guard Dog,,1,Ally,0.26824332445732285,True,2
+27,01079,1,,"""Look what I found!""",,1,,0.26778598608796084,True,1
+28,08125,1,,In the Thick of It,,9,,0.26643318612592254,False,0
+29,01018,1,,Beat Cop,,1,Ally,0.253090661054584,True,1
+30,02184,1,,Prepared for the Worst,,2,,0.25299364140118524,True,1
+31,08073,1,,Bandages,,9,,0.24688381569506931,False,0
+32,01020,1,,Machete,,1,Hand,0.2452148770422362,True,1
+33,01072,2,,Leather Coat,,1,Body,0.23771810375388872,False,1
+34,60507,1,,Old Keyring,,7,Hand,0.23459554016804576,True,1
+35,01086,1,,Knife,,1,Hand,0.22771694937224737,True,1
+36,03037,2,,Gravedigger's Shovel,,3,Hand,0.22667894740231356,True,2
+37,01093,1,,Unexpected Courage,,1,,0.2259597863847093,False,0
+38,04201,2,,Take Heart,,4,,0.22573770901231732,False,1
+39,11082,1,,Hand Hook,,12,Hand,0.21275541959225316,True,1

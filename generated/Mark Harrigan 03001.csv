@@ -1,0 +1,36 @@
+rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
+1,03008,1,,Shell Shock,,3,,0.996484775593741,True,1
+2,03009,1,,Sophie,In Loving Memory,3,,0.996484775593741,True,1
+3,03007,1,,The Home Front,,3,,0.9963760734985289,True,1
+4,01025,1,,Vicious Blow,,1,,0.9194367899135771,True,2
+5,01025,2,,Vicious Blow,,1,,0.853362140503938,True,2
+6,01000,1,,Random Basic Weakness,,1,,0.7859922128115888,False,0
+7,01088,1,,Emergency Cache,,1,,0.726391728956757,True,2
+8,10023,1,,Wolf Mask,The Moon's Sire,11,Mask,0.6708092797662856,True,1
+9,01088,2,,Emergency Cache,,1,,0.631631665939854,True,2
+10,02184,1,,Prepared for the Worst,,2,,0.5449436686736788,True,1
+11,01091,1,,Overpower,,1,,0.49884679256350895,True,2
+12,05313,1,,Hallowed Mirror,,5,Accessory,0.46712730804586267,True,1
+13,01021,1,,Guard Dog,,1,Ally,0.4512536691055838,True,1
+14,01091,2,,Overpower,,1,,0.4444083903894732,True,2
+15,01018,1,,Beat Cop,,1,Ally,0.4430137061057979,True,2
+16,04149,1,,Second Wind,,4,,0.38860076728237863,True,2
+17,11021,1,,Crowbar,,12,Hand,0.38403258006710855,True,1
+18,09068,1,,Kicking the Hornet's Nest,,10,,0.38031495345329036,True,2
+19,02022,1,,Shortcut,,2,,0.3699179662249265,True,2
+20,01020,1,,Machete,,1,Hand,0.36448393504165977,True,1
+21,60118,1,,Stand Together,,7,,0.36301048647830164,True,2
+22,01018,2,,Beat Cop,,1,Ally,0.3472236553164906,True,2
+23,01016,1,,.45 Automatic,,1,Hand,0.34647006542914743,True,1
+24,03020,1,,.32 Colt,,3,Hand,0.345688955073511,True,2
+25,01021,2,,Guard Dog,,1,Ally,0.34323246729685736,False,1
+26,60118,2,,Stand Together,,7,,0.3387063291346017,True,2
+27,09068,2,,Kicking the Hornet's Nest,,10,,0.33185221891235006,True,2
+28,02105,1,,Emergency Aid,,2,,0.331246437044509,True,2
+29,04149,2,,Second Wind,,4,,0.329823162861694,True,2
+30,02022,2,,Shortcut,,2,,0.2953074257741695,True,2
+31,60110,1,,Safeguard,,7,,0.2890009470645271,True,1
+32,03020,2,,.32 Colt,,3,Hand,0.2814175219588157,True,2
+33,02105,2,,Emergency Aid,,2,,0.2795175283085112,True,2
+34,01023,1,,Dodge,,1,,0.2762167217656001,True,1
+35,04150,1,,Take the Initiative,,4,,0.2726177020981023,True,1

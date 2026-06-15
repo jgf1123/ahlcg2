@@ -1,0 +1,36 @@
+rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
+1,04011,1,,Finn's Trusty .38,Never Leave Home Without It,4,Hand,1.0,True,1
+2,04012,1,,Caught Red-Handed,,4,,1.0,True,1
+3,04010,1,,Smuggled Goods,,4,,0.9940678258474082,True,1
+4,01000,1,,Random Basic Weakness,,1,,0.7811866610109319,False,0
+5,01046,1,,Pickpocketing,,1,,0.7277800849287065,True,2
+6,10069,1,,Bank Job,,11,,0.682425991382383,True,2
+7,11033,1,,Alton O'Connell,Ghost Hunter,12,Ally,0.6632302405498282,True,2
+8,11033,2,,Alton O'Connell,Ghost Hunter,12,Ally,0.6632302405498282,True,2
+9,11054,1,,"""You've had worse...""",,12,,0.6632302405498282,True,2
+10,11054,2,,"""You've had worse...""",,12,,0.6632302405498282,True,2
+11,60305,1,,Lockpicks,,7,Hand,0.5289708421651734,True,2
+12,10069,2,,Bank Job,,11,,0.4915857631248589,True,2
+13,07025,1,,.25 Automatic,,8,Hand,0.47964143820263216,True,2
+14,01052,1,,Sneak Attack,,1,,0.46132300114516883,True,2
+15,04107,1,,Lucky Cigarette Case,,4,Accessory,0.4580917958974656,True,1
+16,01092,1,,Manual Dexterity,,1,,0.45643505278803,True,2
+17,60305,2,,Lockpicks,,7,Hand,0.45547087152546306,True,2
+18,01046,2,,Pickpocketing,,1,,0.4489662242625131,True,2
+19,02188,1,,Lone Wolf,,2,,0.411902480274538,True,1
+20,01087,1,,Flashlight,,1,Hand,0.4093927507255477,True,1
+21,07025,2,,.25 Automatic,,8,Hand,0.3980946229115733,True,2
+22,09067,1,,"""I'll take that!""",,10,,0.3946559178254716,True,1
+23,10067,1,,Fox Mask,The Wise Trickster,11,Mask,0.3920662882473498,True,1
+24,01093,1,,Unexpected Courage,,1,,0.3915352956385886,True,2
+25,01052,2,,Sneak Attack,,1,,0.3818006929622113,True,2
+26,04028,1,,"""You handle this one!""",,4,,0.37836690455838995,True,2
+27,01092,2,,Manual Dexterity,,1,,0.3681138961892664,True,2
+28,03233,1,,"""Watch this!""",,3,,0.365595717681396,True,1
+29,05036,1,,Track Shoes,,5,,0.3580154880230606,True,1
+30,01088,1,,Emergency Cache,,1,,0.35686017139286935,True,1
+31,01051,1,,Backstab,,1,,0.3568418824277944,True,1
+32,04028,2,,"""You handle this one!""",,4,,0.3404847104127264,True,2
+33,09062,1,,Disguise,,10,,0.3381062193868429,True,1
+34,01087,2,,Flashlight,,1,Hand,0.33093713515925927,False,1
+35,01093,2,,Unexpected Courage,,1,,0.32582355220411735,True,2

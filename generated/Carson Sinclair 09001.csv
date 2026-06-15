@@ -1,0 +1,41 @@
+rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
+1,09002,1,,"""As you wish""",,10,,1.0,True,2
+2,09002,2,,"""As you wish""",,10,,1.0,True,2
+3,09003,1,,Selfless to a Fault,,10,,1.0,True,1
+4,01000,1,,Random Basic Weakness,,1,,0.8968242106471772,False,0
+5,60110,1,,Safeguard,,7,,0.887481272156533,True,2
+6,60118,1,,Stand Together,,7,,0.833498202184398,True,2
+7,60118,2,,Stand Together,,7,,0.8236237620718695,True,2
+8,05313,1,,Hallowed Mirror,,5,Accessory,0.7679972291147124,True,1
+9,60110,2,,Safeguard,,7,,0.6568959592699395,True,2
+10,01025,1,,Vicious Blow,,1,,0.6291697770924841,True,2
+11,01025,2,,Vicious Blow,,1,,0.606651613529127,True,2
+12,11020,1,,The Book of War,Sun Tzu's Legacy,12,Hand,0.5965036617056461,True,2
+13,11020,2,,The Book of War,Sun Tzu's Legacy,12,Hand,0.5965036617056461,True,2
+14,10027,1,,Task Force,,11,,0.4466925992437779,True,2
+15,08125,1,,In the Thick of It,,9,,0.3971007129408287,False,0
+16,02260,1,,Leadership,,2,,0.3656112149971095,True,2
+17,01088,1,,Emergency Cache,,1,,0.36506923116795875,True,1
+18,10027,2,,Task Force,,11,,0.33742294904726483,True,2
+19,09024,1,,Obsidian Bracelet,,10,Hand,0.3256392947434418,True,1
+20,10048,1,,Thorough Inquiry,,11,,0.3046672654338221,True,1
+21,01091,1,,Overpower,,1,,0.3009857583066997,True,2
+22,06155,1,,Tetsuo Mori,Too Noble for His Own Good,6,Ally,0.298996264797707,True,2
+23,09024,2,,Obsidian Bracelet,,10,Hand,0.29620784642620823,False,1
+24,02260,2,,Leadership,,2,,0.29138933323272714,True,2
+25,01065,1,,Ward of Protection,,1,,0.2865022129192386,False,0
+26,04150,1,,Take the Initiative,,4,,0.28139984796902484,True,2
+27,01065,2,,Ward of Protection,,1,,0.2782472150708227,False,0
+28,11088,1,,Contemplative,,12,,0.27781715095676823,False,0
+29,11088,2,,Contemplative,,12,,0.27781715095676823,False,0
+30,04150,2,,Take the Initiative,,4,,0.27006655917290096,True,2
+31,08020,1,,Toe to Toe,,9,,0.2660757250461647,True,1
+32,06111,1,,Daring,,6,,0.26172414082356094,True,2
+33,06155,2,,Tetsuo Mori,Too Noble for His Own Good,6,Ally,0.261157942718854,True,2
+34,01091,2,,Overpower,,1,,0.25126694365120344,True,2
+35,01090,1,,Perception,,1,,0.24842283251289238,True,1
+36,02184,1,,Prepared for the Worst,,2,,0.24825255883156655,True,1
+37,01021,1,,Guard Dog,,1,Ally,0.24673485972118625,True,1
+38,60106,1,,Flesh Ward,,7,Arcane,0.24487647352463507,True,1
+39,06111,2,,Daring,,6,,0.23921387087698168,True,2
+40,09028,1,,Motivational Speech,,10,,0.23298033805095472,True,1

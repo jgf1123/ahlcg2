@@ -1,0 +1,35 @@
+rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
+1,07008,1,,Obscure Studies,,8,,1.0,True,1
+2,07009,1,,Whispers from the Deep,,8,,1.0,True,1
+3,01039,1,,Deduction,,1,,0.9053271577765085,True,2
+4,01090,1,,Perception,,1,,0.901343197189576,True,2
+5,01039,2,,Deduction,,1,,0.8846426941971913,True,2
+6,01090,2,,Perception,,1,,0.8823853989453244,True,2
+7,01000,1,,Random Basic Weakness,,1,,0.7535077369722104,False,0
+8,06197,1,,Practice Makes Perfect,,6,,0.7049264136700322,True,2
+9,06197,2,,Practice Makes Perfect,,6,,0.678831644474333,True,2
+10,01030,1,,Magnifying Glass,,1,Hand,0.6137295292757841,True,2
+11,07032,1,,Promise of Power,,8,,0.6101523568020163,True,2
+12,08125,1,,In the Thick of It,,9,,0.5321998517338516,False,0
+13,03231,1,,Eureka!,,3,,0.5133979486445993,True,2
+14,60215,1,,Cryptic Writings,,7,,0.5113939723518895,True,2
+15,02227,1,,Inquiring Mind,,2,,0.5021458719579656,True,2
+16,07032,2,,Promise of Power,,8,,0.49434204704198687,True,2
+17,03231,2,,Eureka!,,3,,0.47879914230660675,True,2
+18,01030,2,,Magnifying Glass,,1,Hand,0.46835866126941894,True,2
+19,02227,2,,Inquiring Mind,,2,,0.45465077246315416,True,2
+20,01033,1,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.4374794009141848,True,1
+21,02022,1,,Shortcut,,2,,0.41288903973658486,True,2
+22,60215,2,,Cryptic Writings,,7,,0.4118197984749715,True,2
+23,06159,1,,Dream-Enhancing Serum,,6,Arcane,0.403313873712488,True,1
+24,02022,2,,Shortcut,,2,,0.39164667119876506,True,2
+25,04157,1,,Enraptured,,4,,0.3784868036997484,True,2
+26,02020,1,,Laboratory Assistant,,2,Ally,0.33900690876428896,True,1
+27,10043,1,,Mouse Mask,The Meek Watcher,11,Mask,0.3385606660497143,True,1
+28,04157,2,,Enraptured,,4,,0.33816522476103883,True,2
+29,01093,1,,Unexpected Courage,,1,,0.3197251729371782,True,1
+30,11040,1,,Correlate All Its Contents,,12,,0.28926500732064425,True,2
+31,11040,2,,Correlate All Its Contents,,12,,0.28926500732064425,True,2
+32,05110,1,,Crack the Case,,5,,0.2832709854244857,True,1
+33,05026,1,,Curiosity,,5,,0.2797758713530795,True,1
+34,06112,1,,Dream Diary,Untranslated,6,Hand,0.2720031229796119,True,1

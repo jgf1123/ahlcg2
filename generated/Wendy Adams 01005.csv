@@ -1,0 +1,42 @@
+rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
+1,01014,1,,Wendy's Amulet,,1,Accessory,0.8870326375486121,True,1
+2,01015,1,,Abandoned and Alone,,1,,0.8870326375486121,True,1
+3,01000,1,,Random Basic Weakness,,1,,0.7630325103709038,False,0
+4,01080,1,,Lucky!,,1,,0.6862017784724471,True,2
+5,01079,1,,"""Look what I found!""",,1,,0.5823369043222028,True,2
+6,01080,2,,Lucky!,,1,,0.568435502783362,True,2
+7,01051,1,,Backstab,,1,,0.5020601488882247,True,2
+8,03039,1,,Resourceful,,3,,0.43029994745776956,True,2
+9,01079,2,,"""Look what I found!""",,1,,0.41391503885923936,True,2
+10,05036,1,,Track Shoes,,5,,0.3964228635738273,True,1
+11,01088,1,,Emergency Cache,,1,,0.37892998483843693,True,2
+12,02033,1,,Peter Sylvestre,Big Man on Campus,2,Ally,0.37624234159666653,True,2
+13,03039,2,,Resourceful,,3,,0.37182940941297105,True,2
+14,01048,1,,Leo De Luca,The Louisiana Lion,1,Ally,0.35241831928048417,True,1
+15,01092,1,,Manual Dexterity,,1,,0.33863300991403594,True,1
+16,60305,1,,Lockpicks,,7,Hand,0.33757837923500744,True,1
+17,10067,1,,Fox Mask,The Wise Trickster,11,Mask,0.3322269804669481,True,1
+18,10065,1,,British Bull Dog,,11,Hand,0.32935408669969624,True,2
+19,08125,1,,In the Thick of It,,9,,0.3177234028999686,False,0
+20,10116,1,,Long Shot,,11,,0.3168388887934184,True,2
+21,10116,2,,Long Shot,,11,,0.3168388887934184,True,2
+22,01088,2,,Emergency Cache,,1,,0.3162270627692276,True,2
+23,01090,1,,Perception,,1,,0.3149663977957224,True,1
+24,01051,2,,Backstab,,1,,0.30592709736723267,True,2
+25,10065,2,,British Bull Dog,,11,Hand,0.3027714792676801,True,2
+26,04272,1,,Winging It,,4,,0.2903878861823284,True,1
+27,10111,1,,Sparrow Mask,The Wanderer's Companion,11,Mask,0.28862119367443134,False,0
+28,04201,1,,Take Heart,,4,,0.2855069298513,True,1
+29,01046,1,,Pickpocketing,,1,,0.28156301485548324,True,1
+30,01052,1,,Sneak Attack,,1,,0.2806231142537655,True,1
+31,60513,1,,A Test of Will,,7,,0.27771641286675264,True,1
+32,02033,2,,Peter Sylvestre,Big Man on Campus,2,Ally,0.2776499417353074,True,2
+33,01087,1,,Flashlight,,1,Hand,0.2768144767433118,True,1
+34,01089,1,,Guts,,1,,0.2716312757143643,True,1
+35,60305,2,,Lockpicks,,7,Hand,0.27112669872661244,False,1
+36,11052,1,,String Along,,12,,0.2708178323497691,False,0
+37,11052,2,,String Along,,12,,0.2708178323497691,False,0
+38,01093,1,,Unexpected Courage,,1,,0.26107121041630976,False,0
+39,01092,2,,Manual Dexterity,,1,,0.2588591054560114,False,1
+40,04201,2,,Take Heart,,4,,0.2579127316341201,False,1
+41,06203,1,,Moonstone,,6,Accessory,0.2559978582915017,True,1

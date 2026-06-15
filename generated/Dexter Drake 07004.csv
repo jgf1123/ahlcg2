@@ -1,0 +1,50 @@
+rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
+1,01000,1,,Random Basic Weakness,,1,,0.8378206452254147,False,0
+2,01060,1,,Shrivelling,,1,Arcane,0.62641351651528,True,2
+3,07013,1,,Occult Scraps,,8,,0.625811750647874,True,1
+4,07012,1,,Showmanship,,8,,0.6213673763918787,True,1
+5,01065,1,,Ward of Protection,,1,,0.6036976306658148,True,2
+6,98017,1,,Molly Maxwell,The Exotic Morgana,,Ally,0.574863404941461,True,1
+7,98018,1,,Yaztaroth,,,,0.558173186547943,False,0
+8,11068a,1,,The Great Work,Divide and Unite,12,,0.5488997739034617,True,1
+9,01063,1,,Arcane Initiate,,1,Ally,0.5281351115201306,True,1
+10,01065,2,,Ward of Protection,,1,,0.49971022933929066,True,2
+11,01060,2,,Shrivelling,,1,Arcane,0.4933208907209496,True,2
+12,07029,1,,Sword Cane,,8,Hand,0.4897554821680614,True,2
+13,01059,1,,Holy Rosary,,1,Accessory,0.4746687644015112,True,2
+14,03112,1,,David Renfield,Esteemed Eschatologist,3,Ally,0.46032768822318115,True,1
+15,05158,1,,Sixth Sense,,5,Arcane,0.4349887424298522,True,2
+16,10084,1,,Cat Mask,The Capricious Meddler,11,Mask,0.4168334685561721,True,1
+17,04109,1,,Arcane Research,,4,,0.41674573618679644,True,2
+18,05032,1,,Deny Existence,,5,,0.41488582654712597,True,2
+19,01048,1,,Leo De Luca,The Louisiana Lion,1,Ally,0.38946043499862165,True,1
+20,01089,1,,Guts,,1,,0.38117626228332013,True,2
+21,07029,2,,Sword Cane,,8,Hand,0.3522424755832222,True,2
+22,03112,2,,David Renfield,Esteemed Eschatologist,3,Ally,0.34828397298026226,False,1
+23,05112,1,,Sign Magick,,5,Hand,0.3375318752266545,True,2
+24,60408,1,,Clairvoyance,,7,Arcane,0.3343556114870201,True,1
+25,07028,1,,Faustian Bargain,,8,,0.3310821709052712,True,1
+26,06201,1,,Spectral Razor,,6,,0.32621882978330524,True,1
+27,08125,1,,In the Thick of It,,9,,0.32611649813011717,False,0
+28,01063,2,,Arcane Initiate,,1,Ally,0.3258197668810457,False,1
+29,05032,2,,Deny Existence,,5,,0.3236209135865541,True,2
+30,03033,1,,Uncage the Soul,,3,,0.3147068895854552,True,1
+31,02028,1,,Rite of Seeking,,2,Arcane,0.3084590954944847,True,1
+32,60407,1,,Azure Flame,,7,Arcane,0.30610077038895833,True,1
+33,01059,2,,Holy Rosary,,1,Accessory,0.30379241362723586,True,2
+34,02188,1,,Lone Wolf,,2,,0.3021422994707685,True,1
+35,04107,1,,Lucky Cigarette Case,,4,Accessory,0.29232604644263593,False,0
+36,04109,2,,Arcane Research,,4,,0.2799919800152704,True,2
+37,01088,1,,Emergency Cache,,1,,0.2795492951930523,True,1
+38,07032,1,,Promise of Power,,8,,0.27860049223796696,True,1
+39,01089,2,,Guts,,1,,0.27065751265464966,True,2
+40,05158,2,,Sixth Sense,,5,Arcane,0.26711312700328993,True,2
+41,03233,1,,"""Watch this!""",,3,,0.2598323332506059,False,0
+42,06201,2,,Spectral Razor,,6,,0.2593985132441866,False,1
+43,08059,1,,Down the Rabbit Hole,,9,,0.25862801530675983,False,0
+44,02111,1,,Delve Too Deep,,2,,0.24438945496720074,False,0
+45,02024,1,,Liquid Courage,,2,,0.23219295769195086,False,0
+46,07032,2,,Promise of Power,,8,,0.2315602362884085,False,1
+47,02229,1,,Quick Thinking,,2,,0.2310526771654873,False,0
+48,03033,2,,Uncage the Soul,,3,,0.2297984777646961,False,1
+49,05112,2,,Sign Magick,,5,Hand,0.22570263116220446,True,2

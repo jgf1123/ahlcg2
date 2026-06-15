@@ -1,0 +1,51 @@
+rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
+1,06006,1,,Becky,Custom Marlin Model 1894,6,Hand x2,1.0,True,1
+2,06007,1,,Rookie Mistake,,6,,0.999677708444964,True,1
+3,01000,1,,Random Basic Weakness,,1,,0.767483967743383,False,0
+4,01025,1,,Vicious Blow,,1,,0.6331395342299397,True,2
+5,01021,1,,Guard Dog,,1,Ally,0.6006611299087674,True,2
+6,01025,2,,Vicious Blow,,1,,0.5958591735138649,True,2
+7,03114,1,,Cherished Keepsake,,3,Accessory,0.5663634929883539,True,2
+8,02184,1,,Prepared for the Worst,,2,,0.5146747714276438,True,2
+9,06155,1,,Tetsuo Mori,Too Noble for His Own Good,6,Ally,0.5033853074896707,True,2
+10,03114,2,,Cherished Keepsake,,3,Accessory,0.5014468990930864,True,2
+11,01072,1,,Leather Coat,,1,Body,0.46274863658215126,True,2
+12,01021,2,,Guard Dog,,1,Ally,0.45736761907103896,True,2
+13,01018,1,,Beat Cop,,1,Ally,0.4266839297906559,True,1
+14,06155,2,,Tetsuo Mori,Too Noble for His Own Good,6,Ally,0.40459249705050065,True,2
+15,10023,1,,Wolf Mask,The Moon's Sire,11,Mask,0.4036997246778825,True,1
+16,01080,1,,Lucky!,,1,,0.4017902687327101,True,2
+17,08125,1,,In the Thick of It,,9,,0.3887859274016968,False,0
+18,01091,1,,Overpower,,1,,0.373465948035274,True,2
+19,01072,2,,Leather Coat,,1,Body,0.3669796634906673,True,2
+20,01080,2,,Lucky!,,1,,0.3509102626731285,True,2
+21,02184,2,,Prepared for the Worst,,2,,0.34776206028042717,True,2
+22,60110,1,,Safeguard,,7,,0.3398085241650282,True,1
+23,01091,2,,Overpower,,1,,0.32791755402343936,True,2
+24,01088,1,,Emergency Cache,,1,,0.32619056148909964,True,2
+25,11023,1,,Primed for Action,,12,,0.2753492410130926,True,1
+26,05109,1,,Something Worth Fighting For,,5,,0.26963879834138915,True,1
+27,01018,2,,Beat Cop,,1,Ally,0.2651160623125205,False,1
+28,60107,1,,Grete Wagner,The Purifier,7,Ally,0.25409154926822214,False,0
+29,01088,2,,Emergency Cache,,1,,0.24877223083024447,True,2
+30,60115,1,,Glory,,7,,0.24320597899887092,True,1
+31,04017,1,,Survival Knife,,4,Hand,0.24058867126805192,True,2
+32,03021,1,,True Grit,,3,,0.2293454621677484,True,1
+33,02147,1,,Bandolier,,2,Body,0.22666772915538574,False,0
+34,04103,1,,Scene of the Crime,,4,,0.21844099645077517,True,1
+35,04201,1,,Take Heart,,4,,0.21526237112374413,False,0
+36,08020,1,,Toe to Toe,,9,,0.21477440006488613,False,0
+37,06111,1,,Daring,,6,,0.20832334341838238,False,0
+38,09028,1,,Motivational Speech,,10,,0.19242009811337976,False,0
+39,04103,2,,Scene of the Crime,,4,,0.1899780769496603,False,1
+40,10019,1,,Ancestral Token,,11,Accessory,0.18694405788730953,False,0
+41,11020,1,,The Book of War,Sun Tzu's Legacy,12,Hand,0.18356616067539508,True,2
+42,11020,2,,The Book of War,Sun Tzu's Legacy,12,Hand,0.18356616067539508,True,2
+43,11023,2,,Primed for Action,,12,,0.18356616067539508,False,1
+44,60115,2,,Glory,,7,,0.17978362621108346,False,1
+45,08020,2,,Toe to Toe,,9,,0.17766353987191727,False,0
+46,04201,2,,Take Heart,,4,,0.1776341532205631,False,0
+47,06111,2,,Daring,,6,,0.1750701454933549,False,0
+48,06020,1,,Solemn Vow,,6,,0.1697973233049052,False,0
+49,09028,2,,Motivational Speech,,10,,0.16689975411151498,False,0
+50,04017,2,,Survival Knife,,4,Hand,0.15808667770537277,True,2
