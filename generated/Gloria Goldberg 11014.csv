@@ -1,41 +1,40 @@
 rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
-1,11015,1,,Psychic Sensitivity,,12,,0.9694479785617821,True,3
-2,11015,2,,Psychic Sensitivity,,12,,0.9694479785617821,True,3
-3,11015,3,,Psychic Sensitivity,,12,,0.9694479785617821,True,3
-4,11016,1,,Prophecy of the End,,12,,0.9694479785617821,True,3
-5,11016,2,,Prophecy of the End,,12,,0.9694479785617821,True,3
-6,11016,3,,Prophecy of the End,,12,,0.9694479785617821,True,3
-7,01000,1,,Random Basic Weakness,,1,,0.83680948415818,False,0
-8,02232,1,,Alyssa Graham,Speaker to the Dead,2,Ally,0.8258065788884872,True,2
-9,98020,1,,Ruth Westmacott,Dark Revelations,,Ally,0.800529770816538,True,1
-10,98021,1,,Liber Omnium Finium,,,,0.7950017275135323,False,0
-11,01061,1,,Scrying,,1,Arcane,0.6988591366616683,True,2
-12,02232,2,,Alyssa Graham,Speaker to the Dead,2,Ally,0.6975345553722796,True,2
-13,01065,1,,Ward of Protection,,1,,0.6835360527533082,True,2
-14,01065,2,,Ward of Protection,,1,,0.6275908239154394,True,2
-15,01061,2,,Scrying,,1,Arcane,0.5823198830637241,True,2
-16,05032,1,,Deny Existence,,5,,0.5370310468421007,True,2
-17,05032,2,,Deny Existence,,5,,0.47603856452757604,True,2
-18,60415,1,,Parallel Fates,,7,,0.46571290630125173,True,2
-19,01060,1,,Shrivelling,,1,Arcane,0.4622339321618863,True,2
-20,03269,1,,St. Hubert's Key,Cleansing Fire,3,Accessory,0.44068228005644544,True,2
-21,05116,1,,Scroll of Secrets,,5,Hand,0.42371791472866555,True,2
-22,06201,1,,Spectral Razor,,6,,0.4044296398159397,True,1
-23,10084,1,,Cat Mask,The Capricious Meddler,11,Mask,0.39576384494747785,True,1
-24,08125,1,,In the Thick of It,,9,,0.39427484230209164,False,0
-25,03269,2,,St. Hubert's Key,Cleansing Fire,3,Accessory,0.3798310949964672,True,2
-26,05116,2,,Scroll of Secrets,,5,Hand,0.375601541824943,True,2
-27,07032,1,,Promise of Power,,8,,0.3695298280169095,True,2
-28,01089,1,,Guts,,1,,0.3665904945868913,True,2
-29,07029,1,,Sword Cane,,8,Hand,0.35556966804424095,True,2
-30,07032,2,,Promise of Power,,8,,0.35485153954899507,True,2
-31,60415,2,,Parallel Fates,,7,,0.33444338449495836,True,2
-32,01060,2,,Shrivelling,,1,Arcane,0.33427862321647883,True,2
-33,01089,2,,Guts,,1,,0.32598227350362835,True,2
-34,01090,1,,Perception,,1,,0.31900051067775087,True,2
-35,01064,1,,Drawn to the Flame,,1,,0.3087596534546205,True,1
-36,06117,1,,Read the Signs,,6,,0.2833417061364113,True,1
-37,01039,1,,Deduction,,1,,0.2813809772185403,True,1
-38,04109,1,,Arcane Research,,4,,0.27790865110184176,True,1
-39,01090,2,,Perception,,1,,0.27178760613259495,True,2
-40,07029,2,,Sword Cane,,8,Hand,0.2668573668611945,True,2
+1,11015,1,,Psychic Sensitivity,,12,,0.9692596186436341,True,3
+2,11015,2,,Psychic Sensitivity,,12,,0.9692596186436341,True,3
+3,11015,3,,Psychic Sensitivity,,12,,0.9692596186436341,True,3
+4,11016,1,,Prophecy of the End,,12,,0.9692596186436341,True,3
+5,11016,2,,Prophecy of the End,,12,,0.9692596186436341,True,3
+6,11016,3,,Prophecy of the End,,12,,0.9692596186436341,True,3
+7,01000,1,,Random Basic Weakness,,1,,0.8352925328037455,False,0
+8,02232,1,,Alyssa Graham,Speaker to the Dead,2,Ally,0.8344531608566695,True,2
+9,98020,1,,Ruth Westmacott,Dark Revelations,,Ally,0.8005306635622702,True,1
+10,98021,1,,Liber Omnium Finium,,,,0.7950021738863983,False,0
+11,02232,2,,Alyssa Graham,Speaker to the Dead,2,Ally,0.7036671995965506,True,2
+12,01061,1,,Scrying,,1,Arcane,0.7031908900188133,True,2
+13,01065,1,,Ward of Protection,,1,,0.6787196469141069,True,2
+14,01065,2,,Ward of Protection,,1,,0.6223887497206747,True,2
+15,01061,2,,Scrying,,1,Arcane,0.5739925196535344,True,2
+16,05032,1,,Deny Existence,,5,,0.534985525917999,True,2
+17,01060,1,,Shrivelling,,1,Arcane,0.4749028005172421,True,2
+18,05032,2,,Deny Existence,,5,,0.47353160563072283,True,2
+19,60415,1,,Parallel Fates,,7,,0.4727624345293192,True,2
+20,10084,1,,Cat Mask,The Capricious Meddler,11,Mask,0.436382584709471,True,1
+21,03269,1,,St. Hubert's Key,Cleansing Fire,3,Accessory,0.43430686110854105,True,2
+22,05116,1,,Scroll of Secrets,,5,Hand,0.42053870350985123,True,2
+23,06201,1,,Spectral Razor,,6,,0.41018463686089995,True,1
+24,07032,1,,Promise of Power,,8,,0.3886958568026644,True,2
+25,08125,1,,In the Thick of It,,9,,0.3860320865261102,False,0
+26,03269,2,,St. Hubert's Key,Cleansing Fire,3,Accessory,0.3753676801879508,True,2
+27,07032,2,,Promise of Power,,8,,0.37328079385225865,True,2
+28,05116,2,,Scroll of Secrets,,5,Hand,0.3702875398214554,True,2
+29,01089,1,,Guts,,1,,0.3582778976842177,True,2
+30,07029,1,,Sword Cane,,8,Hand,0.35277249682143963,True,1
+31,01090,1,,Perception,,1,,0.33554516764747605,True,2
+32,01060,2,,Shrivelling,,1,Arcane,0.3351599268737142,True,2
+33,60415,2,,Parallel Fates,,7,,0.32762127991278944,True,2
+34,01089,2,,Guts,,1,,0.31714733206531126,True,2
+35,01064,1,,Drawn to the Flame,,1,,0.3169978510684697,True,1
+36,01039,1,,Deduction,,1,,0.3026775865630547,True,1
+37,01090,2,,Perception,,1,,0.28769578080867647,True,2
+38,06117,1,,Read the Signs,,6,,0.27786466340665056,True,1
+39,10049,1,,"""Throw the Book at Them!""",,11,,0.27646666225731004,True,1

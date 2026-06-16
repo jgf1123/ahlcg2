@@ -120,6 +120,137 @@ def card_faction_codes(card: dict[str, Any]) -> set[str]:
     return {code for code in factions if code}
 
 
+def deckbuilding_level(card: dict[str, Any]) -> int:
+    """Printed XP level for deck_options level ranges (not taboo purchase cost)."""
+    xp = card.get("xp")
+    return 0 if xp is None else int(xp)
+
+
+def is_scenario_reward_card(card: dict[str, Any]) -> bool:
+    """Campaign/scenario reward (ArkhamDB star); legal in deck, no deck size."""
+    if card.get("subtype_code") in ("weakness", "basicweakness"):
+        return False
+    if not card.get("encounter_code"):
+        return False
+    return card.get("type_code") in ("asset", "event")
+
+
+def is_illegal_encounter_card_in_player_deck(card: dict[str, Any]) -> bool:
+    """Encounter cards that must not appear in a player deck (e.g. locations)."""
+    if not card.get("encounter_code"):
+        return False
+    if card.get("subtype_code") in ("weakness", "basicweakness"):
+        return False
+    return card.get("type_code") in ("location", "enemy")
+
+
+def counts_toward_player_deck_size(card: dict[str, Any]) -> bool:
+    """True when a card copy counts toward deck_requirements.size."""
+    if card.get("permanent"):
+        return False
+    if card.get("subtype_code") in ("basicweakness", "weakness"):
+        return False
+    if is_scenario_reward_card(card):
+        return False
+    return True
+
+
+CLASS_FACTIONS = ["guardian", "seeker", "rogue", "mystic", "survivor"]
+
+DECK_SIZE_DELTA_RE = re.compile(
+    r"(?:you get \+(\d+) deck size|increase your deck size by (\d+)|"
+    r"reduce your deck size by (\d+))",
+    re.IGNORECASE,
+)
+
+DECK_OPTION_GAIN_RE = re.compile(
+    r"Deckbuilding Options gain[s]?:\s*\"([^\"]+)\"",
+    re.IGNORECASE,
+)
+
+
+def permanent_deck_size_delta(card: dict[str, Any], copies: int) -> int:
+    """Net deck size change from a permanent card's rules text."""
+    if not card.get("permanent") or copies <= 0:
+        return 0
+    delta = 0
+    for match in DECK_SIZE_DELTA_RE.finditer(get_card_text(card)):
+        if match.group(1):
+            delta += int(match.group(1)) * copies
+        if match.group(2):
+            delta += int(match.group(2)) * copies
+        if match.group(3):
+            delta -= int(match.group(3)) * copies
+    return delta
+
+
+def effective_deck_size_from_slots(
+    slots: dict[str, int],
+    cards: dict[str, dict[str, Any]],
+    *,
+    base_size: int = 30,
+) -> int:
+    size = base_size
+    for cid, copies in slots.items():
+        card = cards.get(cid)
+        if card is None:
+            continue
+        size += permanent_deck_size_delta(card, copies)
+    return size
+
+
+def parse_granted_deck_option(grant_text: str) -> dict[str, Any] | None:
+    """Parse a permanent-card deckbuilding grant into a deck_options block."""
+    text = grant_text.strip().lower()
+    if "one other level 0 card from any class" in text:
+        return {
+            "faction": list(CLASS_FACTIONS),
+            "level": {"min": 0, "max": 0},
+        }
+    if (
+        "relic" in text
+        and "charm" in text
+        and "asset" in text
+        and "level 0-3" in text
+    ):
+        return {
+            "faction": list(CLASS_FACTIONS),
+            "level": {"min": 0, "max": 3},
+            "type": ["asset"],
+            "trait": ["Relic", "Charm"],
+        }
+    return None
+
+
+def permanent_granted_deck_options(
+    slots: dict[str, int],
+    cards: dict[str, dict[str, Any]],
+) -> list[dict[str, Any]]:
+    """One deck_options entry per permanent copy that grants deckbuilding."""
+    granted: list[dict[str, Any]] = []
+    for cid, copies in slots.items():
+        if copies <= 0:
+            continue
+        card = cards.get(cid)
+        if card is None or not card.get("permanent"):
+            continue
+        for match in DECK_OPTION_GAIN_RE.finditer(get_card_text(card)):
+            parsed = parse_granted_deck_option(match.group(1))
+            if parsed is None:
+                continue
+            for _ in range(copies):
+                granted.append({**parsed, "limit": 1})
+    return granted
+
+
+def merge_deck_options_with_permanents(
+    deck_options: list[dict[str, Any]],
+    slots: dict[str, int],
+    cards: dict[str, dict[str, Any]],
+) -> list[dict[str, Any]]:
+    return list(deck_options) + permanent_granted_deck_options(slots, cards)
+
+
 def _option_text_patterns(option: dict[str, Any]) -> list[str]:
     text = option.get("text")
     if text is None:
@@ -266,7 +397,8 @@ class DeckOptionsValidator:
         if level is not None:
             min_level = int(level.get("min", 0))
             max_level = int(level.get("max", 5))
-            if xp < min_level or xp > max_level:
+            card_level = deckbuilding_level(card)
+            if card_level < min_level or card_level > max_level:
                 return False
 
         types = option.get("type")
@@ -383,7 +515,8 @@ def _card_matches_option_criteria(
     if level is not None:
         min_level = int(level.get("min", 0))
         max_level = int(level.get("max", 5))
-        if xp < min_level or xp > max_level:
+        card_level = deckbuilding_level(card)
+        if card_level < min_level or card_level > max_level:
             return False
 
     types = option.get("type")

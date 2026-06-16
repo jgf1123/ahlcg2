@@ -77,6 +77,151 @@ class DeckOptionsValidatorTests(unittest.TestCase):
         self.assertTrue(validator.is_card_allowed(rogue_tactic, 0))
         self.assertFalse(validator.is_card_allowed(rogue_event, 0))
 
+    def test_deckbuilding_level_uses_printed_xp_not_taboo_cost(self):
+        options = [
+            {"faction": ["rogue"], "level": {"min": 0, "max": 2}},
+            {"faction": ["survivor"], "level": {"min": 0, "max": 2}},
+        ]
+        validator = DeckOptionsValidator.from_options(options)
+        geas = _card(
+            "07265",
+            name="Geas",
+            type_code="asset",
+            faction_code="rogue",
+            xp=2,
+            exceptional=True,
+        )
+        drawing_thin = _card(
+            "05159",
+            name="Drawing Thin",
+            type_code="asset",
+            faction_code="survivor",
+            xp=0,
+        )
+        self.assertTrue(validator.is_card_allowed(geas, 4))
+        self.assertTrue(validator.is_card_allowed(drawing_thin, 3))
+
+    def test_side_story_reward_asset_detection(self):
+        from arkham_deck_options import (
+            counts_toward_player_deck_size,
+            is_scenario_reward_card,
+        )
+
+        reward = _card(
+            "81030",
+            name="Monstrous Transformation",
+            type_code="asset",
+            encounter_code="rougarou",
+        )
+        eoe_event = _card(
+            "08733",
+            name="Dyer's Sketches",
+            type_code="event",
+            encounter_code="memorials_of_the_lost",
+        )
+        weakness = _card(
+            "81029",
+            name="Curse of the Rougarou",
+            type_code="treachery",
+            subtype_code="weakness",
+            encounter_code="rougarou",
+        )
+        normal = _card("01017", name="Physical Training", type_code="asset")
+        from arkham_deck_options import is_scenario_reward_card
+
+        self.assertTrue(is_scenario_reward_card(reward))
+        self.assertTrue(is_scenario_reward_card(eoe_event))
+        self.assertFalse(is_scenario_reward_card(weakness))
+        self.assertFalse(counts_toward_player_deck_size(reward))
+        self.assertFalse(counts_toward_player_deck_size(eoe_event))
+        self.assertFalse(counts_toward_player_deck_size(weakness))
+        self.assertTrue(counts_toward_player_deck_size(normal))
+
+    def test_versatile_grants_off_class_level_zero_slot(self):
+        from arkham_deck_options import (
+            merge_deck_options_with_permanents,
+            parse_granted_deck_option,
+            permanent_deck_size_delta,
+        )
+
+        versatile = _card(
+            "06167",
+            name="Versatile",
+            type_code="asset",
+            faction_code="neutral",
+            permanent=True,
+            real_text=(
+                "Permanent.\nYou get +5 Deck Size.\n"
+                "Your investigator's Deckbuilding Options gain: "
+                '"one other level 0 card from any class."'
+            ),
+        )
+        hawk = _card(
+            "05154",
+            name="Hawk-Eye Folding Camera",
+            type_code="asset",
+            faction_code="seeker",
+        )
+        self.assertEqual(permanent_deck_size_delta(versatile, 1), 5)
+        opt = parse_granted_deck_option(
+            "one other level 0 card from any class "
+            "([guardian], [seeker], [rogue], [mystic], or [survivor])."
+        )
+        self.assertIsNotNone(opt)
+        charlie_base = [
+            {"faction": ["guardian", "neutral"], "level": {"min": 0, "max": 5}},
+            {"faction": ["mystic"], "level": {"min": 0, "max": 2}, "limit": 15},
+        ]
+        merged = merge_deck_options_with_permanents(
+            charlie_base, {"06167": 1}, {"06167": versatile}
+        )
+        validator = DeckOptionsValidator.from_options(merged)
+        self.assertTrue(validator.is_card_allowed(hawk, 0))
+
+    def test_forced_learning_increases_deck_size(self):
+        from arkham_deck_options import (
+            effective_deck_size_from_slots,
+            permanent_deck_size_delta,
+        )
+
+        forced = _card(
+            "08031",
+            name="Forced Learning",
+            type_code="asset",
+            faction_code="seeker",
+            permanent=True,
+            real_text="Permanent.\nIncrease your deck size by 15.",
+        )
+        self.assertEqual(permanent_deck_size_delta(forced, 1), 15)
+        self.assertEqual(
+            effective_deck_size_from_slots({"08031": 1}, {"08031": forced}),
+            45,
+        )
+
+    def test_illegal_encounter_location_not_scenario_reward(self):
+        from arkham_deck_options import (
+            counts_toward_player_deck_size,
+            is_illegal_encounter_card_in_player_deck,
+            is_scenario_reward_card,
+        )
+
+        marsh = _card(
+            "07063",
+            name="Marsh Refinery",
+            type_code="location",
+            encounter_code="the_vanishing_of_elina_harper",
+        )
+        enemy = _card(
+            "99999",
+            name="Hunting Deep One",
+            type_code="enemy",
+            encounter_code="the_devourer_below",
+        )
+        self.assertTrue(is_illegal_encounter_card_in_player_deck(marsh))
+        self.assertTrue(is_illegal_encounter_card_in_player_deck(enemy))
+        self.assertFalse(is_scenario_reward_card(enemy))
+        self.assertTrue(counts_toward_player_deck_size(enemy))
+
     def test_preston_excludes_illicit(self):
         options = [
             {"not": True, "trait": ["illicit"]},

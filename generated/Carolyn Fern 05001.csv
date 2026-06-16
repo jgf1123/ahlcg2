@@ -1,48 +1,51 @@
 rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
-1,05008,1,,Rational Thought,,5,,0.907993254263904,True,1
-2,05007,1,,Hypnotic Therapy,,5,,0.895080713181856,True,1
-3,01000,1,,Random Basic Weakness,,1,,0.7732957994062021,False,0
-4,08125,1,,In the Thick of It,,9,,0.614728601990201,False,0
-5,05313,1,,Hallowed Mirror,,5,Accessory,0.5690824975614199,True,1
-6,03269,1,,St. Hubert's Key,Cleansing Fire,3,Accessory,0.4523117523590391,True,1
-7,01039,1,,Deduction,,1,,0.4474576467717106,True,2
-8,01030,1,,Magnifying Glass,,1,Hand,0.4404733423742932,True,2
-9,01065,1,,Ward of Protection,,1,,0.4204432655395189,True,2
-10,01039,2,,Deduction,,1,,0.404949199202046,True,2
-11,01019,1,,First Aid,,1,,0.3748221974909005,True,1
-12,02033,1,,Peter Sylvestre,Big Man on Campus,2,Ally,0.3656360847689895,False,0
-13,01090,1,,Perception,,1,,0.36169802939645895,True,2
-14,01065,2,,Ward of Protection,,1,,0.3558650363978849,True,2
-15,01030,2,,Magnifying Glass,,1,Hand,0.3430229595459701,True,2
-16,03191,1,,Logical Reasoning,,3,,0.3423840397019334,True,2
-17,01024,1,,Dynamite Blast,,1,,0.34163906725876914,True,1
-18,11024,1,,Ready for Anything,,12,,0.3321277878239904,True,2
-19,11024,2,,Ready for Anything,,12,,0.3321277878239904,True,2
-20,01090,2,,Perception,,1,,0.3265465198500866,True,2
-21,03228,1,,Inspiring Presence,,3,,0.3177098163056915,True,2
-22,03269,2,,St. Hubert's Key,Cleansing Fire,3,Accessory,0.3175041365751219,False,1
-23,01088,1,,Emergency Cache,,1,,0.31676048769480747,True,1
-24,02033,2,,Peter Sylvestre,Big Man on Campus,2,Ally,0.31171090242370775,False,0
-25,60118,1,,Stand Together,,7,,0.3044240470350969,True,2
-26,02024,1,,Liquid Courage,,2,,0.30060175473576456,False,0
-27,10027,1,,Task Force,,11,,0.29276778559275507,True,1
-28,60110,1,,Safeguard,,7,,0.27741676710222984,True,1
-29,08020,1,,Toe to Toe,,9,,0.27512986178977517,True,1
-30,05151,1,,Alice Luxley,Fearless Flatfoot,5,Ally,0.27110394815975747,True,2
-31,03191,2,,Logical Reasoning,,3,,0.2668379618431173,True,2
-32,03228,2,,Inspiring Presence,,3,,0.2605268676034121,True,2
-33,60118,2,,Stand Together,,7,,0.2580787402336514,True,2
-34,01067,1,,Fearless,,1,,0.2566852936549678,True,1
-35,01019,2,,First Aid,,1,,0.25437297893344046,False,1
-36,01058,1,,Forbidden Knowledge,,1,,0.2474516476973521,False,0
-37,01089,1,,Guts,,1,,0.23632901768185552,False,0
-38,10027,2,,Task Force,,11,,0.2348602162895049,False,1
-39,04106,1,,Shrewd Analysis,,4,,0.23059430195010902,False,0
-40,11020,1,,The Book of War,Sun Tzu's Legacy,12,Hand,0.22106690777576854,True,1
-41,02030,1,,Clarity of Mind,,2,Arcane,0.21710247825707318,True,1
-42,01088,2,,Emergency Cache,,1,,0.21481792802152885,False,1
-43,08033,1,,Archive of Conduits,Unidentified,9,Hand,0.21144626896272456,False,0
-44,02024,2,,Liquid Courage,,2,,0.20770049830632276,False,0
-45,03231,1,,Eureka!,,3,,0.20758979737969052,False,0
-46,98011,1,,Foolishness,Foolish Cat of Ulthar,,Ally,0.20639352072519299,True,1
-47,05151,2,,Alice Luxley,Fearless Flatfoot,5,Ally,0.20372568187927748,True,2
+1,05008,1,,Rational Thought,,5,,0.9034606796874791,True,1
+2,05007,1,,Hypnotic Therapy,,5,,0.8905687269409648,True,1
+3,01000,1,,Random Basic Weakness,,1,,0.7777008894562794,False,0
+4,08125,1,,In the Thick of It,,9,,0.611873725082964,False,0
+5,05313,1,,Hallowed Mirror,,5,Accessory,0.5741290328198299,True,1
+6,03269,1,,St. Hubert's Key,Cleansing Fire,3,Accessory,0.45649235818929335,True,1
+7,01039,1,,Deduction,,1,,0.44864228821433433,True,2
+8,01030,1,,Magnifying Glass,,1,Hand,0.44461851737436453,True,2
+9,01065,1,,Ward of Protection,,1,,0.42033412090352573,True,2
+10,01039,2,,Deduction,,1,,0.40562645041473694,True,2
+11,11024,1,,Ready for Anything,,12,,0.37921675440126634,True,2
+12,11024,2,,Ready for Anything,,12,,0.37921675440126634,True,2
+13,01019,1,,First Aid,,1,,0.3787467745487068,True,2
+14,02033,1,,Peter Sylvestre,Big Man on Campus,2,Ally,0.36743120588205164,False,0
+15,01090,1,,Perception,,1,,0.3567876092719668,True,2
+16,01065,2,,Ward of Protection,,1,,0.3559562272673854,True,2
+17,01030,2,,Magnifying Glass,,1,Hand,0.34741136552990054,True,2
+18,03191,1,,Logical Reasoning,,3,,0.3452876105760216,True,2
+19,01024,1,,Dynamite Blast,,1,,0.3418648973020202,True,1
+20,03269,2,,St. Hubert's Key,Cleansing Fire,3,Accessory,0.32132049113611105,False,1
+21,01090,2,,Perception,,1,,0.3212895136637239,True,2
+22,03228,1,,Inspiring Presence,,3,,0.31785627110936326,True,2
+23,02033,2,,Peter Sylvestre,Big Man on Campus,2,Ally,0.31328152418028077,False,0
+24,01088,1,,Emergency Cache,,1,,0.31297633373691924,True,1
+25,60118,1,,Stand Together,,7,,0.3014133780908547,True,1
+26,02024,1,,Liquid Courage,,2,,0.29432268322449945,False,0
+27,08020,1,,Toe to Toe,,9,,0.2772157969634883,True,1
+28,03191,2,,Logical Reasoning,,3,,0.26943090748330206,True,2
+29,60110,1,,Safeguard,,7,,0.26780977610217865,True,1
+30,10027,1,,Task Force,,11,,0.26713359418358673,True,1
+31,05151,1,,Alice Luxley,Fearless Flatfoot,5,Ally,0.26702923780736276,True,2
+32,03228,2,,Inspiring Presence,,3,,0.26178863231944355,True,2
+33,01019,2,,First Aid,,1,,0.25756805500462754,True,2
+34,01067,1,,Fearless,,1,,0.25686470571666903,True,1
+35,60118,2,,Stand Together,,7,,0.25419468759226427,False,1
+36,01058,1,,Forbidden Knowledge,,1,,0.25045149180494913,False,0
+37,01089,1,,Guts,,1,,0.2342246766378849,False,0
+38,04106,1,,Shrewd Analysis,,4,,0.22626783155002808,False,0
+39,01088,2,,Emergency Cache,,1,,0.21889278420907363,False,1
+40,02030,1,,Clarity of Mind,,2,Arcane,0.21673758271253735,True,1
+41,10027,2,,Task Force,,11,,0.21524506676632144,False,1
+42,08020,2,,Toe to Toe,,9,,0.2129997358870686,False,1
+43,11020,1,,The Book of War,Sun Tzu's Legacy,12,Hand,0.2114597963517043,True,1
+44,98011,1,,Foolishness,Foolish Cat of Ulthar,,Ally,0.20956451451267147,True,1
+45,03231,1,,Eureka!,,3,,0.20312579869580985,False,0
+46,98012,1,,To Fight the Black Wind,,,,0.20301116827739957,False,0
+47,02117,1,,Painkillers,,2,,0.2014515489029721,False,0
+48,02024,2,,Liquid Courage,,2,,0.20096143033424088,False,0
+49,01093,1,,Unexpected Courage,,1,,0.20052155879201625,False,0
+50,05151,2,,Alice Luxley,Fearless Flatfoot,5,Ally,0.199855085311873,True,2

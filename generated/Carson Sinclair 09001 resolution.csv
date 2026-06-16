@@ -1,4 +1,4 @@
 resolution_kind,option_name,choice,weighted_total,weight_share,selected
-faction_select,Secondary Class,seeker,1.3950414298728906,0.46241596744390046,True
-faction_select,Secondary Class,survivor,1.1279785403380906,0.37389232808227213,False
-faction_select,Secondary Class,mystic,0.49383396237328825,0.1636917044738274,False
+faction_select,Secondary Class,seeker,1.3751120349148196,0.4663937632815881,True
+faction_select,Secondary Class,survivor,1.1036892726034708,0.37433589429310565,False
+faction_select,Secondary Class,mystic,0.46959153813086396,0.15927034242530627,False

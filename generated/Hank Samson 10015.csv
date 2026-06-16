@@ -1,60 +1,45 @@
 rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
 1,10017,1,,Stouthearted,,11,,1.0,True,1
 2,10018,1,,"""Where's Pa?""",,11,,1.0,True,1
-3,01000,1,,Random Basic Weakness,,1,,0.9004289047177562,False,0
-4,01091,1,,Overpower,,1,,0.7524394398396186,True,2
-5,04201,1,,Take Heart,,4,,0.7371250205899065,True,2
-6,01091,2,,Overpower,,1,,0.7283798749314329,True,2
-7,04201,2,,Take Heart,,4,,0.6471537606827082,True,2
-8,03039,1,,Resourceful,,3,,0.6243817166227946,True,2
-9,03039,2,,Resourceful,,3,,0.5750553017163548,True,2
-10,10116,1,,Long Shot,,11,,0.535103071019213,True,2
-11,01080,1,,Lucky!,,1,,0.5262959064369762,True,2
-12,10116,2,,Long Shot,,11,,0.5131748715342409,True,2
-13,08125,1,,In the Thick of It,,9,,0.48831991270649644,False,0
-14,60115,1,,Glory,,7,,0.4834409346968776,True,2
-15,60115,2,,Glory,,7,,0.4834409346968776,True,2
-16,03114,1,,Cherished Keepsake,,3,Accessory,0.45944813191874134,True,1
-17,01080,2,,Lucky!,,1,,0.4493232861898354,True,2
-18,10111,1,,Sparrow Mask,The Wanderer's Companion,11,Mask,0.4091440491460628,True,1
-19,11085,1,,Profane Idol,,12,Accessory,0.3820500245218245,True,1
-20,11085,2,,Profane Idol,,12,Accessory,0.3820500245218245,False,1
-21,02229,1,,Quick Thinking,,2,,0.36978635136390087,True,2
-22,03114,2,,Cherished Keepsake,,3,Accessory,0.3682124445313816,False,1
-23,04111,1,,Perseverance,,4,,0.360813892295992,True,2
-24,02229,2,,Quick Thinking,,2,,0.3553794673002953,True,2
-25,01074,1,,Baseball Bat,,1,Hand x2,0.35431696223144055,True,1
-26,10110,1,,Pitchfork,,11,Hand x2,0.3495349856801452,True,1
-27,05114,1,,Meat Cleaver,,5,Hand,0.34439954578372517,True,2
-28,05114,2,,Meat Cleaver,,5,Hand,0.34439954578372517,True,2
-29,06111,1,,Daring,,6,,0.3414362357031246,True,2
-30,06111,2,,Daring,,6,,0.3414362357031246,True,2
-31,04111,2,,Perseverance,,4,,0.3355853832548986,True,2
-32,10110,2,,Pitchfork,,11,Hand x2,0.3341487435923304,False,1
-33,02033,1,,Peter Sylvestre,Big Man on Campus,2,Ally,0.33291721610611685,True,2
-34,02033,2,,Peter Sylvestre,Big Man on Campus,2,Ally,0.32711322358645606,True,2
-35,01074,2,,Baseball Bat,,1,Hand x2,0.31384184724193714,False,1
-36,06165,1,,Scrounge for Supplies,,6,,0.31199795332066577,True,1
-37,04033,1,,Improvised Weapon,,4,,0.2833431706069528,True,2
-38,10113,1,,Pushed to the Limit,,11,,0.2768591807125561,True,1
-39,10111,2,,Sparrow Mask,The Wanderer's Companion,11,Mask,0.27262613933664565,False,1
-40,01072,1,,Leather Coat,,1,Body,0.26259623201246557,True,1
-41,04033,2,,Improvised Weapon,,4,,0.26228040795668933,True,2
-42,60118,1,,Stand Together,,7,,0.26190481958391626,True,1
-43,10115,1,,"Wrong Place, Right Time",,11,,0.2564328784667909,True,1
-44,10113,2,,Pushed to the Limit,,11,,0.25625452784670627,False,1
-45,11024,1,,Ready for Anything,,12,,0.24717999019127024,False,0
-46,11024,2,,Ready for Anything,,12,,0.24717999019127024,False,0
-47,11083,1,,Lawrence Carlisle,Sculpting His Dreams,12,Ally,0.24717999019127024,False,0
-48,11083,2,,Lawrence Carlisle,Sculpting His Dreams,12,Ally,0.24717999019127024,False,0
-49,60118,2,,Stand Together,,7,,0.24509939595061186,False,1
-50,08074,1,,Jury-Rig,,9,,0.23681052679363485,False,0
-51,08094,1,,Sledgehammer,,9,Hand x2,0.23602076549778434,False,0
-52,01072,2,,Leather Coat,,1,Body,0.23454809543162933,False,1
-53,08071,1,,Short Supply,,9,,0.23406994328763878,False,0
-54,01088,1,,Emergency Cache,,1,,0.23113380512004425,False,0
-55,08074,2,,Jury-Rig,,9,,0.22631314398378796,False,0
-56,01065,1,,Ward of Protection,,1,,0.2231295140181837,False,0
-57,08094,2,,Sledgehammer,,9,Hand x2,0.2217379970675944,False,0
-58,01079,1,,"""Look what I found!""",,1,,0.2200662424974619,False,0
-59,60505,1,,.18 Derringer,,7,Hand,0.20639005662200421,True,1
+3,01000,1,,Random Basic Weakness,,1,,0.8476890439304164,False,0
+4,01091,1,,Overpower,,1,,0.7561517869500153,True,2
+5,04201,1,,Take Heart,,4,,0.740538333722791,True,2
+6,01091,2,,Overpower,,1,,0.7349298008757267,True,2
+7,04201,2,,Take Heart,,4,,0.6612936635240751,True,2
+8,03039,1,,Resourceful,,3,,0.5729369079652377,True,2
+9,10116,1,,Long Shot,,11,,0.5462472031265626,True,2
+10,03039,2,,Resourceful,,3,,0.5296425066390377,True,2
+11,10116,2,,Long Shot,,11,,0.5280384297849845,True,2
+12,03114,1,,Cherished Keepsake,,3,Accessory,0.500531749087966,True,2
+13,01080,1,,Lucky!,,1,,0.49862319884135464,True,2
+14,60115,1,,Glory,,7,,0.496082129735846,True,2
+15,60115,2,,Glory,,7,,0.496082129735846,True,2
+16,08125,1,,In the Thick of It,,9,,0.4418691489953375,False,0
+17,10111,1,,Sparrow Mask,The Wanderer's Companion,11,Mask,0.4289891615039436,True,1
+18,01080,2,,Lucky!,,1,,0.4273452583697702,True,2
+19,03114,2,,Cherished Keepsake,,3,Accessory,0.419763022870144,True,2
+20,01074,1,,Baseball Bat,,1,Hand x2,0.4050124999715318,True,2
+21,04111,1,,Perseverance,,4,,0.4034563879389132,True,2
+22,02229,1,,Quick Thinking,,2,,0.3906582855846262,True,2
+23,04111,2,,Perseverance,,4,,0.37806627047743246,True,2
+24,02229,2,,Quick Thinking,,2,,0.3760712285640301,True,2
+25,10110,1,,Pitchfork,,11,Hand x2,0.3698497833767731,True,2
+26,01074,2,,Baseball Bat,,1,Hand x2,0.36431257792572447,True,2
+27,02033,1,,Peter Sylvestre,Big Man on Campus,2,Ally,0.361196935435302,True,2
+28,10110,2,,Pitchfork,,11,Hand x2,0.3565179786203093,True,2
+29,02033,2,,Peter Sylvestre,Big Man on Campus,2,Ally,0.3553203579979031,True,2
+30,11085,1,,Profane Idol,,12,Accessory,0.34002618943692714,False,0
+31,11085,2,,Profane Idol,,12,Accessory,0.34002618943692714,False,0
+32,05114,1,,Meat Cleaver,,5,Hand,0.32158129363158794,True,1
+33,05114,2,,Meat Cleaver,,5,Hand,0.32158129363158794,False,1
+34,01072,1,,Leather Coat,,1,Body,0.3186725581774916,True,1
+35,06111,1,,Daring,,6,,0.3020822827251468,True,2
+36,06111,2,,Daring,,6,,0.3020822827251468,True,2
+37,10111,2,,Sparrow Mask,The Wanderer's Companion,11,Mask,0.2973650169105975,False,1
+38,10113,1,,Pushed to the Limit,,11,,0.2968389794547561,True,2
+39,01072,2,,Leather Coat,,1,Body,0.2934398470887566,False,1
+40,60118,1,,Stand Together,,7,,0.2843641477136672,True,2
+41,10113,2,,Pushed to the Limit,,11,,0.2782647096678799,True,2
+42,10115,1,,"Wrong Place, Right Time",,11,,0.2782503836890627,True,1
+43,06165,1,,Scrounge for Supplies,,6,,0.27658182250077046,True,1
+44,60118,2,,Stand Together,,7,,0.267407221826196,True,2

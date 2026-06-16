@@ -1,49 +1,50 @@
 rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
 1,10002,1,,Ad Hoc,,11,,1.0,True,1
 2,10003,1,,Hasty Repairs,,11,,1.0,True,1
-3,01088,1,,Emergency Cache,,1,,0.775186721895649,True,2
-4,10028,1,,Tinker,,11,,0.7658076963543267,True,2
-5,10113,1,,Pushed to the Limit,,11,,0.735441306570119,True,2
-6,01000,1,,Random Basic Weakness,,1,,0.7347468071907919,False,0
-7,10028,2,,Tinker,,11,,0.6468623312072576,True,2
-8,01088,2,,Emergency Cache,,1,,0.6303197000720426,True,2
-9,09120,1,,Tool Belt,,10,Body,0.5739933258796398,True,1
-10,08074,1,,Jury-Rig,,9,,0.530122785731237,True,2
-11,10113,2,,Pushed to the Limit,,11,,0.5293942373150138,True,2
-12,10023,1,,Wolf Mask,The Moon's Sire,11,Mask,0.507364247345178,True,1
-13,08094,1,,Sledgehammer,,9,Hand x2,0.5003892275074524,True,2
-14,04037,1,,Backpack,,4,Body,0.4800186563602248,True,1
-15,03037,1,,Gravedigger's Shovel,,3,Hand,0.44986518774591105,True,2
-16,01091,1,,Overpower,,1,,0.41799121235404924,True,2
-17,05024,1,,Fingerprint Kit,,5,Hand,0.41084531472578534,True,2
-18,01091,2,,Overpower,,1,,0.3989663826996338,True,2
-19,03037,2,,Gravedigger's Shovel,,3,Hand,0.39567949788835405,True,2
-20,08074,2,,Jury-Rig,,9,,0.38437711903700195,True,2
-21,11036,1,,Forensic Kit,,12,Hand,0.37723863320677825,True,1
-22,01025,1,,Vicious Blow,,1,,0.3753111332192509,True,2
-23,10020,1,,Cleaning Kit,,11,Accessory,0.36909940499432536,True,2
-24,08094,2,,Sledgehammer,,9,Hand x2,0.36803274909639294,True,2
-25,01025,2,,Vicious Blow,,1,,0.34201232044660956,True,2
-26,05024,2,,Fingerprint Kit,,5,Hand,0.3319574810463126,True,2
-27,08019,1,,Geared Up,,9,,0.3091136958957385,True,1
-28,09120,2,,Tool Belt,,10,Body,0.3000626669645516,False,1
-29,10020,2,,Cleaning Kit,,11,Accessory,0.2977254695068919,True,2
-30,60118,1,,Stand Together,,7,,0.2952884191386859,True,1
-31,60507,1,,Old Keyring,,7,Hand,0.2946821899366826,True,1
-32,08125,1,,In the Thick of It,,9,,0.29309548212714986,False,0
-33,11082,1,,Hand Hook,,12,Hand,0.2917307158070191,True,1
-34,01087,1,,Flashlight,,1,Hand,0.2873735056618545,True,1
-35,60507,2,,Old Keyring,,7,Hand,0.28703339239166614,False,1
-36,11024,1,,Ready for Anything,,12,,0.28528567459949983,True,1
-37,09043,1,,Dissection Tools,,10,Hand,0.2809427680260408,False,0
-38,10108,1,,Matchbox,,11,,0.28092980760735264,False,0
-39,05313,1,,Hallowed Mirror,,5,Accessory,0.27658836424067257,False,0
-40,60118,2,,Stand Together,,7,,0.2717153898595792,False,1
-41,04150,1,,Take the Initiative,,4,,0.2687794602695666,False,0
-42,11021,1,,Crowbar,,12,Hand,0.2663950365774608,False,0
-43,10110,1,,Pitchfork,,11,Hand x2,0.25579770190476436,False,0
-44,04150,2,,Take the Initiative,,4,,0.2506834628332319,False,0
-45,01093,1,,Unexpected Courage,,1,,0.24250710756565838,False,0
-46,11021,2,,Crowbar,,12,Hand,0.24246689508287797,False,0
-47,01089,1,,Guts,,1,,0.2382942379527499,False,0
-48,06155,1,,Tetsuo Mori,Too Noble for His Own Good,6,Ally,0.23292381147544497,True,1
+3,01088,1,,Emergency Cache,,1,,0.774628562971535,True,2
+4,10028,1,,Tinker,,11,,0.768077388110385,True,2
+5,10113,1,,Pushed to the Limit,,11,,0.7484753447054198,True,2
+6,01000,1,,Random Basic Weakness,,1,,0.730230336843679,False,0
+7,10028,2,,Tinker,,11,,0.6463280563962781,True,2
+8,01088,2,,Emergency Cache,,1,,0.6271693785619178,True,2
+9,09120,1,,Tool Belt,,10,Body,0.5864666400187578,True,1
+10,10113,2,,Pushed to the Limit,,11,,0.5372540076677332,True,2
+11,08074,1,,Jury-Rig,,9,,0.5290606787729377,True,2
+12,08094,1,,Sledgehammer,,9,Hand x2,0.5071904752168807,True,2
+13,10023,1,,Wolf Mask,The Moon's Sire,11,Mask,0.5016374573564395,True,1
+14,04037,1,,Backpack,,4,Body,0.48787054001203817,True,1
+15,03037,1,,Gravedigger's Shovel,,3,Hand,0.45467043348418007,True,2
+16,01091,1,,Overpower,,1,,0.42237487504298593,True,2
+17,05024,1,,Fingerprint Kit,,5,Hand,0.4040679494073056,True,2
+18,01091,2,,Overpower,,1,,0.40306035330743745,True,2
+19,03037,2,,Gravedigger's Shovel,,3,Hand,0.400735380675575,True,2
+20,08074,2,,Jury-Rig,,9,,0.3813221070607927,True,2
+21,01025,1,,Vicious Blow,,1,,0.37768540374607484,True,2
+22,08094,2,,Sledgehammer,,9,Hand x2,0.3725734890424387,True,2
+23,11036,1,,Forensic Kit,,12,Hand,0.36683527273334676,True,1
+24,10020,1,,Cleaning Kit,,11,Accessory,0.35687223844207094,True,2
+25,01025,2,,Vicious Blow,,1,,0.3446002816770316,True,2
+26,05024,2,,Fingerprint Kit,,5,Hand,0.33868633645970886,True,2
+27,08019,1,,Geared Up,,9,,0.31479575722658854,True,1
+28,09120,2,,Tool Belt,,10,Body,0.3060326447512974,False,1
+29,60507,1,,Old Keyring,,7,Hand,0.3027414155651574,True,2
+30,11082,1,,Hand Hook,,12,Hand,0.2966041391751716,True,1
+31,60507,2,,Old Keyring,,7,Hand,0.2949934774377038,True,2
+32,08125,1,,In the Thick of It,,9,,0.2948268421211687,False,0
+33,01087,1,,Flashlight,,1,Hand,0.2931018286741563,False,0
+34,11024,1,,Ready for Anything,,12,,0.2900514321898389,True,1
+35,09043,1,,Dissection Tools,,10,Hand,0.28672392646630485,False,0
+36,10108,1,,Matchbox,,11,,0.2865714826582211,True,1
+37,10020,2,,Cleaning Kit,,11,Accessory,0.2846366771867195,True,2
+38,60118,1,,Stand Together,,7,,0.283779480645459,False,0
+39,05313,1,,Hallowed Mirror,,5,Accessory,0.28198556448198653,False,0
+40,04150,1,,Take the Initiative,,4,,0.2733381710484676,False,0
+41,10110,1,,Pitchfork,,11,Hand x2,0.25985191660276147,False,0
+42,60118,2,,Stand Together,,7,,0.25963724141701094,False,0
+43,11021,1,,Crowbar,,12,Hand,0.25789651910219163,False,0
+44,04150,2,,Take the Initiative,,4,,0.25571420027849273,False,0
+45,11021,2,,Crowbar,,12,Hand,0.24651735589647958,False,0
+46,01093,1,,Unexpected Courage,,1,,0.24375851260148765,False,0
+47,01089,1,,Guts,,1,,0.2421940235636327,False,0
+48,01087,2,,Flashlight,,1,Hand,0.2380366042026954,False,0
+49,06155,1,,Tetsuo Mori,Too Noble for His Own Good,6,Ally,0.23336010265742618,True,1

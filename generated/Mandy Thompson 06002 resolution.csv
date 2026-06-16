@@ -2,6 +2,6 @@ resolution_kind,option_name,choice,weighted_total,weight_share,selected
 deck_size_select,Deck Size,30,0.0,0.0,True
 deck_size_select,Deck Size,40,0.0,0.0,False
 deck_size_select,Deck Size,50,0.0,0.0,False
-faction_select,Secondary Class,rogue,2.5204509992139488,0.3831597545202926,True
-faction_select,Secondary Class,mystic,2.341046650859707,0.35588664899405054,False
-faction_select,Secondary Class,survivor,1.716570556409816,0.26095359648565675,False
+faction_select,Secondary Class,rogue,2.5031695685813338,0.38822853249408296,True
+faction_select,Secondary Class,mystic,2.257990260819207,0.3502025017987866,False
+faction_select,Secondary Class,survivor,1.686510444858564,0.2615689657071304,False

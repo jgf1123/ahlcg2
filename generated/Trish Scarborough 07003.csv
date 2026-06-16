@@ -1,36 +1,36 @@
 rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
-1,07010,1,,In the Shadows,,8,,0.9937389970736195,True,1
-2,07011,1,,Shadow Agents,,8,,0.9917335071299871,True,1
-3,01000,1,,Random Basic Weakness,,1,,0.7735815159905008,False,0
-4,01039,1,,Deduction,,1,,0.6990330723144099,True,2
-5,01039,2,,Deduction,,1,,0.5929095520760483,True,2
-6,11053,1,,"""Where's the party?""",,12,,0.5667531703197933,True,2
-7,01090,1,,Perception,,1,,0.5576952671376635,True,2
-8,01037,1,,Working a Hunch,,1,,0.5198982241510127,True,2
-9,07114,1,,Breaking and Entering,,8,,0.5072638780584713,True,2
-10,01030,1,,Magnifying Glass,,1,Hand,0.49951258861598824,True,2
-11,01090,2,,Perception,,1,,0.41515651244319096,True,2
-12,01033,1,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.40977007410530336,True,2
-13,04107,1,,Lucky Cigarette Case,,4,Accessory,0.40094389675157643,True,2
-14,07114,2,,Breaking and Entering,,8,,0.3858934068370985,True,2
-15,60305,1,,Lockpicks,,7,Hand,0.3793081606119229,True,2
-16,10067,1,,Fox Mask,The Wise Trickster,11,Mask,0.378317193385244,True,1
-17,11052,1,,String Along,,12,,0.37581110502197407,True,1
-18,01046,1,,Pickpocketing,,1,,0.36091993320384685,True,1
-19,01037,2,,Working a Hunch,,1,,0.34924747319145494,True,2
-20,08125,1,,In the Thick of It,,9,,0.3355766924508467,False,0
-21,01030,2,,Magnifying Glass,,1,Hand,0.3322234756518037,True,2
-22,05110,1,,Crack the Case,,5,,0.3045034999286983,True,2
-23,11053,2,,"""Where's the party?""",,12,,0.28195215359978154,True,2
-24,01033,2,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.26917177821314076,True,2
-25,09068,1,,Kicking the Hornet's Nest,,10,,0.2682360305210281,True,1
-26,60305,2,,Lockpicks,,7,Hand,0.2583671147584237,True,2
-27,01092,1,,Manual Dexterity,,1,,0.2505975551249383,True,1
-28,07027,1,,Obfuscation,,8,Arcane,0.2423850445763669,True,1
-29,02022,1,,Shortcut,,2,,0.23382411638260378,True,1
-30,01048,1,,Leo De Luca,The Louisiana Lion,1,Ally,0.2332773786481426,True,1
-31,05110,2,,Crack the Case,,5,,0.22217441120471917,True,2
-32,10066,1,,Fake Credentials,,11,Hand,0.21869749712865025,False,0
-33,02188,1,,Lone Wolf,,2,,0.21398493119069298,True,1
-34,04107,2,,Lucky Cigarette Case,,4,Accessory,0.20794467670930075,True,2
-35,03231,1,,Eureka!,,3,,0.20231308490732872,True,1
+1,07010,1,,In the Shadows,,8,,0.993658920068245,True,1
+2,07011,1,,Shadow Agents,,8,,0.9916035665216963,True,1
+3,01000,1,,Random Basic Weakness,,1,,0.7704863025881695,False,0
+4,01039,1,,Deduction,,1,,0.70798292383785,True,2
+5,01039,2,,Deduction,,1,,0.5984881514057774,True,2
+6,11053,1,,"""Where's the party?""",,12,,0.5820539310778143,True,2
+7,01090,1,,Perception,,1,,0.563627730700587,True,2
+8,01037,1,,Working a Hunch,,1,,0.518882345493018,True,2
+9,01030,1,,Magnifying Glass,,1,Hand,0.5017968730716663,True,2
+10,07114,1,,Breaking and Entering,,8,,0.5008571298119825,True,2
+11,01090,2,,Perception,,1,,0.41938282429432355,True,2
+12,01033,1,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.40972330676646435,True,2
+13,04107,1,,Lucky Cigarette Case,,4,Accessory,0.40321643245260885,True,2
+14,11052,1,,String Along,,12,,0.3911823869907483,True,1
+15,10067,1,,Fox Mask,The Wise Trickster,11,Mask,0.38497475412204313,True,1
+16,60305,1,,Lockpicks,,7,Hand,0.3818198650665919,True,2
+17,07114,2,,Breaking and Entering,,8,,0.381620302094324,True,2
+18,01046,1,,Pickpocketing,,1,,0.3594145746718157,True,1
+19,01037,2,,Working a Hunch,,1,,0.3447951216576392,True,2
+20,01030,2,,Magnifying Glass,,1,Hand,0.33817069366405605,True,2
+21,08125,1,,In the Thick of It,,9,,0.3374686761368866,False,0
+22,05110,1,,Crack the Case,,5,,0.30353161933940376,True,2
+23,11053,2,,"""Where's the party?""",,12,,0.28560409218491634,True,2
+24,09068,1,,Kicking the Hornet's Nest,,10,,0.2739569037556667,True,1
+25,01033,2,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.27385833916760677,True,2
+26,60305,2,,Lockpicks,,7,Hand,0.2610244302378766,True,2
+27,01092,1,,Manual Dexterity,,1,,0.2518855400926271,True,1
+28,07027,1,,Obfuscation,,8,Arcane,0.24799057703471106,True,1
+29,02022,1,,Shortcut,,2,,0.23425612629927375,True,1
+30,10066,1,,Fake Credentials,,11,Hand,0.22670976930734918,False,0
+31,01048,1,,Leo De Luca,The Louisiana Lion,1,Ally,0.22596540840681598,True,1
+32,05110,2,,Crack the Case,,5,,0.22193822929017507,True,2
+33,02188,1,,Lone Wolf,,2,,0.21586967800615198,True,1
+34,04107,2,,Lucky Cigarette Case,,4,Accessory,0.21047618115851854,True,2
+35,03231,1,,Eureka!,,3,,0.2066247249656548,True,1

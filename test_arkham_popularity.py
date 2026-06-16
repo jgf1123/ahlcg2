@@ -259,10 +259,10 @@ class UpgradeGraphTests(unittest.TestCase):
 
 
 class ArkhamPopularityEngineTests(unittest.TestCase):
-    def _engine(self, cards: dict, decklists: dict, taboo=None):
+    def _engine(self, cards: dict, decklists: dict, taboo=None, **engine_kwargs):
         mapper = CanonicalMapper(cards, chapter=1)
         taboo_json = taboo or [{"id": 1, "cards": "[]"}]
-        return ArkhamPopularityEngine(cards, mapper, taboo_json)
+        return ArkhamPopularityEngine(cards, mapper, taboo_json, **engine_kwargs)
 
     def test_prepare_marks_unknown_slots(self):
         cards = {"01017": _card("01017", name="Physical Training")}
@@ -292,6 +292,41 @@ class ArkhamPopularityEngineTests(unittest.TestCase):
         weights = engine.assign_user_weights(prepared)
         self.assertAlmostEqual(weights[1], 0.5)
         self.assertAlmostEqual(weights[2], 0.5)
+
+    def test_deck_xp_weight_formula(self):
+        from arkham_popularity import deck_xp_weight
+
+        self.assertEqual(deck_xp_weight(0), 1.0)
+        self.assertEqual(deck_xp_weight(29), 1.0)
+        self.assertAlmostEqual(deck_xp_weight(58), 29 / 58)
+        self.assertAlmostEqual(deck_xp_weight(39, xp_thres=19), 19 / 39)
+
+    def test_deck_weight_includes_deck_xp_weight(self):
+        cards = {
+            "01004": _card("01004", name="Agnes", type_code="investigator", faction_code="mystic"),
+            "01017": _card("01017", name="Physical Training"),
+            "01023": _card("01023", name="Vicious Blow", xp=2, faction_code="guardian"),
+        }
+        decklists = {
+            1: {"id": 1, "user_id": 1, "investigator_code": "01004", "investigator_name": "Agnes",
+                "slots": {"01017": 30}},
+            2: {"id": 2, "user_id": 2, "investigator_code": "01004", "investigator_name": "Agnes",
+                "slots": {"01023": 15}},
+        }
+        engine = self._engine(cards, decklists, xp_thres=29)
+        prepared = engine.prepare_all(decklists)
+        low = next(d for d in prepared if d.deck_id == 1)
+        high = next(d for d in prepared if d.deck_id == 2)
+        self.assertEqual(low.deck_xp_weight, 1.0)
+        self.assertLess(high.deck_xp_weight, 1.0)
+        user_weights = engine.assign_user_weights(prepared)
+        cycle_weights = engine.assign_cycle_weights(
+            [d for d in prepared if not d.is_ignore], user_weights
+        )
+        self.assertLess(
+            engine.deck_weight(high, user_weights, cycle_weights),
+            engine.deck_weight(low, user_weights, cycle_weights),
+        )
 
     def test_unordered_card_includes_all_cycle_decklists(self):
         cards = {

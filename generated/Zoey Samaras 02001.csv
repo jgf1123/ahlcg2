@@ -1,35 +1,35 @@
 rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
-1,02006,1,,Zoey's Cross,Symbol of Righteousness,2,Accessory,0.9997375401727706,True,1
-2,02007,1,,Smite the Wicked,,2,,0.9997375401727706,True,1
-3,01025,1,,Vicious Blow,,1,,0.8779494947087677,True,2
-4,01025,2,,Vicious Blow,,1,,0.7484959240433148,True,2
-5,01000,1,,Random Basic Weakness,,1,,0.7413554273540298,False,0
-6,01091,1,,Overpower,,1,,0.6764950808143056,True,2
-7,10023,1,,Wolf Mask,The Moon's Sire,11,Mask,0.6442747814980099,True,1
-8,01088,1,,Emergency Cache,,1,,0.6075400294588654,True,2
-9,01020,1,,Machete,,1,Hand,0.5826527972862696,True,2
-10,02184,1,,Prepared for the Worst,,2,,0.5279904370447193,True,1
-11,01091,2,,Overpower,,1,,0.5278733400067038,True,2
-12,01018,1,,Beat Cop,,1,Ally,0.5192813615637317,True,2
-13,01088,2,,Emergency Cache,,1,,0.4294083118877766,True,2
-14,01089,1,,Guts,,1,,0.4253432053965022,True,2
-15,01021,1,,Guard Dog,,1,Ally,0.4236772847123045,True,1
-16,01023,1,,Dodge,,1,,0.3925730074947533,True,2
-17,01018,2,,Beat Cop,,1,Ally,0.37542381609647957,True,2
-18,01020,2,,Machete,,1,Hand,0.35863732662817377,True,2
-19,01022,1,,Evidence!,,1,,0.3527637362858998,True,2
-20,01016,1,,.45 Automatic,,1,Hand,0.3464190716310231,True,1
-21,11021,1,,Crowbar,,12,Hand,0.3278430467397578,True,1
-22,60118,1,,Stand Together,,7,,0.3119184901997177,True,1
-23,05118,1,,Enchanted Blade,,5,Hand. Arcane,0.3056100339023676,True,1
-24,03022,1,,"""Let me handle this!""",,3,,0.30500866210912864,True,1
-25,01093,1,,Unexpected Courage,,1,,0.293129809949648,True,1
-26,60115,1,,Glory,,7,,0.28802520998931647,True,1
-27,01089,2,,Guts,,1,,0.283636762956885,True,2
-28,04017,1,,Survival Knife,,4,Hand,0.28307573044232764,True,1
-29,01023,2,,Dodge,,1,,0.2808256484999255,True,2
-30,01024,1,,Dynamite Blast,,1,,0.27512162414132163,True,1
-31,08125,1,,In the Thick of It,,9,,0.273377242690342,False,0
-32,03263,1,,On the Hunt,,3,,0.2649913418591876,True,1
-33,01017,1,,Physical Training,,1,,0.2617665533518282,True,1
-34,01022,2,,Evidence!,,1,,0.24675408998062467,True,2
+1,02006,1,,Zoey's Cross,Symbol of Righteousness,2,Accessory,0.9997359060029706,True,1
+2,02007,1,,Smite the Wicked,,2,,0.9997359060029706,True,1
+3,01025,1,,Vicious Blow,,1,,0.8827575682039444,True,2
+4,01025,2,,Vicious Blow,,1,,0.7529955720116058,True,2
+5,01000,1,,Random Basic Weakness,,1,,0.7399277486179436,False,0
+6,01091,1,,Overpower,,1,,0.6825437713976374,True,2
+7,10023,1,,Wolf Mask,The Moon's Sire,11,Mask,0.6519886575198255,True,1
+8,01088,1,,Emergency Cache,,1,,0.6060104493341153,True,2
+9,01020,1,,Machete,,1,Hand,0.5881341424725107,True,2
+10,01091,2,,Overpower,,1,,0.5324626130820631,True,2
+11,02184,1,,Prepared for the Worst,,2,,0.526550075723549,True,1
+12,01018,1,,Beat Cop,,1,Ally,0.5191431777928177,True,2
+13,01089,1,,Guts,,1,,0.4312448744514355,True,2
+14,01021,1,,Guard Dog,,1,Ally,0.42844524036035353,True,1
+15,01088,2,,Emergency Cache,,1,,0.42693425464617396,True,2
+16,01023,1,,Dodge,,1,,0.3982541438879112,True,2
+17,01018,2,,Beat Cop,,1,Ally,0.37539699120103287,True,2
+18,01020,2,,Machete,,1,Hand,0.3605127401429617,True,2
+19,01022,1,,Evidence!,,1,,0.3577708606615638,True,2
+20,01016,1,,.45 Automatic,,1,Hand,0.3491424874449566,True,1
+21,11021,1,,Crowbar,,12,Hand,0.34605679826815855,True,1
+22,60118,1,,Stand Together,,7,,0.3113483064672487,True,1
+23,03022,1,,"""Let me handle this!""",,3,,0.3081957523732707,True,1
+24,05118,1,,Enchanted Blade,,5,Hand. Arcane,0.3072343109135215,True,1
+25,01093,1,,Unexpected Courage,,1,,0.2933799820329273,True,1
+26,60115,1,,Glory,,7,,0.2920463483306196,True,1
+27,01089,2,,Guts,,1,,0.2877989022042509,True,2
+28,04017,1,,Survival Knife,,4,Hand,0.28556660804128825,True,1
+29,01023,2,,Dodge,,1,,0.2845087643847264,True,2
+30,01024,1,,Dynamite Blast,,1,,0.2787249757491739,True,1
+31,08125,1,,In the Thick of It,,9,,0.2764471178062708,False,0
+32,03263,1,,On the Hunt,,3,,0.26743556018421655,True,1
+33,01017,1,,Physical Training,,1,,0.2623977538429271,True,1
+34,01022,2,,Evidence!,,1,,0.2501079535244871,True,2

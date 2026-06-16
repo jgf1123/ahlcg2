@@ -145,7 +145,35 @@ def slot_display_label(
 
 SLED_DOG_CANONICAL_ID = "08127"
 IN_THE_THICK_OF_IT_CANONICAL_ID = "08125"
+DEFAULT_XP_THRES = 29
 STANDARD_DECK_OPTION_KEYS = frozenset({"faction", "level"})
+
+
+def deck_xp_weight(xp_cost: int, *, xp_thres: int = DEFAULT_XP_THRES) -> float:
+    """Down-weight high-XP deck snapshots (Y3). Full weight at or below xp_thres."""
+    if xp_cost <= xp_thres:
+        return 1.0
+    return xp_thres / xp_cost
+
+
+def slots_have_upgrade_cards(
+    slots: dict[str, int],
+    cards: dict[str, dict[str, Any]],
+    taboo_id: int,
+    taboo: TabooIndex,
+) -> bool:
+    """True when any slotted card has effective XP > 0 at taboo_id."""
+    for card_code, count in slots.items():
+        if count <= 0:
+            continue
+        card = cards.get(card_code)
+        if card is None:
+            continue
+        if _effective_xp(card, card_code, taboo_id, taboo) > 0:
+            return True
+    return False
+
+
 STANDARD_ASSET_SLOT_TYPES = (
     "Accessory",
     "Ally",
@@ -609,6 +637,7 @@ class PreparedDecklist:
     taboo_id: int
     cycle: int | None
     xp_cost: int
+    deck_xp_weight: float
     has_unknown_slots: bool
     has_chapter_2_cards: bool
     is_ignore: bool
@@ -629,12 +658,14 @@ class ArkhamPopularityEngine:
         *,
         min_xp_cost: int = 1,
         bias_compensation: bool = True,
+        xp_thres: int = DEFAULT_XP_THRES,
     ) -> None:
         self.cards = cards
         self.mapper = mapper
         self.taboo = TabooIndex(taboo_json, mapper)
         self.min_xp_cost = min_xp_cost
         self.bias_compensation = bias_compensation
+        self.xp_thres = xp_thres
         apply_runtime_card_patches(cards)
         self.canonical_cards = build_canonical_card_infos(cards, mapper, self.taboo)
         self.upgrades = UpgradeGraph(self.canonical_cards)
@@ -720,6 +751,8 @@ class ArkhamPopularityEngine:
                 if key.startswith("cus_"):
                     customizations[key.removeprefix("cus_")] = value
 
+        xp_cost = self.decklist_xp(decklist, slots)
+
         return PreparedDecklist(
             decklist_id=decklist_id,
             deck_id=decklist.get("id", decklist_id),
@@ -733,7 +766,8 @@ class ArkhamPopularityEngine:
             slots=slots,
             taboo_id=taboo_id,
             cycle=self.mapper.decklist_cycle(slots),
-            xp_cost=self.decklist_xp(decklist, slots),
+            xp_cost=xp_cost,
+            deck_xp_weight=deck_xp_weight(xp_cost, xp_thres=self.xp_thres),
             has_unknown_slots=has_unknown,
             has_chapter_2_cards=has_chapter_2,
             is_ignore=is_ignore,
@@ -785,7 +819,11 @@ class ArkhamPopularityEngine:
     ) -> float:
         if deck.is_ignore or deck.cycle is None:
             return 0.0
-        return user_weights[deck.deck_id] * cycle_weights.get(deck.cycle, 0.0)
+        return (
+            user_weights[deck.deck_id]
+            * cycle_weights.get(deck.cycle, 0.0)
+            * deck.deck_xp_weight
+        )
 
     def adjusted_deck_weight(
         self,
@@ -1853,6 +1891,7 @@ def prepared_decks_to_dataframe(prepared: list[PreparedDecklist]):
                 "next_deck": deck.next_deck,
                 "date_creation": deck.date_creation,
                 "xp_cost": deck.xp_cost,
+                "deck_xp_weight": deck.deck_xp_weight,
                 "cycle": deck.cycle,
                 "has_unknown_slots": deck.has_unknown_slots,
                 "has_chapter_2_cards": deck.has_chapter_2_cards,

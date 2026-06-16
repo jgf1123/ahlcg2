@@ -7,34 +7,34 @@ rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,
 6,10109,2,,Pelt Shipment,,11,,1.0,True,2
 7,10110,1,,Pitchfork,,11,Hand x2,1.0,True,1
 8,10111,1,,Sparrow Mask,The Wanderer's Companion,11,Mask,1.0,True,1
-9,02033,1,,Peter Sylvestre,Big Man on Campus,2,Ally,0.8919355823805258,True,2
+9,02033,1,,Peter Sylvestre,Big Man on Campus,2,Ally,0.8910098819961266,True,2
 10,07014,1,,Sea Change Harpoon,,8,Hand,0.7462290412377808,True,1
 11,07015,1,,Silas's Net,,8,Hand,0.7462290412377808,True,1
 12,07016,1,,Siren Call,,8,,0.7462290412377808,True,1
-13,06111,1,,Daring,,6,,0.7218631573114327,True,1
-14,01080,1,,Lucky!,,1,,0.7048921544971553,True,2
-15,03114,1,,Cherished Keepsake,,3,Accessory,0.7032989793515741,True,2
-16,04201,1,,Take Heart,,4,,0.6667302540951621,True,1
+13,06111,1,,Daring,,6,,0.7203672065131528,True,1
+14,01080,1,,Lucky!,,1,,0.7058961261418756,True,2
+15,03114,1,,Cherished Keepsake,,3,Accessory,0.7038886449445193,True,2
+16,04201,1,,Take Heart,,4,,0.6680875790602213,True,1
 17,98014,1,,Nautical Prowess,,,,0.6590909090909091,True,1
 18,98015,1,,Dreams of the Deep,The Deep Gate,,,0.6590909090909091,True,1
-19,03039,1,,Resourceful,,3,,0.6165971611201055,True,2
-20,02033,2,,Peter Sylvestre,Big Man on Campus,2,Ally,0.5923269343286587,True,2
-21,01093,1,,Unexpected Courage,,1,,0.5502068953781417,True,2
-22,01074,1,,Baseball Bat,,1,Hand x2,0.5482324069525712,False,0
-23,05022,1,,Steadfast,,5,,0.5340734008352064,True,1
-24,01093,2,,Unexpected Courage,,1,,0.5245740659613296,True,2
-25,03039,2,,Resourceful,,3,,0.5214579962360181,True,2
+19,03039,1,,Resourceful,,3,,0.6160587419515525,True,2
+20,02033,2,,Peter Sylvestre,Big Man on Campus,2,Ally,0.5904088985598067,True,2
+21,01074,1,,Baseball Bat,,1,Hand x2,0.5490025579335215,False,0
+22,01093,1,,Unexpected Courage,,1,,0.5486731855467807,True,2
+23,05022,1,,Steadfast,,5,,0.5350481893357187,True,1
+24,01093,2,,Unexpected Courage,,1,,0.5228327852842307,True,2
+25,03039,2,,Resourceful,,3,,0.5207494583966016,True,2
 26,60505,1,,.18 Derringer,,7,Hand,0.5175029750755518,True,1
-27,03114,2,,Cherished Keepsake,,3,Accessory,0.5078596895048602,True,2
-28,05114,1,,Meat Cleaver,,5,Hand,0.5010729979461374,False,0
-29,02229,1,,Quick Thinking,,2,,0.48452488853899456,True,2
-30,01074,2,,Baseball Bat,,1,Hand x2,0.4839857983696938,False,0
-31,01000,1,,Random Basic Weakness,,1,,0.48083500646386573,False,0
-32,03272,1,,"""Not without a fight!""",,3,,0.4694301823672314,True,1
-33,02229,2,,Quick Thinking,,2,,0.46393146338121255,True,2
-34,03231,1,,Eureka!,,3,,0.46384219277486866,True,2
-35,03231,2,,Eureka!,,3,,0.4467070724473141,True,2
-36,02032,1,,Fire Axe,,2,Hand,0.44411232755695695,False,0
-37,01067,1,,Fearless,,1,,0.4437680127540371,True,1
+27,03114,2,,Cherished Keepsake,,3,Accessory,0.5080835119006232,True,2
+28,05114,1,,Meat Cleaver,,5,Hand,0.4989566040513488,False,0
+29,02229,1,,Quick Thinking,,2,,0.4869379438224627,True,2
+30,01074,2,,Baseball Bat,,1,Hand x2,0.48450694088096286,False,0
+31,01000,1,,Random Basic Weakness,,1,,0.47972636593705004,False,0
+32,03272,1,,"""Not without a fight!""",,3,,0.46786818344470193,True,1
+33,02229,2,,Quick Thinking,,2,,0.46632981805447504,True,2
+34,03231,1,,Eureka!,,3,,0.4647609001392709,True,2
+35,02032,1,,Fire Axe,,2,Hand,0.4477439333937902,False,0
+36,03231,2,,Eureka!,,3,,0.4476075569326319,True,2
+37,01067,1,,Fearless,,1,,0.44499692868867,True,1
 38,60511,1,,Scrapper,,7,,0.4421465285931566,True,1
-39,01080,2,,Lucky!,,1,,0.4363578645711241,True,2
+39,01080,2,,Lucky!,,1,,0.4373452184995388,True,2

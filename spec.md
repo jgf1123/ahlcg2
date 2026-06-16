@@ -2,18 +2,18 @@
 
 The goal is identify the most popular cards used by various investigators in the customizable card game Arkham Horror: The Card Game. Players craft decklists that use a particular investigator and a deck of cards. A naive approach to calculate the popularity of a `card_id` for investigator (`canonical_front`, `canonical_back`) tuple is to find all decklists with (`canonical_front`, `canonical_back`) and sum the number of copies of `card_id` in those decklists. We will modify this approach to reflect various aspects of the game.
 
-The following has similarities to `combined.ipynb` and `from_earthborne_rangers\prepare_data.ipynb` and an earlier version of `prepare_arkham_data.ipynb` but describes a new variation on the same idea.
+The following describes the current pipeline (`prepare_arkham_data.ipynb` + `arkham_*.py` modules).
 
 # Data
 
-The cells 2 and 4 in `combined.ipynb` are used to scrape decklist and card data, respectively, from the arkhamdb API. To avoid overloading the API, we load previously scraped data, request only the new data, and save the updated data as a pickle file. While the structure of decklist dict's are almost uniform, there are variations, so we save the raw data as a dict using pickle.
+Scraping uses `scrape_arkhamdb.py` (`decklists`, `cards`, `discover-max` subcommands). To avoid overloading the API, we load previously scraped data, request only the new data, and save the updated data as a pickle file. While the structure of decklist dict's are almost uniform, there are variations, so we save the raw data as a dict using pickle.
 
 Only the scrapper functions are allowed to overwrite the pickled data. The functions that calculate popularity are forbidden from saving pickled data.
 
 ## Scraping and cleaning
 
-- **Decklists:** scrape via `combined.ipynb` (cell 2) or equivalent; store as `{decklist_id: dict}` in `decklist_json.pickle`. Drop empty entries (`None`). Remove known joke decklists (`43839`, `44599`, `45550`) and any deck with a slot copy count `≥ 4` above `deck_limit` for that `card_id` (see `clean_decklist_json` in `arkham_popularity.py`).
-- **Cards:** scrape via `combined.ipynb` (cell 4); store as `{card_id: dict}` in `card_json.pickle`. (Done: ~~Re-scrape before canonicalization.~~)
+- **Decklists:** scrape via `scrape_arkhamdb.py decklists` (default `--mode incremental` from max pickle id to current public max) or `--mode gaps` to fill historical holes; store as `{decklist_id: dict}` in `decklist_json.pickle`. Empty API responses (HTTP 200, zero body) may be deleted or privatized — use `--store-empty` to record as `None`, or `--verify` to re-check existing entries. Drop empty entries (`None`) at clean time. Remove known joke decklists (`43839`, `44599`, `45550`) and any deck with a slot copy count `≥ 4` above `deck_limit` for that `card_id` (see `clean_decklist_json` in `arkham_popularity.py`).
+- **Cards:** scrape via `scrape_arkhamdb.py cards` (missing ids only) or `cards --refresh-all` after a full card-data refresh; store as `{card_id: dict}` in `card_json.pickle`. (Done: ~~Re-scrape before canonicalization.~~)
 - **Taboo:** fetch `taboo.json` separately from the API.
 - Only scraper code may overwrite pickles. Popularity code may write CSV outputs but must not overwrite pickles.
 
@@ -304,6 +304,8 @@ Y2b. Enforce monotonicity: after computing `raw_cycle_weight`, let `Cycle.weight
 
 - **Y2 does not prefer more informative strata.** If higher `Decklist.cycle` decks are better estimates of card utility (larger choice set), that requires B1 (`g(C)` increasing), not Y2.
 
+Y3. **`Decklist.deck_xp_weight`** down-weights high-XP deck snapshots (upgrade-chain tips and standalone theorycraft). Let `XP_THRES` default to **29** (standalone construction breakpoint; configurable, e.g. 19). If `Decklist.xp_cost <= XP_THRES`, `deck_xp_weight = 1`; else `deck_xp_weight = XP_THRES / Decklist.xp_cost`. This is separate from Y1 (same-user duplicate lists) and does not replace P2 (`min_xp_cost` eligibility). Apply in `deck_weight` as `user_weight × Cycle.weight × deck_xp_weight` (and in `adjusted_deck_weight` via `deck_weight`).
+
 ## Bias compensation
 
 Empirical analysis shows confounding beyond Y2 and P1 below:
@@ -418,7 +420,7 @@ P1. Slice all decklists with `Decklist.cycle >= CanonicalCard.cycle`. When `Cano
 
 P2. If `CanonicalCard.has_xp_cost`, further restrict the DataFrame to decklists where `Decklist.xp_cost >= min_xp_cost`. (See Implementation Notes about `min_xp_cost`)
 
-P3. These are all the decklists that *could* include the option. Calculate the total weight of these decklists. Base weight is `Decklist.user_weight * Cycle.weight` (Y1/Y2). With bias compensation enabled, multiply by B2 `inv_adjust` (diagonal-only) and `tilt_d(k)` for the option's card cycle `k` (B3). Compute P3/P4/P5 **within each `Decklist.cycle` stratum**, then blend strata with `g(C) = C` (B1).
+P3. These are all the decklists that *could* include the option. Calculate the total weight of these decklists. Base weight is `Decklist.user_weight * Cycle.weight * Decklist.deck_xp_weight` (Y1/Y2/Y3). With bias compensation enabled, multiply by B2 `inv_adjust` (diagonal-only) and `tilt_d(k)` for the option's card cycle `k` (B3). Compute P3/P4/P5 **within each `Decklist.cycle` stratum**, then blend strata with `g(C) = C` (B1).
 
 P4. Similarly, calculate the total weight of the decklists that include the option. See "Definition of a decklist containing an option" below.
 
@@ -476,7 +478,7 @@ NOTE: Earlier versions of `prepare_arkham_data.ipynb` used concepts of group and
 
 In each decklist json, the `slots` field contains a dictionary {`card_id`: int}, where the value is the number of copies of `card_id`; call this `num_copies`. A decklist contains (`card_id`, `card_index`) tuples for `card_index` from 1 up to and including `num_copies` (i.e., `range(1, num_copies + 1)`). Note that we do not need to refer to the `exceptional` or `myriad` values from the card json; during deck construction, `exceptional` and `myriad` are used to determine the legal number of copies of a card. We assume all the scraped decks are legal and use the `num_copies` specified in `slots`.
 
-For now, use `min_xp_cost=1`. I am considering useing `min_xp_cost = CanonicalCard.xp` or some weighting the decklists depending on total XP cost.
+For now, use `min_xp_cost=1`. I am considering useing `min_xp_cost = CanonicalCard.xp` or some weighting the decklists depending on total XP cost. **`deck_xp_weight` (Y3)** provides soft down-weighting by total deck XP without changing P2 hard eligibility.
 
 Previous iterations tried to filter out special cases such as weaknesses, enemies, treacheries, and signature cards. Such filters turned out to be imperfect. For this spec, include all cards the `slots` of the decklist.
 
@@ -484,7 +486,7 @@ Decklists also have a `sideSlots` field. These are not cards in the decklist but
 
 ### Normalizing Cycles
 
-`combined.ipynb` applied a penalty based on the number of decklists in a cycle while `prepare_arkham_data.ipynb` implements a new algorithm that does not. The above describes a third algorithm.
+Legacy: an older notebook applied a penalty based on the number of decklists in a cycle; `prepare_arkham_data.ipynb` implements the Y2 algorithm in this spec instead.
 
 Legacy: The spec also once used the following to compensate for chained upgrades of decklists. This has been superceded by `user_weight`, which does something similar but also accounts for users that make multiple decklists for the same investigator.
 
@@ -498,14 +500,14 @@ Y2. For each `cycle`, find all decklist with `Decklist.cycle = cycle`. Let `sum_
 
 Note: slot here means something different from the `slots` field in decklist json.
 
-See cell 13 in `combined.ipynb`. A card json may have a `slot` or `real_slot` field when the asset occupies one or more **asset slot types** (`Accessory`, `Ally`, `Arcane`, `Body`, `Hand`, `Head`, `Mask`, `Tarot` — note `Body` is a slot type name, not a generic term for all slots). Most assets use one slot; exceptions take 2 of one type or combinations (e.g. `Hand. Arcane`, `Hand x2`).
+A card json may have a `slot` or `real_slot` field when the asset occupies one or more **asset slot types** (`Accessory`, `Ally`, `Arcane`, `Body`, `Hand`, `Head`, `Mask`, `Tarot` — note `Body` is a slot type name, not a generic term for all slots). Most assets use one slot; exceptions take 2 of one type or combinations (e.g. `Hand. Arcane`, `Hand x2`).
 
 **Runtime patch (not saved to pickle):** After loading `card_json`, assets with the **Mask** trait and no `slot` / `real_slot` are patched in memory to `slot = real_slot = 'Mask'`. ArkhamDB omits a slot field for these cards, but the game limits each investigator to one Mask; treating Mask as an asset slot type lets Phase 1/2 enforce that limit like other slots.
 
 For each (`canonical_front`, `canonical_back`) tuple:
 
 1. For each of its decklists (same set of decklists in Popularity by Investigator), count **asset slot** usage by **assets** only (`type_code = asset`). E.g., if a decklist has 2 copies of a card that takes up 1 Hand slot, together they account for 2 Hand slots. Parse ArkhamDB `slot` / `real_slot`: split on `". "`, treat a trailing `" x2"` as doubling that slot type, and count Sled Dog (`08127`) as half an Ally slot per copy.
-2. For each slot type, calculate the weighted average using the same decklist weight as Popularity by Investigator: `Decklist.user_weight * Cycle.weight` for `Decklist.cycle`.
+2. For each slot type, calculate the weighted average using the same decklist weight as Popularity by Investigator: `Decklist.user_weight * Cycle.weight * Decklist.deck_xp_weight` for `Decklist.cycle`.
 
 Implemented in `ArkhamPopularityEngine.slot_usage_for_investigator()`; notebook helper `show_slot_usage_for_investigator()`.
 
@@ -519,7 +521,7 @@ For each `cycle` from 1 to `MAX_CYCLE`, and for each `(canonical_front, canonica
 
 I2. Slice all decklists with `Decklist.cycle >= cycle` and `is_ignore = False`.
 
-I3. Total weight of those decklists = Σ (`Decklist.user_weight` × `Cycle.weight` at `Decklist.cycle`).
+I3. Total weight of those decklists = Σ (`Decklist.user_weight` × `Cycle.weight` × `Decklist.deck_xp_weight` at `Decklist.cycle`).
 
 I4. Total weight of decklists using this `(canonical_front, canonical_back)` tuple (same slice, same weight formula).
 
@@ -563,7 +565,7 @@ Implemented in `arkham_deck_options.py` (`DeckOptionsValidator`, `resolve_deck_o
 
 ### Resolving `faction_select` / `deck_size_select`
 
-When an investigator’s `deck_options` include `faction_select` or `deck_size_select`, generation must pick one branch before building the deck. **Implementation decision (user-approved):** use the same decklist weights as popularity (`user_weight × Cycle.weight` per `Decklist`), not raw card-copy totals.
+When an investigator’s `deck_options` include `faction_select` or `deck_size_select`, generation must pick one branch before building the deck. **Implementation decision (user-approved):** use the same decklist weights as popularity (`user_weight × Cycle.weight × deck_xp_weight` per `Decklist`), not raw card-copy totals.
 
 For each `(canonical_front, canonical_back)` with training decks:
 

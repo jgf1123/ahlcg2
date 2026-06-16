@@ -1,35 +1,35 @@
 rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
-1,11012,1,,"""Viola"" Case",,12,Accessory,0.9857156636520781,True,1
-2,11013,1,,Confiscation,,12,,0.9857156636520781,True,1
-3,01000,1,,Random Basic Weakness,,1,,0.7979236737742252,False,0
-4,60306,1,,Mauser C96,,7,Hand,0.6978329374990248,True,2
-5,11050,1,,Luger P08,,12,Hand,0.6545130839678823,True,2
-6,01091,1,,Overpower,,1,,0.6258670552396943,True,2
-7,60306,2,,Mauser C96,,7,Hand,0.6081466694494738,True,2
-8,02229,1,,Quick Thinking,,2,,0.6046854865070407,True,2
-9,01047,1,,.41 Derringer,,1,Hand,0.6044325059408572,True,2
-10,11050,2,,Luger P08,,12,Hand,0.5838062709499741,True,2
-11,11053,1,,"""Where's the party?""",,12,,0.5416238398926123,True,2
-12,01047,2,,.41 Derringer,,1,Hand,0.50775822725922,True,2
-13,03233,1,,"""Watch this!""",,3,,0.5072976779108358,True,2
-14,01091,2,,Overpower,,1,,0.4912163234358979,True,2
-15,10069,1,,Bank Job,,11,,0.48597335042294193,True,2
-16,03233,2,,"""Watch this!""",,3,,0.4500321698608365,True,2
-17,02229,2,,Quick Thinking,,2,,0.4426355551910193,True,2
-18,10069,2,,Bank Job,,11,,0.4325346342705674,True,2
-19,08125,1,,In the Thick of It,,9,,0.4203555751904433,False,0
-20,11053,2,,"""Where's the party?""",,12,,0.40770775443707835,True,2
-21,60505,1,,.18 Derringer,,7,Hand,0.39818472881155986,True,2
-22,01089,1,,Guts,,1,,0.38489565641261136,True,2
-23,60309,1,,Lonnie Ritter,Feisty Mechanic,7,Ally,0.3583263873883371,True,2
-24,11057,1,,Crack Shot,,12,,0.3466471948948313,True,1
-25,04107,1,,Lucky Cigarette Case,,4,Accessory,0.33455258795321513,True,1
-26,11022,1,,Remington Model 1858,,12,Hand,0.3256150692949501,True,1
-27,01093,1,,Unexpected Courage,,1,,0.3190175758198767,True,2
-28,08126,1,,Heavy Furs,,9,Body,0.31663640939714033,True,2
-29,01089,2,,Guts,,1,,0.31275401623766996,True,2
-30,60309,2,,Lonnie Ritter,Feisty Mechanic,7,Ally,0.3106233645574862,True,2
-31,60505,2,,.18 Derringer,,7,Hand,0.3096704917402227,True,2
-32,11051,1,,Robert Castaigne,Has Your Back,12,Ally,0.3040889210863497,True,1
-33,01093,2,,Unexpected Courage,,1,,0.2984056786270363,True,2
-34,08126,2,,Heavy Furs,,9,Body,0.2910388928549109,True,2
+1,11012,1,,"""Viola"" Case",,12,Accessory,0.9853321802829841,True,1
+2,11013,1,,Confiscation,,12,,0.9853321802829841,True,1
+3,01000,1,,Random Basic Weakness,,1,,0.8009037479160844,False,0
+4,60306,1,,Mauser C96,,7,Hand,0.6937502560491947,True,2
+5,11050,1,,Luger P08,,12,Hand,0.6545880503323468,True,2
+6,01091,1,,Overpower,,1,,0.6241346944031261,True,2
+7,02229,1,,Quick Thinking,,2,,0.6126131864784674,True,2
+8,01047,1,,.41 Derringer,,1,Hand,0.6109670134753085,True,2
+9,60306,2,,Mauser C96,,7,Hand,0.606248583384163,True,2
+10,11050,2,,Luger P08,,12,Hand,0.5838291000523391,True,2
+11,11053,1,,"""Where's the party?""",,12,,0.5452474923255235,True,2
+12,01047,2,,.41 Derringer,,1,Hand,0.5132446356580411,True,2
+13,03233,1,,"""Watch this!""",,3,,0.5092208818999647,True,2
+14,01091,2,,Overpower,,1,,0.48650347925804277,True,2
+15,10069,1,,Bank Job,,11,,0.48475309767965885,True,2
+16,03233,2,,"""Watch this!""",,3,,0.4506227246842302,True,2
+17,02229,2,,Quick Thinking,,2,,0.44648338039133423,True,2
+18,10069,2,,Bank Job,,11,,0.43615247338071095,True,2
+19,08125,1,,In the Thick of It,,9,,0.4259673019288554,False,0
+20,11053,2,,"""Where's the party?""",,12,,0.4109880951972959,True,2
+21,60505,1,,.18 Derringer,,7,Hand,0.4072446817021958,True,2
+22,01089,1,,Guts,,1,,0.3885202959481142,True,2
+23,60309,1,,Lonnie Ritter,Feisty Mechanic,7,Ally,0.3569912135678763,True,2
+24,11057,1,,Crack Shot,,12,,0.34509480932679554,True,1
+25,04107,1,,Lucky Cigarette Case,,4,Accessory,0.3423476090102054,True,1
+26,01093,1,,Unexpected Courage,,1,,0.32501476185228395,True,2
+27,11022,1,,Remington Model 1858,,12,Hand,0.32436230881734834,True,1
+28,60505,2,,.18 Derringer,,7,Hand,0.31614593291176224,True,2
+29,01089,2,,Guts,,1,,0.31449016638153693,True,2
+30,08126,1,,Heavy Furs,,9,Body,0.3139134545250978,True,2
+31,60309,2,,Lonnie Ritter,Feisty Mechanic,7,Ally,0.3078953185209627,True,2
+32,01093,2,,Unexpected Courage,,1,,0.30386329626183334,True,2
+33,11051,1,,Robert Castaigne,Has Your Back,12,Ally,0.30138537727040715,True,1
+34,08126,2,,Heavy Furs,,9,Body,0.28900325314084496,True,2

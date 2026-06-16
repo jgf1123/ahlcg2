@@ -1,34 +1,34 @@
 rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
-1,08008,1,,Trusty Bullwhip,,9,Hand,0.9070602759962257,True,1
-2,08009,1,,Buried Secrets,,9,,0.9070602759962257,True,1
-3,01000,1,,Random Basic Weakness,,1,,0.7289465468343342,False,0
-4,01033,1,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.5398502378712083,True,1
-5,10067,1,,Fox Mask,The Wise Trickster,11,Mask,0.5159791392864455,True,1
-6,01090,1,,Perception,,1,,0.5043588964626389,True,2
-7,08047,1,,Scout Ahead,,9,,0.4950384117991089,True,2
-8,60317,1,,Nimble,,7,,0.48469872928396074,True,2
-9,01051,1,,Backstab,,1,,0.4782024200477463,True,2
-10,01039,1,,Deduction,,1,,0.46124436582505607,True,2
-11,02229,1,,Quick Thinking,,2,,0.46097313459951267,True,2
-12,60305,1,,Lockpicks,,7,Hand,0.4255513287794185,True,2
-13,04028,1,,"""You handle this one!""",,4,,0.42436933757956485,True,2
-14,01092,1,,Manual Dexterity,,1,,0.423723761783476,True,2
-15,02188,1,,Lone Wolf,,2,,0.3981802092530596,True,1
-16,04028,2,,"""You handle this one!""",,4,,0.3793242541634269,True,2
-17,08047,2,,Scout Ahead,,9,,0.37316225218666105,True,2
-18,01048,1,,Leo De Luca,The Louisiana Lion,1,Ally,0.3677115202263974,True,1
-19,02229,2,,Quick Thinking,,2,,0.3545002168464705,True,2
-20,01090,2,,Perception,,1,,0.35192090227583833,True,2
-21,07114,1,,Breaking and Entering,,8,,0.34102910343620824,True,1
-22,04107,1,,Lucky Cigarette Case,,4,Accessory,0.3407789851209267,True,1
-23,09064,1,,Thieves' Kit,,10,Hand,0.3365339011598882,True,1
-24,11033,1,,Alton O'Connell,Ghost Hunter,12,Ally,0.3278340710392508,True,1
-25,01092,2,,Manual Dexterity,,1,,0.3235767902878258,True,2
-26,04037,1,,Backpack,,4,Body,0.323132823569244,True,1
-27,01051,2,,Backstab,,1,,0.3151560151966864,True,2
-28,60305,2,,Lockpicks,,7,Hand,0.3094330194455133,True,2
-29,10065,1,,British Bull Dog,,11,Hand,0.30701130101855606,True,1
-30,01039,2,,Deduction,,1,,0.2951496411569737,True,2
-31,60317,2,,Nimble,,7,,0.28640282288891733,True,2
-32,03024,1,,Fieldwork,,3,,0.27436154952937775,True,1
-33,03233,1,,"""Watch this!""",,3,,0.27325619771781123,True,1
+1,08008,1,,Trusty Bullwhip,,9,Hand,0.9127911858987623,True,1
+2,08009,1,,Buried Secrets,,9,,0.9127911858987623,True,1
+3,01000,1,,Random Basic Weakness,,1,,0.7237421931310004,False,0
+4,01033,1,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.5312160739479013,True,1
+5,10067,1,,Fox Mask,The Wise Trickster,11,Mask,0.5275361862657678,True,1
+6,08047,1,,Scout Ahead,,9,,0.5050492781740282,True,2
+7,01090,1,,Perception,,1,,0.5023157492263729,True,2
+8,60317,1,,Nimble,,7,,0.4975234075532975,True,2
+9,01051,1,,Backstab,,1,,0.48770805407202494,True,2
+10,02229,1,,Quick Thinking,,2,,0.45863700831263643,True,2
+11,01039,1,,Deduction,,1,,0.450357807971344,True,2
+12,60305,1,,Lockpicks,,7,Hand,0.4356875374589163,True,2
+13,04028,1,,"""You handle this one!""",,4,,0.42460806830698367,True,2
+14,01092,1,,Manual Dexterity,,1,,0.42375564332142895,True,2
+15,02188,1,,Lone Wolf,,2,,0.3981936939565788,True,1
+16,08047,2,,Scout Ahead,,9,,0.381120923557834,True,2
+17,04028,2,,"""You handle this one!""",,4,,0.37858119799443574,True,2
+18,01048,1,,Leo De Luca,The Louisiana Lion,1,Ally,0.3571657399576204,True,1
+19,02229,2,,Quick Thinking,,2,,0.3544992761870807,True,2
+20,01090,2,,Perception,,1,,0.35066861173607716,True,2
+21,07114,1,,Breaking and Entering,,8,,0.3467568966028735,True,1
+22,04107,1,,Lucky Cigarette Case,,4,Accessory,0.3429490247596792,True,1
+23,09064,1,,Thieves' Kit,,10,Hand,0.3409335375139685,True,1
+24,11033,1,,Alton O'Connell,Ghost Hunter,12,Ally,0.3343542453930533,True,1
+25,01092,2,,Manual Dexterity,,1,,0.32607059135016875,True,2
+26,04037,1,,Backpack,,4,Body,0.3246074667751379,True,1
+27,01051,2,,Backstab,,1,,0.32201238455430914,True,2
+28,60305,2,,Lockpicks,,7,Hand,0.3171936668211518,True,2
+29,10065,1,,British Bull Dog,,11,Hand,0.3115481579134985,True,1
+30,60317,2,,Nimble,,7,,0.2940453868419788,True,2
+31,01039,2,,Deduction,,1,,0.2857131373060601,True,2
+32,03024,1,,Fieldwork,,3,,0.27826795783293196,True,1
+33,03233,1,,"""Watch this!""",,3,,0.27450869430768005,True,1

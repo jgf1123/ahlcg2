@@ -3,36 +3,36 @@ rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,
 2,06011,1,,Tony's .38 Long Colt,,6,Hand,1.0,True,2
 3,06011,2,,Tony's .38 Long Colt,,6,Hand,1.0,True,2
 4,06012,1,,Tony's Quarry,,6,,1.0,True,1
-5,01000,1,,Random Basic Weakness,,1,,0.7347899692881288,False,0
-6,04107,1,,Lucky Cigarette Case,,4,Accessory,0.6602336650696726,True,2
-7,10069,1,,Bank Job,,11,,0.5655326394968366,True,2
-8,01025,1,,Vicious Blow,,1,,0.5050076542474776,True,2
-9,01048,1,,Leo De Luca,The Louisiana Lion,1,Ally,0.49894697852922676,True,1
-10,01091,1,,Overpower,,1,,0.4755400602589472,True,2
-11,60309,1,,Lonnie Ritter,Feisty Mechanic,7,Ally,0.4487143858084985,True,2
-12,04107,2,,Lucky Cigarette Case,,4,Accessory,0.44404797306677946,True,2
-13,01025,2,,Vicious Blow,,1,,0.43125039101685264,True,2
-14,10069,2,,Bank Job,,11,,0.39740261117620296,True,2
-15,09068,1,,Kicking the Hornet's Nest,,10,,0.39386397849552884,True,2
-16,01091,2,,Overpower,,1,,0.39107658590780503,True,2
-17,02229,1,,Quick Thinking,,2,,0.38750789199875035,True,2
-18,03233,1,,"""Watch this!""",,3,,0.38732060507582355,True,2
-19,01047,1,,.41 Derringer,,1,Hand,0.3871762774629953,True,1
-20,01088,1,,Emergency Cache,,1,,0.37575705162055983,True,2
-21,60306,1,,Mauser C96,,7,Hand,0.3625466413054549,True,2
-22,01044,1,,Switchblade,,1,Hand,0.35714136362988125,True,1
-23,08126,1,,Heavy Furs,,9,Body,0.35141945490627907,True,1
-24,08125,1,,In the Thick of It,,9,,0.3472819426823109,False,0
-25,07028,1,,Faustian Bargain,,8,,0.345099137230406,True,2
-26,02229,2,,Quick Thinking,,2,,0.3391593742612007,True,2
-27,60309,2,,Lonnie Ritter,Feisty Mechanic,7,Ally,0.3247387512427043,True,2
-28,03233,2,,"""Watch this!""",,3,,0.32168215821420315,True,2
-29,01048,2,,Leo De Luca,The Louisiana Lion,1,Ally,0.31681057416570285,False,1
-30,09068,2,,Kicking the Hornet's Nest,,10,,0.3087009837795107,True,2
-31,01088,2,,Emergency Cache,,1,,0.3068655897584767,True,2
-32,07028,2,,Faustian Bargain,,8,,0.2895036794420907,True,2
-33,03029,1,,Sleight of Hand,,3,,0.2835455016958423,True,1
-34,04028,1,,"""You handle this one!""",,4,,0.2727372962304612,True,1
-35,60306,2,,Mauser C96,,7,Hand,0.26666231654305556,True,2
-36,02184,1,,Prepared for the Worst,,2,,0.26526599255176325,True,1
-37,11057,1,,Crack Shot,,12,,0.2576459923906881,True,1
+5,01000,1,,Random Basic Weakness,,1,,0.732271892845428,False,0
+6,04107,1,,Lucky Cigarette Case,,4,Accessory,0.6604017768296074,True,2
+7,10069,1,,Bank Job,,11,,0.5698382975038653,True,2
+8,01025,1,,Vicious Blow,,1,,0.5052206264475736,True,2
+9,01048,1,,Leo De Luca,The Louisiana Lion,1,Ally,0.500036421185086,True,1
+10,01091,1,,Overpower,,1,,0.4766070260875633,True,2
+11,60309,1,,Lonnie Ritter,Feisty Mechanic,7,Ally,0.45197918226053707,True,2
+12,04107,2,,Lucky Cigarette Case,,4,Accessory,0.4445483616475154,True,2
+13,01025,2,,Vicious Blow,,1,,0.43014467965979075,True,2
+14,10069,2,,Bank Job,,11,,0.39844397505720885,True,2
+15,09068,1,,Kicking the Hornet's Nest,,10,,0.3975862172372,True,2
+16,01091,2,,Overpower,,1,,0.39113990208808636,True,2
+17,01047,1,,.41 Derringer,,1,Hand,0.3876629792117186,True,1
+18,02229,1,,Quick Thinking,,2,,0.3868760590047154,True,2
+19,03233,1,,"""Watch this!""",,3,,0.38489688577347964,True,2
+20,01088,1,,Emergency Cache,,1,,0.37606233390634697,True,2
+21,60306,1,,Mauser C96,,7,Hand,0.36547205253670634,True,2
+22,01044,1,,Switchblade,,1,Hand,0.35519781797160155,True,1
+23,08126,1,,Heavy Furs,,9,Body,0.35145476685846316,True,1
+24,07028,1,,Faustian Bargain,,8,,0.3488661096691481,True,2
+25,08125,1,,In the Thick of It,,9,,0.34795487362712,False,0
+26,02229,2,,Quick Thinking,,2,,0.33788585311404806,True,2
+27,60309,2,,Lonnie Ritter,Feisty Mechanic,7,Ally,0.32866768586616013,True,2
+28,03233,2,,"""Watch this!""",,3,,0.32187237752923986,True,2
+29,01048,2,,Leo De Luca,The Louisiana Lion,1,Ally,0.31963615405360796,False,1
+30,09068,2,,Kicking the Hornet's Nest,,10,,0.31202505439027367,True,2
+31,01088,2,,Emergency Cache,,1,,0.3064547791068293,True,2
+32,07028,2,,Faustian Bargain,,8,,0.2923519717930478,True,2
+33,03029,1,,Sleight of Hand,,3,,0.2886786667877081,True,1
+34,04028,1,,"""You handle this one!""",,4,,0.27586749307049396,True,1
+35,02184,1,,Prepared for the Worst,,2,,0.2686452317299735,True,1
+36,60306,2,,Mauser C96,,7,Hand,0.2677989728562991,True,2
+37,11057,1,,Crack Shot,,12,,0.2584112018121651,True,1

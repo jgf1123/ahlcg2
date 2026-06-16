@@ -1,35 +1,37 @@
 rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
 1,60102,1,,Randall Cho,Concerned Brother,7,Ally,1.0,True,1
 2,60103,1,,Tommy Malloy,,7,,1.0,True,1
-3,60117,1,,One-Two Punch,,7,,0.8339199649060123,True,2
-4,60105,1,,Boxing Gloves,,7,Hand x2,0.7732302811888524,True,2
-5,60117,2,,One-Two Punch,,7,,0.7619352686366612,True,2
-6,01025,1,,Vicious Blow,,1,,0.744900740612141,True,2
-7,60112,1,,Counterpunch,,7,,0.7228057429650465,True,2
-8,60105,2,,Boxing Gloves,,7,Hand x2,0.7223050127645682,True,2
-9,60116,1,,Monster Slayer,,7,,0.716373721465011,True,2
-10,60111,1,,Clean Them Out,,7,,0.6940718560574903,True,2
-11,01025,2,,Vicious Blow,,1,,0.6841584266486653,True,2
-12,60116,2,,Monster Slayer,,7,,0.6659901890320137,True,2
-13,01000,1,,Random Basic Weakness,,1,,0.6621885964368237,False,0
-14,60112,2,,Counterpunch,,7,,0.6319608402194564,True,2
-15,60114,1,,"""Get over here!""",,7,,0.6277292434593454,True,2
-16,60111,2,,Clean Them Out,,7,,0.6198486054608338,True,2
-17,08020,1,,Toe to Toe,,9,,0.5654057058850075,True,2
-18,11021,1,,Crowbar,,12,Hand,0.5642995366829678,True,1
-19,60115,1,,Glory,,7,,0.5445554821173377,True,2
-20,60114,2,,"""Get over here!""",,7,,0.5271248060766827,True,2
-21,10023,1,,Wolf Mask,The Moon's Sire,11,Mask,0.5256433386541939,True,1
-22,60118,1,,Stand Together,,7,,0.5221436032377864,True,2
-23,11021,2,,Crowbar,,12,Hand,0.4982903308448517,False,1
-24,60115,2,,Glory,,7,,0.49140660918280565,True,2
-25,01091,1,,Overpower,,1,,0.45347213823636934,True,2
-26,60118,2,,Stand Together,,7,,0.4041136078253731,True,2
-27,60110,1,,Safeguard,,7,,0.3899805673650641,True,1
-28,08020,2,,Toe to Toe,,9,,0.3895409629291782,True,2
-29,01091,2,,Overpower,,1,,0.37758256311116767,True,2
-30,60107,1,,Grete Wagner,The Purifier,7,Ally,0.34433673183330493,True,1
-31,01088,1,,Emergency Cache,,1,,0.33434796881959494,True,1
-32,01023,1,,Dodge,,1,,0.3328729083698935,True,1
-33,05313,1,,Hallowed Mirror,,5,Accessory,0.31351905631704524,True,1
-34,11024,1,,Ready for Anything,,12,,0.2918301731790393,True,1
+3,60117,1,,One-Two Punch,,7,,0.8323793741146863,True,2
+4,60105,1,,Boxing Gloves,,7,Hand x2,0.7700521180037896,True,2
+5,01025,1,,Vicious Blow,,1,,0.7631674179304127,True,2
+6,60117,2,,One-Two Punch,,7,,0.7582191939893367,True,2
+7,60116,1,,Monster Slayer,,7,,0.7427937337933428,True,2
+8,60111,1,,Clean Them Out,,7,,0.7288540960541898,True,2
+9,60112,1,,Counterpunch,,7,,0.7186393172953505,True,2
+10,60105,2,,Boxing Gloves,,7,Hand x2,0.7180697646257272,True,2
+11,01025,2,,Vicious Blow,,1,,0.7035632487564271,True,2
+12,60116,2,,Monster Slayer,,7,,0.6984905910563755,True,2
+13,01000,1,,Random Basic Weakness,,1,,0.6605183718424403,False,0
+14,60111,2,,Clean Them Out,,7,,0.6576549267797644,True,2
+15,60114,1,,"""Get over here!""",,7,,0.645544803352668,True,2
+16,60112,2,,Counterpunch,,7,,0.6293854082813999,True,2
+17,08020,1,,Toe to Toe,,9,,0.584471596168309,True,2
+18,60115,1,,Glory,,7,,0.5728377323391068,True,2
+19,10023,1,,Wolf Mask,The Moon's Sire,11,Mask,0.5639276639028519,True,1
+20,60114,2,,"""Get over here!""",,7,,0.543581704921921,True,2
+21,11021,1,,Crowbar,,12,Hand,0.5352546499194094,True,1
+22,60115,2,,Glory,,7,,0.5236709647827693,True,2
+23,60118,1,,Stand Together,,7,,0.5232735558980558,True,2
+24,11021,2,,Crowbar,,12,Hand,0.47264298348065265,False,1
+25,01091,1,,Overpower,,1,,0.4469193745703591,True,2
+26,60118,2,,Stand Together,,7,,0.40704475983379557,True,2
+27,60110,1,,Safeguard,,7,,0.3945284139140873,True,1
+28,08020,2,,Toe to Toe,,9,,0.38096992481280784,True,2
+29,01091,2,,Overpower,,1,,0.3794262513858689,True,2
+30,60107,1,,Grete Wagner,The Purifier,7,Ally,0.3517339210492686,True,1
+31,01023,1,,Dodge,,1,,0.3364012296351323,True,1
+32,01088,1,,Emergency Cache,,1,,0.3177406054533438,True,1
+33,10019,1,,Ancestral Token,,11,Accessory,0.31427684927173277,True,1
+34,05313,1,,Hallowed Mirror,,5,Accessory,0.31390137671616464,False,0
+35,10019,2,,Ancestral Token,,11,Accessory,0.29497595630983475,False,1
+36,11024,1,,Ready for Anything,,12,,0.27680947267660944,True,1

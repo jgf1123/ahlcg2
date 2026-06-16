@@ -1,37 +1,37 @@
 rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
 1,10005,1,,Flux Stabilizer,Inactive,11,,1.0,True,1
 2,10008,1,,Failed Experiment,,11,,1.0,True,1
-3,01000,1,,Random Basic Weakness,,1,,0.8954881855831202,False,0
-4,01039,1,,Deduction,,1,,0.786574939271635,True,2
-5,01039,2,,Deduction,,1,,0.786574939271635,True,2
-6,01030,1,,Magnifying Glass,,1,Hand,0.7513704513106692,True,2
-7,01090,1,,Perception,,1,,0.5980592101641492,True,2
-8,10040,1,,Chemistry Set,,11,Accessory,0.5920419884551158,True,2
-9,10051,1,,Well-Funded,,11,,0.5851676624284133,True,2
-10,01090,2,,Perception,,1,,0.5746014317847397,True,2
-11,01030,2,,Magnifying Glass,,1,Hand,0.5562211694745117,True,2
-12,10051,2,,Well-Funded,,11,,0.5478189522261788,True,2
-13,10040,2,,Chemistry Set,,11,Accessory,0.49724707319015243,True,2
-14,03231,1,,Eureka!,,3,,0.47829544072527475,True,2
-15,03231,2,,Eureka!,,3,,0.46672839387420917,True,2
-16,10044,1,,Ravenous Myconid,Unidentified,11,,0.4616872514440676,True,1
-17,10028,1,,Tinker,,11,,0.4063666704461788,True,2
-18,10028,2,,Tinker,,11,,0.37443609839360426,True,2
-19,10042,1,,Microscope,,11,Hand,0.37347279862117977,True,2
-20,11034,1,,Artistic Inspiration,,12,,0.3728179551122193,True,2
-21,01033,1,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.37182144844604065,True,2
-22,02021,1,,Strange Solution,Unidentified,2,,0.35971521529359973,True,1
-23,05110,1,,Crack the Case,,5,,0.3569628337779838,True,2
-24,05110,2,,Crack the Case,,5,,0.35578619031737957,True,2
-25,10042,2,,Microscope,,11,Hand,0.3515612077477592,True,2
-26,08125,1,,In the Thick of It,,9,,0.3332774114667989,False,0
-27,01033,2,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.32945724309455043,True,2
-28,10043,1,,Mouse Mask,The Meek Watcher,11,Mask,0.27819460138605673,True,1
-29,11039,1,,Uncanny Specimen,,12,Arcane,0.2605985037406484,True,1
-30,11039,2,,Uncanny Specimen,,12,Arcane,0.2605985037406484,False,1
-31,11039,3,,Uncanny Specimen,,12,Arcane,0.2605985037406484,False,1
-32,02227,1,,Inquiring Mind,,2,,0.20005262543497918,True,2
-33,02227,2,,Inquiring Mind,,2,,0.18725803684844794,True,2
-34,11034,2,,Artistic Inspiration,,12,,0.18329177057356608,True,2
-35,02022,1,,Shortcut,,2,,0.18003571356999104,True,2
-36,02022,2,,Shortcut,,2,,0.1770415965274544,True,2
+3,01000,1,,Random Basic Weakness,,1,,0.897831910524155,False,0
+4,01039,1,,Deduction,,1,,0.7812514028372339,True,2
+5,01039,2,,Deduction,,1,,0.7812514028372339,True,2
+6,01030,1,,Magnifying Glass,,1,Hand,0.7464121763515338,True,2
+7,10051,1,,Well-Funded,,11,,0.5995234242369506,True,2
+8,10040,1,,Chemistry Set,,11,Accessory,0.590418911818051,True,2
+9,01090,1,,Perception,,1,,0.581997484323246,True,2
+10,01030,2,,Magnifying Glass,,1,Hand,0.5773291106068917,True,2
+11,10051,2,,Well-Funded,,11,,0.5606130319775259,True,2
+12,01090,2,,Perception,,1,,0.5576856260068834,True,2
+13,10040,2,,Chemistry Set,,11,Accessory,0.49262714480735953,True,2
+14,03231,1,,Eureka!,,3,,0.4578194700325742,True,2
+15,10044,1,,Ravenous Myconid,Unidentified,11,,0.4465016826133736,True,1
+16,03231,2,,Eureka!,,3,,0.4458998704177503,True,2
+17,10028,1,,Tinker,,11,,0.3944787762652392,True,2
+18,05110,1,,Crack the Case,,5,,0.37441965742053834,True,2
+19,05110,2,,Crack the Case,,5,,0.373198143297415,True,2
+20,02021,1,,Strange Solution,Unidentified,2,,0.36677953382629763,True,1
+21,10028,2,,Tinker,,11,,0.36252516366974896,True,2
+22,10042,1,,Microscope,,11,Hand,0.3624010051550866,True,2
+23,01033,1,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.34863727738204536,True,2
+24,10042,2,,Microscope,,11,Hand,0.3410795603527433,True,2
+25,11034,1,,Artistic Inspiration,,12,,0.33538591942560836,True,2
+26,08125,1,,In the Thick of It,,9,,0.31284223300494823,False,0
+27,01033,2,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.30705105974016234,True,2
+28,11039,1,,Uncanny Specimen,,12,Arcane,0.2761517750299163,True,1
+29,11039,2,,Uncanny Specimen,,12,Arcane,0.2761517750299163,False,1
+30,11039,3,,Uncanny Specimen,,12,Arcane,0.2761517750299163,False,1
+31,10043,1,,Mouse Mask,The Meek Watcher,11,Mask,0.2636682663672851,True,1
+32,11034,2,,Artistic Inspiration,,12,,0.19423115277223776,True,2
+33,02022,1,,Shortcut,,2,,0.18449195969456342,True,2
+34,02227,1,,Inquiring Mind,,2,,0.18217407103934194,True,1
+35,02022,2,,Shortcut,,2,,0.18139889353083138,True,2
+36,01088,1,,Emergency Cache,,1,,0.17965755106565656,True,1
