@@ -506,7 +506,7 @@ def prepend_generation_version_changelog(
 
 
 def stratum_blend_weight(deck_cycle: int) -> float:
-    """Spec B1: g(C) = C."""
+    """Spec B1: g(C) = C, applied as a per-deck multiplier."""
     return float(deck_cycle)
 
 
@@ -1050,14 +1050,14 @@ class ArkhamPopularityEngine:
         inv_index: InvCycleIndex,
         slot_shares: dict[int, float],
     ) -> float:
-        """Spec B2 + B3: user_weight × Cycle.weight × inv_adjust × tilt_d(k)."""
+        """Spec B1 + B2 + B3: user_weight × Cycle.weight × deck_xp_weight × g(C) × inv_adjust × tilt."""
         base = self.deck_weight(deck, user_weights, cycle_weights)
         if not base:
             return 0.0
         inv_cycle = self.mapper.cycle_for_slot(deck.canonical_front)
         inv_adjust = inv_index.adjust(deck.cycle, inv_cycle)
         tilt = tilt_factor(deck.cycle, card_cycle, slot_shares)
-        return base * inv_adjust * tilt
+        return base * stratum_blend_weight(deck.cycle) * inv_adjust * tilt
 
     def _deck_passes_p1_p2(
         self,
@@ -1072,18 +1072,16 @@ class ArkhamPopularityEngine:
             return False
         return True
 
-    def _option_weight_in_stratum(
+    def _option_weight_for_deck(
         self,
         deck: PreparedDecklist,
         card_info: CanonicalCardInfo,
-        stratum: int,
         user_weights: dict[Any, float],
         cycle_weights: dict[int, float],
         inv_index: InvCycleIndex | None,
         slot_shares_by_deck: dict[Any, dict[int, float]],
     ) -> float:
-        if deck.cycle != stratum:
-            return 0.0
+        """P1/P2-eligible deck weight for one option (pooled B1 when bias compensation is on)."""
         if not self._deck_passes_p1_p2(deck, card_info):
             return 0.0
         if self.bias_compensation and inv_index is not None:
@@ -1098,7 +1096,7 @@ class ArkhamPopularityEngine:
             )
         return self.deck_weight(deck, user_weights, cycle_weights)
 
-    def _stratum_popularity_for_option(
+    def stratum_popularity_for_option(
         self,
         inv_decks: list[PreparedDecklist],
         card_info: CanonicalCardInfo,
@@ -1110,14 +1108,15 @@ class ArkhamPopularityEngine:
         *,
         contains_option: Any,
     ) -> tuple[float, float]:
-        """Return (p3, p4) within Decklist.cycle = stratum."""
+        """Diagnostic (P3, P4) within Decklist.cycle = stratum; not used for reported P5."""
         p3 = 0.0
         p4 = 0.0
         for deck in inv_decks:
-            weight = self._option_weight_in_stratum(
+            if deck.cycle != stratum:
+                continue
+            weight = self._option_weight_for_deck(
                 deck,
                 card_info,
-                stratum,
                 user_weights,
                 cycle_weights,
                 inv_index,
@@ -1129,64 +1128,6 @@ class ArkhamPopularityEngine:
             if contains_option(deck):
                 p4 += weight
         return p3, p4
-
-    def _blend_stratum_popularity(
-        self,
-        stratum_p3: dict[int, float],
-        stratum_p4: dict[int, float],
-    ) -> tuple[float, float, float]:
-        """Spec B1: blend per-stratum P5 with g(C) = C."""
-        blend_total = 0.0
-        weighted_p3 = 0.0
-        weighted_p4 = 0.0
-        weighted_p5 = 0.0
-        for stratum in sorted(stratum_p3):
-            p3 = stratum_p3[stratum]
-            if not p3:
-                continue
-            g_weight = stratum_blend_weight(stratum)
-            p5 = stratum_p4[stratum] / p3
-            blend_total += g_weight
-            weighted_p3 += g_weight * p3
-            weighted_p4 += g_weight * stratum_p4[stratum]
-            weighted_p5 += g_weight * p5
-        if not blend_total:
-            return 0.0, 0.0, 0.0
-        return (
-            weighted_p3 / blend_total,
-            weighted_p4 / blend_total,
-            weighted_p5 / blend_total,
-        )
-
-    def _eligible_decks_for_option(
-        self,
-        decks: list[PreparedDecklist],
-        card_info: CanonicalCardInfo,
-        user_weights: dict[Any, float],
-        cycle_weights: dict[int, float],
-        inv_index: InvCycleIndex | None = None,
-        slot_shares_by_deck: dict[Any, dict[int, float]] | None = None,
-    ) -> list[tuple[PreparedDecklist, float]]:
-        """Legacy pooled eligibility (no B1 stratification). Used when bias_compensation=False."""
-        eligible: list[tuple[PreparedDecklist, float]] = []
-        shares = slot_shares_by_deck or {}
-        for deck in decks:
-            if not self._deck_passes_p1_p2(deck, card_info):
-                continue
-            if self.bias_compensation and inv_index is not None:
-                weight = self.adjusted_deck_weight(
-                    deck,
-                    card_info.cycle,
-                    user_weights,
-                    cycle_weights,
-                    inv_index,
-                    shares.get(deck.deck_id, {}),
-                )
-            else:
-                weight = self.deck_weight(deck, user_weights, cycle_weights)
-            if weight:
-                eligible.append((deck, weight))
-        return eligible
 
     def deck_contains_noncustom_option(
         self,
@@ -1251,13 +1192,6 @@ class ArkhamPopularityEngine:
             for deck in inv_decks
             if not deck.is_ignore
         }
-        strata = sorted(
-            {
-                deck.cycle
-                for deck in inv_decks
-                if deck.cycle is not None and not deck.is_ignore
-            }
-        )
 
         rows: list[dict[str, Any]] = []
         for option in self.enumerate_options(inv_decks):
@@ -1272,7 +1206,6 @@ class ArkhamPopularityEngine:
                 p3, p4, p5 = self._popularity_for_option(
                     inv_decks,
                     card_info,
-                    strata,
                     user_weights,
                     cycle_weights,
                     inv_index,
@@ -1307,7 +1240,6 @@ class ArkhamPopularityEngine:
                 p3, p4, p5 = self._popularity_for_option(
                     inv_decks,
                     card_info,
-                    strata,
                     user_weights,
                     cycle_weights,
                     inv_index,
@@ -1338,44 +1270,29 @@ class ArkhamPopularityEngine:
         self,
         inv_decks: list[PreparedDecklist],
         card_info: CanonicalCardInfo,
-        strata: list[int],
         user_weights: dict[Any, float],
         cycle_weights: dict[int, float],
         inv_index: InvCycleIndex | None,
         slot_shares_by_deck: dict[Any, dict[int, float]],
         contains_option: Any,
     ) -> tuple[float, float, float]:
-        if self.bias_compensation:
-            stratum_p3: dict[int, float] = {}
-            stratum_p4: dict[int, float] = {}
-            for stratum in strata:
-                if card_info.cycle is not None and stratum < card_info.cycle:
-                    continue
-                p3, p4 = self._stratum_popularity_for_option(
-                    inv_decks,
-                    card_info,
-                    stratum,
-                    user_weights,
-                    cycle_weights,
-                    inv_index,
-                    slot_shares_by_deck,
-                    contains_option=contains_option,
-                )
-                if p3:
-                    stratum_p3[stratum] = p3
-                    stratum_p4[stratum] = p4
-            return self._blend_stratum_popularity(stratum_p3, stratum_p4)
-
-        eligible = self._eligible_decks_for_option(
-            inv_decks,
-            card_info,
-            user_weights,
-            cycle_weights,
-            inv_index,
-            slot_shares_by_deck,
-        )
-        p3 = sum(weight for _, weight in eligible)
-        p4 = sum(weight for deck, weight in eligible if contains_option(deck))
+        """Spec B1: pooled P3/P4 with g(C) in w_deck; P5 = P4/P3."""
+        p3 = 0.0
+        p4 = 0.0
+        for deck in inv_decks:
+            weight = self._option_weight_for_deck(
+                deck,
+                card_info,
+                user_weights,
+                cycle_weights,
+                inv_index,
+                slot_shares_by_deck,
+            )
+            if not weight:
+                continue
+            p3 += weight
+            if contains_option(deck):
+                p4 += weight
         p5 = (p4 / p3) if p3 else 0.0
         return p3, p4, p5
 

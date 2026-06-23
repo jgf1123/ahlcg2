@@ -293,8 +293,73 @@ class BiasCompensationTests(unittest.TestCase):
         self.assertAlmostEqual(pt_off["p5_popularity"], 0.5)
         self.assertAlmostEqual(pt_on["p5_popularity"], 0.5)
 
+    def test_p5_equals_p4_over_p3(self):
+        cards = {
+            "01004": _card("01004", name="Agnes", type_code="investigator", faction_code="mystic"),
+            "01017": _card("01017", name="Physical Training"),
+            "01023": _card("01023", name="Dodge"),
+        }
+        decklists = {
+            1: {"id": 1, "user_id": 1, "investigator_code": "01004", "investigator_name": "Agnes",
+                "slots": {"01017": 2}},
+            2: {"id": 2, "user_id": 2, "investigator_code": "01004", "investigator_name": "Agnes",
+                "slots": {"01023": 2}},
+        }
+        mapper = CanonicalMapper(cards, chapter=1)
+        engine = ArkhamPopularityEngine(cards, mapper, [{"id": 1, "cards": "[]"}], bias_compensation=True)
+        prepared = engine.prepare_all(decklists)
+        for row in engine.popularity_for_investigator(prepared, "01004", "01004"):
+            p3, p4, p5 = row["p3_opportunity_weight"], row["p4_choice_weight"], row["p5_popularity"]
+            if p3:
+                self.assertAlmostEqual(p5, p4 / p3)
+            else:
+                self.assertEqual(p5, 0.0)
 
-class CycleWeightTests(unittest.TestCase):
+    def test_g_cycle_weight_in_deck_weight_not_post_blend(self):
+        """High-cycle decks without the option dilute P5 via g(C) in w_deck, not averaged stratum rates."""
+        cards = {
+            "01004": _card(
+                "01004",
+                name="Agnes",
+                type_code="investigator",
+                faction_code="mystic",
+                pack_code="core",
+            ),
+            "01017": _card("01017", name="Physical Training", pack_code="core"),
+            "99001": _card("99001", name="Late Card", pack_code="tdcp"),
+        }
+        decklists = {
+            1: {
+                "id": 1,
+                "user_id": 1,
+                "investigator_code": "01004",
+                "investigator_name": "Agnes",
+                "slots": {"01017": 2},
+            },
+            2: {
+                "id": 2,
+                "user_id": 2,
+                "investigator_code": "01004",
+                "investigator_name": "Agnes",
+                "slots": {"99001": 2},
+            },
+        }
+        mapper = CanonicalMapper(cards, chapter=12)
+        taboo = [{"id": 1, "cards": "[]"}]
+        on = ArkhamPopularityEngine(cards, mapper, taboo, bias_compensation=True)
+        off = ArkhamPopularityEngine(cards, mapper, taboo, bias_compensation=False)
+        prepared = on.prepare_all(decklists)
+        self.assertEqual(prepared[0].cycle, 1)
+        self.assertEqual(prepared[1].cycle, 12)
+        pt_on = next(
+            r for r in on.popularity_for_investigator(prepared, "01004", "01004")
+            if r["canonical_id"] == "01017" and r["card_index"] == 1
+        )
+        pt_off = next(
+            r for r in off.popularity_for_investigator(prepared, "01004", "01004")
+            if r["canonical_id"] == "01017" and r["card_index"] == 1
+        )
+        self.assertLess(pt_on["p5_popularity"], pt_off["p5_popularity"])
     def test_enforce_monotonic_cycle_weights(self):
         raw = {1: 0.001, 2: 0.0005, 3: 0.0008, 4: 0.0007}
         result = enforce_monotonic_cycle_weights(raw)
