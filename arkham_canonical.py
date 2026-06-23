@@ -9,6 +9,8 @@ import re
 from collections import defaultdict
 from typing import Any
 
+from arkham_deck_options import investigator_requirement_card_ids
+
 CORE_PACK = "core"
 RCORE_PACK = "rcore"
 CORE_PACKS = (CORE_PACK, RCORE_PACK)
@@ -308,14 +310,34 @@ class CanonicalMapper:
             return None
         return _member_card_cycle(card)
 
-    def decklist_cycle(self, slots: dict[str, int] | None) -> int | None:
-        """Return Decklist.cycle: max cycle among ordered canonical slot codes."""
+    def decklist_cycle(
+        self,
+        slots: dict[str, int] | None,
+        *,
+        canonical_front: str | None = None,
+    ) -> int | None:
+        """Return Decklist.cycle: max cycle among player-chosen ordered slot codes.
+
+        Excludes random basic weaknesses and, when canonical_front is given,
+        all signature printings from deck_requirements.card.
+        """
         if not slots:
             return None
+        exclude: set[str] = set()
+        if canonical_front is not None:
+            exclude |= investigator_requirement_card_ids(
+                self.cards, canonical_front, self.to_canonical
+            )
+        for card_id in slots:
+            canonical_id = self.to_canonical(card_id)
+            card = self.cards.get(canonical_id) or self.cards.get(card_id)
+            if card is not None and card.get("subtype_code") == "basicweakness":
+                exclude.add(canonical_id)
         cycles = [
             cycle
             for card_id in slots
-            if (cycle := self.cycle_for_slot(card_id)) is not None
+            if self.to_canonical(card_id) not in exclude
+            and (cycle := self.cycle_for_slot(card_id)) is not None
         ]
         if not cycles:
             return None

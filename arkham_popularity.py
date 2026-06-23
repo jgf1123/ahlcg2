@@ -805,7 +805,7 @@ class ArkhamPopularityEngine:
             canonical_back=canon_back,
             slots=slots,
             taboo_id=taboo_id,
-            cycle=self.mapper.decklist_cycle(slots),
+            cycle=self.mapper.decklist_cycle(slots, canonical_front=canon_front),
             xp_cost=xp_cost,
             deck_xp_weight=deck_xp_weight(xp_cost, xp_thres=self.xp_thres),
             has_unknown_slots=has_unknown,

@@ -142,6 +142,32 @@ class CanonicalIdTests(unittest.TestCase):
             5,
         )
 
+    def test_decklist_cycle_excludes_norman_signatures(self):
+        if "08005" not in self.cards:
+            self.skipTest("Norman signatures not in card_json.pickle")
+        slots = {"01017": 25, "08005": 1, "08006": 1}
+        self.assertEqual(self.mapper.decklist_cycle(slots), 9)
+        self.assertEqual(
+            self.mapper.decklist_cycle(slots, canonical_front="08004"),
+            1,
+        )
+
+    def test_decklist_cycle_excludes_basicweakness(self):
+        basic = [
+            card_id
+            for card_id, card in self.cards.items()
+            if card.get("subtype_code") == "basicweakness"
+            and (cycle := self.mapper.cycle_for_slot(card_id)) is not None
+            and cycle > 1
+        ]
+        if not basic:
+            self.skipTest("no ordered non-core basic weakness in card_json.pickle")
+        weakness_id = basic[0]
+        self.assertEqual(
+            self.mapper.decklist_cycle({"01017": 25, weakness_id: 1}),
+            1,
+        )
+
     def test_identity_for_singletons(self):
         singletons = [
             card_id

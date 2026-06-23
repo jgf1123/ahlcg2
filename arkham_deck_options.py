@@ -225,6 +225,18 @@ def all_deck_requirement_card_ids(groups: list[frozenset[str]]) -> frozenset[str
     return frozenset(combined)
 
 
+def investigator_requirement_card_ids(
+    cards: dict[str, dict[str, Any]],
+    canonical_front: str,
+    to_canonical: Any,
+) -> frozenset[str]:
+    """All signature printings from deck_requirements.card for an investigator."""
+    inv_card = cards.get(canonical_front) or {}
+    requirements = inv_card.get("deck_requirements") or {}
+    groups = deck_requirement_signature_groups(requirements, to_canonical)
+    return all_deck_requirement_card_ids(groups)
+
+
 def choose_signature_from_group(
     group: frozenset[str],
     weights_by_id: dict[str, float],

@@ -152,7 +152,14 @@ NOTE: Previous iterations described temporal order using "group" and "mythos". G
 
 # Cycle Weighting
 
-When a player creates a decklist, they do not always consider all cards published to date. Typically, players will buy cycles in order and build decklists from the packs they own, i.e., players own cycles 1 through X and build decklists using cards from 1 through X. Let the `Decklist.cycle` of a decklist be the maximum ordered `cycle` among the `canonical_id`s it contains (ignore slots whose `CanonicalCard.cycle` is `None`). If every slot is out-of-order, `Decklist.cycle = None`. This creates a bias because players who have access to a larger pool of cards are more likely to make better decks.
+When a player creates a decklist, they do not always consider all cards published to date. Typically, players will buy cycles in order and build decklists from the packs they own, i.e., players own cycles 1 through X and build decklists using cards from 1 through X. Let the `Decklist.cycle` of a decklist be the maximum ordered `cycle` among the `canonical_id`s in its `slots` that reflect **player deckbuilding choices** (ignore slots whose `CanonicalCard.cycle` is `None`). Exclude from this max:
+
+- **Deckbuilding requirements** — every signature printing listed in `deck_requirements.card` for `Decklist.canonical_front` (all OR alternatives, not only the printing present in the list). Signature assets and signature weaknesses are forced, not chosen.
+- **Random basic weakness** — any slotted card with `subtype_code = basicweakness`.
+
+The investigator card itself is not in `slots` and does not enter this calculation. If every remaining slot is out-of-order, `Decklist.cycle = None`. This creates a bias because players who have access to a larger pool of cards are more likely to make better decks.
+
+**Rationale:** default signature printings can sit in a high `cycle` (e.g. Norman Withers' `08005` / `08006` are cycle 9) while parallel replacements are out-of-order (`cycle = None`). Counting requirements toward `Decklist.cycle` would force many decks to a high stratum based on printing choice, not on how far the player has bought into the product line. The same issue applies when a random basic weakness happens to come from a late cycle.
 
 Furthermore, for a player building a decklist using cards from cycles 1 through X, we observe that, a *very rough* estimate is that ~76% of cards are evenly divided between cycles 1 through X, cycle 1 receives an additional ~22%, and cycle X receives ~2% for players picking cards because of novelty instead of utility (done: ~~recalibrated after the `rcore` card-cycle fix~~). Only the structural portion (~98%) enters `b_C(k)`; see B3.
 
@@ -280,7 +287,7 @@ For each decklist:
 
 D1. Map its `investigator_front` and `investigator_back` to `Decklist.canonical_front` and `Decklist.canonical_back`. Simiilarly, for each `card_id` in `slots`, replace it with its `canonical_id`.
 
-D2. Let `Decklist.cycle` equal the max over its non-`None` `CanonicalCard.cycle` values in `slots`, or `None` if all are out-of-order.
+D2. Let `Decklist.cycle` equal the max over non-`None` `CanonicalCard.cycle` values in `slots`, **excluding** deckbuilding-requirement signatures (`deck_requirements.card` for `canonical_front`, all OR printings) and random basic weaknesses (`subtype_code = basicweakness`). `None` if every remaining slot is out-of-order.
 
 D3. Let `Decklist.xp_cost` be the total XP cost of the decklist (reminder: customizable, exceptional, and myriad cases).
 
