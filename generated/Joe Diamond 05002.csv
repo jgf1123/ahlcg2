@@ -1,52 +1,49 @@
 rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
 1,05009,1,,Detective's Colt 1911s,,5,Hand x2,1.0,True,1
-2,05010,1,,Unsolved Case,,5,,0.999907998560297,True,1
-3,01037,1,,Working a Hunch,,1,,0.8876042933633539,True,2
-4,01037,2,,Working a Hunch,,1,,0.8242716919640755,True,2
-5,01039,1,,Deduction,,1,,0.7675596294178542,True,2
-6,01025,1,,Vicious Blow,,1,,0.7649664894272526,True,2
-7,01000,1,,Random Basic Weakness,,1,,0.7385785677527873,False,0
-8,01025,2,,Vicious Blow,,1,,0.7111758186718837,True,2
-9,02186,1,,Preposterous Sketches,,2,,0.6985575731641096,True,2
-10,01039,2,,Deduction,,1,,0.6812988158009977,True,2
-11,01030,1,,Magnifying Glass,,1,Hand,0.6709829887985692,True,2
-12,02186,2,,Preposterous Sketches,,2,,0.6295051112705482,True,2
-13,04103,1,,Scene of the Crime,,4,,0.575972851248824,True,2
-14,03191,1,,Logical Reasoning,,3,,0.5687342726187404,True,2
-15,02022,1,,Shortcut,,2,,0.5670635601664652,True,2
-16,03026,1,,No Stone Unturned,,3,,0.5623652812535767,True,2
-17,01030,2,,Magnifying Glass,,1,Hand,0.5316999042523785,True,2
-18,02022,2,,Shortcut,,2,,0.5271056367852291,True,2
-19,04103,2,,Scene of the Crime,,4,,0.5225712354937241,True,2
-20,03026,2,,No Stone Unturned,,3,,0.5083303686437932,True,2
-21,01090,1,,Perception,,1,,0.49263234684323376,True,2
-22,01091,1,,Overpower,,1,,0.4862834210248119,True,2
-23,01088,1,,Emergency Cache,,1,,0.4841572675487374,True,2
-24,01033,1,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.4450853941935013,True,2
-25,01088,2,,Emergency Cache,,1,,0.43397087550160984,True,2
-26,01090,2,,Perception,,1,,0.4214765527191151,True,2
-27,01091,2,,Overpower,,1,,0.418584221379507,True,2
-28,05110,1,,Crack the Case,,5,,0.4096028971625623,True,2
-29,10048,1,,Thorough Inquiry,,11,,0.38113741460208006,True,2
-30,01020,1,,Machete,,1,Hand,0.3795861256605166,True,2
-31,04150,1,,Take the Initiative,,4,,0.3567487917245816,True,2
-32,05110,2,,Crack the Case,,5,,0.3539825997915656,True,2
-33,03191,2,,Logical Reasoning,,3,,0.34912173786953377,True,2
-34,04150,2,,Take the Initiative,,4,,0.3243026909214396,True,2
-35,01016,1,,.45 Automatic,,1,Hand,0.3221418606991223,True,1
-36,06197,1,,Practice Makes Perfect,,6,,0.31994724210061426,True,2
-37,03231,1,,Eureka!,,3,,0.30383969613556483,True,1
-38,01033,2,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.3034292373304787,True,2
-39,10048,2,,Thorough Inquiry,,11,,0.3026093608003406,True,2
-40,06197,2,,Practice Makes Perfect,,6,,0.3012579059308486,True,2
-41,60214,1,,Burning the Midnight Oil,,7,,0.29084463034159996,False,0
-42,05024,1,,Fingerprint Kit,,5,Hand,0.2869468846194427,True,1
-43,03231,2,,Eureka!,,3,,0.2853235087108504,False,1
-44,02227,1,,Inquiring Mind,,2,,0.2803628661612283,False,0
-45,08125,1,,In the Thick of It,,9,,0.26962537601268255,False,0
-46,01020,2,,Machete,,1,Hand,0.26581267986702134,True,2
-47,05154,1,,Hawk-Eye Folding Camera,,5,Hand,0.2598999251536639,False,0
-48,60214,2,,Burning the Midnight Oil,,7,,0.2589548937403841,False,0
-49,01022,1,,Evidence!,,1,,0.24559561631568208,False,0
-50,02105,1,,Emergency Aid,,2,,0.24303144671305354,False,0
-51,01018,1,,Beat Cop,,1,Ally,0.24296894970538296,True,1
+2,05010,1,,Unsolved Case,,5,,0.9999075282993066,True,1
+3,01037,1,,Working a Hunch,,1,,0.8818533381744366,True,2
+4,01037,2,,Working a Hunch,,1,,0.8228190402880478,True,2
+5,01025,1,,Vicious Blow,,1,,0.7840196430084808,True,2
+6,01000,1,,Random Basic Weakness,,1,,0.7706108994919489,False,0
+7,01039,1,,Deduction,,1,,0.7597763810614862,True,2
+8,01025,2,,Vicious Blow,,1,,0.7339787152636401,True,2
+9,02186,1,,Preposterous Sketches,,2,,0.6878965759060439,True,2
+10,01030,1,,Magnifying Glass,,1,Hand,0.6825383007018335,True,2
+11,01039,2,,Deduction,,1,,0.6781658537766065,True,2
+12,02186,2,,Preposterous Sketches,,2,,0.6261288149629713,True,2
+13,02022,1,,Shortcut,,2,,0.5897382260288492,True,2
+14,03026,1,,No Stone Unturned,,3,,0.5829308414072705,True,2
+15,03191,1,,Logical Reasoning,,3,,0.580687793908522,True,2
+16,01030,2,,Magnifying Glass,,1,Hand,0.5544144695412343,True,2
+17,04103,1,,Scene of the Crime,,4,,0.550817705840857,True,2
+18,02022,2,,Shortcut,,2,,0.5477485926073659,True,2
+19,03026,2,,No Stone Unturned,,3,,0.5314975625162932,True,2
+20,01088,1,,Emergency Cache,,1,,0.518367783825289,True,2
+21,01091,1,,Overpower,,1,,0.5023357722684083,True,2
+22,04103,2,,Scene of the Crime,,4,,0.49890383459200915,True,2
+23,01090,1,,Perception,,1,,0.4927289861121279,True,2
+24,01088,2,,Emergency Cache,,1,,0.4726329073777256,True,2
+25,01033,1,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.4514010462444993,True,2
+26,01091,2,,Overpower,,1,,0.44733509337919813,True,2
+27,01090,2,,Perception,,1,,0.4261853078839146,True,2
+28,10048,1,,Thorough Inquiry,,11,,0.4181535168926213,True,2
+29,05110,1,,Crack the Case,,5,,0.41358125444118654,True,2
+30,04150,1,,Take the Initiative,,4,,0.38331346751519013,True,2
+31,01020,1,,Machete,,1,Hand,0.3763074200499529,True,2
+32,03191,2,,Logical Reasoning,,3,,0.3699610470305109,True,2
+33,05110,2,,Crack the Case,,5,,0.36040770871085825,True,2
+34,04150,2,,Take the Initiative,,4,,0.352019544106944,True,2
+35,01016,1,,.45 Automatic,,1,Hand,0.34675264184015,True,1
+36,06197,1,,Practice Makes Perfect,,6,,0.34226068035994545,True,2
+37,10048,2,,Thorough Inquiry,,11,,0.3396254630908819,True,2
+38,06197,2,,Practice Makes Perfect,,6,,0.3211477642081178,True,2
+39,60214,1,,Burning the Midnight Oil,,7,,0.2956944053012027,True,1
+40,01033,2,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.29557518272995204,True,2
+41,05024,1,,Fingerprint Kit,,5,Hand,0.29260267605828477,True,1
+42,02227,1,,Inquiring Mind,,2,,0.2921398735491346,False,0
+43,03231,1,,Eureka!,,3,,0.2907580285084534,False,0
+44,08125,1,,In the Thick of It,,9,,0.2784134792434682,False,0
+45,01093,1,,Unexpected Courage,,1,,0.2747435981863449,False,0
+46,03231,2,,Eureka!,,3,,0.2731142228140516,False,0
+47,01020,2,,Machete,,1,Hand,0.27279836351018794,True,2
+48,01018,1,,Beat Cop,,1,Ally,0.26457179188857693,True,1

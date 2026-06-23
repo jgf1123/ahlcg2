@@ -1,43 +1,46 @@
 rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
 1,04008,1,,Jake Williams,Loyal Companion,4,Ally,0.9938483554508694,True,1
 2,04009,1,,Call of the Unknown,,4,,0.9938483554508694,True,1
-3,01039,1,,Deduction,,1,,0.8370993405649603,True,2
-4,01039,2,,Deduction,,1,,0.7872149378267452,True,2
-5,01030,1,,Magnifying Glass,,1,Hand,0.7544508122987535,True,2
-6,03024,1,,Fieldwork,,3,,0.7531505844790538,True,2
-7,01000,1,,Random Basic Weakness,,1,,0.7453364186696718,False,0
-8,02022,1,,Shortcut,,2,,0.7052082309944575,True,2
-9,02022,2,,Shortcut,,2,,0.6732821298103481,True,2
-10,01030,2,,Magnifying Glass,,1,Hand,0.6672922790097607,True,2
-11,03024,2,,Fieldwork,,3,,0.6587354417206477,True,2
-12,01090,1,,Perception,,1,,0.6052410925536568,True,2
-13,01033,1,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.5833240847212027,True,2
-14,01090,2,,Perception,,1,,0.5734059256916523,True,2
-15,05110,1,,Crack the Case,,5,,0.4983991872580494,True,2
-16,10043,1,,Mouse Mask,The Meek Watcher,11,Mask,0.467405096978096,True,1
-17,05110,2,,Crack the Case,,5,,0.44140232028154003,True,2
-18,01033,2,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.4083951537646443,True,2
-19,03231,1,,Eureka!,,3,,0.3924710860391493,True,2
-20,01037,1,,Working a Hunch,,1,,0.3875519199028123,True,2
-21,02227,1,,Inquiring Mind,,2,,0.37974390218749116,True,2
-22,04023,1,,Tooth of Eztli,Mortal Reminder,4,Accessory,0.3688800538574318,True,1
-23,01092,1,,Manual Dexterity,,1,,0.36524825052470367,True,1
-24,03231,2,,Eureka!,,3,,0.36309617566261104,True,2
-25,02107,1,,"""I've got a plan!""",,2,,0.3571808370945871,True,2
-26,60213,1,,Whitton Greene,Hunter of Rare Books,7,Ally,0.3566795712589004,True,1
-27,60214,1,,Burning the Midnight Oil,,7,,0.3402856620161276,True,2
-28,01037,2,,Working a Hunch,,1,,0.33678378446450996,True,2
-29,02227,2,,Inquiring Mind,,2,,0.32626921801115116,True,2
-30,60214,2,,Burning the Midnight Oil,,7,,0.3224273173205456,True,2
-31,02107,2,,"""I've got a plan!""",,2,,0.3182591073114302,True,2
-32,01088,1,,Emergency Cache,,1,,0.2994949023304816,False,0
-33,01093,1,,Unexpected Courage,,1,,0.2779097709033314,False,0
-34,01034,1,,Hyperawareness,,1,,0.2760460933181698,False,0
-35,01089,1,,Guts,,1,,0.2700003707529307,False,0
-36,01092,2,,Manual Dexterity,,1,,0.26609982255014875,False,1
-37,08125,1,,In the Thick of It,,9,,0.2555516837480866,False,0
-38,04023,2,,Tooth of Eztli,Mortal Reminder,4,Accessory,0.2500592910801506,False,1
-39,01088,2,,Emergency Cache,,1,,0.2456326260112481,False,0
-40,09044,1,,Grim Memoir,,10,Hand,0.23442624923740626,True,1
-41,03191,1,,Logical Reasoning,,3,,0.22955540352132708,False,0
-42,05024,1,,Fingerprint Kit,,5,Hand,0.22162064265520362,True,1
+3,01039,1,,Deduction,,1,,0.8440013296296454,True,2
+4,01039,2,,Deduction,,1,,0.7972341685164749,True,2
+5,01030,1,,Magnifying Glass,,1,Hand,0.770364968550166,True,2
+6,03024,1,,Fieldwork,,3,,0.7501358880058183,True,2
+7,01000,1,,Random Basic Weakness,,1,,0.738235551056322,False,0
+8,01030,2,,Magnifying Glass,,1,Hand,0.6883815839560679,True,2
+9,02022,1,,Shortcut,,2,,0.672229362299947,True,2
+10,03024,2,,Fieldwork,,3,,0.6600296635372335,True,2
+11,02022,2,,Shortcut,,2,,0.6424949199871073,True,2
+12,01033,1,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.6060214710480151,True,2
+13,01090,1,,Perception,,1,,0.6055991292268065,True,2
+14,01090,2,,Perception,,1,,0.5679757728840803,True,2
+15,05110,1,,Crack the Case,,5,,0.5159703729439438,True,2
+16,10043,1,,Mouse Mask,The Meek Watcher,11,Mask,0.5039862329425727,True,1
+17,05110,2,,Crack the Case,,5,,0.4588794641997154,True,2
+18,01033,2,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.43304670518270416,True,2
+19,01037,1,,Working a Hunch,,1,,0.40993110999436494,True,2
+20,03231,1,,Eureka!,,3,,0.4019331842986927,True,2
+21,02107,1,,"""I've got a plan!""",,2,,0.3973944816887208,True,2
+22,02227,1,,Inquiring Mind,,2,,0.3933561222166278,True,2
+23,60213,1,,Whitton Greene,Hunter of Rare Books,7,Ally,0.3836208922541001,True,1
+24,04023,1,,Tooth of Eztli,Mortal Reminder,4,Accessory,0.36979742904057883,True,1
+25,03231,2,,Eureka!,,3,,0.36364276992661904,True,2
+26,02107,2,,"""I've got a plan!""",,2,,0.3602071336661574,True,2
+27,60214,1,,Burning the Midnight Oil,,7,,0.35255731268188484,True,1
+28,01037,2,,Working a Hunch,,1,,0.3523833691486925,True,2
+29,01092,1,,Manual Dexterity,,1,,0.34771016877245203,True,1
+30,02227,2,,Inquiring Mind,,2,,0.34343259523106745,True,2
+31,01088,1,,Emergency Cache,,1,,0.3363458398164443,True,1
+32,01093,1,,Unexpected Courage,,1,,0.33551919502191135,False,0
+33,60214,2,,Burning the Midnight Oil,,7,,0.33472238389878156,False,1
+34,01034,1,,Hyperawareness,,1,,0.2938833577331808,False,0
+35,01089,1,,Guts,,1,,0.28930679786905067,False,0
+36,01088,2,,Emergency Cache,,1,,0.28588753163307884,False,1
+37,01093,2,,Unexpected Courage,,1,,0.27918189121190057,False,0
+38,09044,1,,Grim Memoir,,10,Hand,0.26480988792158033,True,2
+39,03191,1,,Logical Reasoning,,3,,0.2553655253780071,False,0
+40,11034,1,,Artistic Inspiration,,12,,0.2546451561015465,False,0
+41,11040,1,,Correlate All Its Contents,,12,,0.2546451561015465,False,0
+42,11040,2,,Correlate All Its Contents,,12,,0.2546451561015465,False,0
+43,04023,2,,Tooth of Eztli,Mortal Reminder,4,Accessory,0.250229128723791,False,1
+44,01092,2,,Manual Dexterity,,1,,0.24909966531025274,False,1
+45,09044,2,,Grim Memoir,,10,Hand,0.23928296432607563,True,2

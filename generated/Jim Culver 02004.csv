@@ -1,49 +1,48 @@
 rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
-1,02012,1,,Jim's Trumpet,The Dead Listen,2,Hand,0.9899751807329102,True,1
-2,02013,1,,Final Rhapsody,,2,,0.9899751807329102,True,1
-3,01000,1,,Random Basic Weakness,,1,,0.7397533465871619,False,0
-4,01065,1,,Ward of Protection,,1,,0.6306017128613045,True,2
-5,01089,1,,Guts,,1,,0.545737009610911,True,2
-6,01065,2,,Ward of Protection,,1,,0.5097235832183035,True,2
-7,01088,1,,Emergency Cache,,1,,0.5083479898756904,True,2
-8,01059,1,,Holy Rosary,,1,Accessory,0.4918028103601873,True,2
-9,04197,1,,Olive McBride,Will Try Anything Once,4,Ally,0.4565847263692585,True,2
-10,01089,2,,Guts,,1,,0.4267167859969702,True,2
-11,06117,1,,Read the Signs,,6,,0.4130064423767332,True,2
-12,04032,1,,Dark Prophecy,,4,,0.39755568921642687,True,2
-13,01088,2,,Emergency Cache,,1,,0.3819421101478213,True,2
-14,03033,1,,Uncage the Soul,,3,,0.38083486342478795,True,2
-15,01060,1,,Shrivelling,,1,Arcane,0.3555217269553694,True,2
-16,01064,1,,Drawn to the Flame,,1,,0.3481654593288867,True,1
-17,06201,1,,Spectral Razor,,6,,0.3349526240013331,True,1
-18,05158,1,,Sixth Sense,,5,Arcane,0.3339001937090421,True,1
-19,04197,2,,Olive McBride,Will Try Anything Once,4,Ally,0.3313066702671352,True,2
-20,01093,1,,Unexpected Courage,,1,,0.330541607627436,True,1
+1,02012,1,,Jim's Trumpet,The Dead Listen,2,Hand,0.989089419334028,True,1
+2,02013,1,,Final Rhapsody,,2,,0.989089419334028,True,1
+3,01000,1,,Random Basic Weakness,,1,,0.7488776824442596,False,0
+4,01065,1,,Ward of Protection,,1,,0.6328385177464279,True,2
+5,01089,1,,Guts,,1,,0.5474226585902935,True,2
+6,01065,2,,Ward of Protection,,1,,0.5176919598853883,True,2
+7,01088,1,,Emergency Cache,,1,,0.4982018895969942,True,2
+8,01059,1,,Holy Rosary,,1,Accessory,0.49738593782911206,True,2
+9,04197,1,,Olive McBride,Will Try Anything Once,4,Ally,0.4627566786073879,True,2
+10,01089,2,,Guts,,1,,0.4339493179862723,True,2
+11,06117,1,,Read the Signs,,6,,0.41482125364924655,True,2
+12,04032,1,,Dark Prophecy,,4,,0.39985028473478446,True,2
+13,03033,1,,Uncage the Soul,,3,,0.38251611003266245,True,2
+14,01088,2,,Emergency Cache,,1,,0.37296452436128585,True,2
+15,01060,1,,Shrivelling,,1,Arcane,0.3634780370003472,True,2
+16,01064,1,,Drawn to the Flame,,1,,0.35353002529117106,True,1
+17,06201,1,,Spectral Razor,,6,,0.34008402154238243,True,1
+18,04197,2,,Olive McBride,Will Try Anything Once,4,Ally,0.33634692289564844,True,2
+19,05158,1,,Sixth Sense,,5,Arcane,0.33513674239291597,True,1
+20,01093,1,,Unexpected Courage,,1,,0.331874808079351,True,1
 21,10084,1,,Cat Mask,The Capricious Meddler,11,Mask,0.3200612713519414,True,1
-22,05032,1,,Deny Existence,,5,,0.30973556672174846,True,1
-23,02028,1,,Rite of Seeking,,2,Arcane,0.3080784756684586,True,1
-24,04032,2,,Dark Prophecy,,4,,0.3072206056795733,True,2
-25,02029,1,,Ritual Candles,,2,Hand,0.30605891080788783,True,2
-26,06117,2,,Read the Signs,,6,,0.2938944750363386,True,2
-27,01063,1,,Arcane Initiate,,1,Ally,0.2819039342994174,True,1
-28,01059,2,,Holy Rosary,,1,Accessory,0.28124947675491296,True,2
-29,03033,2,,Uncage the Soul,,3,,0.27897350490125516,True,2
-30,03153,1,,Storm of Spirits,,3,,0.27764038564704996,True,1
-31,01093,2,,Unexpected Courage,,1,,0.2770803081778547,False,1
-32,01060,2,,Shrivelling,,1,Arcane,0.27073844401138136,True,2
-33,60416,1,,Voice of Ra,,7,,0.25959634416495714,False,0
-34,08125,1,,In the Thick of It,,9,,0.25585704083914396,False,0
-35,11069,1,,Katarina Sojka,Emissary from Ulthar,12,Ally,0.25283152670358344,False,0
-36,05158,2,,Sixth Sense,,5,Arcane,0.24920054201361297,False,1
-37,07032,1,,Promise of Power,,8,,0.24909715872002455,False,0
-38,60411,1,,Crystal Pendulum,,7,Accessory,0.23874013849387288,False,0
-39,01067,1,,Fearless,,1,,0.23852215977579014,False,0
-40,06201,2,,Spectral Razor,,6,,0.21846404490211915,False,1
-41,02029,2,,Ritual Candles,,2,Hand,0.21388160645983478,True,2
-42,02111,1,,Delve Too Deep,,2,,0.2121920176105137,False,0
-43,60412,1,,Robes of Endless Night,,7,Body,0.21029469793252412,False,0
-44,01064,2,,Drawn to the Flame,,1,,0.21018284315835392,False,1
-45,02028,2,,Rite of Seeking,,2,Arcane,0.20907527282518173,False,1
-46,01090,1,,Perception,,1,,0.2055606582932973,False,0
-47,05157,1,,Wither,,5,Arcane,0.2037741500104935,False,0
-48,04030,1,,The Chthonian Stone,Stygian Waymark,4,Hand,0.2019093647026081,True,1
+22,05032,1,,Deny Existence,,5,,0.31363757183932073,True,1
+23,04032,2,,Dark Prophecy,,4,,0.3098966268723976,True,2
+24,02028,1,,Rite of Seeking,,2,Arcane,0.3065766780927993,True,1
+25,02029,1,,Ritual Candles,,2,Hand,0.3040963265968041,True,2
+26,01063,1,,Arcane Initiate,,1,Ally,0.293094428959716,True,1
+27,06117,2,,Read the Signs,,6,,0.2919713951750939,True,2
+28,01059,2,,Holy Rosary,,1,Accessory,0.2875215477210721,True,2
+29,03033,2,,Uncage the Soul,,3,,0.2801134292091206,True,2
+30,03153,1,,Storm of Spirits,,3,,0.27911702101475927,True,1
+31,01093,2,,Unexpected Courage,,1,,0.2790707079487986,False,1
+32,01060,2,,Shrivelling,,1,Arcane,0.27868521111003847,True,2
+33,60416,1,,Voice of Ra,,7,,0.2647229162879156,False,0
+34,07032,1,,Promise of Power,,8,,0.264571913062579,False,0
+35,08125,1,,In the Thick of It,,9,,0.25585704083914396,False,0
+36,11069,1,,Katarina Sojka,Emissary from Ulthar,12,Ally,0.25283152670358344,False,0
+37,01067,1,,Fearless,,1,,0.2506871673805864,False,0
+38,05158,2,,Sixth Sense,,5,Arcane,0.25042786781370874,False,1
+39,60411,1,,Crystal Pendulum,,7,Accessory,0.24232730579911682,False,0
+40,06201,2,,Spectral Razor,,6,,0.2195402345738202,False,1
+41,01090,1,,Perception,,1,,0.2174153059417958,False,0
+42,01064,2,,Drawn to the Flame,,1,,0.21613957925032748,False,1
+43,60412,1,,Robes of Endless Night,,7,Body,0.21320333028626548,False,0
+44,02029,2,,Ritual Candles,,2,Hand,0.21306851108227892,True,2
+45,02111,1,,Delve Too Deep,,2,,0.21113149774060708,False,0
+46,02028,2,,Rite of Seeking,,2,Arcane,0.2057083306640648,False,1
+47,04030,1,,The Chthonian Stone,Stygian Waymark,4,Hand,0.2041728808990764,True,1

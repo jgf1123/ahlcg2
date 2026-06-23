@@ -1,52 +1,54 @@
 rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
-1,04006,1,,Mitch Brown,Sole Survivor,4,Ally,0.9956572179732586,True,1
-2,04007,1,,Bought in Blood,,4,,0.995516752290681,True,1
-3,01000,1,,Random Basic Weakness,,1,,0.7340305481273022,False,0
-4,01021,1,,Guard Dog,,1,Ally,0.683464294356953,True,2
-5,01025,1,,Vicious Blow,,1,,0.6752575185333722,True,2
-6,01018,1,,Beat Cop,,1,Ally,0.6692062648432824,True,2
-7,01025,2,,Vicious Blow,,1,,0.579455968529286,True,2
-8,01021,2,,Guard Dog,,1,Ally,0.5564525417457253,True,2
-9,01018,2,,Beat Cop,,1,Ally,0.5347611944989545,True,2
-10,01088,1,,Emergency Cache,,1,,0.519979426910993,True,2
-11,10023,1,,Wolf Mask,The Moon's Sire,11,Mask,0.49232482331036626,True,1
-12,03158,1,,Calling in Favors,,3,,0.43349489428634613,True,2
-13,01091,1,,Overpower,,1,,0.4120700391460308,True,2
-14,08125,1,,In the Thick of It,,9,,0.40769473956639246,False,0
-15,01088,2,,Emergency Cache,,1,,0.3880427368245944,True,2
-16,01020,1,,Machete,,1,Hand,0.3748293839350858,True,2
-17,01048,1,,Leo De Luca,The Louisiana Lion,1,Ally,0.3642614871516915,True,1
-18,01016,1,,.45 Automatic,,1,Hand,0.355507314199043,True,2
-19,02184,1,,Prepared for the Worst,,2,,0.35418168610451833,True,1
-20,11021,1,,Crowbar,,12,Hand,0.3472734674593989,True,1
-21,01091,2,,Overpower,,1,,0.3450399213394319,True,2
-22,03158,2,,Calling in Favors,,3,,0.33020077180526414,True,2
-23,08083,1,,Medical Student,,9,Ally,0.30826595974472404,True,1
-24,60118,1,,Stand Together,,7,,0.30250680933336044,True,1
-25,10069,1,,Bank Job,,11,,0.28818378736554456,True,1
-26,04017,1,,Survival Knife,,4,Hand,0.28525727415478014,True,1
-27,07028,1,,Faustian Bargain,,8,,0.2844139448481398,True,2
-28,03233,1,,"""Watch this!""",,3,,0.27764683506730425,True,1
-29,08127,1,,Sled Dog,,9,Ally,0.26710674486796887,False,0
-30,08127,2,,Sled Dog,,9,Ally,0.26710674486796887,False,0
-31,08127,3,,Sled Dog,,9,Ally,0.26710674486796887,False,0
-32,08127,4,,Sled Dog,,9,Ally,0.26666436121946396,False,0
-33,02188,1,,Lone Wolf,,2,,0.2587665994925665,True,1
-34,01020,2,,Machete,,1,Hand,0.2565952920463366,True,2
-35,07028,2,,Faustian Bargain,,8,,0.25347920928223133,True,2
-36,03228,1,,Inspiring Presence,,3,,0.24289028171055646,True,1
-37,01016,2,,.45 Automatic,,1,Hand,0.24141523684355087,True,2
-38,11024,1,,Ready for Anything,,12,,0.23825351220021354,False,0
-39,04018,1,,Venturer,,4,Ally,0.2376248637685373,False,0
-40,60110,1,,Safeguard,,7,,0.23489990690471144,False,0
-41,01093,1,,Unexpected Courage,,1,,0.22950725413928597,False,0
-42,01048,2,,Leo De Luca,The Louisiana Lion,1,Ally,0.2265101084865151,False,1
-43,60115,1,,Glory,,7,,0.22535014774617038,False,0
-44,04017,2,,Survival Knife,,4,Hand,0.21997394573106666,False,1
-45,01087,1,,Flashlight,,1,Hand,0.21781800668765242,False,0
-46,60118,2,,Stand Together,,7,,0.2061056921597656,False,1
-47,60115,2,,Glory,,7,,0.20390042432938935,False,0
-48,06155,1,,Tetsuo Mori,Too Noble for His Own Good,6,Ally,0.201417868598615,False,0
-49,05118,1,,Enchanted Blade,,5,Hand. Arcane,0.19329561272767976,False,0
-50,03233,2,,"""Watch this!""",,3,,0.19277449841464994,False,1
-51,04107,1,,Lucky Cigarette Case,,4,Accessory,0.19061859673674608,True,1
+1,04006,1,,Mitch Brown,Sole Survivor,4,Ally,0.9955834872479158,True,1
+2,04007,1,,Bought in Blood,,4,,0.9954379079812724,True,1
+3,01000,1,,Random Basic Weakness,,1,,0.7421823661414627,False,0
+4,01018,1,,Beat Cop,,1,Ally,0.6927601746320532,True,2
+5,01025,1,,Vicious Blow,,1,,0.690603097536962,True,2
+6,01021,1,,Guard Dog,,1,Ally,0.689388984079177,True,2
+7,01025,2,,Vicious Blow,,1,,0.6049906919579324,True,2
+8,01021,2,,Guard Dog,,1,Ally,0.5676973384138778,True,2
+9,01018,2,,Beat Cop,,1,Ally,0.5531696245429922,True,2
+10,01088,1,,Emergency Cache,,1,,0.5458123909478126,True,2
+11,10023,1,,Wolf Mask,The Moon's Sire,11,Mask,0.5061909339177211,True,1
+12,03158,1,,Calling in Favors,,3,,0.44226442847835756,True,2
+13,01091,1,,Overpower,,1,,0.4378308200196845,True,2
+14,01088,2,,Emergency Cache,,1,,0.4204985177316434,True,2
+15,08125,1,,In the Thick of It,,9,,0.4119868582243129,False,0
+16,01020,1,,Machete,,1,Hand,0.4024858495561574,True,2
+17,01048,1,,Leo De Luca,The Louisiana Lion,1,Ally,0.3793371734284992,True,1
+18,02184,1,,Prepared for the Worst,,2,,0.37337874118161984,True,1
+19,01016,1,,.45 Automatic,,1,Hand,0.3705125585766261,True,2
+20,01091,2,,Overpower,,1,,0.36113387459292384,True,2
+21,11021,1,,Crowbar,,12,Hand,0.3472734674593989,True,1
+22,03158,2,,Calling in Favors,,3,,0.34117210253423225,True,2
+23,08083,1,,Medical Student,,9,Ally,0.31091964860189725,True,1
+24,60118,1,,Stand Together,,7,,0.3089843064597259,True,1
+25,03233,1,,"""Watch this!""",,3,,0.29636985698778884,True,1
+26,10069,1,,Bank Job,,11,,0.29369238914518,True,1
+27,07028,1,,Faustian Bargain,,8,,0.28597691443138035,True,2
+28,04017,1,,Survival Knife,,4,Hand,0.284161577565737,True,1
+29,01020,2,,Machete,,1,Hand,0.27838132502708124,True,2
+30,02188,1,,Lone Wolf,,2,,0.27268967857717574,True,1
+31,08127,1,,Sled Dog,,9,Ally,0.2683509915629483,False,0
+32,08127,2,,Sled Dog,,9,Ally,0.2683509915629483,False,0
+33,08127,3,,Sled Dog,,9,Ally,0.2683509915629483,False,0
+34,08127,4,,Sled Dog,,9,Ally,0.2679086079144434,False,0
+35,01016,2,,.45 Automatic,,1,Hand,0.2576551011038513,True,2
+36,01093,1,,Unexpected Courage,,1,,0.2556518335316694,True,1
+37,01087,1,,Flashlight,,1,Hand,0.25547649224912344,False,0
+38,07028,2,,Faustian Bargain,,8,,0.2548154544770999,True,2
+39,60110,1,,Safeguard,,7,,0.24083157385042137,False,0
+40,11024,1,,Ready for Anything,,12,,0.23825351220021354,False,0
+41,01048,2,,Leo De Luca,The Louisiana Lion,1,Ally,0.23815662907638876,False,1
+42,04018,1,,Venturer,,4,Ally,0.23664062489105678,False,0
+43,03228,1,,Inspiring Presence,,3,,0.2349443377482386,False,0
+44,60115,1,,Glory,,7,,0.2286641634731011,False,0
+45,04017,2,,Survival Knife,,4,Hand,0.22159249448468207,False,1
+46,01087,2,,Flashlight,,1,Hand,0.22156916027747395,False,0
+47,03233,2,,"""Watch this!""",,3,,0.2130920912003251,False,1
+48,60118,2,,Stand Together,,7,,0.21168427200556791,False,1
+49,60115,2,,Glory,,7,,0.2064328802074212,False,0
+50,06155,1,,Tetsuo Mori,Too Noble for His Own Good,6,Ally,0.20414823853437777,False,0
+51,05118,1,,Enchanted Blade,,5,Hand. Arcane,0.1948567757933395,False,0
+52,06111,1,,Daring,,6,,0.19082968416723245,False,0
+53,04107,1,,Lucky Cigarette Case,,4,Accessory,0.19050153115722143,True,1

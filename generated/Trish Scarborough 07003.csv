@@ -1,36 +1,35 @@
 rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
 1,07010,1,,In the Shadows,,8,,0.993658920068245,True,1
-2,07011,1,,Shadow Agents,,8,,0.9916035665216963,True,1
-3,01000,1,,Random Basic Weakness,,1,,0.7704863025881695,False,0
-4,01039,1,,Deduction,,1,,0.70798292383785,True,2
-5,01039,2,,Deduction,,1,,0.5984881514057774,True,2
-6,11053,1,,"""Where's the party?""",,12,,0.5820539310778143,True,2
-7,01090,1,,Perception,,1,,0.563627730700587,True,2
-8,01037,1,,Working a Hunch,,1,,0.518882345493018,True,2
-9,01030,1,,Magnifying Glass,,1,Hand,0.5017968730716663,True,2
-10,07114,1,,Breaking and Entering,,8,,0.5008571298119825,True,2
-11,01090,2,,Perception,,1,,0.41938282429432355,True,2
-12,01033,1,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.40972330676646435,True,2
-13,04107,1,,Lucky Cigarette Case,,4,Accessory,0.40321643245260885,True,2
-14,11052,1,,String Along,,12,,0.3911823869907483,True,1
-15,10067,1,,Fox Mask,The Wise Trickster,11,Mask,0.38497475412204313,True,1
-16,60305,1,,Lockpicks,,7,Hand,0.3818198650665919,True,2
-17,07114,2,,Breaking and Entering,,8,,0.381620302094324,True,2
-18,01046,1,,Pickpocketing,,1,,0.3594145746718157,True,1
-19,01037,2,,Working a Hunch,,1,,0.3447951216576392,True,2
-20,01030,2,,Magnifying Glass,,1,Hand,0.33817069366405605,True,2
+2,07011,1,,Shadow Agents,,8,,0.9910103411540545,True,1
+3,01000,1,,Random Basic Weakness,,1,,0.7696217055742625,False,0
+4,01039,1,,Deduction,,1,,0.73815122706481,True,2
+5,01039,2,,Deduction,,1,,0.6510893125426025,True,2
+6,01090,1,,Perception,,1,,0.6068291747628897,True,2
+7,01030,1,,Magnifying Glass,,1,Hand,0.6034257534074646,True,2
+8,01037,1,,Working a Hunch,,1,,0.5868525899474376,True,2
+9,11053,1,,"""Where's the party?""",,12,,0.5820539310778143,True,2
+10,07114,1,,Breaking and Entering,,8,,0.5148316671735619,True,2
+11,01090,2,,Perception,,1,,0.5082117914360739,True,2
+12,01030,2,,Magnifying Glass,,1,Hand,0.47283792843492906,True,2
+13,01037,2,,Working a Hunch,,1,,0.45964539590787273,True,2
+14,60305,1,,Lockpicks,,7,Hand,0.422190253193634,True,2
+15,07114,2,,Breaking and Entering,,8,,0.39374272717738407,True,2
+16,11052,1,,String Along,,12,,0.3911823869907483,True,1
+17,05110,1,,Crack the Case,,5,,0.38688553387447705,True,2
+18,10067,1,,Fox Mask,The Wise Trickster,11,Mask,0.38497475412204313,True,1
+19,01046,1,,Pickpocketing,,1,,0.36479541630500967,True,1
+20,04107,1,,Lucky Cigarette Case,,4,Accessory,0.34294414055834743,True,1
 21,08125,1,,In the Thick of It,,9,,0.3374686761368866,False,0
-22,05110,1,,Crack the Case,,5,,0.30353161933940376,True,2
-23,11053,2,,"""Where's the party?""",,12,,0.28560409218491634,True,2
-24,09068,1,,Kicking the Hornet's Nest,,10,,0.2739569037556667,True,1
-25,01033,2,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.27385833916760677,True,2
-26,60305,2,,Lockpicks,,7,Hand,0.2610244302378766,True,2
-27,01092,1,,Manual Dexterity,,1,,0.2518855400926271,True,1
-28,07027,1,,Obfuscation,,8,Arcane,0.24799057703471106,True,1
-29,02022,1,,Shortcut,,2,,0.23425612629927375,True,1
-30,10066,1,,Fake Credentials,,11,Hand,0.22670976930734918,False,0
-31,01048,1,,Leo De Luca,The Louisiana Lion,1,Ally,0.22596540840681598,True,1
-32,05110,2,,Crack the Case,,5,,0.22193822929017507,True,2
-33,02188,1,,Lone Wolf,,2,,0.21586967800615198,True,1
-34,04107,2,,Lucky Cigarette Case,,4,Accessory,0.21047618115851854,True,2
-35,03231,1,,Eureka!,,3,,0.2066247249656548,True,1
+22,01033,1,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.3244708087734578,True,1
+23,60305,2,,Lockpicks,,7,Hand,0.3146987298813041,True,2
+24,05110,2,,Crack the Case,,5,,0.3146172813622574,True,2
+25,01048,1,,Leo De Luca,The Louisiana Lion,1,Ally,0.3092373954508792,True,1
+26,01092,1,,Manual Dexterity,,1,,0.3086808778643274,True,2
+27,11053,2,,"""Where's the party?""",,12,,0.28560409218491634,True,2
+28,04028,1,,"""You handle this one!""",,4,,0.2792524876060311,True,1
+29,05111,1,,Intel Report,,5,,0.2785069910779747,True,1
+30,09068,1,,Kicking the Hornet's Nest,,10,,0.2739569037556667,True,1
+31,07027,1,,Obfuscation,,8,Arcane,0.26877635917262954,True,1
+32,01092,2,,Manual Dexterity,,1,,0.26862934393175897,True,2
+33,02188,1,,Lone Wolf,,2,,0.2642232589435488,True,1
+34,03231,1,,Eureka!,,3,,0.2589359437245951,True,1

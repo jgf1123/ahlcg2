@@ -1,45 +1,46 @@
 rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
 1,10017,1,,Stouthearted,,11,,1.0,True,1
 2,10018,1,,"""Where's Pa?""",,11,,1.0,True,1
-3,01000,1,,Random Basic Weakness,,1,,0.8476890439304164,False,0
-4,01091,1,,Overpower,,1,,0.7561517869500153,True,2
-5,04201,1,,Take Heart,,4,,0.740538333722791,True,2
-6,01091,2,,Overpower,,1,,0.7349298008757267,True,2
-7,04201,2,,Take Heart,,4,,0.6612936635240751,True,2
-8,03039,1,,Resourceful,,3,,0.5729369079652377,True,2
-9,10116,1,,Long Shot,,11,,0.5462472031265626,True,2
-10,03039,2,,Resourceful,,3,,0.5296425066390377,True,2
-11,10116,2,,Long Shot,,11,,0.5280384297849845,True,2
-12,03114,1,,Cherished Keepsake,,3,Accessory,0.500531749087966,True,2
-13,01080,1,,Lucky!,,1,,0.49862319884135464,True,2
-14,60115,1,,Glory,,7,,0.496082129735846,True,2
-15,60115,2,,Glory,,7,,0.496082129735846,True,2
-16,08125,1,,In the Thick of It,,9,,0.4418691489953375,False,0
-17,10111,1,,Sparrow Mask,The Wanderer's Companion,11,Mask,0.4289891615039436,True,1
-18,01080,2,,Lucky!,,1,,0.4273452583697702,True,2
-19,03114,2,,Cherished Keepsake,,3,Accessory,0.419763022870144,True,2
-20,01074,1,,Baseball Bat,,1,Hand x2,0.4050124999715318,True,2
-21,04111,1,,Perseverance,,4,,0.4034563879389132,True,2
-22,02229,1,,Quick Thinking,,2,,0.3906582855846262,True,2
-23,04111,2,,Perseverance,,4,,0.37806627047743246,True,2
-24,02229,2,,Quick Thinking,,2,,0.3760712285640301,True,2
-25,10110,1,,Pitchfork,,11,Hand x2,0.3698497833767731,True,2
-26,01074,2,,Baseball Bat,,1,Hand x2,0.36431257792572447,True,2
-27,02033,1,,Peter Sylvestre,Big Man on Campus,2,Ally,0.361196935435302,True,2
-28,10110,2,,Pitchfork,,11,Hand x2,0.3565179786203093,True,2
-29,02033,2,,Peter Sylvestre,Big Man on Campus,2,Ally,0.3553203579979031,True,2
-30,11085,1,,Profane Idol,,12,Accessory,0.34002618943692714,False,0
-31,11085,2,,Profane Idol,,12,Accessory,0.34002618943692714,False,0
-32,05114,1,,Meat Cleaver,,5,Hand,0.32158129363158794,True,1
-33,05114,2,,Meat Cleaver,,5,Hand,0.32158129363158794,False,1
-34,01072,1,,Leather Coat,,1,Body,0.3186725581774916,True,1
-35,06111,1,,Daring,,6,,0.3020822827251468,True,2
-36,06111,2,,Daring,,6,,0.3020822827251468,True,2
-37,10111,2,,Sparrow Mask,The Wanderer's Companion,11,Mask,0.2973650169105975,False,1
-38,10113,1,,Pushed to the Limit,,11,,0.2968389794547561,True,2
-39,01072,2,,Leather Coat,,1,Body,0.2934398470887566,False,1
-40,60118,1,,Stand Together,,7,,0.2843641477136672,True,2
-41,10113,2,,Pushed to the Limit,,11,,0.2782647096678799,True,2
-42,10115,1,,"Wrong Place, Right Time",,11,,0.2782503836890627,True,1
-43,06165,1,,Scrounge for Supplies,,6,,0.27658182250077046,True,1
-44,60118,2,,Stand Together,,7,,0.267407221826196,True,2
+3,01000,1,,Random Basic Weakness,,1,,0.9241159885366123,False,0
+4,03039,1,,Resourceful,,3,,0.7301419347410669,True,2
+5,03039,2,,Resourceful,,3,,0.695762918291124,True,2
+6,01091,1,,Overpower,,1,,0.6714790864654927,True,2
+7,01080,1,,Lucky!,,1,,0.6615522882662471,True,2
+8,01091,2,,Overpower,,1,,0.6562183513911803,True,2
+9,01080,2,,Lucky!,,1,,0.6074087121892358,True,2
+10,10116,1,,Long Shot,,11,,0.5705556431189218,True,2
+11,10116,2,,Long Shot,,11,,0.5500203590760331,True,2
+12,04201,1,,Take Heart,,4,,0.5262847630389734,True,2
+13,01072,1,,Leather Coat,,1,Body,0.4840760887432004,True,1
+14,03114,1,,Cherished Keepsake,,3,Accessory,0.47334512745362156,True,2
+15,01072,2,,Leather Coat,,1,Body,0.46593124038716566,False,1
+16,04201,2,,Take Heart,,4,,0.4634175389952721,True,2
+17,10111,1,,Sparrow Mask,The Wanderer's Companion,11,Mask,0.4513417938340378,True,1
+18,03114,2,,Cherished Keepsake,,3,Accessory,0.41270658628643797,True,2
+19,02033,1,,Peter Sylvestre,Big Man on Campus,2,Ally,0.4110263298407414,True,2
+20,02033,2,,Peter Sylvestre,Big Man on Campus,2,Ally,0.4067414918197394,True,2
+21,60118,1,,Stand Together,,7,,0.386222263782706,True,2
+22,10110,1,,Pitchfork,,11,Hand x2,0.38573893836300605,True,2
+23,06111,1,,Daring,,6,,0.3832671023019639,True,2
+24,06111,2,,Daring,,6,,0.3832671023019639,True,2
+25,11085,1,,Profane Idol,,12,Accessory,0.3820500245218245,False,0
+26,11085,2,,Profane Idol,,12,Accessory,0.3820500245218245,False,0
+27,60118,2,,Stand Together,,7,,0.3742435545326621,True,2
+28,10110,2,,Pitchfork,,11,Hand x2,0.37070374668135747,True,2
+29,08125,1,,In the Thick of It,,9,,0.3431604824086971,False,0
+30,60115,1,,Glory,,7,,0.34285393832396377,True,2
+31,60115,2,,Glory,,7,,0.34285393832396377,True,2
+32,10111,2,,Sparrow Mask,The Wanderer's Companion,11,Mask,0.3052365608817145,False,1
+33,10113,1,,Pushed to the Limit,,11,,0.3033996413322299,True,2
+34,01088,1,,Emergency Cache,,1,,0.2994935636874824,True,2
+35,01065,1,,Ward of Protection,,1,,0.29504694371700063,True,2
+36,10115,1,,"Wrong Place, Right Time",,11,,0.28785968245712185,True,1
+37,10113,2,,Pushed to the Limit,,11,,0.2824521618503587,True,2
+38,01065,2,,Ward of Protection,,1,,0.27354906842323556,True,2
+39,02032,1,,Fire Axe,,2,Hand,0.2709208195423385,True,2
+40,02229,1,,Quick Thinking,,2,,0.2689852362271634,True,1
+41,01088,2,,Emergency Cache,,1,,0.2627775163128589,True,2
+42,04111,1,,Perseverance,,4,,0.261762592210734,False,0
+43,01074,1,,Baseball Bat,,1,Hand x2,0.26048934255644934,True,1
+44,02229,2,,Quick Thinking,,2,,0.2583492534289791,False,1
+45,02032,2,,Fire Axe,,2,Hand,0.25510898277323396,True,2

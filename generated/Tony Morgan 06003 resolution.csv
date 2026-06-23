@@ -1,4 +1,4 @@
 resolution_kind,option_name,choice,weighted_total,weight_share,selected
-faction_select,Secondary Class,guardian,4.597362777808737,0.7006506918731183,True
-faction_select,Secondary Class,survivor,1.5078217731076367,0.22979617219869725,False
-faction_select,Secondary Class,seeker,0.45637719609076277,0.06955313592818445,False
+faction_select,Secondary Class,guardian,5.2608640084544325,0.7074977069827756,True
+faction_select,Secondary Class,survivor,1.6593431450687974,0.22315373831125895,False
+faction_select,Secondary Class,seeker,0.5156671348757167,0.06934855470596551,False

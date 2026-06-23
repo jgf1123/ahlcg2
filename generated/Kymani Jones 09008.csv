@@ -1,35 +1,57 @@
 rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
 1,09009,1,,Grappling Hook,,10,Hand,1.0,True,1
 2,09010,1,,Agent Fletcher,,10,,1.0,True,1
-3,01000,1,,Random Basic Weakness,,1,,0.8335727428771548,False,0
-4,01092,1,,Manual Dexterity,,1,,0.7977596980057975,True,2
-5,01046,1,,Pickpocketing,,1,,0.7712931646507385,True,2
-6,01092,2,,Manual Dexterity,,1,,0.732802047085345,True,2
-7,11052,1,,String Along,,12,,0.6850146125351526,True,2
-8,01048,1,,Leo De Luca,The Louisiana Lion,1,Ally,0.6189535900378623,True,2
-9,09064,1,,Thieves' Kit,,10,Hand,0.5368706756575812,True,2
-10,01046,2,,Pickpocketing,,1,,0.5305882626205471,True,2
-11,04107,1,,Lucky Cigarette Case,,4,Accessory,0.4976219653597902,True,2
-12,09064,2,,Thieves' Kit,,10,Hand,0.47749831542244775,True,2
-13,03028,1,,Stealth,,3,,0.4674804641408646,True,1
-14,03233,1,,"""Watch this!""",,3,,0.43538763179843937,True,2
-15,02229,1,,Quick Thinking,,2,,0.4274204532734359,True,2
-16,01048,2,,Leo De Luca,The Louisiana Lion,1,Ally,0.40834337211541183,True,2
-17,08125,1,,In the Thick of It,,9,,0.4073765797701655,False,0
-18,10065,1,,British Bull Dog,,11,Hand,0.40188699214045664,True,2
-19,10065,2,,British Bull Dog,,11,Hand,0.39954949449054217,True,2
-20,11054,1,,"""You've had worse...""",,12,,0.38497044675037545,True,2
-21,03233,2,,"""Watch this!""",,3,,0.38483201735650685,True,2
-22,02229,2,,Quick Thinking,,2,,0.38008366313107617,True,2
-23,10069,1,,Bank Job,,11,,0.37733016765718913,True,1
-24,01088,1,,Emergency Cache,,1,,0.3665205587362949,True,2
-25,01051,1,,Backstab,,1,,0.3379525678918815,True,2
-26,04107,2,,Lucky Cigarette Case,,4,Accessory,0.3225905378595689,True,2
-27,04203,1,,Trench Coat,,4,Body,0.32243159278455286,True,1
-28,11052,2,,String Along,,12,,0.3184275051702323,True,2
-29,07028,1,,Faustian Bargain,,8,,0.3147489130064439,True,2
-30,01051,2,,Backstab,,1,,0.3041355000845053,True,2
-31,11053,1,,"""Where's the party?""",,12,,0.2950850256063058,True,1
-32,07028,2,,Faustian Bargain,,8,,0.28485215906490685,True,2
-33,11054,2,,"""You've had worse...""",,12,,0.28162836432158356,True,2
-34,01088,2,,Emergency Cache,,1,,0.2796079724936374,True,2
+3,01000,1,,Random Basic Weakness,,1,,0.8864081460122827,False,0
+4,01092,1,,Manual Dexterity,,1,,0.7171946000857038,True,2
+5,11052,1,,String Along,,12,,0.6850146125351526,True,2
+6,01092,2,,Manual Dexterity,,1,,0.6729694671152121,True,2
+7,01046,1,,Pickpocketing,,1,,0.6651836944625108,True,2
+8,01048,1,,Leo De Luca,The Louisiana Lion,1,Ally,0.596099288030655,True,1
+9,01088,1,,Emergency Cache,,1,,0.5701613617368512,True,2
+10,09064,1,,Thieves' Kit,,10,Hand,0.5499874869356794,True,2
+11,01088,2,,Emergency Cache,,1,,0.5110911309254345,True,2
+12,04107,1,,Lucky Cigarette Case,,4,Accessory,0.5085659982415653,True,2
+13,01046,2,,Pickpocketing,,1,,0.5018936910175881,True,2
+14,09064,2,,Thieves' Kit,,10,Hand,0.4877820268843332,True,2
+15,60305,1,,Lockpicks,,7,Hand,0.4846363303763134,True,1
+16,02229,1,,Quick Thinking,,2,,0.4691777791485446,True,2
+17,03028,1,,Stealth,,3,,0.4585410978658142,True,1
+18,03233,1,,"""Watch this!""",,3,,0.4373896736530353,True,2
+19,02229,2,,Quick Thinking,,2,,0.43710123953890606,True,2
+20,07114,1,,Breaking and Entering,,8,,0.40719244262938925,True,2
+21,01051,1,,Backstab,,1,,0.4066023173554908,True,2
+22,03233,2,,"""Watch this!""",,3,,0.40304305447223526,True,2
+23,10065,1,,British Bull Dog,,11,Hand,0.40188699214045664,True,2
+24,10065,2,,British Bull Dog,,11,Hand,0.39954949449054217,True,2
+25,11054,1,,"""You've had worse...""",,12,,0.38497044675037545,True,1
+26,01051,2,,Backstab,,1,,0.38337310859258383,True,2
+27,10069,1,,Bank Job,,11,,0.37733016765718913,True,1
+28,07114,2,,Breaking and Entering,,8,,0.37272020499957015,True,2
+29,08125,1,,In the Thick of It,,9,,0.3625363765412629,False,0
+30,04107,2,,Lucky Cigarette Case,,4,Accessory,0.36067897831776774,True,2
+31,11052,2,,String Along,,12,,0.3184275051702323,True,2
+32,03267,1,,Narrow Escape,,3,,0.3009874687068573,True,1
+33,01044,1,,Switchblade,,1,Hand,0.29821735295459095,False,0
+34,60305,2,,Lockpicks,,7,Hand,0.29678655840577983,False,1
+35,60311,1,,Streetwise,,7,,0.2952610602760578,True,1
+36,11053,1,,"""Where's the party?""",,12,,0.2950850256063058,False,0
+37,03267,2,,Narrow Escape,,3,,0.2949077652222516,False,1
+38,01093,1,,Unexpected Courage,,1,,0.2930813406937539,False,0
+39,03194,1,,Cheap Shot,,3,,0.2839948305773571,False,0
+40,11054,2,,"""You've had worse...""",,12,,0.28162836432158356,False,1
+41,10076,1,,Lightfooted,,11,,0.2793518133983697,False,0
+42,01048,2,,Leo De Luca,The Louisiana Lion,1,Ally,0.2766660990632333,False,1
+43,10069,2,,Bank Job,,11,,0.2717241648093447,False,1
+44,10020,1,,Cleaning Kit,,11,Accessory,0.27131802916683156,False,0
+45,11053,2,,"""Where's the party?""",,12,,0.26752428299335795,False,0
+46,03194,2,,Cheap Shot,,3,,0.2674494927293863,False,0
+47,07028,1,,Faustian Bargain,,8,,0.24816007191362324,False,0
+48,60315,1,,Pilfer,,7,,0.24797315830656375,False,0
+49,10020,2,,Cleaning Kit,,11,Accessory,0.24388369670105642,False,0
+50,10067,1,,Fox Mask,The Wise Trickster,11,Mask,0.24262403967819654,False,0
+51,10076,2,,Lightfooted,,11,,0.24066039566294645,False,0
+52,11036,1,,Forensic Kit,,12,Hand,0.22549157067421696,False,0
+53,07028,2,,Faustian Bargain,,8,,0.22439535549254033,False,0
+54,09067,1,,"""I'll take that!""",,10,,0.22288523605892496,False,0
+55,60315,2,,Pilfer,,7,,0.22008839076106324,False,0
+56,04203,1,,Trench Coat,,4,Body,0.2187080903259752,True,1

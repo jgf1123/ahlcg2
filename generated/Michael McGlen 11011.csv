@@ -1,35 +1,39 @@
 rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
-1,11012,1,,"""Viola"" Case",,12,Accessory,0.9853321802829841,True,1
-2,11013,1,,Confiscation,,12,,0.9853321802829841,True,1
-3,01000,1,,Random Basic Weakness,,1,,0.8009037479160844,False,0
-4,60306,1,,Mauser C96,,7,Hand,0.6937502560491947,True,2
-5,11050,1,,Luger P08,,12,Hand,0.6545880503323468,True,2
-6,01091,1,,Overpower,,1,,0.6241346944031261,True,2
-7,02229,1,,Quick Thinking,,2,,0.6126131864784674,True,2
-8,01047,1,,.41 Derringer,,1,Hand,0.6109670134753085,True,2
-9,60306,2,,Mauser C96,,7,Hand,0.606248583384163,True,2
-10,11050,2,,Luger P08,,12,Hand,0.5838291000523391,True,2
-11,11053,1,,"""Where's the party?""",,12,,0.5452474923255235,True,2
-12,01047,2,,.41 Derringer,,1,Hand,0.5132446356580411,True,2
-13,03233,1,,"""Watch this!""",,3,,0.5092208818999647,True,2
-14,01091,2,,Overpower,,1,,0.48650347925804277,True,2
-15,10069,1,,Bank Job,,11,,0.48475309767965885,True,2
-16,03233,2,,"""Watch this!""",,3,,0.4506227246842302,True,2
-17,02229,2,,Quick Thinking,,2,,0.44648338039133423,True,2
-18,10069,2,,Bank Job,,11,,0.43615247338071095,True,2
-19,08125,1,,In the Thick of It,,9,,0.4259673019288554,False,0
-20,11053,2,,"""Where's the party?""",,12,,0.4109880951972959,True,2
-21,60505,1,,.18 Derringer,,7,Hand,0.4072446817021958,True,2
-22,01089,1,,Guts,,1,,0.3885202959481142,True,2
-23,60309,1,,Lonnie Ritter,Feisty Mechanic,7,Ally,0.3569912135678763,True,2
-24,11057,1,,Crack Shot,,12,,0.34509480932679554,True,1
-25,04107,1,,Lucky Cigarette Case,,4,Accessory,0.3423476090102054,True,1
-26,01093,1,,Unexpected Courage,,1,,0.32501476185228395,True,2
-27,11022,1,,Remington Model 1858,,12,Hand,0.32436230881734834,True,1
-28,60505,2,,.18 Derringer,,7,Hand,0.31614593291176224,True,2
-29,01089,2,,Guts,,1,,0.31449016638153693,True,2
-30,08126,1,,Heavy Furs,,9,Body,0.3139134545250978,True,2
-31,60309,2,,Lonnie Ritter,Feisty Mechanic,7,Ally,0.3078953185209627,True,2
-32,01093,2,,Unexpected Courage,,1,,0.30386329626183334,True,2
-33,11051,1,,Robert Castaigne,Has Your Back,12,Ally,0.30138537727040715,True,1
-34,08126,2,,Heavy Furs,,9,Body,0.28900325314084496,True,2
+1,11012,1,,"""Viola"" Case",,12,Accessory,0.9844196109190574,True,1
+2,11013,1,,Confiscation,,12,,0.9844196109190574,True,1
+3,01000,1,,Random Basic Weakness,,1,,0.8392288678630246,False,0
+4,60306,1,,Mauser C96,,7,Hand,0.7134966829086703,True,2
+5,01091,1,,Overpower,,1,,0.6964870504626556,True,2
+6,11050,1,,Luger P08,,12,Hand,0.6953137350114984,True,2
+7,02229,1,,Quick Thinking,,2,,0.6883799992684305,True,2
+8,01047,1,,.41 Derringer,,1,Hand,0.6858540880225026,True,2
+9,60306,2,,Mauser C96,,7,Hand,0.6235044232286481,True,2
+10,11050,2,,Luger P08,,12,Hand,0.6201524637666211,True,2
+11,01047,2,,.41 Derringer,,1,Hand,0.6069428219772862,True,2
+12,03233,1,,"""Watch this!""",,3,,0.6027461466579997,True,2
+13,01091,2,,Overpower,,1,,0.5853492161505542,True,2
+14,11053,1,,"""Where's the party?""",,12,,0.5791704724857533,True,2
+15,03233,2,,"""Watch this!""",,3,,0.5553147403609902,True,2
+16,02229,2,,Quick Thinking,,2,,0.5547425896111436,True,2
+17,01089,1,,Guts,,1,,0.5062273484798234,True,2
+18,10069,1,,Bank Job,,11,,0.4940419674264967,True,2
+19,01093,1,,Unexpected Courage,,1,,0.4549463398888296,True,2
+20,01089,2,,Guts,,1,,0.44644768101702664,True,2
+21,10069,2,,Bank Job,,11,,0.4445100548678374,True,2
+22,01093,2,,Unexpected Courage,,1,,0.43786643489945914,True,2
+23,11053,2,,"""Where's the party?""",,12,,0.436558026642565,True,2
+24,08125,1,,In the Thick of It,,9,,0.4347359005799178,False,0
+25,01016,1,,.45 Automatic,,1,Hand,0.424875933319818,True,2
+26,60505,1,,.18 Derringer,,7,Hand,0.4188362123013167,True,1
+27,01088,1,,Emergency Cache,,1,,0.37261031174799775,True,2
+28,60309,1,,Lonnie Ritter,Feisty Mechanic,7,Ally,0.3671523642510312,True,1
+29,11057,1,,Crack Shot,,12,,0.3665651407542019,True,1
+30,01016,2,,.45 Automatic,,1,Hand,0.36436663186862867,True,2
+31,01088,2,,Emergency Cache,,1,,0.35766539488229854,True,2
+32,04107,1,,Lucky Cigarette Case,,4,Accessory,0.3495122011957124,True,1
+33,02109,1,,Contraband,,2,,0.3485272493218856,False,0
+34,11022,1,,Remington Model 1858,,12,Hand,0.34454275223361625,False,0
+35,60505,2,,.18 Derringer,,7,Hand,0.32514449181206995,False,1
+36,01049,1,,Hard Knocks,,1,,0.3213764014887091,False,0
+37,08126,1,,Heavy Furs,,9,Body,0.32037540848596463,True,1
+38,11051,1,,Robert Castaigne,Has Your Back,12,Ally,0.32013629372143326,True,1

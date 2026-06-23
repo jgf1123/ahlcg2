@@ -15,9 +15,9 @@ rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,
 14,10111,1,,Sparrow Mask,The Wanderer's Companion,11,Mask,0.45171452226098946,True,1
 15,01087,1,,Flashlight,,1,Hand,0.4348277096321488,True,2
 16,05036,1,,Track Shoes,,5,,0.4182384935335155,True,2
-17,60507,1,,Old Keyring,,7,Hand,0.4174497241386443,True,2
+17,60507,1,,Old Keyring,,7,Hand,0.41744972413864434,True,2
 18,01088,2,,Emergency Cache,,1,,0.41437039613312215,True,2
-19,08073,1,,Bandages,,9,,0.411277081721728,True,1
+19,08073,1,,Bandages,,9,,0.4112770817217279,True,1
 20,01087,2,,Flashlight,,1,Hand,0.4094290866221508,True,2
 21,60507,2,,Old Keyring,,7,Hand,0.35817475691007467,True,2
 22,01079,1,,"""Look what I found!""",,1,,0.3563633604627496,True,1

@@ -1,82 +1,87 @@
 rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
 1,06008,1,,Occult Evidence,,6,,1.0,True,3
 2,06009,1,,Shocking Discovery,,6,,0.9948919073643571,True,1
-3,06008,2,,Occult Evidence,,6,,0.9097615393327074,True,3
-4,03231,1,,Eureka!,,3,,0.866880537861936,True,2
-5,06023,1,,Astounding Revelation,,6,,0.847840359840307,True,3
-6,06023,2,,Astounding Revelation,,6,,0.8451200114655194,True,3
-7,06023,3,,Astounding Revelation,,6,,0.8178147732752542,True,3
-8,03231,2,,Eureka!,,3,,0.8136271944074706,True,2
-9,01039,1,,Deduction,,1,,0.8033073784808238,True,2
-10,01039,2,,Deduction,,1,,0.7642382456519731,True,2
-11,01000,1,,Random Basic Weakness,,1,,0.7255253773337169,False,0
-12,06008,3,,Occult Evidence,,6,,0.6933074759459638,True,3
-13,03026,1,,No Stone Unturned,,3,,0.6240562695463842,True,2
-14,01090,1,,Perception,,1,,0.6141203619461291,True,2
-15,01090,2,,Perception,,1,,0.5782340306199546,True,2
-16,03026,2,,No Stone Unturned,,3,,0.5650790933759041,True,2
-17,01032,1,,Research Librarian,,1,Ally,0.5240595530357147,True,2
-18,01031,1,,Old Book of Lore,,1,Hand,0.5089035035014846,True,2
-19,05153,1,,"Mr. ""Rook""",Dealer in Secrets,5,Ally,0.48231802658591977,True,2
-20,05110,1,,Crack the Case,,5,,0.4276807802997398,True,1
-21,03158,1,,Calling in Favors,,3,,0.42239526806223915,True,1
-22,02022,1,,Shortcut,,2,,0.4196288859359475,False,0
-23,05153,2,,"Mr. ""Rook""",Dealer in Secrets,5,Ally,0.4194700873998869,True,2
-24,11096,1,,Short Rest,,12,,0.4130663856691254,False,0
-25,11096,2,,Short Rest,,12,,0.4130663856691254,False,0
-26,11096,3,,Short Rest,,12,,0.4130663856691254,False,0
-27,06197,1,,Practice Makes Perfect,,6,,0.41060732264885985,False,0
-28,05110,2,,Crack the Case,,5,,0.39617183646000975,False,1
-29,01032,2,,Research Librarian,,1,Ally,0.38833790958136527,True,2
-30,01030,1,,Magnifying Glass,,1,Hand,0.3826074852448514,True,2
-31,11034,1,,Artistic Inspiration,,12,,0.380400421496312,False,0
-32,11034,2,,Artistic Inspiration,,12,,0.380400421496312,False,0
-33,11760a,1,,Plumb the Depths,Compulsive Research,12,,0.380400421496312,True,1
-34,01031,2,,Old Book of Lore,,1,Hand,0.36958181343333524,True,2
-35,08125,1,,In the Thick of It,,9,,0.3655107486339591,False,0
-36,60213,1,,Whitton Greene,Hunter of Rare Books,7,Ally,0.3641386670473602,True,2
-37,03158,2,,Calling in Favors,,3,,0.3639536574406152,False,1
-38,06197,2,,Practice Makes Perfect,,6,,0.3614246325612873,False,0
-39,60214,1,,Burning the Midnight Oil,,7,,0.3486361947089863,False,0
-40,60213,2,,Whitton Greene,Hunter of Rare Books,7,Ally,0.32097849696104214,True,2
-41,02022,2,,Shortcut,,2,,0.3209333710815242,False,0
-42,01089,1,,Guts,,1,,0.3204914842371159,False,0
-43,05316,1,,Occult Lexicon,,5,Hand,0.31546441592895746,True,1
-44,01030,2,,Magnifying Glass,,1,Hand,0.31218301858143477,True,2
-45,02227,1,,Inquiring Mind,,2,,0.31186923411850653,False,0
-46,04037,1,,Backpack,,4,Body,0.3066636519143691,False,0
-47,01033,1,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.3015371778352642,True,1
-48,60214,2,,Burning the Midnight Oil,,7,,0.29745332760530174,False,0
-49,01088,1,,Emergency Cache,,1,,0.2918871373801619,False,0
-50,09066,1,,Hit and Run,,10,,0.2856533676935007,False,0
-51,09066,2,,Hit and Run,,10,,0.2856533676935007,False,0
-52,02107,1,,"""I've got a plan!""",,2,,0.2815090137347939,False,0
-53,04021,1,,Dr. Elli Horowitz,Assistant Curator,4,Ally,0.2809910355336776,True,1
-54,02227,2,,Inquiring Mind,,2,,0.2765528288548867,False,0
-55,01093,1,,Unexpected Courage,,1,,0.2760535590499271,False,0
-56,01089,2,,Guts,,1,,0.2729843425545066,False,0
-57,01088,2,,Emergency Cache,,1,,0.26368819906666496,False,0
-58,60215,1,,Cryptic Writings,,7,,0.25813084254855656,False,0
-59,09047,1,,Captivating Discovery,,10,,0.2543406949680676,False,0
-60,09044,1,,Grim Memoir,,10,Hand,0.25364239970675573,False,0
-61,09044,2,,Grim Memoir,,10,Hand,0.25364239970675573,False,0
-62,09047,2,,Captivating Discovery,,10,,0.25343053598018456,False,0
-63,60215,2,,Cryptic Writings,,7,,0.2529764514896856,False,0
-64,04021,2,,Dr. Elli Horowitz,Assistant Curator,4,Ally,0.24885668474180614,False,1
-65,04023,1,,Tooth of Eztli,Mortal Reminder,4,Accessory,0.24640864256838607,True,2
-66,01093,2,,Unexpected Courage,,1,,0.2400066994753041,False,0
-67,04037,2,,Backpack,,4,Body,0.23750681456418027,False,0
-68,05024,1,,Fingerprint Kit,,5,Hand,0.23410894879413546,False,0
-69,10043,1,,Mouse Mask,The Meek Watcher,11,Mask,0.23127104588984662,False,0
-70,10050,1,,Transmogrify,,11,,0.22439510380782263,False,0
-71,01036,1,,Mind over Matter,,1,,0.22214517346342622,False,0
-72,07024,1,,Plan of Action,,8,,0.21777363335412084,False,0
-73,60207,1,,Disc of Itzamna,Protective Amulet,7,Accessory,0.21445071332112275,True,2
-74,01065,1,,Ward of Protection,,1,,0.20606352242891326,False,0
-75,04023,2,,Tooth of Eztli,Mortal Reminder,4,Accessory,0.19976193891717015,True,2
-76,07024,2,,Plan of Action,,8,,0.19964563820904693,False,0
-77,09049,1,,Analysis,,10,,0.19538452675744322,False,0
-78,01092,1,,Manual Dexterity,,1,,0.19509842883978878,False,0
-79,01065,2,,Ward of Protection,,1,,0.19297851666771695,False,0
-80,01033,2,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.18884053088801467,False,1
-81,60207,2,,Disc of Itzamna,Protective Amulet,7,Accessory,0.18781050177914102,True,2
+3,06008,2,,Occult Evidence,,6,,0.9078442866122034,True,3
+4,03231,1,,Eureka!,,3,,0.8829145668405373,True,2
+5,06023,1,,Astounding Revelation,,6,,0.8543435606819998,True,3
+6,06023,2,,Astounding Revelation,,6,,0.8514867837530394,True,3
+7,06023,3,,Astounding Revelation,,6,,0.8238978325340102,True,3
+8,01039,1,,Deduction,,1,,0.8225596065507254,True,2
+9,03231,2,,Eureka!,,3,,0.7388395766864648,True,2
+10,01000,1,,Random Basic Weakness,,1,,0.7037020578048496,False,0
+11,01039,2,,Deduction,,1,,0.6930923601859925,True,2
+12,06008,3,,Occult Evidence,,6,,0.6901309334319332,True,3
+13,01090,1,,Perception,,1,,0.640351680503702,True,2
+14,03026,1,,No Stone Unturned,,3,,0.6380043442574099,True,2
+15,01032,1,,Research Librarian,,1,Ally,0.5296045998212853,True,2
+16,01090,2,,Perception,,1,,0.5246525284869135,True,2
+17,03026,2,,No Stone Unturned,,3,,0.5201932353640049,True,2
+18,05153,1,,"Mr. ""Rook""",Dealer in Secrets,5,Ally,0.4782013429951616,True,2
+19,01031,1,,Old Book of Lore,,1,Hand,0.4680642192610749,True,2
+20,03158,1,,Calling in Favors,,3,,0.4502615342903421,True,1
+21,05110,1,,Crack the Case,,5,,0.4488579474174056,True,1
+22,02022,1,,Shortcut,,2,,0.41715203191718253,False,0
+23,11096,1,,Short Rest,,12,,0.4130663856691254,False,0
+24,11096,2,,Short Rest,,12,,0.4130663856691254,False,0
+25,11096,3,,Short Rest,,12,,0.4130663856691254,False,0
+26,06197,1,,Practice Makes Perfect,,6,,0.41175464432610853,False,0
+27,05153,2,,"Mr. ""Rook""",Dealer in Secrets,5,Ally,0.40474268999130336,True,2
+28,01030,1,,Magnifying Glass,,1,Hand,0.40340697616356025,True,2
+29,05110,2,,Crack the Case,,5,,0.388676843749515,False,1
+30,11034,1,,Artistic Inspiration,,12,,0.380400421496312,False,0
+31,11034,2,,Artistic Inspiration,,12,,0.380400421496312,False,0
+32,11760a,1,,Plumb the Depths,Compulsive Research,12,,0.380400421496312,True,1
+33,08125,1,,In the Thick of It,,9,,0.3655107486339591,False,0
+34,60213,1,,Whitton Greene,Hunter of Rare Books,7,Ally,0.3641386670473602,True,2
+35,06197,2,,Practice Makes Perfect,,6,,0.3623924339652116,False,0
+36,01032,2,,Research Librarian,,1,Ally,0.3552533436835837,True,2
+37,60214,1,,Burning the Midnight Oil,,7,,0.3486361947089863,False,0
+38,01088,1,,Emergency Cache,,1,,0.3480723765234058,False,0
+39,01089,1,,Guts,,1,,0.34657641980536336,False,0
+40,01031,2,,Old Book of Lore,,1,Hand,0.34543615626243457,True,2
+41,03158,2,,Calling in Favors,,3,,0.34355299273024453,False,1
+42,01033,1,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.3315006921691856,True,1
+43,60213,2,,Whitton Greene,Hunter of Rare Books,7,Ally,0.32097849696104214,True,2
+44,01030,2,,Magnifying Glass,,1,Hand,0.3117700311104755,True,2
+45,02227,1,,Inquiring Mind,,2,,0.3055853765303818,False,0
+46,04021,1,,Dr. Elli Horowitz,Assistant Curator,4,Ally,0.30189740838425483,True,1
+47,02022,2,,Shortcut,,2,,0.3018579011505527,False,0
+48,02107,1,,"""I've got a plan!""",,2,,0.3004336409971204,False,0
+49,05316,1,,Occult Lexicon,,5,Hand,0.29848367518575586,True,1
+50,60214,2,,Burning the Midnight Oil,,7,,0.29745332760530174,False,0
+51,01093,1,,Unexpected Courage,,1,,0.28848422596390644,False,0
+52,09066,1,,Hit and Run,,10,,0.2856533676935007,False,0
+53,09066,2,,Hit and Run,,10,,0.2856533676935007,False,0
+54,01036,1,,Mind over Matter,,1,,0.28310111908568536,False,0
+55,04037,1,,Backpack,,4,Body,0.27630727538495736,False,0
+56,60215,1,,Cryptic Writings,,7,,0.25813084254855656,False,0
+57,02227,2,,Inquiring Mind,,2,,0.2570818657112846,False,0
+58,09047,1,,Captivating Discovery,,10,,0.2543406949680676,False,0
+59,09044,1,,Grim Memoir,,10,Hand,0.25364239970675573,False,0
+60,09044,2,,Grim Memoir,,10,Hand,0.25364239970675573,False,0
+61,09047,2,,Captivating Discovery,,10,,0.25343053598018456,False,0
+62,60215,2,,Cryptic Writings,,7,,0.2529764514896856,False,0
+63,01088,2,,Emergency Cache,,1,,0.25276533104919935,False,0
+64,01093,2,,Unexpected Courage,,1,,0.24606063467565745,False,0
+65,01089,2,,Guts,,1,,0.2394005110529364,False,0
+66,01065,1,,Ward of Protection,,1,,0.2362891907873552,False,0
+67,05024,1,,Fingerprint Kit,,5,Hand,0.234453555638286,False,0
+68,10043,1,,Mouse Mask,The Meek Watcher,11,Mask,0.23127104588984662,False,0
+69,10050,1,,Transmogrify,,11,,0.22439510380782263,False,0
+70,04021,2,,Dr. Elli Horowitz,Assistant Curator,4,Ally,0.21851225120662332,False,1
+71,07024,1,,Plan of Action,,8,,0.21777363335412084,False,0
+72,04023,1,,Tooth of Eztli,Mortal Reminder,4,Accessory,0.2171275465325993,True,2
+73,04037,2,,Backpack,,4,Body,0.21561940932591347,False,0
+74,60207,1,,Disc of Itzamna,Protective Amulet,7,Accessory,0.21445071332112275,True,2
+75,02107,2,,"""I've got a plan!""",,2,,0.21015055701492732,False,0
+76,01037,1,,Working a Hunch,,1,,0.20363488390754694,False,0
+77,03191,1,,Logical Reasoning,,3,,0.2024604647624966,False,0
+78,04157,1,,Enraptured,,4,,0.2023729815154986,False,0
+79,07024,2,,Plan of Action,,8,,0.19964563820904693,False,0
+80,09049,1,,Analysis,,10,,0.19538452675744322,False,0
+81,01092,1,,Manual Dexterity,,1,,0.18824369217537967,False,0
+82,60207,2,,Disc of Itzamna,Protective Amulet,7,Accessory,0.18781050177914102,True,2
+83,09049,2,,Analysis,,10,,0.17769043313845462,False,0
+84,06112,1,,Dream Diary,Untranslated,6,Hand,0.1776316934952699,False,0
+85,01033,2,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.17760278439198152,False,1
+86,04023,2,,Tooth of Eztli,Mortal Reminder,4,Accessory,0.1759878590894279,True,2

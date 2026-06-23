@@ -1,43 +1,40 @@
 rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
-1,01014,1,,Wendy's Amulet,,1,Accessory,0.8885629676943373,True,1
-2,01015,1,,Abandoned and Alone,,1,,0.8885629676943373,True,1
-3,01000,1,,Random Basic Weakness,,1,,0.7630794420634118,False,0
-4,01080,1,,Lucky!,,1,,0.6856991354081051,True,2
-5,01079,1,,"""Look what I found!""",,1,,0.5874563591928257,True,2
-6,01080,2,,Lucky!,,1,,0.5665654908779444,True,2
-7,01051,1,,Backstab,,1,,0.5054501352903048,True,2
-8,03039,1,,Resourceful,,3,,0.42840568819150077,True,2
-9,01079,2,,"""Look what I found!""",,1,,0.41679834717972003,True,2
-10,05036,1,,Track Shoes,,5,,0.3967610501953509,True,1
-11,02033,1,,Peter Sylvestre,Big Man on Campus,2,Ally,0.37957382540369955,True,2
-12,01088,1,,Emergency Cache,,1,,0.37905781144057166,True,2
-13,03039,2,,Resourceful,,3,,0.37001810844720573,True,2
-14,01048,1,,Leo De Luca,The Louisiana Lion,1,Ally,0.35276157332282093,True,1
-15,01092,1,,Manual Dexterity,,1,,0.34182725401945835,True,1
-16,60305,1,,Lockpicks,,7,Hand,0.3404020291241467,True,1
+1,01014,1,,Wendy's Amulet,,1,Accessory,0.8882832851890174,True,1
+2,01015,1,,Abandoned and Alone,,1,,0.8882832851890174,True,1
+3,01000,1,,Random Basic Weakness,,1,,0.7665960143951436,False,0
+4,01080,1,,Lucky!,,1,,0.686184776740647,True,2
+5,01079,1,,"""Look what I found!""",,1,,0.5870593299043567,True,2
+6,01080,2,,Lucky!,,1,,0.5656668835001735,True,2
+7,01051,1,,Backstab,,1,,0.5045375299029826,True,2
+8,03039,1,,Resourceful,,3,,0.43044396420558845,True,2
+9,01079,2,,"""Look what I found!""",,1,,0.41466447404873374,True,2
+10,05036,1,,Track Shoes,,5,,0.3977113514092437,True,1
+11,02033,1,,Peter Sylvestre,Big Man on Campus,2,Ally,0.38027095890627144,True,2
+12,01088,1,,Emergency Cache,,1,,0.3785885425415459,True,2
+13,03039,2,,Resourceful,,3,,0.37158529430104503,True,2
+14,01048,1,,Leo De Luca,The Louisiana Lion,1,Ally,0.3518295589897301,True,1
+15,60305,1,,Lockpicks,,7,Hand,0.3400636100043607,True,1
+16,01092,1,,Manual Dexterity,,1,,0.3388197990694701,True,1
 17,10065,1,,British Bull Dog,,11,Hand,0.33585369708982143,True,2
 18,10067,1,,Fox Mask,The Wise Trickster,11,Mask,0.3358257040521148,True,1
-19,01090,1,,Perception,,1,,0.3185096164563452,True,1
+19,01090,1,,Perception,,1,,0.3192652727785866,True,1
 20,08125,1,,In the Thick of It,,9,,0.3184210064643248,False,0
-21,01088,2,,Emergency Cache,,1,,0.3161060639964456,True,2
+21,01088,2,,Emergency Cache,,1,,0.31584760817609087,True,2
 22,10116,1,,Long Shot,,11,,0.31279800835674043,True,2
 23,10116,2,,Long Shot,,11,,0.31279800835674043,True,2
-24,01051,2,,Backstab,,1,,0.3090554726277658,True,2
-25,10065,2,,British Bull Dog,,11,Hand,0.30826789678962113,True,2
-26,10111,1,,Sparrow Mask,The Wanderer's Companion,11,Mask,0.2897657851735154,False,0
-27,04272,1,,Winging It,,4,,0.2882556273018764,True,1
-28,04201,1,,Take Heart,,4,,0.28542226567158396,True,1
-29,01046,1,,Pickpocketing,,1,,0.2831342181009339,True,1
-30,01052,1,,Sneak Attack,,1,,0.2830632301245644,True,1
-31,02033,2,,Peter Sylvestre,Big Man on Campus,2,Ally,0.280640692343648,True,2
-32,01087,1,,Flashlight,,1,Hand,0.2794702728160707,True,1
-33,60513,1,,A Test of Will,,7,,0.2747250424759458,True,1
-34,60305,2,,Lockpicks,,7,Hand,0.27388508010484314,False,1
-35,01089,1,,Guts,,1,,0.27353951714171687,True,1
-36,11052,1,,String Along,,12,,0.2715647135215497,False,0
-37,11052,2,,String Along,,12,,0.2715647135215497,False,0
-38,01093,1,,Unexpected Courage,,1,,0.26415611770555675,False,0
-39,01092,2,,Manual Dexterity,,1,,0.26080568841100454,False,1
-40,04201,2,,Take Heart,,4,,0.25751195440280383,False,1
-41,01090,2,,Perception,,1,,0.2574300920004383,False,1
-42,06203,1,,Moonstone,,6,Accessory,0.25677257798411424,True,1
+24,10065,2,,British Bull Dog,,11,Hand,0.30826789678962113,True,2
+25,01051,2,,Backstab,,1,,0.30710556265019745,True,2
+26,04272,1,,Winging It,,4,,0.29038942720426136,True,1
+27,10111,1,,Sparrow Mask,The Wanderer's Companion,11,Mask,0.2897657851735154,False,0
+28,04201,1,,Take Heart,,4,,0.28483566524583426,True,1
+29,01046,1,,Pickpocketing,,1,,0.28458226855072033,True,1
+30,01052,1,,Sneak Attack,,1,,0.28082495003922026,True,1
+31,02033,2,,Peter Sylvestre,Big Man on Campus,2,Ally,0.28077141146606976,True,2
+32,01087,1,,Flashlight,,1,Hand,0.276825092164053,True,1
+33,60513,1,,A Test of Will,,7,,0.2747116394960863,True,1
+34,60305,2,,Lockpicks,,7,Hand,0.27350739177345956,False,1
+35,11052,1,,String Along,,12,,0.2715647135215497,True,1
+36,11052,2,,String Along,,12,,0.2715647135215497,False,1
+37,01089,1,,Guts,,1,,0.27119376248939286,False,0
+38,01093,1,,Unexpected Courage,,1,,0.26335472822988326,False,0
+39,06203,1,,Moonstone,,6,Accessory,0.26075405811422214,True,1

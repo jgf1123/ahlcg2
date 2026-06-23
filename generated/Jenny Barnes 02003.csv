@@ -1,37 +1,37 @@
 rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
-1,02011,1,,Searching for Izzie,,2,,0.8556680135798397,True,1
-2,02010,1,,Jenny's Twin .45s,A Perfect Fit,2,Hand x2,0.8488946892967199,True,1
-3,01000,1,,Random Basic Weakness,,1,,0.7703096880459878,False,0
-4,01048,1,,Leo De Luca,The Louisiana Lion,1,Ally,0.645042616739122,True,2
-5,02188,1,,Lone Wolf,,2,,0.5816224291738668,True,2
+1,02011,1,,Searching for Izzie,,2,,0.8547360960072555,True,1
+2,02010,1,,Jenny's Twin .45s,A Perfect Fit,2,Hand x2,0.8477326899915952,True,1
+3,01000,1,,Random Basic Weakness,,1,,0.7715408644037571,False,0
+4,01048,1,,Leo De Luca,The Louisiana Lion,1,Ally,0.6461713127692515,True,2
+5,02188,1,,Lone Wolf,,2,,0.5802744541605748,True,2
 6,10069,1,,Bank Job,,11,,0.5173425642456578,True,2
-7,01048,2,,Leo De Luca,The Louisiana Lion,1,Ally,0.4184679050751159,True,2
-8,01091,1,,Overpower,,1,,0.39544909421344654,True,2
-9,01088,1,,Emergency Cache,,1,,0.391874418051635,True,2
-10,01093,1,,Unexpected Courage,,1,,0.38187429346839463,True,2
-11,01089,1,,Guts,,1,,0.3765321454464761,True,2
-12,60311,1,,Streetwise,,7,,0.37393285029042955,True,1
-13,01047,1,,.41 Derringer,,1,Hand,0.36870041085195243,True,1
-14,01049,1,,Hard Knocks,,1,,0.3656208078505974,True,1
-15,01090,1,,Perception,,1,,0.35816182485990555,True,1
-16,01087,1,,Flashlight,,1,Hand,0.34545478617140396,True,1
-17,05111,1,,Intel Report,,5,,0.3390196467548404,True,1
+7,01048,2,,Leo De Luca,The Louisiana Lion,1,Ally,0.4183555410931449,True,2
+8,01091,1,,Overpower,,1,,0.40189808299677815,True,1
+9,01088,1,,Emergency Cache,,1,,0.3962750561172485,True,2
+10,01093,1,,Unexpected Courage,,1,,0.3893977057219799,True,2
+11,01089,1,,Guts,,1,,0.38434699803999817,True,2
+12,01047,1,,.41 Derringer,,1,Hand,0.3769085246723537,True,1
+13,60311,1,,Streetwise,,7,,0.37400911598787023,True,1
+14,01049,1,,Hard Knocks,,1,,0.3698022920015446,True,1
+15,01090,1,,Perception,,1,,0.36560673317879694,True,1
+16,01087,1,,Flashlight,,1,Hand,0.35327937140666105,True,2
+17,05111,1,,Intel Report,,5,,0.3415562482142202,True,1
 18,10069,2,,Bank Job,,11,,0.3344371324819987,True,2
 19,11068a,1,,The Great Work,Divide and Unite,12,,0.32949774529622144,True,1
-20,04107,1,,Lucky Cigarette Case,,4,Accessory,0.3230678050445462,True,1
-21,01050,1,,Elusive,,1,,0.3203861537537568,True,1
-22,02229,1,,Quick Thinking,,2,,0.3136613401834648,True,1
-23,01093,2,,Unexpected Courage,,1,,0.30659100066326583,True,2
-24,07028,1,,Faustian Bargain,,8,,0.30645037745331777,True,1
-25,02188,2,,Lone Wolf,,2,,0.2923660114989156,True,2
-26,01092,1,,Manual Dexterity,,1,,0.2857228591176505,True,1
-27,01088,2,,Emergency Cache,,1,,0.2849716041886884,True,2
-28,08125,1,,In the Thick of It,,9,,0.27838740349864033,False,0
-29,05028,1,,Well Connected,,5,,0.2780446403378856,True,1
-30,60305,1,,Lockpicks,,7,Hand,0.2731524964759098,True,1
-31,01051,1,,Backstab,,1,,0.27146964008830454,True,1
-32,01087,2,,Flashlight,,1,Hand,0.2711477277457784,False,1
-33,03233,1,,"""Watch this!""",,3,,0.2681963162690917,True,1
-34,01052,1,,Sneak Attack,,1,,0.2582495188531282,True,1
-35,01091,2,,Overpower,,1,,0.2487635111811385,True,2
-36,01089,2,,Guts,,1,,0.24759438503247827,True,2
+20,01050,1,,Elusive,,1,,0.3262939861160562,True,1
+21,04107,1,,Lucky Cigarette Case,,4,Accessory,0.32468624038262206,True,1
+22,02229,1,,Quick Thinking,,2,,0.3149678736858619,True,1
+23,01093,2,,Unexpected Courage,,1,,0.3122043086737202,True,2
+24,07028,1,,Faustian Bargain,,8,,0.30935058042241786,True,1
+25,01092,1,,Manual Dexterity,,1,,0.2946314430496954,True,1
+26,02188,2,,Lone Wolf,,2,,0.2909385895243056,True,2
+27,01088,2,,Emergency Cache,,1,,0.28972226616045166,True,2
+28,05028,1,,Well Connected,,5,,0.28134064556197674,True,1
+29,08125,1,,In the Thick of It,,9,,0.2795518002423921,False,0
+30,01087,2,,Flashlight,,1,Hand,0.27927918094286114,True,2
+31,01051,1,,Backstab,,1,,0.27871568256365375,True,1
+32,60305,1,,Lockpicks,,7,Hand,0.27196497245220064,False,0
+33,03233,1,,"""Watch this!""",,3,,0.26938378878125574,True,1
+34,01052,1,,Sneak Attack,,1,,0.2556310771134911,True,1
+35,01089,2,,Guts,,1,,0.2531053751275819,True,2
+36,08047,1,,Scout Ahead,,9,,0.24613755904272028,True,1

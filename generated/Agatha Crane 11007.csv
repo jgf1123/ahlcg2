@@ -1,47 +1,47 @@
 rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
-1,01000,1,,Random Basic Weakness,,1,,0.9381138879903205,False,0
-2,11009,1,,Ocula Obscura,Esoteric Eyepiece,12,Accessory,0.8574946294303579,True,1
-3,11010,1,,Glimpse the Void,,12,,0.8574946294303579,True,1
-4,01090,1,,Perception,,1,,0.6852445191580006,True,2
-5,01039,1,,Deduction,,1,,0.6197582958129125,True,2
-6,01039,2,,Deduction,,1,,0.5889009546446513,True,2
-7,01090,2,,Perception,,1,,0.569889342152161,True,2
-8,11040,1,,Correlate All Its Contents,,12,,0.553604316422964,True,2
-9,11067,1,,Eyes of the Dreamer,,12,Arcane,0.4850494017956406,True,2
-10,11040,2,,Correlate All Its Contents,,12,,0.44455607224116783,True,2
-11,10043,1,,Mouse Mask,The Meek Watcher,11,Mask,0.4286639083835663,True,1
-12,01030,1,,Magnifying Glass,,1,Hand,0.4193670919907924,True,2
-13,01030,2,,Magnifying Glass,,1,Hand,0.4193670919907924,True,2
-14,01033,1,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.4165090398713922,True,2
-15,01064,1,,Drawn to the Flame,,1,,0.4104326689888976,True,1
-16,11067,2,,Eyes of the Dreamer,,12,Arcane,0.40361912023952096,True,2
-17,03231,1,,Eureka!,,3,,0.3981834370769968,True,2
-18,03231,2,,Eureka!,,3,,0.368136998996669,True,2
-19,01033,2,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.3668044305551696,True,2
-20,60215,1,,Cryptic Writings,,7,,0.34319691576239225,True,2
-21,01089,1,,Guts,,1,,0.3397186303954742,True,1
-22,60214,1,,Burning the Midnight Oil,,7,,0.33108281132477646,True,2
-23,11066,1,,Breath of the Sleeper,,12,Arcane,0.2981951792522795,True,1
-24,60215,2,,Cryptic Writings,,7,,0.29249508827892806,True,2
-25,60214,2,,Burning the Midnight Oil,,7,,0.2803809838413122,True,2
-26,11039,1,,Uncanny Specimen,,12,Arcane,0.2761759589427292,True,1
-27,05154,1,,Hawk-Eye Folding Camera,,5,Hand,0.2752643031071742,True,1
-28,05116,1,,Scroll of Secrets,,5,Hand,0.26693404869316456,True,2
-29,01037,1,,Working a Hunch,,1,,0.2582407416212781,True,1
-30,02186,1,,Preposterous Sketches,,2,,0.2576620637872063,True,1
-31,02022,1,,Shortcut,,2,,0.25098102548601514,True,1
-32,08125,1,,In the Thick of It,,9,,0.24847575089125085,False,0
-33,11039,2,,Uncanny Specimen,,12,Arcane,0.24485661988268317,False,1
-34,11039,3,,Uncanny Specimen,,12,Arcane,0.24485661988268317,False,1
-35,09044,1,,Grim Memoir,,10,Hand,0.2442779379494501,True,1
-36,05116,2,,Scroll of Secrets,,5,Hand,0.23912156454327393,True,2
-37,06164,1,,Ethereal Form,,6,,0.23886760023507111,True,2
-38,06164,2,,Ethereal Form,,6,,0.23886760023507111,True,2
-39,05154,2,,Hawk-Eye Folding Camera,,5,Hand,0.23222814342260656,False,1
-40,01088,1,,Emergency Cache,,1,,0.23136499286182474,True,1
-41,06117,1,,Read the Signs,,6,,0.226826650276061,True,1
-42,04199,1,,Premonition,,4,,0.22242328571311257,False,0
-43,11066,2,,Breath of the Sleeper,,12,Arcane,0.22046627413052902,False,1
-44,09044,2,,Grim Memoir,,10,Hand,0.2170126263964662,False,1
-45,01064,2,,Drawn to the Flame,,1,,0.20644135383136872,False,1
-46,07111,1,,Eldritch Sophist,,8,Ally,0.20163167693574655,True,1
+1,01000,1,,Random Basic Weakness,,1,,0.974188820863083,False,0
+2,11009,1,,Ocula Obscura,Esoteric Eyepiece,12,Accessory,0.8244692481154138,True,1
+3,11010,1,,Glimpse the Void,,12,,0.8244692481154138,True,1
+4,10043,1,,Mouse Mask,The Meek Watcher,11,Mask,0.684921861555574,True,1
+5,11040,1,,Correlate All Its Contents,,12,,0.6819011909504583,True,2
+6,04030,1,,The Chthonian Stone,Stygian Waymark,4,Hand,0.6391084871658318,True,2
+7,01090,1,,Perception,,1,,0.6148977082600844,True,2
+8,04030,2,,The Chthonian Stone,Stygian Waymark,4,Hand,0.6129032258064516,True,2
+9,11067,1,,Eyes of the Dreamer,,12,Arcane,0.5974587895040021,True,2
+10,01039,1,,Deduction,,1,,0.587585011002647,True,2
+11,01039,2,,Deduction,,1,,0.5747151709897796,True,2
+12,01090,2,,Perception,,1,,0.5667858938096499,True,2
+13,11040,2,,Correlate All Its Contents,,12,,0.547581198543082,True,2
+14,09046,1,,Bizarre Diagnosis,,10,,0.5134099775321137,True,1
+15,01030,1,,Magnifying Glass,,1,Hand,0.5040067558602619,True,2
+16,01030,2,,Magnifying Glass,,1,Hand,0.5040067558602619,True,2
+17,03231,1,,Eureka!,,3,,0.4978716006487575,True,2
+18,11067,2,,Eyes of the Dreamer,,12,Arcane,0.497157176374734,True,2
+19,03231,2,,Eureka!,,3,,0.48555718707691703,True,2
+20,01089,1,,Guts,,1,,0.47078733645490195,True,1
+21,06117,1,,Read the Signs,,6,,0.4305364798590531,True,2
+22,06117,2,,Read the Signs,,6,,0.4178752659020718,True,2
+23,60213,1,,Whitton Greene,Hunter of Rare Books,7,Ally,0.40485364172496124,True,2
+24,60213,2,,Whitton Greene,Hunter of Rare Books,7,Ally,0.40485364172496124,True,2
+25,02107,1,,"""I've got a plan!""",,2,,0.4011328123786437,True,2
+26,01060,1,,Shrivelling,,1,Arcane,0.39008068411498664,True,1
+27,02107,2,,"""I've got a plan!""",,2,,0.387497039362736,True,2
+28,04197,1,,Olive McBride,Will Try Anything Once,4,Ally,0.3807204492916221,True,2
+29,04197,2,,Olive McBride,Will Try Anything Once,4,Ally,0.3807204492916221,True,2
+30,60217,1,,Occult Invocation,,7,,0.3760101666874582,True,1
+31,03024,1,,Fieldwork,,3,,0.3703573839235653,True,1
+32,11066,1,,Breath of the Sleeper,,12,Arcane,0.36730141336625605,False,0
+33,05110,1,,Crack the Case,,5,,0.36712321185188457,True,2
+34,05110,2,,Crack the Case,,5,,0.36712321185188457,True,2
+35,02186,1,,Preposterous Sketches,,2,,0.361497454986145,True,1
+36,01060,2,,Shrivelling,,1,Arcane,0.3548387096774194,False,1
+37,04023,1,,Tooth of Eztli,Mortal Reminder,4,Accessory,0.3548387096774194,True,1
+38,04023,2,,Tooth of Eztli,Mortal Reminder,4,Accessory,0.3548387096774194,False,1
+39,04103,1,,Scene of the Crime,,4,,0.3548387096774194,True,2
+40,04103,2,,Scene of the Crime,,4,,0.3548387096774194,True,2
+41,04203,1,,Trench Coat,,4,Body,0.3548387096774194,False,0
+42,04203,2,,Trench Coat,,4,Body,0.3548387096774194,False,0
+43,06201,1,,Spectral Razor,,6,,0.3548387096774194,False,0
+44,06201,2,,Spectral Razor,,6,,0.3548387096774194,False,0
+45,11039,1,,Uncanny Specimen,,12,Arcane,0.34017927557314853,False,0
+46,05112,1,,Sign Magick,,5,Hand,0.31809183423362136,True,1

@@ -1,35 +1,35 @@
 rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
 1,03014,1,,Spirit-Speaker,Envoy of the Alusi,3,,0.9964426065667721,True,1
 2,03015,1,,Angered Spirits,,3,,0.9964426065667721,True,1
-3,01000,1,,Random Basic Weakness,,1,,0.7662472360436916,False,0
-4,03033,1,,Uncage the Soul,,3,,0.7208574130147425,True,2
-5,01065,1,,Ward of Protection,,1,,0.6672802186622446,True,2
-6,01060,1,,Shrivelling,,1,Arcane,0.6494038300395562,True,2
-7,03033,2,,Uncage the Soul,,3,,0.6443831255817055,True,2
-8,01059,1,,Holy Rosary,,1,Accessory,0.6265173209244087,True,2
-9,01063,1,,Arcane Initiate,,1,Ally,0.6234815003030147,True,2
-10,01089,1,,Guts,,1,,0.5998469660109069,True,2
-11,01065,2,,Ward of Protection,,1,,0.5745876532857005,True,2
-12,01060,2,,Shrivelling,,1,Arcane,0.55121471751693,True,2
-13,11071,1,,Spectral Shield,,12,,0.5466087708378025,True,2
-14,01089,2,,Guts,,1,,0.507551402422165,True,2
-15,02028,1,,Rite of Seeking,,2,Arcane,0.5032538157529758,True,2
+3,01000,1,,Random Basic Weakness,,1,,0.7678695227169738,False,0
+4,03033,1,,Uncage the Soul,,3,,0.7199962269276081,True,2
+5,01060,1,,Shrivelling,,1,Arcane,0.6581269352381831,True,2
+6,01065,1,,Ward of Protection,,1,,0.6557102116540362,True,2
+7,03033,2,,Uncage the Soul,,3,,0.6446013981300532,True,2
+8,01059,1,,Holy Rosary,,1,Accessory,0.6283648630128982,True,2
+9,01063,1,,Arcane Initiate,,1,Ally,0.6147902146391608,True,2
+10,01089,1,,Guts,,1,,0.6015660216013929,True,2
+11,01065,2,,Ward of Protection,,1,,0.5654818573950119,True,2
+12,11071,1,,Spectral Shield,,12,,0.5466087708378025,True,2
+13,01060,2,,Shrivelling,,1,Arcane,0.5434717059614934,True,2
+14,01089,2,,Guts,,1,,0.5115379603136485,True,2
+15,02028,1,,Rite of Seeking,,2,Arcane,0.4985740229233607,True,2
 16,11071,2,,Spectral Shield,,12,,0.498330490273075,True,2
-17,01063,2,,Arcane Initiate,,1,Ally,0.49555238512778244,True,2
-18,01059,2,,Holy Rosary,,1,Accessory,0.4596657408000825,True,2
+17,01063,2,,Arcane Initiate,,1,Ally,0.4899830408091317,True,2
+18,01059,2,,Holy Rosary,,1,Accessory,0.44902001062110497,True,2
 19,11067,1,,Eyes of the Dreamer,,12,Arcane,0.43936568079940996,True,2
-20,02028,2,,Rite of Seeking,,2,Arcane,0.42009621458512936,True,2
-21,01093,1,,Unexpected Courage,,1,,0.40623734967567804,True,2
-22,01088,1,,Emergency Cache,,1,,0.3991157453987013,True,2
-23,04109,1,,Arcane Research,,4,,0.37263695158603277,True,1
-24,01064,1,,Drawn to the Flame,,1,,0.3703173672544463,True,1
-25,01067,1,,Fearless,,1,,0.3644205489956644,True,1
-26,05032,1,,Deny Existence,,5,,0.362923570719018,True,1
+20,01093,1,,Unexpected Courage,,1,,0.41868053708770236,True,2
+21,02028,2,,Rite of Seeking,,2,Arcane,0.41650843995884534,True,2
+22,01088,1,,Emergency Cache,,1,,0.407760584901834,True,2
+23,04109,1,,Arcane Research,,4,,0.37437426788838735,True,1
+24,05032,1,,Deny Existence,,5,,0.36242401446374506,True,1
+25,01064,1,,Drawn to the Flame,,1,,0.3611946430629634,True,1
+26,01067,1,,Fearless,,1,,0.3608459912192008,True,1
 27,11067,2,,Eyes of the Dreamer,,12,Arcane,0.3558315506117566,True,2
-28,10084,1,,Cat Mask,The Capricious Meddler,11,Mask,0.34726476856130256,True,1
-29,03032,1,,Alchemical Transmutation,,3,Arcane,0.34229556552147944,True,1
-30,01093,2,,Unexpected Courage,,1,,0.3401786946692243,True,2
-31,60412,1,,Robes of Endless Night,,7,Body,0.32683274012086816,True,1
-32,06201,1,,Spectral Razor,,6,,0.3152628530543459,True,1
-33,01088,2,,Emergency Cache,,1,,0.3137637437588605,True,2
+28,01093,2,,Unexpected Courage,,1,,0.3547569411100801,True,2
+29,10084,1,,Cat Mask,The Capricious Meddler,11,Mask,0.34726476856130256,True,1
+30,03032,1,,Alchemical Transmutation,,3,Arcane,0.34289366500650537,True,1
+31,60412,1,,Robes of Endless Night,,7,Body,0.328441338845547,True,1
+32,01088,2,,Emergency Cache,,1,,0.324453021684179,True,2
+33,06201,1,,Spectral Razor,,6,,0.3209117231979305,True,1
 34,08060,1,,Dragon Pole,,9,Hand x2,0.31325269118296006,True,1

@@ -1,37 +1,38 @@
 rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
 1,10005,1,,Flux Stabilizer,Inactive,11,,1.0,True,1
 2,10008,1,,Failed Experiment,,11,,1.0,True,1
-3,01000,1,,Random Basic Weakness,,1,,0.897831910524155,False,0
-4,01039,1,,Deduction,,1,,0.7812514028372339,True,2
-5,01039,2,,Deduction,,1,,0.7812514028372339,True,2
-6,01030,1,,Magnifying Glass,,1,Hand,0.7464121763515338,True,2
-7,10051,1,,Well-Funded,,11,,0.5995234242369506,True,2
-8,10040,1,,Chemistry Set,,11,Accessory,0.590418911818051,True,2
-9,01090,1,,Perception,,1,,0.581997484323246,True,2
-10,01030,2,,Magnifying Glass,,1,Hand,0.5773291106068917,True,2
-11,10051,2,,Well-Funded,,11,,0.5606130319775259,True,2
-12,01090,2,,Perception,,1,,0.5576856260068834,True,2
-13,10040,2,,Chemistry Set,,11,Accessory,0.49262714480735953,True,2
-14,03231,1,,Eureka!,,3,,0.4578194700325742,True,2
-15,10044,1,,Ravenous Myconid,Unidentified,11,,0.4465016826133736,True,1
-16,03231,2,,Eureka!,,3,,0.4458998704177503,True,2
-17,10028,1,,Tinker,,11,,0.3944787762652392,True,2
-18,05110,1,,Crack the Case,,5,,0.37441965742053834,True,2
-19,05110,2,,Crack the Case,,5,,0.373198143297415,True,2
-20,02021,1,,Strange Solution,Unidentified,2,,0.36677953382629763,True,1
-21,10028,2,,Tinker,,11,,0.36252516366974896,True,2
-22,10042,1,,Microscope,,11,Hand,0.3624010051550866,True,2
-23,01033,1,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.34863727738204536,True,2
-24,10042,2,,Microscope,,11,Hand,0.3410795603527433,True,2
-25,11034,1,,Artistic Inspiration,,12,,0.33538591942560836,True,2
-26,08125,1,,In the Thick of It,,9,,0.31284223300494823,False,0
-27,01033,2,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.30705105974016234,True,2
-28,11039,1,,Uncanny Specimen,,12,Arcane,0.2761517750299163,True,1
-29,11039,2,,Uncanny Specimen,,12,Arcane,0.2761517750299163,False,1
-30,11039,3,,Uncanny Specimen,,12,Arcane,0.2761517750299163,False,1
-31,10043,1,,Mouse Mask,The Meek Watcher,11,Mask,0.2636682663672851,True,1
-32,11034,2,,Artistic Inspiration,,12,,0.19423115277223776,True,2
-33,02022,1,,Shortcut,,2,,0.18449195969456342,True,2
-34,02227,1,,Inquiring Mind,,2,,0.18217407103934194,True,1
-35,02022,2,,Shortcut,,2,,0.18139889353083138,True,2
-36,01088,1,,Emergency Cache,,1,,0.17965755106565656,True,1
+3,01000,1,,Random Basic Weakness,,1,,0.7763506230919031,False,0
+4,01039,1,,Deduction,,1,,0.6852562828912289,True,2
+5,01039,2,,Deduction,,1,,0.6852562828912289,True,2
+6,10051,1,,Well-Funded,,11,,0.639095422972863,True,2
+7,10040,1,,Chemistry Set,,11,Accessory,0.6294693994775991,True,2
+8,10051,2,,Well-Funded,,11,,0.5938866362887402,True,2
+9,01030,1,,Magnifying Glass,,1,Hand,0.5917023003042335,True,2
+10,01090,1,,Perception,,1,,0.5722221824981839,True,2
+11,01090,2,,Perception,,1,,0.5579865107947888,True,2
+12,01033,1,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.5527199753865756,True,2
+13,01033,2,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.5283693998759676,True,2
+14,10040,2,,Chemistry Set,,11,Accessory,0.5254253035919807,True,2
+15,01030,2,,Magnifying Glass,,1,Hand,0.49551089523498065,True,2
+16,03231,1,,Eureka!,,3,,0.4894949893551885,True,2
+17,03231,2,,Eureka!,,3,,0.482514397757262,True,2
+18,10044,1,,Ravenous Myconid,Unidentified,11,,0.477686250324838,True,1
+19,01088,1,,Emergency Cache,,1,,0.45658908013748883,True,2
+20,08125,1,,In the Thick of It,,9,,0.4427478782239968,False,0
+21,10028,1,,Tinker,,11,,0.42484334767645426,True,2
+22,02107,1,,"""I've got a plan!""",,2,,0.42075352782851033,True,2
+23,02107,2,,"""I've got a plan!""",,2,,0.4070715036303194,True,2
+24,01088,2,,Emergency Cache,,1,,0.40696867540087006,True,2
+25,05110,1,,Crack the Case,,5,,0.40527822916078937,True,2
+26,05110,2,,Crack the Case,,5,,0.4045668906398539,True,2
+27,10028,2,,Tinker,,11,,0.3877174290790462,True,2
+28,10042,1,,Microscope,,11,Hand,0.3875731731238,True,1
+29,09045,1,,Research Notes,,10,Hand,0.37488674839125924,True,2
+30,09045,2,,Research Notes,,10,Hand,0.3724490855505221,True,2
+31,10042,2,,Microscope,,11,Hand,0.36280044291229807,False,1
+32,05024,1,,Fingerprint Kit,,5,Hand,0.34893593917334137,False,0
+33,05024,2,,Fingerprint Kit,,5,Hand,0.3449038771155264,False,0
+34,11034,1,,Artistic Inspiration,,12,,0.33538591942560836,True,1
+35,02227,1,,Inquiring Mind,,2,,0.3180875631836204,True,2
+36,02227,2,,Inquiring Mind,,2,,0.31071782349723764,True,2
+37,09121,1,,Refine,,10,,0.28106229891423345,True,1

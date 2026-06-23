@@ -1,40 +1,40 @@
 rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
-1,01009,1,,The Necronomicon,John Dee Translation,1,Hand,0.9043608969001945,True,1
-2,01008,1,,Daisy's Tote Bag,,1,,0.8962781664735783,True,1
-3,01039,1,,Deduction,,1,,0.814809819339597,True,2
-4,01000,1,,Random Basic Weakness,,1,,0.7704357550462337,False,0
-5,01031,1,,Old Book of Lore,,1,Hand,0.7523034580904832,True,2
-6,01039,2,,Deduction,,1,,0.7198262502285622,True,2
+1,01009,1,,The Necronomicon,John Dee Translation,1,Hand,0.9038441699421724,True,1
+2,01008,1,,Daisy's Tote Bag,,1,,0.8957563390150682,True,1
+3,01039,1,,Deduction,,1,,0.8142369854284797,True,2
+4,01000,1,,Random Basic Weakness,,1,,0.7738406557751917,False,0
+5,01031,1,,Old Book of Lore,,1,Hand,0.7511921111553901,True,2
+6,01039,2,,Deduction,,1,,0.7198377834174537,True,2
 7,11068a,1,,The Great Work,Divide and Unite,12,,0.7061292373305658,True,1
-8,01033,1,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.6672827194609706,True,2
+8,01033,1,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.6656234445622159,True,2
 9,09044,1,,Grim Memoir,,10,Hand,0.6500693179131048,True,2
-10,01065,1,,Ward of Protection,,1,,0.6258686177715959,True,2
-11,01032,1,,Research Librarian,,1,Ally,0.5942500982831957,True,2
-12,01031,2,,Old Book of Lore,,1,Hand,0.5395146244726902,True,2
+10,01065,1,,Ward of Protection,,1,,0.6243561848863138,True,2
+11,01032,1,,Research Librarian,,1,Ally,0.5944188689358959,True,2
+12,01031,2,,Old Book of Lore,,1,Hand,0.5384109078252777,True,2
 13,09044,2,,Grim Memoir,,10,Hand,0.5332436505410195,True,2
-14,01090,1,,Perception,,1,,0.5238047449527371,True,2
-15,01065,2,,Ward of Protection,,1,,0.5180207635902332,True,2
-16,01090,2,,Perception,,1,,0.442332329467616,True,2
-17,01033,2,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.4377148988010053,True,2
+14,01090,1,,Perception,,1,,0.5249656052094934,True,2
+15,01065,2,,Ward of Protection,,1,,0.5166439731771327,True,2
+16,01090,2,,Perception,,1,,0.4432720605935231,True,2
+17,01033,2,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.4363861106235817,True,2
 18,08125,1,,In the Thick of It,,9,,0.41797749548213275,False,0
-19,01088,1,,Emergency Cache,,1,,0.3883731263721247,True,2
-20,01036,1,,Mind over Matter,,1,,0.3840536463905194,True,2
-21,01032,2,,Research Librarian,,1,Ally,0.3603826725609217,True,2
-22,02022,1,,Shortcut,,2,,0.33462155457872733,True,2
-23,01030,1,,Magnifying Glass,,1,Hand,0.33409562886835853,True,1
-24,05110,1,,Crack the Case,,5,,0.3301908149232856,True,2
-25,01088,2,,Emergency Cache,,1,,0.3254745522175275,True,2
-26,60208,1,,Encyclopedia,,7,Hand,0.32464156353755913,False,0
+19,01088,1,,Emergency Cache,,1,,0.38617247409880145,True,2
+20,01036,1,,Mind over Matter,,1,,0.3822595825042849,True,2
+21,01032,2,,Research Librarian,,1,Ally,0.36069494354062837,True,2
+22,02022,1,,Shortcut,,2,,0.334825345585973,True,2
+23,05110,1,,Crack the Case,,5,,0.33302778129686617,True,2
+24,01030,1,,Magnifying Glass,,1,Hand,0.3322917545825087,True,1
+25,60208,1,,Encyclopedia,,7,Hand,0.3267429849867317,False,0
+26,01088,2,,Emergency Cache,,1,,0.32304479444633155,True,2
 27,10044,1,,Ravenous Myconid,Unidentified,11,,0.3224118880106711,True,1
-28,01035,1,,Medical Texts,,1,Hand,0.30676250325553894,False,0
-29,05032,1,,Deny Existence,,5,,0.2996046443292191,True,2
-30,02022,2,,Shortcut,,2,,0.2875193712571887,True,2
-31,05110,2,,Crack the Case,,5,,0.2789257031603438,True,2
-32,05316,1,,Occult Lexicon,,5,Hand,0.2750706734346064,False,0
-33,02107,1,,"""I've got a plan!""",,2,,0.26745738775863764,True,1
+28,01035,1,,Medical Texts,,1,Hand,0.30420425873129603,False,0
+29,05032,1,,Deny Existence,,5,,0.3032835891762293,True,2
+30,02022,2,,Shortcut,,2,,0.28742555443421897,True,2
+31,05110,2,,Crack the Case,,5,,0.28100869271992873,True,2
+32,05316,1,,Occult Lexicon,,5,Hand,0.2772886096474468,False,0
+33,02107,1,,"""I've got a plan!""",,2,,0.26747082063712824,True,1
 34,10043,1,,Mouse Mask,The Meek Watcher,11,Mask,0.2585939494228187,True,1
-35,01036,2,,Mind over Matter,,1,,0.256911257572834,True,2
-36,01037,1,,Working a Hunch,,1,,0.24164906929192134,True,1
-37,03025,1,,Archaic Glyphs,Untranslated,3,Hand,0.23943384731846465,False,0
-38,05032,2,,Deny Existence,,5,,0.23651644377737538,True,2
-39,07032,1,,Promise of Power,,8,,0.2335737130717003,True,1
+35,01036,2,,Mind over Matter,,1,,0.2553572190536339,True,2
+36,03025,1,,Archaic Glyphs,Untranslated,3,Hand,0.2417321010392158,False,0
+37,01037,1,,Working a Hunch,,1,,0.24153637742464476,True,1
+38,05032,2,,Deny Existence,,5,,0.23965818544779427,True,2
+39,07032,1,,Promise of Power,,8,,0.2353036605353938,True,1

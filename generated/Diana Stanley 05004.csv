@@ -1,88 +1,89 @@
 rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
 1,05014,1,,Dark Insight,,5,,1.0,True,1
 2,05015,1,,Terrible Secret,,5,,1.0,True,1
-3,05013,1,,Twilight Blade,Sanctum's Reward,5,Hand,0.9979851337833798,True,1
-4,01065,1,,Ward of Protection,,1,,0.9610689934839904,True,2
-5,05032,1,,Deny Existence,,5,,0.9148573405870133,True,2
-6,01065,2,,Ward of Protection,,1,,0.9005085422157183,True,2
-7,05032,2,,Deny Existence,,5,,0.8939178365796936,True,2
-8,01000,1,,Random Basic Weakness,,1,,0.7760319186691459,False,0
+3,05013,1,,Twilight Blade,Sanctum's Reward,5,Hand,0.9980288661406427,True,1
+4,01065,1,,Ward of Protection,,1,,0.96271014485246,True,2
+5,05032,1,,Deny Existence,,5,,0.9146809718109457,True,2
+6,01065,2,,Ward of Protection,,1,,0.9063659973158982,True,2
+7,05032,2,,Deny Existence,,5,,0.8936147205662214,True,2
+8,01000,1,,Random Basic Weakness,,1,,0.7920938348190992,False,0
 9,11071,1,,Spectral Shield,,12,,0.7257050358945922,True,2
-10,01023,1,,Dodge,,1,,0.6844968100182307,True,2
+10,01023,1,,Dodge,,1,,0.7003010254587166,True,2
 11,11071,2,,Spectral Shield,,12,,0.668934985294524,True,2
-12,01059,1,,Holy Rosary,,1,Accessory,0.6369580706712994,True,2
-13,01023,2,,Dodge,,1,,0.6041034489441195,True,2
-14,11066,1,,Breath of the Sleeper,,12,Arcane,0.49571911473198815,True,2
-15,04032,1,,Dark Prophecy,,4,,0.4849255769223304,True,2
-16,01060,1,,Shrivelling,,1,Arcane,0.4639318059740361,True,2
-17,01064,1,,Drawn to the Flame,,1,,0.45956870489354623,True,2
-18,01059,2,,Holy Rosary,,1,Accessory,0.4513122359159964,True,2
-19,04032,2,,Dark Prophecy,,4,,0.4390816203303163,True,2
-20,01063,1,,Arcane Initiate,,1,Ally,0.38799742664379694,True,2
-21,05021,1,,Delay the Inevitable,,5,,0.38472008910886873,True,2
-22,01064,2,,Drawn to the Flame,,1,,0.37840183219188706,True,2
-23,03033,1,,Uncage the Soul,,3,,0.37402524477336035,True,2
-24,11067,1,,Eyes of the Dreamer,,12,Arcane,0.36553489275875467,True,1
-25,05033,1,,Eldritch Inspiration,,5,,0.3654689596736285,True,1
-26,01060,2,,Shrivelling,,1,Arcane,0.36089068610375247,True,2
-27,04109,1,,Arcane Research,,4,,0.35249440589717906,True,1
-28,02190,1,,Defiance,,2,,0.3421632664270291,True,2
-29,03033,2,,Uncage the Soul,,3,,0.3372656083126953,True,2
-30,02184,1,,Prepared for the Worst,,2,,0.33288314673647007,True,1
-31,01063,2,,Arcane Initiate,,1,Ally,0.31835158828317833,True,2
-32,11066,2,,Breath of the Sleeper,,12,Arcane,0.31496992798627627,True,2
-33,06117,1,,Read the Signs,,6,,0.31282317965753176,True,1
-34,02190,2,,Defiance,,2,,0.3116104439019589,True,2
-35,08125,1,,In the Thick of It,,9,,0.30988518583087016,False,0
-36,05021,2,,Delay the Inevitable,,5,,0.3074733942391601,True,2
-37,01089,1,,Guts,,1,,0.30015942250424954,True,1
-38,02153,1,,Hypnotic Gaze,,2,,0.296327751017708,True,1
-39,10084,1,,Cat Mask,The Capricious Meddler,11,Mask,0.29493802319040746,True,1
-40,01088,1,,Emergency Cache,,1,,0.293828172796831,False,0
-41,03153,1,,Storm of Spirits,,3,,0.29024874641470744,False,0
-42,05158,1,,Sixth Sense,,5,Arcane,0.2888949148899891,False,0
-43,06117,2,,Read the Signs,,6,,0.2750406712361537,False,1
-44,60407,1,,Azure Flame,,7,Arcane,0.273870083503235,False,0
-45,05033,2,,Eldritch Inspiration,,5,,0.2720287449333153,False,1
-46,11068a,1,,The Great Work,Divide and Unite,12,,0.2695342961729259,False,0
-47,01025,1,,Vicious Blow,,1,,0.26626689332803727,False,0
-48,02184,2,,Prepared for the Worst,,2,,0.262423723013916,False,1
-49,01089,2,,Guts,,1,,0.25893806377577655,False,1
-50,06201,1,,Spectral Razor,,6,,0.2523903635534365,False,0
-51,04109,2,,Arcane Research,,4,,0.24870601348121232,False,1
-52,01088,2,,Emergency Cache,,1,,0.2411873123235134,False,0
-53,04197,1,,Olive McBride,Will Try Anything Once,4,Ally,0.23895300182761822,False,0
-54,01025,2,,Vicious Blow,,1,,0.2363076254028951,False,0
-55,05158,2,,Sixth Sense,,5,Arcane,0.23313797926452184,False,0
-56,02153,2,,Hypnotic Gaze,,2,,0.2269632002967044,False,1
-57,60110,1,,Safeguard,,7,,0.22498208662653757,False,0
-58,02111,1,,Delve Too Deep,,2,,0.22497654347907825,False,0
-59,05118,1,,Enchanted Blade,,5,Hand. Arcane,0.2128925197951975,False,0
-60,60416,1,,Voice of Ra,,7,,0.21142657753083893,False,0
-61,02029,1,,Ritual Candles,,2,Hand,0.2084810910234234,True,2
-62,60407,2,,Azure Flame,,7,Arcane,0.19070026763081616,False,0
-63,10084,2,,Cat Mask,The Capricious Meddler,11,Mask,0.1902593298911402,False,1
-64,04197,2,,Olive McBride,Will Try Anything Once,4,Ally,0.18782350125402208,False,0
-65,02028,1,,Rite of Seeking,,2,Arcane,0.1867898749252167,False,0
-66,07020,1,,Hand of Fate,,8,,0.1861106404257674,False,0
-67,02111,2,,Delve Too Deep,,2,,0.185971448068026,False,0
-68,60416,2,,Voice of Ra,,7,,0.18512871740495454,False,0
-69,11067,2,,Eyes of the Dreamer,,12,Arcane,0.18478570601304278,False,1
+12,01023,2,,Dodge,,1,,0.6254751901709751,True,2
+13,01059,1,,Holy Rosary,,1,Accessory,0.5996742031575439,True,2
+14,04032,1,,Dark Prophecy,,4,,0.5114114182895698,True,2
+15,11066,1,,Breath of the Sleeper,,12,Arcane,0.49571911473198815,True,2
+16,01060,1,,Shrivelling,,1,Arcane,0.4905200598984086,True,2
+17,01064,1,,Drawn to the Flame,,1,,0.48846993613941225,True,2
+18,04032,2,,Dark Prophecy,,4,,0.4674387858917544,True,2
+19,01059,2,,Holy Rosary,,1,Accessory,0.4241832603273543,True,2
+20,01064,2,,Drawn to the Flame,,1,,0.41305541573580307,True,2
+21,01060,2,,Shrivelling,,1,Arcane,0.3960594185426225,True,2
+22,05021,1,,Delay the Inevitable,,5,,0.3867748437211625,True,2
+23,02190,1,,Defiance,,2,,0.3763865375550406,True,2
+24,01063,1,,Arcane Initiate,,1,Ally,0.36723579673492995,True,2
+25,11067,1,,Eyes of the Dreamer,,12,Arcane,0.36553489275875467,True,1
+26,05033,1,,Eldritch Inspiration,,5,,0.36483045653696966,True,1
+27,03033,1,,Uncage the Soul,,3,,0.3523543263153369,True,2
+28,02190,2,,Defiance,,2,,0.34722063215286114,True,2
+29,02153,1,,Hypnotic Gaze,,2,,0.3365632570711974,True,1
+30,01088,1,,Emergency Cache,,1,,0.33424374343567315,True,1
+31,04109,1,,Arcane Research,,4,,0.3334186472723619,True,1
+32,03033,2,,Uncage the Soul,,3,,0.31741777848984476,True,2
+33,02184,1,,Prepared for the Worst,,2,,0.31582158211736144,True,1
+34,11066,2,,Breath of the Sleeper,,12,Arcane,0.31496992798627627,True,2
+35,06117,1,,Read the Signs,,6,,0.3137495223516404,True,1
+36,08125,1,,In the Thick of It,,9,,0.310693302620019,False,0
+37,05021,2,,Delay the Inevitable,,5,,0.30904738846856256,True,2
+38,01025,1,,Vicious Blow,,1,,0.30702373528308613,True,1
+39,01063,2,,Arcane Initiate,,1,Ally,0.3013447862720222,True,2
+40,10084,1,,Cat Mask,The Capricious Meddler,11,Mask,0.29493802319040746,False,0
+41,05158,1,,Sixth Sense,,5,Arcane,0.2890137975452984,False,0
+42,01088,2,,Emergency Cache,,1,,0.2839888026308919,False,1
+43,01089,1,,Guts,,1,,0.28284026083545805,False,0
+44,04197,1,,Olive McBride,Will Try Anything Once,4,Ally,0.2819361040756563,False,0
+45,01025,2,,Vicious Blow,,1,,0.27990995949015174,False,1
+46,06117,2,,Read the Signs,,6,,0.27583884244719803,False,1
+47,03153,1,,Storm of Spirits,,3,,0.2742041414670509,False,0
+48,60407,1,,Azure Flame,,7,Arcane,0.2722560607284655,False,0
+49,05033,2,,Eldritch Inspiration,,5,,0.2713784134987012,False,1
+50,02153,2,,Hypnotic Gaze,,2,,0.2713318632019443,False,1
+51,11068a,1,,The Great Work,Divide and Unite,12,,0.2695342961729259,False,0
+52,02111,1,,Delve Too Deep,,2,,0.265484953707302,False,0
+53,06201,1,,Spectral Razor,,6,,0.2529126905292437,False,0
+54,02184,2,,Prepared for the Worst,,2,,0.24890901253025563,False,1
+55,01089,2,,Guts,,1,,0.24465383600789053,False,0
+56,04109,2,,Arcane Research,,4,,0.2351677854435183,False,1
+57,05158,2,,Sixth Sense,,5,Arcane,0.23340099850757287,False,0
+58,04197,2,,Olive McBride,Will Try Anything Once,4,Ally,0.23333677105679257,False,0
+59,02028,1,,Rite of Seeking,,2,Arcane,0.22988653765455297,False,0
+60,60110,1,,Safeguard,,7,,0.2257721335938689,False,0
+61,05118,1,,Enchanted Blade,,5,Hand. Arcane,0.2141412740498276,False,0
+62,60416,1,,Voice of Ra,,7,,0.21128857686932503,False,0
+63,02029,1,,Ritual Candles,,2,Hand,0.19712540799744274,True,1
+64,10084,2,,Cat Mask,The Capricious Meddler,11,Mask,0.1902593298911402,False,0
+65,60407,2,,Azure Flame,,7,Arcane,0.1891167556867693,False,0
+66,02028,2,,Rite of Seeking,,2,Arcane,0.18826377244270526,False,0
+67,60416,2,,Voice of Ra,,7,,0.1851028716288676,False,0
+68,11067,2,,Eyes of the Dreamer,,12,Arcane,0.18478570601304278,False,1
+69,07020,1,,Hand of Fate,,8,,0.18301693222605142,False,0
 70,11069,1,,Katarina Sojka,Emissary from Ulthar,12,Ally,0.1815304824869047,False,0
 71,11069,2,,Katarina Sojka,Emissary from Ulthar,12,Ally,0.1815304824869047,False,0
-72,05118,2,,Enchanted Blade,,5,Hand. Arcane,0.17437030780994436,False,0
-73,10023,1,,Wolf Mask,The Moon's Sire,11,Mask,0.1739807897630038,False,0
-74,06201,2,,Spectral Razor,,6,,0.17278301895598538,False,0
-75,01093,1,,Unexpected Courage,,1,,0.17170692032252585,False,0
-76,60118,1,,Stand Together,,7,,0.17094550091309949,False,0
-77,05157,1,,Wither,,5,Arcane,0.17032961211875386,False,0
-78,01091,1,,Overpower,,1,,0.15840138810834878,False,0
-79,60408,1,,Clairvoyance,,7,Arcane,0.1524135090809575,False,0
-80,01067,1,,Fearless,,1,,0.15202385349437697,False,0
-81,07020,2,,Hand of Fate,,8,,0.15177025902006855,False,0
-82,06111,1,,Daring,,6,,0.15029517964184413,False,0
-83,06111,2,,Daring,,6,,0.1457890028085736,False,0
-84,60412,1,,Robes of Endless Night,,7,Body,0.14418872179633882,False,0
-85,02028,2,,Rite of Seeking,,2,Arcane,0.1427741631306851,False,0
-86,05313,1,,Hallowed Mirror,,5,Accessory,0.14187444347079325,False,0
-87,02029,2,,Ritual Candles,,2,Hand,0.14012387109973934,True,2
+72,02111,2,,Delve Too Deep,,2,,0.175887024274421,False,0
+73,05118,2,,Enchanted Blade,,5,Hand. Arcane,0.1751144016406363,False,0
+74,10023,1,,Wolf Mask,The Moon's Sire,11,Mask,0.1739807897630038,False,0
+75,06201,2,,Spectral Razor,,6,,0.17348034735317994,False,0
+76,60118,1,,Stand Together,,7,,0.16921202128452995,False,0
+77,05157,1,,Wither,,5,Arcane,0.16768629867053164,False,0
+78,01093,1,,Unexpected Courage,,1,,0.16042287477921624,False,0
+79,06111,1,,Daring,,6,,0.1510612820274271,False,0
+80,60408,1,,Clairvoyance,,7,Arcane,0.15063334860134267,False,0
+81,01091,1,,Overpower,,1,,0.15005793489827549,False,0
+82,07020,2,,Hand of Fate,,8,,0.14859022897634644,False,0
+83,06111,2,,Daring,,6,,0.14651434369773897,False,0
+84,05313,1,,Hallowed Mirror,,5,Accessory,0.14287337282810925,False,0
+85,60412,1,,Robes of Endless Night,,7,Body,0.14180280215142163,False,0
+86,01067,1,,Fearless,,1,,0.1413001990782317,False,0
+87,07032,1,,Promise of Power,,8,,0.13989195048423844,False,0
+88,05116,1,,Scroll of Secrets,,5,Hand,0.1378628770605855,True,1

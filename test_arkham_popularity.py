@@ -12,6 +12,7 @@ from arkham_popularity import (
     ArkhamPopularityEngine,
     InvCycleIndex,
     KNOWN_JOKE_DECKLIST_IDS,
+    PreparedDecklist,
     UpgradeGraph,
     baseline_composition,
     build_canonical_card_infos,
@@ -19,8 +20,11 @@ from arkham_popularity import (
     effective_deck_limit,
     enforce_monotonic_cycle_weights,
     parse_customizable,
-    asset_slot_counts,
+    deck_asset_slot_totals,
+    investigator_decks,
+    accumulate_asset_slot_usage,
     apply_runtime_card_patches,
+    asset_slot_counts,
     slot_display_label,
     slot_phase_targets,
     generation_slot_targets_differ,
@@ -115,6 +119,87 @@ class SlotDisplayTests(unittest.TestCase):
         }
         apply_runtime_card_patches(cards)
         self.assertEqual(cards["10023"]["slot"], "Mask")
+
+
+def _prep_deck(
+    *,
+    front: str = "01004",
+    back: str = "01004",
+    cycle: int | None = 1,
+    is_ignore: bool = False,
+    slots: dict[str, int] | None = None,
+) -> PreparedDecklist:
+    return PreparedDecklist(
+        decklist_id=1,
+        deck_id=1,
+        user_id=1,
+        investigator_name="Test",
+        investigator_code=front,
+        investigator_front=front,
+        investigator_back=back,
+        canonical_front=front,
+        canonical_back=back,
+        slots=slots or {},
+        taboo_id=0,
+        cycle=cycle,
+        xp_cost=0,
+        deck_xp_weight=1.0,
+        has_unknown_slots=False,
+        has_chapter_2_cards=False,
+        is_ignore=is_ignore,
+    )
+
+
+class PonytailHelperTests(unittest.TestCase):
+    def test_investigator_decks_active_filter(self):
+        decks = [
+            _prep_deck(front="01004", cycle=3),
+            _prep_deck(front="01004", cycle=None),
+            _prep_deck(front="01004", is_ignore=True),
+            _prep_deck(front="02001"),
+        ]
+        active = investigator_decks(
+            decks, "01004", "01004", exclude_ignored=True, require_cycle=True
+        )
+        self.assertEqual(len(active), 1)
+        self.assertEqual(active[0].cycle, 3)
+
+    def test_deck_asset_slot_totals_uses_shared_helper(self):
+        from arkham_popularity import CanonicalCardInfo
+
+        cards = {"A": _card("A", slot="Hand")}
+        infos = {
+            "A": CanonicalCardInfo(
+                canonical_id="A",
+                name="Test",
+                subname="",
+                xp=0,
+                has_xp_cost=False,
+                cycle=1,
+                taboo_set=frozenset({0}),
+                is_customizable=False,
+                slot="Hand",
+                real_slot=None,
+            )
+        }
+        totals = deck_asset_slot_totals(
+            {"A": 2}, cards=cards, canonical_cards=infos
+        )
+        self.assertEqual(totals, {"Hand": 2.0})
+
+    def test_popularity_row_satisfied_matches_generation_and_phase(self):
+        if not CARD_JSON.is_file():
+            self.skipTest("card_json.pickle missing")
+        with CARD_JSON.open("rb") as handle:
+            cards = pickle.load(handle)
+        mapper = CanonicalMapper(cards, chapter=1)
+        with TABOO_JSON.open(encoding="utf-8") as handle:
+            taboo = json.load(handle)
+        engine = ArkhamPopularityEngine(cards, mapper, taboo)
+        row = {"canonical_id": "01016", "card_index": 1, "is_customizable": False}
+        slots = {"01016": 1}
+        self.assertTrue(engine._row_already_satisfied(row, slots))
+        self.assertTrue(engine._popularity_row_in_slots(row, slots))
         self.assertEqual(cards["10023"]["real_slot"], "Mask")
         self.assertEqual(cards["12068"]["slot"], "Head")
         self.assertNotIn("slot", cards["60110"])
@@ -606,21 +691,16 @@ class IntegrationTests(unittest.TestCase):
         with Path(__file__).with_name("decklist_json.pickle").open("rb") as file:
             decklist_json = pickle.load(file)
         prepared = self.engine.prepare_all(decklist_json)
-        inv_decks = [
-            deck
-            for deck in prepared
-            if deck.canonical_front == "02001"
-            and deck.canonical_back == "02001"
-            and not deck.is_ignore
-            and deck.cycle is not None
-        ]
+        inv_decks = investigator_decks(
+            prepared, "02001", "02001", exclude_ignored=True, require_cycle=True
+        )
         user_weights = self.engine.assign_user_weights(prepared)
         cycle_weights = self.engine.assign_cycle_weights(inv_decks, user_weights)
         averages, meta = self.engine._smoothed_slot_averages(
             inv_decks,
             user_weights,
             cycle_weights,
-            frozenset({"02158"}),
+            frozenset({"02157"}),
             rho=0.05,
         )
         self.assertGreater(meta["weight_all"], 0)

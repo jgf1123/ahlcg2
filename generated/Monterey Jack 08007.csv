@@ -1,34 +1,36 @@
 rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
 1,08008,1,,Trusty Bullwhip,,9,Hand,0.9127911858987623,True,1
 2,08009,1,,Buried Secrets,,9,,0.9127911858987623,True,1
-3,01000,1,,Random Basic Weakness,,1,,0.7237421931310004,False,0
-4,01033,1,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.5312160739479013,True,1
-5,10067,1,,Fox Mask,The Wise Trickster,11,Mask,0.5275361862657678,True,1
-6,08047,1,,Scout Ahead,,9,,0.5050492781740282,True,2
-7,01090,1,,Perception,,1,,0.5023157492263729,True,2
-8,60317,1,,Nimble,,7,,0.4975234075532975,True,2
-9,01051,1,,Backstab,,1,,0.48770805407202494,True,2
-10,02229,1,,Quick Thinking,,2,,0.45863700831263643,True,2
-11,01039,1,,Deduction,,1,,0.450357807971344,True,2
-12,60305,1,,Lockpicks,,7,Hand,0.4356875374589163,True,2
-13,04028,1,,"""You handle this one!""",,4,,0.42460806830698367,True,2
-14,01092,1,,Manual Dexterity,,1,,0.42375564332142895,True,2
-15,02188,1,,Lone Wolf,,2,,0.3981936939565788,True,1
-16,08047,2,,Scout Ahead,,9,,0.381120923557834,True,2
-17,04028,2,,"""You handle this one!""",,4,,0.37858119799443574,True,2
-18,01048,1,,Leo De Luca,The Louisiana Lion,1,Ally,0.3571657399576204,True,1
-19,02229,2,,Quick Thinking,,2,,0.3544992761870807,True,2
-20,01090,2,,Perception,,1,,0.35066861173607716,True,2
-21,07114,1,,Breaking and Entering,,8,,0.3467568966028735,True,1
-22,04107,1,,Lucky Cigarette Case,,4,Accessory,0.3429490247596792,True,1
-23,09064,1,,Thieves' Kit,,10,Hand,0.3409335375139685,True,1
-24,11033,1,,Alton O'Connell,Ghost Hunter,12,Ally,0.3343542453930533,True,1
-25,01092,2,,Manual Dexterity,,1,,0.32607059135016875,True,2
-26,04037,1,,Backpack,,4,Body,0.3246074667751379,True,1
-27,01051,2,,Backstab,,1,,0.32201238455430914,True,2
-28,60305,2,,Lockpicks,,7,Hand,0.3171936668211518,True,2
-29,10065,1,,British Bull Dog,,11,Hand,0.3115481579134985,True,1
-30,60317,2,,Nimble,,7,,0.2940453868419788,True,2
-31,01039,2,,Deduction,,1,,0.2857131373060601,True,2
-32,03024,1,,Fieldwork,,3,,0.27826795783293196,True,1
-33,03233,1,,"""Watch this!""",,3,,0.27450869430768005,True,1
+3,01000,1,,Random Basic Weakness,,1,,0.7467945971768671,False,0
+4,01090,1,,Perception,,1,,0.562853472287624,True,2
+5,01033,1,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.5574512635078376,True,1
+6,60305,1,,Lockpicks,,7,Hand,0.5328678599278364,True,2
+7,10067,1,,Fox Mask,The Wise Trickster,11,Mask,0.5275361862657678,True,1
+8,08047,1,,Scout Ahead,,9,,0.5273197863146876,True,2
+9,60317,1,,Nimble,,7,,0.49267700451870355,True,1
+10,04107,1,,Lucky Cigarette Case,,4,Accessory,0.4604409761728107,True,2
+11,01048,1,,Leo De Luca,The Louisiana Lion,1,Ally,0.45077127414083845,True,1
+12,60305,2,,Lockpicks,,7,Hand,0.44471363271427056,True,2
+13,01051,1,,Backstab,,1,,0.43561822589178195,True,2
+14,01090,2,,Perception,,1,,0.4243526010472811,True,2
+15,02229,1,,Quick Thinking,,2,,0.4186691767473739,True,2
+16,08047,2,,Scout Ahead,,9,,0.3962788068148574,True,2
+17,07114,1,,Breaking and Entering,,8,,0.395681138462205,True,1
+18,01039,1,,Deduction,,1,,0.37617524733441743,True,1
+19,01092,1,,Manual Dexterity,,1,,0.3682531060167525,True,2
+20,04107,2,,Lucky Cigarette Case,,4,Accessory,0.3665373433655203,True,2
+21,02188,1,,Lone Wolf,,2,,0.3626571175758311,True,1
+22,04028,1,,"""You handle this one!""",,4,,0.3455225583346445,True,2
+23,01046,1,,Pickpocketing,,1,,0.34244254702749344,True,1
+24,09064,1,,Thieves' Kit,,10,Hand,0.3409335375139685,True,1
+25,11033,1,,Alton O'Connell,Ghost Hunter,12,Ally,0.3343542453930533,True,1
+26,01033,2,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.33296489401128077,False,1
+27,02229,2,,Quick Thinking,,2,,0.3248527585536154,True,2
+28,10065,1,,British Bull Dog,,11,Hand,0.3115481579134985,True,1
+29,04028,2,,"""You handle this one!""",,4,,0.3108113152175602,True,2
+30,01051,2,,Backstab,,1,,0.30983843001672795,True,2
+31,01048,2,,Leo De Luca,The Louisiana Lion,1,Ally,0.3073789913068443,False,1
+32,04037,1,,Backpack,,4,Body,0.305535313053008,True,1
+33,01050,1,,Elusive,,1,,0.3043503537657033,True,1
+34,01092,2,,Manual Dexterity,,1,,0.29498742695307445,True,2
+35,60315,1,,Pilfer,,7,,0.2824907077135209,True,1

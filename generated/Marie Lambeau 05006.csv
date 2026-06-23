@@ -1,40 +1,42 @@
 rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
 1,05018,1,,Mystifying Song,,5,,1.0,True,1
 2,05019,1,,Baron Samedi,Lord of the Cemetery,5,Ally,1.0,True,1
-3,01000,1,,Random Basic Weakness,,1,,0.7238055143800148,False,0
-4,01063,1,,Arcane Initiate,,1,Ally,0.6763199476885516,True,2
-5,01065,1,,Ward of Protection,,1,,0.6740980625570046,True,2
+3,01000,1,,Random Basic Weakness,,1,,0.7260181609936267,False,0
+4,01063,1,,Arcane Initiate,,1,Ally,0.6969961647463423,True,2
+5,01065,1,,Ward of Protection,,1,,0.6954730587621666,True,2
 6,11065,1,,Blood of Thoth,Law Incarnate,12,Accessory,0.6680007532163291,True,2
-7,02267,1,,Moonlight Ritual,,2,,0.6392955571727724,True,2
+7,02267,1,,Moonlight Ritual,,2,,0.6401920237033283,True,2
 8,10084,1,,Cat Mask,The Capricious Meddler,11,Mask,0.6098920775424304,True,1
-9,02267,2,,Moonlight Ritual,,2,,0.5743877934488573,True,2
-10,01065,2,,Ward of Protection,,1,,0.5734080520587576,True,2
-11,11068a,1,,The Great Work,Divide and Unite,12,,0.5590516814916234,True,1
-12,01063,2,,Arcane Initiate,,1,Ally,0.5496738864985851,True,2
-13,03112,1,,David Renfield,Esteemed Eschatologist,3,Ally,0.5221799181798233,True,1
-14,01060,1,,Shrivelling,,1,Arcane,0.4964218964959207,True,2
+9,01065,2,,Ward of Protection,,1,,0.5853873728436673,True,2
+10,02267,2,,Moonlight Ritual,,2,,0.5807623557171542,True,2
+11,01063,2,,Arcane Initiate,,1,Ally,0.5591447844360865,True,2
+12,11068a,1,,The Great Work,Divide and Unite,12,,0.5590516814916234,True,1
+13,01060,1,,Shrivelling,,1,Arcane,0.5555808817929007,True,2
+14,03112,1,,David Renfield,Esteemed Eschatologist,3,Ally,0.5308198349111387,True,1
 15,06117,1,,Read the Signs,,6,,0.4760294457767295,True,2
 16,07158,1,,Blood Pact,,8,,0.45533044592910055,True,1
-17,04109,1,,Arcane Research,,4,,0.432428819272409,True,1
-18,11065,2,,Blood of Thoth,Law Incarnate,12,Accessory,0.42872690482345693,True,2
-19,03112,2,,David Renfield,Esteemed Eschatologist,3,Ally,0.4250057945375706,False,1
-20,01089,1,,Guts,,1,,0.4089327894380086,True,2
-21,01060,2,,Shrivelling,,1,Arcane,0.38931855845770685,True,2
-22,06117,2,,Read the Signs,,6,,0.38635405871289147,True,2
-23,05032,1,,Deny Existence,,5,,0.3805512977824059,True,2
-24,03033,1,,Uncage the Soul,,3,,0.37075974950513485,True,2
-25,08125,1,,In the Thick of It,,9,,0.35318614103050444,False,0
-26,04109,2,,Arcane Research,,4,,0.3507925121019228,False,1
-27,60416,1,,Voice of Ra,,7,,0.3380966979867355,True,2
-28,05154,1,,Hawk-Eye Folding Camera,,5,Hand,0.3333367603657974,True,1
-29,07032,1,,Promise of Power,,8,,0.32803728920863123,True,1
-30,01089,2,,Guts,,1,,0.3276026042456746,True,2
-31,03033,2,,Uncage the Soul,,3,,0.3272489314886851,True,2
+17,01060,2,,Shrivelling,,1,Arcane,0.4482580477666484,True,2
+18,01089,1,,Guts,,1,,0.4446315289628703,True,2
+19,04109,1,,Arcane Research,,4,,0.43638495405709876,True,1
+20,03112,2,,David Renfield,Esteemed Eschatologist,3,Ally,0.43383841484100677,False,1
+21,11065,2,,Blood of Thoth,Law Incarnate,12,Accessory,0.42872690482345693,True,2
+22,05032,1,,Deny Existence,,5,,0.4050447525070573,True,2
+23,06117,2,,Read the Signs,,6,,0.38635405871289147,True,2
+24,03033,1,,Uncage the Soul,,3,,0.38216875203089457,True,2
+25,01089,2,,Guts,,1,,0.3581511519572546,True,2
+26,08125,1,,In the Thick of It,,9,,0.35318614103050444,False,0
+27,04109,2,,Arcane Research,,4,,0.3468417885757791,False,1
+28,05154,1,,Hawk-Eye Folding Camera,,5,Hand,0.34578265530227936,True,1
+29,60416,1,,Voice of Ra,,7,,0.3380966979867355,True,2
+30,03033,2,,Uncage the Soul,,3,,0.336002875871672,True,2
+31,07032,1,,Promise of Power,,8,,0.32803728920863123,True,1
 32,60416,2,,Voice of Ra,,7,,0.3149757991552399,True,2
-33,09083,1,,Dowsing Rod,,10,Hand,0.3079985510562123,True,2
-34,10084,2,,Cat Mask,The Capricious Meddler,11,Mask,0.29694427822470104,False,1
-35,09083,2,,Dowsing Rod,,10,Hand,0.2796350470764643,True,2
-36,05032,2,,Deny Existence,,5,,0.27820836621222717,True,2
-37,03153,1,,Storm of Spirits,,3,,0.27759095413682183,True,1
-38,01088,1,,Emergency Cache,,1,,0.2764814651244019,True,1
-39,01090,1,,Perception,,1,,0.2675077227197062,True,1
+33,01088,1,,Emergency Cache,,1,,0.3109377961096559,True,1
+34,09083,1,,Dowsing Rod,,10,Hand,0.3079985510562123,True,2
+35,01059,1,,Holy Rosary,,1,Accessory,0.30569431501863004,False,0
+36,05032,2,,Deny Existence,,5,,0.3016220567147143,True,2
+37,01090,1,,Perception,,1,,0.2994652262546679,True,1
+38,10084,2,,Cat Mask,The Capricious Meddler,11,Mask,0.29694427822470104,False,1
+39,03153,1,,Storm of Spirits,,3,,0.28428673030326207,True,1
+40,03269,1,,St. Hubert's Key,Cleansing Fire,3,Accessory,0.2825177773662,False,0
+41,09083,2,,Dowsing Rod,,10,Hand,0.2796350470764643,True,2

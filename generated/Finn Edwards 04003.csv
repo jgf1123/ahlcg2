@@ -1,36 +1,36 @@
 rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
 1,04011,1,,Finn's Trusty .38,Never Leave Home Without It,4,Hand,1.0,True,1
 2,04012,1,,Caught Red-Handed,,4,,1.0,True,1
-3,04010,1,,Smuggled Goods,,4,,0.9939664873827118,True,1
-4,01000,1,,Random Basic Weakness,,1,,0.7836839119694682,False,0
-5,01046,1,,Pickpocketing,,1,,0.7250024753107002,True,2
+3,04010,1,,Smuggled Goods,,4,,0.9937056343366469,True,1
+4,01000,1,,Random Basic Weakness,,1,,0.7593254294187683,False,0
+5,01046,1,,Pickpocketing,,1,,0.7359304027636808,True,2
 6,11054,1,,"""You've had worse...""",,12,,0.6848525171878465,True,2
 7,11054,2,,"""You've had worse...""",,12,,0.6848525171878465,True,2
 8,10069,1,,Bank Job,,11,,0.6803431578357487,True,2
 9,11033,1,,Alton O'Connell,Ghost Hunter,12,Ally,0.6522510534486582,True,2
 10,11033,2,,Alton O'Connell,Ghost Hunter,12,Ally,0.6522510534486582,True,2
-11,60305,1,,Lockpicks,,7,Hand,0.5287524659749115,True,2
+11,60305,1,,Lockpicks,,7,Hand,0.5270805018479598,True,2
 12,10069,2,,Bank Job,,11,,0.5024527732393369,True,2
-13,07025,1,,.25 Automatic,,8,Hand,0.4782455914762999,True,2
-14,01052,1,,Sneak Attack,,1,,0.4658918776404712,True,2
-15,01092,1,,Manual Dexterity,,1,,0.4578702645956827,True,2
-16,04107,1,,Lucky Cigarette Case,,4,Accessory,0.45625227126567336,True,1
-17,60305,2,,Lockpicks,,7,Hand,0.45614232019037754,True,2
-18,01046,2,,Pickpocketing,,1,,0.4505133829006351,True,2
-19,02188,1,,Lone Wolf,,2,,0.41161136213901917,True,1
-20,01087,1,,Flashlight,,1,Hand,0.41098119366542085,True,1
-21,07025,2,,.25 Automatic,,8,Hand,0.3975489199828526,True,2
-22,10067,1,,Fox Mask,The Wise Trickster,11,Mask,0.3932547208079132,True,1
-23,01093,1,,Unexpected Courage,,1,,0.3911832855848322,True,2
-24,01052,2,,Sneak Attack,,1,,0.38603684936268656,True,2
-25,09067,1,,"""I'll take that!""",,10,,0.3857957113491255,True,1
-26,04028,1,,"""You handle this one!""",,4,,0.37943118481800003,True,2
-27,01092,2,,Manual Dexterity,,1,,0.37172169600554217,True,2
-28,03233,1,,"""Watch this!""",,3,,0.36516737007584793,True,1
-29,05036,1,,Track Shoes,,5,,0.3594287324098693,True,1
-30,01088,1,,Emergency Cache,,1,,0.3591275420489754,True,1
-31,01051,1,,Backstab,,1,,0.35812303188294226,True,1
-32,09062,1,,Disguise,,10,,0.3447572135198615,True,1
-33,04028,2,,"""You handle this one!""",,4,,0.34260978411312193,True,2
-34,01087,2,,Flashlight,,1,Hand,0.33272245536250833,False,1
-35,01093,2,,Unexpected Courage,,1,,0.3282656699554593,True,2
+13,01052,1,,Sneak Attack,,1,,0.48214374751509387,True,2
+14,07025,1,,.25 Automatic,,8,Hand,0.47734756056326083,True,2
+15,01092,1,,Manual Dexterity,,1,,0.4742932017311521,True,2
+16,01046,2,,Pickpocketing,,1,,0.4705396987728417,True,2
+17,04107,1,,Lucky Cigarette Case,,4,Accessory,0.4551174538829756,True,1
+18,60305,2,,Lockpicks,,7,Hand,0.45439852909980927,True,2
+19,02188,1,,Lone Wolf,,2,,0.42866318372243245,True,1
+20,01087,1,,Flashlight,,1,Hand,0.4256821136916788,True,1
+21,01093,1,,Unexpected Courage,,1,,0.42291078460195014,True,2
+22,01052,2,,Sneak Attack,,1,,0.4067825524689872,True,2
+23,07025,2,,.25 Automatic,,8,Hand,0.39620663079593427,True,2
+24,01092,2,,Manual Dexterity,,1,,0.3946852681856886,True,2
+25,10067,1,,Fox Mask,The Wise Trickster,11,Mask,0.3932547208079132,True,1
+26,09067,1,,"""I'll take that!""",,10,,0.3857957113491255,True,1
+27,04028,1,,"""You handle this one!""",,4,,0.3832791242196182,True,2
+28,01051,1,,Backstab,,1,,0.37841404760727376,True,1
+29,01088,1,,Emergency Cache,,1,,0.37546883454791996,True,1
+30,03233,1,,"""Watch this!""",,3,,0.3711212010330066,True,1
+31,05036,1,,Track Shoes,,5,,0.36062183720125096,True,1
+32,01093,2,,Unexpected Courage,,1,,0.35881306833064236,True,2
+33,01087,2,,Flashlight,,1,Hand,0.35338619454525994,False,1
+34,04028,2,,"""You handle this one!""",,4,,0.34575215780011537,True,2
+35,09062,1,,Disguise,,10,,0.3447572135198615,True,1

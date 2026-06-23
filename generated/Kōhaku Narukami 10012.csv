@@ -1,53 +1,53 @@
 rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
 1,10013,1,,Book of Living Myths,Chronicle of Wonders,11,Hand,1.0,True,1
 2,10014,1,,Weeping Yurei,,11,,1.0,True,1
-3,01000,1,,Random Basic Weakness,,1,,0.9196948686591893,False,0
-4,07028,1,,Faustian Bargain,,8,,0.7747056744717163,True,2
-5,07023,1,,Deep Knowledge,,8,,0.7315035919209315,True,2
-6,01059,1,,Holy Rosary,,1,Accessory,0.554512022136703,True,1
-7,08125,1,,In the Thick of It,,9,,0.5010213194147211,False,0
-8,07028,2,,Faustian Bargain,,8,,0.4949233771601915,True,2
-9,07023,2,,Deep Knowledge,,8,,0.4782297269462459,True,2
-10,07117,1,,Armageddon,,8,Arcane,0.45890256024550263,True,1
-11,04109,1,,Arcane Research,,4,,0.42211122425325837,True,1
-12,07037,1,,Tempt Fate,,8,,0.39264025266237923,True,2
-13,07017,1,,Book of Psalms,,8,Hand,0.388586436119507,True,2
-14,07037,2,,Tempt Fate,,8,,0.3872202063574728,True,2
-15,07017,2,,Book of Psalms,,8,Hand,0.3714635236521408,True,2
-16,07118,1,,Eye of Chaos,,8,Arcane,0.36508746291061817,True,1
-17,01065,1,,Ward of Protection,,1,,0.3421472405518103,True,2
-18,11066,1,,Breath of the Sleeper,,12,Arcane,0.34020618556701027,True,1
-19,07034,1,,Keep Faith,,8,,0.3302965516871845,True,2
-20,60419,1,,Prescient,,7,,0.32836023791217567,True,2
-21,10095,1,,Accursed,,11,,0.3280277947708648,True,2
-22,06201,1,,Spectral Razor,,6,,0.32422904138634534,True,2
-23,01065,2,,Ward of Protection,,1,,0.32164419384143894,True,2
-24,10095,2,,Accursed,,11,,0.31926294276945955,True,2
-25,07034,2,,Keep Faith,,8,,0.31158569578391065,True,2
-26,01088,1,,Emergency Cache,,1,,0.31151158402984924,True,2
-27,60419,2,,Prescient,,7,,0.30485669403576804,True,2
-28,06201,2,,Spectral Razor,,6,,0.30218910028394425,True,2
-29,01088,2,,Emergency Cache,,1,,0.2909804785911406,True,2
-30,10075,1,,Diabolical Luck,,11,,0.2697370422490639,True,1
-31,07031,1,,Ward of Radiance,,8,,0.2662389537588174,True,2
-32,02111,1,,Delve Too Deep,,2,,0.2658759862951333,True,1
-33,07031,2,,Ward of Radiance,,8,,0.26466221301557186,True,2
-34,60416,1,,Voice of Ra,,7,,0.2624972109096842,False,0
-35,07029,1,,Sword Cane,,8,Hand,0.2624840056831293,True,1
-36,07035,1,,Predestined,,8,,0.2606166538749733,False,0
-37,06117,1,,Read the Signs,,6,,0.25418694508390133,False,0
-38,05116,1,,Scroll of Secrets,,5,Hand,0.25166213668682913,False,0
-39,07020,1,,Hand of Fate,,8,,0.2514895478542122,False,0
-40,02111,2,,Delve Too Deep,,2,,0.2501631379100203,False,1
-41,07020,2,,Hand of Fate,,8,,0.2478509153697995,False,0
-42,07032,1,,Promise of Power,,8,,0.24653016052160642,False,0
-43,07032,2,,Promise of Power,,8,,0.24653016052160642,False,0
-44,06117,2,,Read the Signs,,6,,0.24630246976760886,False,0
-45,01089,1,,Guts,,1,,0.24355867238782808,False,0
-46,07018,1,,Blessed Blade,,8,Hand,0.2427288260776663,False,0
-47,60416,2,,Voice of Ra,,7,,0.23194260387035423,False,0
-48,01089,2,,Guts,,1,,0.22926181064184506,False,0
-49,07117,2,,Armageddon,,8,Arcane,0.22831951928802388,False,1
-50,05116,2,,Scroll of Secrets,,5,Hand,0.22152325295807096,False,0
-51,05032,1,,Deny Existence,,5,,0.21829563982616418,False,0
-52,10019,1,,Ancestral Token,,11,Accessory,0.21340929232622713,True,1
+3,01000,1,,Random Basic Weakness,,1,,0.9606786215469322,False,0
+4,07028,1,,Faustian Bargain,,8,,0.8935791871327747,True,2
+5,07028,2,,Faustian Bargain,,8,,0.7641976219226224,True,2
+6,08125,1,,In the Thick of It,,9,,0.7306169818983332,False,0
+7,07023,1,,Deep Knowledge,,8,,0.6943324200992766,True,2
+8,07032,1,,Promise of Power,,8,,0.64965583295314,True,2
+9,07032,2,,Promise of Power,,8,,0.64965583295314,True,2
+10,06201,1,,Spectral Razor,,6,,0.602307881843527,True,2
+11,07023,2,,Deep Knowledge,,8,,0.5775734843973097,True,2
+12,07117,1,,Armageddon,,8,Arcane,0.5685431591472372,True,2
+13,06117,1,,Read the Signs,,6,,0.5681055887344906,True,2
+14,06117,2,,Read the Signs,,6,,0.5642555164206301,True,2
+15,60419,1,,Prescient,,7,,0.5340841477258749,True,2
+16,60419,2,,Prescient,,7,,0.5225579882332795,True,2
+17,07037,1,,Tempt Fate,,8,,0.5165782506296013,True,2
+18,07037,2,,Tempt Fate,,8,,0.5139973648361792,True,2
+19,01059,1,,Holy Rosary,,1,Accessory,0.5106249790010845,True,1
+20,07118,1,,Eye of Chaos,,8,Arcane,0.5034583251457364,True,1
+21,01063,1,,Arcane Initiate,,1,Ally,0.4489613663807968,True,1
+22,06201,2,,Spectral Razor,,6,,0.41426324464502384,True,2
+23,07017,1,,Book of Psalms,,8,Hand,0.3964371840408215,True,1
+24,01089,1,,Guts,,1,,0.39281284227597973,True,2
+25,05116,1,,Scroll of Secrets,,5,Hand,0.38637540112051055,True,2
+26,01089,2,,Guts,,1,,0.3858123891041997,True,2
+27,02111,1,,Delve Too Deep,,2,,0.37686600601940723,True,1
+28,04109,1,,Arcane Research,,4,,0.3732284300138936,True,1
+29,05116,2,,Scroll of Secrets,,5,Hand,0.3716765101143762,True,2
+30,07034,1,,Keep Faith,,8,,0.3706777423828147,True,1
+31,09087,1,,Explosive Ward,,10,,0.367456535785976,True,1
+32,01090,1,,Perception,,1,,0.36734272954325997,True,2
+33,01090,2,,Perception,,1,,0.36734272954325997,True,2
+34,07034,2,,Keep Faith,,8,,0.36176811699090344,False,1
+35,09087,2,,Explosive Ward,,10,,0.347771675488936,False,1
+36,07117,2,,Armageddon,,8,Arcane,0.3454095489099831,True,2
+37,07031,1,,Ward of Radiance,,8,,0.34034794329162027,False,0
+38,11066,1,,Breath of the Sleeper,,12,Arcane,0.34020618556701027,False,0
+39,01065,1,,Ward of Protection,,1,,0.339691265530912,False,0
+40,07031,2,,Ward of Radiance,,8,,0.33959714015171555,False,0
+41,10095,1,,Accursed,,11,,0.3360676109597239,False,0
+42,01065,2,,Ward of Protection,,1,,0.3296519561408565,False,0
+43,10095,2,,Accursed,,11,,0.3259933749522367,False,0
+44,60416,1,,Voice of Ra,,7,,0.30296990768899124,False,0
+45,10075,1,,Diabolical Luck,,11,,0.2926417144065358,False,0
+46,07118,2,,Eye of Chaos,,8,Arcane,0.288473664355236,False,1
+47,60416,2,,Voice of Ra,,7,,0.28798590034861715,False,0
+48,01063,2,,Arcane Initiate,,1,Ally,0.26394171168576913,False,1
+49,04037,1,,Backpack,,4,Body,0.2529133376205291,False,0
+50,07019,1,,Rite of Sanctification,,8,Arcane,0.2416432075975118,False,0
+51,04037,2,,Backpack,,4,Body,0.24075516764022517,False,0
+52,60411,1,,Crystal Pendulum,,7,Accessory,0.23435401715443735,True,1

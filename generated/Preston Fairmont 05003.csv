@@ -3,38 +3,34 @@ rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,
 2,05012,1,,"Lodge ""Debts""",,5,,1.0,True,1
 3,11054,1,,"""You've had worse...""",,12,,0.8573750539617945,True,2
 4,11054,2,,"""You've had worse...""",,12,,0.8573750539617945,True,2
-5,01000,1,,Random Basic Weakness,,1,,0.7878223096763795,False,0
-6,01048,1,,Leo De Luca,The Louisiana Lion,1,Ally,0.7223564502770976,True,2
-7,05111,1,,Intel Report,,5,,0.6940681251195989,True,2
-8,05111,2,,Intel Report,,5,,0.6782851065355638,True,2
-9,01048,2,,Leo De Luca,The Louisiana Lion,1,Ally,0.5890591822383858,True,2
-10,01079,1,,"""Look what I found!""",,1,,0.5674692795235792,True,2
-11,01079,2,,"""Look what I found!""",,1,,0.4886547955502176,True,2
-12,05029,1,,Money Talks,,5,,0.4613998231868268,True,2
-13,05028,1,,Well Connected,,5,,0.46135413813271703,True,1
-14,11088,1,,Contemplative,,12,,0.45031767007886603,True,2
-15,05029,2,,Money Talks,,5,,0.4475886453103204,True,2
+5,01000,1,,Random Basic Weakness,,1,,0.7994256069899032,False,0
+6,01048,1,,Leo De Luca,The Louisiana Lion,1,Ally,0.7450752117931161,True,2
+7,05111,1,,Intel Report,,5,,0.7024772785917655,True,2
+8,05111,2,,Intel Report,,5,,0.6862008399060271,True,2
+9,01048,2,,Leo De Luca,The Louisiana Lion,1,Ally,0.6255774761530986,True,2
+10,01079,1,,"""Look what I found!""",,1,,0.6011901299329894,True,2
+11,01079,2,,"""Look what I found!""",,1,,0.5272707979349193,True,2
+12,05028,1,,Well Connected,,5,,0.4695878195400515,True,1
+13,05029,1,,Money Talks,,5,,0.4669471635069043,True,2
+14,05029,2,,Money Talks,,5,,0.4532651971706894,True,2
+15,11088,1,,Contemplative,,12,,0.45031767007886603,True,1
 16,10112,1,,Elaborate Distraction,,11,,0.4470696964290784,True,1
-17,08125,1,,In the Thick of It,,9,,0.44021935156665865,False,0
-18,04201,1,,Take Heart,,4,,0.41530339976836417,True,2
-19,04028,1,,"""You handle this one!""",,4,,0.38480525073293026,True,2
-20,04201,2,,Take Heart,,4,,0.38346322510545944,True,2
-21,05281,1,,Trial by Fire,,5,,0.3767020883696343,True,2
-22,60311,1,,Streetwise,,7,,0.36029031805516704,True,1
-23,06165,1,,Scrounge for Supplies,,6,,0.3593868823070155,True,2
-24,06165,2,,Scrounge for Supplies,,6,,0.35218798589526734,True,2
-25,03039,1,,Resourceful,,3,,0.35157465690587647,True,2
-26,05277,1,,Small Favor,,5,,0.3477293356409761,True,1
-27,01080,1,,Lucky!,,1,,0.34050726531054404,True,1
-28,05281,2,,Trial by Fire,,5,,0.33205073168087945,True,2
-29,11088,2,,Contemplative,,12,,0.3312551055152274,True,2
-30,03039,2,,Resourceful,,3,,0.3306132455992393,True,2
-31,04028,2,,"""You handle this one!""",,4,,0.3282110677026623,True,2
-32,01075,1,,Rabbit's Foot,,1,Accessory,0.31623903340602055,True,1
-33,02192,1,,Rise to the Occasion,,2,,0.304164593726908,False,0
-34,05028,2,,Well Connected,,5,,0.3037183286122437,False,1
-35,60507,1,,Old Keyring,,7,Hand,0.30369143621329386,True,1
-36,01080,2,,Lucky!,,1,,0.3005355811198952,False,1
-37,07028,1,,Faustian Bargain,,8,,0.300039184541596,False,0
-38,05277,2,,Small Favor,,5,,0.29765933925809795,False,1
-39,01087,1,,Flashlight,,1,Hand,0.28832518862504136,True,1
+17,04201,1,,Take Heart,,4,,0.4428568218604368,True,2
+18,08125,1,,In the Thick of It,,9,,0.4393496097830612,False,0
+19,04201,2,,Take Heart,,4,,0.4085979841667106,True,2
+20,05281,1,,Trial by Fire,,5,,0.38452330537613255,True,2
+21,04028,1,,"""You handle this one!""",,4,,0.3750060066657767,True,1
+22,01080,1,,Lucky!,,1,,0.3743498849564355,True,1
+23,02192,1,,Rise to the Occasion,,2,,0.3740464477472513,True,2
+24,06165,1,,Scrounge for Supplies,,6,,0.3696389216322079,True,2
+25,60311,1,,Streetwise,,7,,0.36272423511744195,True,1
+26,06165,2,,Scrounge for Supplies,,6,,0.3621308108549288,True,2
+27,02032,1,,Fire Axe,,2,Hand,0.35672888534771285,True,2
+28,05277,1,,Small Favor,,5,,0.351651268736767,True,1
+29,03039,1,,Resourceful,,3,,0.3461896809289537,True,1
+30,02192,2,,Rise to the Occasion,,2,,0.34550694525033987,True,2
+31,02032,2,,Fire Axe,,2,Hand,0.3428626940543263,True,2
+32,05281,2,,Trial by Fire,,5,,0.34072607311581526,True,2
+33,01087,1,,Flashlight,,1,Hand,0.3356424452185019,True,1
+34,01080,2,,Lucky!,,1,,0.3340739656901849,False,1
+35,01075,1,,Rabbit's Foot,,1,Accessory,0.33348313111385125,True,1

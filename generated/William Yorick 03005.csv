@@ -1,40 +1,40 @@
 rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
 1,03016,1,,Bury Them Deep,,3,,1.0,True,1
-2,03017,1,,Graveyard Ghouls,,3,,0.9990601837605774,True,1
-3,01000,1,,Random Basic Weakness,,1,,0.8131800478961123,False,0
-4,01025,1,,Vicious Blow,,1,,0.7220150720442345,True,2
-5,01025,2,,Vicious Blow,,1,,0.6498991317357814,True,2
-6,01080,1,,Lucky!,,1,,0.5919433324256671,True,2
-7,03039,1,,Resourceful,,3,,0.5865455792747019,True,2
-8,08072,1,,Schoffner's Catalogue,,9,,0.5463272946251346,True,2
-9,01088,1,,Emergency Cache,,1,,0.5381663243894305,True,2
-10,03039,2,,Resourceful,,3,,0.5304020239009343,True,2
+2,03017,1,,Graveyard Ghouls,,3,,0.9990705348063045,True,1
+3,01000,1,,Random Basic Weakness,,1,,0.8228817152252151,False,0
+4,01025,1,,Vicious Blow,,1,,0.7155038564203113,True,2
+5,01025,2,,Vicious Blow,,1,,0.643767962076334,True,2
+6,01080,1,,Lucky!,,1,,0.6012432368697763,True,2
+7,03039,1,,Resourceful,,3,,0.584749144655792,True,2
+8,01088,1,,Emergency Cache,,1,,0.5473027755301708,True,2
+9,08072,1,,Schoffner's Catalogue,,9,,0.5463272946251346,True,2
+10,03039,2,,Resourceful,,3,,0.5274094000554278,True,2
 11,08071,1,,Short Supply,,9,,0.5266282144800071,True,1
-12,03114,1,,Cherished Keepsake,,3,Accessory,0.5171041986092033,True,2
-13,01080,2,,Lucky!,,1,,0.4774692194787328,True,2
+12,03114,1,,Cherished Keepsake,,3,Accessory,0.5149836373113477,True,2
+13,01080,2,,Lucky!,,1,,0.47743203511958926,True,2
 14,08072,2,,Schoffner's Catalogue,,9,,0.4534383167580074,True,2
-15,01088,2,,Emergency Cache,,1,,0.44714147396346693,True,2
-16,01091,1,,Overpower,,1,,0.4284136583420523,True,2
-17,01072,1,,Leather Coat,,1,Body,0.41395452416840345,True,1
-18,03114,2,,Cherished Keepsake,,3,Accessory,0.39530874051678,True,2
-19,01021,1,,Guard Dog,,1,Ally,0.3725635060222406,True,2
-20,01091,2,,Overpower,,1,,0.3626147425595099,True,2
-21,05037,1,,Act of Desperation,,5,,0.3378511149421274,True,2
-22,03037,1,,Gravedigger's Shovel,,3,Hand,0.33427408709797374,True,2
+15,01088,2,,Emergency Cache,,1,,0.4454252385025044,True,2
+16,01091,1,,Overpower,,1,,0.4428372306911264,True,2
+17,01072,1,,Leather Coat,,1,Body,0.40135004092466436,True,1
+18,03114,2,,Cherished Keepsake,,3,Accessory,0.3952525647786531,True,2
+19,01021,1,,Guard Dog,,1,Ally,0.39083388873932345,True,2
+20,01091,2,,Overpower,,1,,0.37802020541269477,True,2
+21,05037,1,,Act of Desperation,,5,,0.33775123621829556,True,2
+22,03037,1,,Gravedigger's Shovel,,3,Hand,0.3334080008558904,True,2
 23,10023,1,,Wolf Mask,The Moon's Sire,11,Mask,0.31800364841288864,True,1
-24,05037,2,,Act of Desperation,,5,,0.29835523055235247,True,2
-25,04201,1,,Take Heart,,4,,0.27375101600398877,True,1
-26,01021,2,,Guard Dog,,1,Ally,0.26908413778626816,True,2
-27,01079,1,,"""Look what I found!""",,1,,0.26894788045846885,True,1
+24,05037,2,,Act of Desperation,,5,,0.29813637080662725,True,2
+25,01021,2,,Guard Dog,,1,Ally,0.2774126140225821,True,2
+26,04201,1,,Take Heart,,4,,0.27410512727316677,True,1
+27,01079,1,,"""Look what I found!""",,1,,0.27332933039389273,True,1
 28,08125,1,,In the Thick of It,,9,,0.26560813945863143,False,0
-29,01018,1,,Beat Cop,,1,Ally,0.2526868276789886,True,1
-30,02184,1,,Prepared for the Worst,,2,,0.25234210278663344,True,1
-31,01020,1,,Machete,,1,Hand,0.24705347712021383,True,1
+29,02184,1,,Prepared for the Worst,,2,,0.26116093852121464,True,1
+30,01018,1,,Beat Cop,,1,Ally,0.2592766817470318,True,1
+31,01020,1,,Machete,,1,Hand,0.25250635668515464,True,1
 32,08073,1,,Bandages,,9,,0.24579123578688294,False,0
-33,01072,2,,Leather Coat,,1,Body,0.23877996964493817,False,1
-34,60507,1,,Old Keyring,,7,Hand,0.2361867906540286,True,1
-35,01086,1,,Knife,,1,Hand,0.22975606388429848,True,1
-36,03037,2,,Gravedigger's Shovel,,3,Hand,0.2289449810349974,True,2
-37,01093,1,,Unexpected Courage,,1,,0.22738111301573255,False,0
-38,04201,2,,Take Heart,,4,,0.22536070619201315,False,1
+33,60507,1,,Old Keyring,,7,Hand,0.23649566089509177,True,1
+34,01093,1,,Unexpected Courage,,1,,0.23624093831135168,False,0
+35,01086,1,,Knife,,1,Hand,0.2357741588589839,True,1
+36,01072,2,,Leather Coat,,1,Body,0.23066635266952834,False,1
+37,03037,2,,Gravedigger's Shovel,,3,Hand,0.22634170007349558,True,2
+38,04201,2,,Take Heart,,4,,0.225108453260766,False,1
 39,11082,1,,Hand Hook,,12,Hand,0.21275541959225316,True,1

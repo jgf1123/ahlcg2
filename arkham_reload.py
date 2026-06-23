@@ -8,12 +8,16 @@ from types import ModuleType
 
 
 def reload_arkham_modules() -> tuple[ModuleType, ModuleType, ModuleType]:
-    """Reload arkham_canonical → arkham_deck_options → arkham_popularity."""
-    import arkham_canonical
+    """Reload arkham_deck_options → arkham_canonical → arkham_popularity."""
     import arkham_deck_options
-    import arkham_popularity
+
+    importlib.reload(arkham_deck_options)
+
+    import arkham_canonical
 
     importlib.reload(arkham_canonical)
-    importlib.reload(arkham_deck_options)
+
+    import arkham_popularity
+
     importlib.reload(arkham_popularity)
     return arkham_canonical, arkham_deck_options, arkham_popularity

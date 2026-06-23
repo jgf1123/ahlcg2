@@ -1,55 +1,56 @@
 rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
 1,07006,1,,Guardian Angel,,8,,1.0,True,1
 2,07007,1,,Crisis of Faith,,8,,1.0,True,1
-3,01000,1,,Random Basic Weakness,,1,,0.8385804688652165,False,0
-4,01059,1,,Holy Rosary,,1,Accessory,0.499226895404235,True,2
-5,07018,1,,Blessed Blade,,8,Hand,0.48130670678769055,True,2
-6,07019,1,,Rite of Sanctification,,8,Arcane,0.47393323002559284,True,2
-7,01025,1,,Vicious Blow,,1,,0.44772472543586433,True,2
-8,02184,1,,Prepared for the Worst,,2,,0.4171257026106629,True,2
-9,07019,2,,Rite of Sanctification,,8,Arcane,0.4112231409335503,True,2
-10,01025,2,,Vicious Blow,,1,,0.3928191920049654,True,2
-11,01059,2,,Holy Rosary,,1,Accessory,0.38450190294766584,True,2
-12,01088,1,,Emergency Cache,,1,,0.37891881662910293,True,1
-13,08125,1,,In the Thick of It,,9,,0.37559184848108124,False,0
-14,01089,1,,Guts,,1,,0.35018604374471857,True,2
-15,07018,2,,Blessed Blade,,8,Hand,0.33857947976881136,True,2
-16,06201,1,,Spectral Razor,,6,,0.3351172100739296,True,2
-17,10019,1,,Ancestral Token,,11,Accessory,0.3230277633214333,False,0
-18,07031,1,,Ward of Radiance,,8,,0.3225716780527742,True,1
-19,01091,1,,Overpower,,1,,0.3206914730485357,True,2
-20,01065,1,,Ward of Protection,,1,,0.31868529532190903,True,1
-21,05032,1,,Deny Existence,,5,,0.30906791582557647,True,1
-22,01089,2,,Guts,,1,,0.3030571099213207,True,2
-23,06201,2,,Spectral Razor,,6,,0.2995848099107026,True,2
-24,11071,1,,Spectral Shield,,12,,0.2899165731244384,True,2
-25,11071,2,,Spectral Shield,,12,,0.2899165731244384,True,2
-26,11067,1,,Eyes of the Dreamer,,12,Arcane,0.27731670896219807,True,1
-27,01091,2,,Overpower,,1,,0.2758245505172032,True,2
-28,02184,2,,Prepared for the Worst,,2,,0.2750540192389986,True,2
+3,01000,1,,Random Basic Weakness,,1,,0.7892992539788662,False,0
+4,01059,1,,Holy Rosary,,1,Accessory,0.5540182073298433,True,2
+5,07018,1,,Blessed Blade,,8,Hand,0.4870728598926639,True,2
+6,07019,1,,Rite of Sanctification,,8,Arcane,0.4806754785275871,True,2
+7,01059,2,,Holy Rosary,,1,Accessory,0.46128051222449606,True,2
+8,01065,1,,Ward of Protection,,1,,0.4493110376595696,True,2
+9,01025,1,,Vicious Blow,,1,,0.44217549070643786,True,2
+10,07019,2,,Rite of Sanctification,,8,Arcane,0.4170759751884547,True,2
+11,06201,1,,Spectral Razor,,6,,0.41680930195368976,True,2
+12,01065,2,,Ward of Protection,,1,,0.410706884224697,True,2
+13,01025,2,,Vicious Blow,,1,,0.39775297452344016,True,2
+14,01089,1,,Guts,,1,,0.3944788240185247,True,2
+15,01088,1,,Emergency Cache,,1,,0.38638527610938406,True,1
+16,08125,1,,In the Thick of It,,9,,0.37559184848108124,False,0
+17,05032,1,,Deny Existence,,5,,0.3619699891596933,True,2
+18,07018,2,,Blessed Blade,,8,Hand,0.34365950343811263,True,2
+19,06201,2,,Spectral Razor,,6,,0.33992366521972583,True,2
+20,02184,1,,Prepared for the Worst,,2,,0.3374929462565962,True,1
+21,07031,1,,Ward of Radiance,,8,,0.3269568784566102,True,2
+22,10019,1,,Ancestral Token,,11,Accessory,0.3230277633214333,False,0
+23,01089,2,,Guts,,1,,0.31511478754793615,True,2
+24,01064,1,,Drawn to the Flame,,1,,0.30744821006649,True,1
+25,05032,2,,Deny Existence,,5,,0.29880904906623634,True,2
+26,11071,1,,Spectral Shield,,12,,0.2899165731244384,True,2
+27,11071,2,,Spectral Shield,,12,,0.2899165731244384,True,2
+28,11067,1,,Eyes of the Dreamer,,12,Arcane,0.27731670896219807,True,1
 29,10023,1,,Wolf Mask,The Moon's Sire,11,Mask,0.27467370785130546,True,1
-30,01065,2,,Ward of Protection,,1,,0.27107238583132487,False,1
-31,07031,2,,Ward of Radiance,,8,,0.2706658155061764,False,1
-32,60118,1,,Stand Together,,7,,0.2694594313140008,False,0
-33,07020,1,,Hand of Fate,,8,,0.26474542012122193,False,0
-34,11068a,1,,The Great Work,Divide and Unite,12,,0.25808910992654616,True,1
-35,01088,2,,Emergency Cache,,1,,0.2578785536679159,False,1
-36,07017,1,,Book of Psalms,,8,Hand,0.25233335420625624,True,2
-37,05032,2,,Deny Existence,,5,,0.23083138252211716,False,1
-38,04197,1,,Olive McBride,Will Try Anything Once,4,Ally,0.22950692555635754,True,2
-39,06195,1,,.35 Winchester,,6,Hand x2,0.2213414570928528,False,0
-40,01021,1,,Guard Dog,,1,Ally,0.21720281002514077,True,1
-41,10019,2,,Ancestral Token,,11,Accessory,0.21115032305350667,False,0
-42,04197,2,,Olive McBride,Will Try Anything Once,4,Ally,0.20591289188433903,True,2
-43,60118,2,,Stand Together,,7,,0.20490017835546928,False,0
-44,02147,1,,Bandolier,,2,Body,0.1980959863168121,True,1
-45,10025,1,,Guided by Faith,,11,,0.19202865180831707,False,0
-46,08059,1,,Down the Rabbit Hole,,9,,0.19147109069784318,False,0
-47,11067,2,,Eyes of the Dreamer,,12,Arcane,0.1898032381649348,False,1
-48,01021,2,,Guard Dog,,1,Ally,0.18835578954693644,False,1
-49,60416,1,,Voice of Ra,,7,,0.18819051452439237,False,0
-50,01018,1,,Beat Cop,,1,Ally,0.1808715702279651,False,0
-51,60416,2,,Voice of Ra,,7,,0.17728351847796095,False,0
-52,06195,2,,.35 Winchester,,6,Hand x2,0.17669674289586104,False,0
-53,60115,1,,Glory,,7,,0.1760095334768358,False,0
-54,07017,2,,Book of Psalms,,8,Hand,0.1751292991178447,True,2
+30,07031,2,,Ward of Radiance,,8,,0.2746413435698976,True,2
+31,01060,1,,Shrivelling,,1,Arcane,0.27370683570594706,True,1
+32,07020,1,,Hand of Fate,,8,,0.26916399307165817,False,0
+33,60118,1,,Stand Together,,7,,0.26560998297758615,False,0
+34,01091,1,,Overpower,,1,,0.2592100836623587,False,0
+35,11068a,1,,The Great Work,Divide and Unite,12,,0.25808910992654616,False,0
+36,07017,1,,Book of Psalms,,8,Hand,0.2558273833516238,True,1
+37,04150,1,,Take the Initiative,,4,,0.2544323834726768,False,0
+38,01060,2,,Shrivelling,,1,Arcane,0.24773847173768573,False,1
+39,06117,1,,Read the Signs,,6,,0.24130381384798974,False,0
+40,05158,1,,Sixth Sense,,5,Arcane,0.2311304912073234,False,0
+41,01018,1,,Beat Cop,,1,Ally,0.22635876191756385,True,1
+42,06111,1,,Daring,,6,,0.2230371007808589,False,0
+43,01091,2,,Overpower,,1,,0.22288148676840025,False,0
+44,02184,2,,Prepared for the Worst,,2,,0.22239553044582241,False,1
+45,05158,2,,Sixth Sense,,5,Arcane,0.2116635120763666,False,0
+46,10019,2,,Ancestral Token,,11,Accessory,0.21115032305350667,False,0
+47,60118,2,,Stand Together,,7,,0.20871648843982635,False,0
+48,01088,2,,Emergency Cache,,1,,0.20845810623972685,False,1
+49,06111,2,,Daring,,6,,0.20628807448996123,False,0
+50,06195,1,,.35 Winchester,,6,Hand x2,0.19485329951046662,True,1
+51,10025,1,,Guided by Faith,,11,,0.19202865180831707,False,0
+52,08059,1,,Down the Rabbit Hole,,9,,0.19147109069784318,False,0
+53,02111,1,,Delve Too Deep,,2,,0.19133124907488167,False,0
+54,11067,2,,Eyes of the Dreamer,,12,Arcane,0.1898032381649348,False,1
+55,04197,1,,Olive McBride,Will Try Anything Once,4,Ally,0.18573088223162512,True,1

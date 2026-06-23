@@ -1,59 +1,68 @@
 rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
-1,11018,1,,Grim Resolve,,12,,0.9717253615428584,True,3
-2,11018,2,,Grim Resolve,,12,,0.9717253615428584,True,3
-3,11018,3,,Grim Resolve,,12,,0.9717253615428584,True,3
-4,11019,1,,Cast Adrift,,12,,0.9717253615428584,True,1
-5,01039,1,,Deduction,,1,,0.8493904111369225,True,2
-6,11084,1,,Nautical Charts,,12,Hand,0.8240390083221348,True,2
-7,03039,1,,Resourceful,,3,,0.8210521371588012,True,2
-8,03039,2,,Resourceful,,3,,0.8184565393325295,True,2
-9,01039,2,,Deduction,,1,,0.796492930972687,True,2
-10,01000,1,,Random Basic Weakness,,1,,0.7908522613233974,False,0
-11,11083,1,,Lawrence Carlisle,Sculpting His Dreams,12,Ally,0.759446058210885,True,2
-12,09102,1,,Idol of Xanatos,Watcher Beyond Time,10,Accessory,0.7376634596631456,True,2
-13,11084,2,,Nautical Charts,,12,Hand,0.7251596275141986,True,2
-14,01090,1,,Perception,,1,,0.6879261556622591,True,2
-15,11034,1,,Artistic Inspiration,,12,,0.6761148256129167,True,2
-16,01090,2,,Perception,,1,,0.6760272580583684,True,2
-17,11083,2,,Lawrence Carlisle,Sculpting His Dreams,12,Ally,0.6591133720446074,True,2
-18,04272,1,,Winging It,,4,,0.6506787483670554,True,2
-19,01093,1,,Unexpected Courage,,1,,0.6399764313894373,True,2
-20,04272,2,,Winging It,,4,,0.613894713982966,True,2
-21,01093,2,,Unexpected Courage,,1,,0.604279738577765,True,2
-22,11088,1,,Contemplative,,12,,0.5960650060413643,True,2
-23,11088,2,,Contemplative,,12,,0.5960650060413643,True,2
-24,04036,1,,Last Chance,,4,,0.5058701550639966,True,2
-25,11034,2,,Artistic Inspiration,,12,,0.48832141424936104,True,2
-26,04036,2,,Last Chance,,4,,0.4791676708444356,True,2
-27,02229,1,,Quick Thinking,,2,,0.46608583639409545,True,2
-28,04201,1,,Take Heart,,4,,0.46062915775485297,True,2
-29,08031,1,,Forced Learning,,9,,0.4423785852372853,True,1
-30,02229,2,,Quick Thinking,,2,,0.4417477906369205,True,2
-31,09102,2,,Idol of Xanatos,Watcher Beyond Time,10,Accessory,0.4393659459244507,True,2
-32,04201,2,,Take Heart,,4,,0.4121581764792442,True,2
-33,11082,1,,Hand Hook,,12,Hand,0.3793191589995031,True,2
-34,08125,1,,In the Thick of It,,9,,0.3667856435645211,False,0
-35,04033,1,,Improvised Weapon,,4,,0.36617756236890275,True,2
-36,11081,1,,Anchor Chain,,12,Hand,0.3278712695426974,True,1
-37,06245,1,,A Glimmer of Hope,,6,,0.318692949412664,True,3
-38,06245,2,,A Glimmer of Hope,,6,,0.318692949412664,True,3
-39,06245,3,,A Glimmer of Hope,,6,,0.318692949412664,True,3
-40,04033,2,,Improvised Weapon,,4,,0.3184945548339722,True,2
-41,10116,1,,Long Shot,,11,,0.3159169373489404,True,2
-42,11082,2,,Hand Hook,,12,Hand,0.3036656101980998,True,2
-43,10116,2,,Long Shot,,11,,0.3019499304639671,True,2
-44,01089,1,,Guts,,1,,0.2773423823846201,True,2
-45,03231,1,,Eureka!,,3,,0.26268685828978106,True,2
-46,01079,1,,"""Look what I found!""",,1,,0.25506744021809674,True,2
-47,01079,2,,"""Look what I found!""",,1,,0.25506744021809674,True,2
-48,01091,1,,Overpower,,1,,0.25461487784949227,True,1
-49,01080,1,,Lucky!,,1,,0.24321869324740755,True,2
-50,01089,2,,Guts,,1,,0.24248007120226814,True,2
-51,06034,1,,Fortuitous Discovery,,6,,0.2392505194887914,True,3
-52,06034,2,,Fortuitous Discovery,,6,,0.2392505194887914,True,3
-53,06034,3,,Fortuitous Discovery,,6,,0.2392505194887914,True,3
-54,05316,1,,Occult Lexicon,,5,Hand,0.23452133573683911,True,1
-55,03231,2,,Eureka!,,3,,0.23234521473439682,True,2
-56,01080,2,,Lucky!,,1,,0.22537034684157145,True,2
-57,08071,1,,Short Supply,,9,,0.2145999533386149,False,0
-58,10108,1,,Matchbox,,11,,0.21018048958564176,True,1
+1,11018,1,,Grim Resolve,,12,,0.9678179955775276,True,3
+2,11018,2,,Grim Resolve,,12,,0.9678179955775276,True,3
+3,11018,3,,Grim Resolve,,12,,0.9678179955775276,True,3
+4,11019,1,,Cast Adrift,,12,,0.9678179955775276,True,1
+5,11084,1,,Nautical Charts,,12,Hand,0.9379156890126185,True,2
+6,01039,1,,Deduction,,1,,0.9177510653799119,True,2
+7,03039,1,,Resourceful,,3,,0.9023284841048173,True,2
+8,03039,2,,Resourceful,,3,,0.9009117811036128,True,2
+9,01039,2,,Deduction,,1,,0.8888633868433816,True,2
+10,01000,1,,Random Basic Weakness,,1,,0.885782978267141,False,0
+11,11083,1,,Lawrence Carlisle,Sculpting His Dreams,12,Ally,0.8643964251220585,True,2
+12,09102,1,,Idol of Xanatos,Watcher Beyond Time,10,Accessory,0.8591024387801349,True,2
+13,11084,2,,Nautical Charts,,12,Hand,0.8253718389727401,True,2
+14,11034,1,,Artistic Inspiration,,12,,0.7695493734059822,True,2
+15,11083,2,,Lawrence Carlisle,Sculpting His Dreams,12,Ally,0.7501984326414118,True,2
+16,09102,2,,Idol of Xanatos,Watcher Beyond Time,10,Accessory,0.698890704075685,True,2
+17,11088,1,,Contemplative,,12,,0.6784372040541181,True,2
+18,11088,2,,Contemplative,,12,,0.6784372040541181,True,2
+19,01090,1,,Perception,,1,,0.6480170796763508,True,2
+20,01090,2,,Perception,,1,,0.6415190096765497,True,2
+21,01093,1,,Unexpected Courage,,1,,0.6218314047366763,True,2
+22,01093,2,,Unexpected Courage,,1,,0.6023371947372733,True,2
+23,05316,1,,Occult Lexicon,,5,Hand,0.5839511316044113,True,1
+24,04036,1,,Last Chance,,4,,0.5776845770591049,True,2
+25,04272,1,,Winging It,,4,,0.5732025684977519,True,2
+26,04036,2,,Last Chance,,4,,0.5632070226025064,True,2
+27,11034,2,,Artistic Inspiration,,12,,0.5558041683461931,True,2
+28,04272,2,,Winging It,,4,,0.5532589985830498,True,2
+29,08031,1,,Forced Learning,,9,,0.5140350525884636,True,1
+30,04201,1,,Take Heart,,4,,0.4701614703392965,True,2
+31,06034,1,,Fortuitous Discovery,,6,,0.4557735490570961,True,3
+32,06034,2,,Fortuitous Discovery,,6,,0.4557735490570961,True,3
+33,06034,3,,Fortuitous Discovery,,6,,0.4557735490570961,True,3
+34,10116,1,,Long Shot,,11,,0.4442701378844013,True,2
+35,04201,2,,Take Heart,,4,,0.4438814708751146,True,2
+36,10116,2,,Long Shot,,11,,0.43661364461772534,True,2
+37,11082,1,,Hand Hook,,12,Hand,0.4317385303070844,True,1
+38,09044,1,,Grim Memoir,,10,Hand,0.41942074918128897,True,2
+39,09044,2,,Grim Memoir,,10,Hand,0.41942074918128897,True,2
+40,11081,1,,Anchor Chain,,12,Hand,0.3731808865538151,True,1
+41,11082,2,,Hand Hook,,12,Hand,0.3456301669484176,False,1
+42,01079,1,,"""Look what I found!""",,1,,0.3208513300925285,True,2
+43,01079,2,,"""Look what I found!""",,1,,0.3208513300925285,True,2
+44,03198,1,,Madame Labranche,Mysterious Benefactress,3,Ally,0.32070930099435613,True,1
+45,03198,2,,Madame Labranche,Mysterious Benefactress,3,Ally,0.32070930099435613,False,1
+46,60217,1,,Occult Invocation,,7,,0.3122829340283991,True,2
+47,60217,2,,Occult Invocation,,7,,0.30247916152932736,True,2
+48,10111,1,,Sparrow Mask,The Wanderer's Companion,11,Mask,0.2773126829191353,True,1
+49,04033,1,,Improvised Weapon,,4,,0.26454362412573873,True,2
+50,02229,1,,Quick Thinking,,2,,0.25358593801201545,False,0
+51,06245,1,,A Glimmer of Hope,,6,,0.24932452957399398,True,3
+52,06245,2,,A Glimmer of Hope,,6,,0.24932452957399398,True,3
+53,06245,3,,A Glimmer of Hope,,6,,0.24932452957399398,True,3
+54,02229,2,,Quick Thinking,,2,,0.24034420080227517,False,0
+55,04033,2,,Improvised Weapon,,4,,0.2386908483103843,True,2
+56,07028,1,,Faustian Bargain,,8,,0.2368056690625348,False,0
+57,11087,1,,Unconventional Method,,12,,0.23096362752217273,True,2
+58,01091,1,,Overpower,,1,,0.22982556125035822,True,1
+59,07028,2,,Faustian Bargain,,8,,0.2269951898240457,False,0
+60,60205,1,,Arcane Enlightenment,,7,Arcane,0.22536863860485112,False,0
+61,11081,2,,Anchor Chain,,12,Hand,0.22467749208315035,False,1
+62,60205,2,,Arcane Enlightenment,,7,Arcane,0.2245516575632618,False,0
+63,02192,1,,Rise to the Occasion,,2,,0.2158125674357266,True,1
+64,11087,2,,Unconventional Method,,12,,0.21448617730191624,True,2
+65,10111,2,,Sparrow Mask,The Wanderer's Companion,11,Mask,0.2097619655225378,False,1
+66,08071,1,,Short Supply,,9,,0.2082943068308293,False,0
+67,10108,1,,Matchbox,,11,,0.2055807841011229,True,1

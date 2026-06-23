@@ -1,41 +1,50 @@
 rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
 1,60402,1,,Arbiter of Fates,,7,,0.9732455518508398,True,1
 2,60403,1,,Dark Future,,7,,0.9732455518508398,True,1
-3,60416,1,,Voice of Ra,,7,,0.7230259665120989,True,2
-4,01000,1,,Random Basic Weakness,,1,,0.700789434221918,False,0
-5,01065,1,,Ward of Protection,,1,,0.6320869929628475,True,2
-6,60416,2,,Voice of Ra,,7,,0.6208696395201615,True,2
-7,60419,1,,Prescient,,7,,0.6056238045979244,True,2
-8,03033,1,,Uncage the Soul,,3,,0.6039055835800715,True,2
-9,60411,1,,Crystal Pendulum,,7,Accessory,0.5935092167146716,True,2
-10,01063,1,,Arcane Initiate,,1,Ally,0.5794389184212759,True,2
-11,11067,1,,Eyes of the Dreamer,,12,Arcane,0.5736626322584781,True,2
-12,11067,2,,Eyes of the Dreamer,,12,Arcane,0.5736626322584781,True,2
-13,60419,2,,Prescient,,7,,0.5553071708029084,True,2
-14,01065,2,,Ward of Protection,,1,,0.5536678602641281,True,2
-15,03033,2,,Uncage the Soul,,3,,0.5246106595354344,True,2
-16,60411,2,,Crystal Pendulum,,7,Accessory,0.4788367539252828,True,2
-17,04032,1,,Dark Prophecy,,4,,0.445545632430461,True,2
-18,05158,1,,Sixth Sense,,5,Arcane,0.44013437828225643,True,1
-19,60412,1,,Robes of Endless Night,,7,Body,0.43327266790953795,True,1
-20,01089,1,,Guts,,1,,0.4303011236470012,True,2
-21,05032,1,,Deny Existence,,5,,0.41286984862859066,True,2
-22,04032,2,,Dark Prophecy,,4,,0.41267589229999974,True,2
-23,01060,1,,Shrivelling,,1,Arcane,0.40913274217227796,True,1
-24,01063,2,,Arcane Initiate,,1,Ally,0.40622683669251686,True,2
-25,01089,2,,Guts,,1,,0.39063432476646137,True,2
-26,60408,1,,Clairvoyance,,7,Arcane,0.38932501801697783,True,1
-27,60407,1,,Azure Flame,,7,Arcane,0.3759929774433099,True,1
-28,04109,1,,Arcane Research,,4,,0.3752895193437692,True,1
-29,05158,2,,Sixth Sense,,5,Arcane,0.37136808599199617,False,1
-30,05032,2,,Deny Existence,,5,,0.36593810149872974,True,2
-31,02029,1,,Ritual Candles,,2,Hand,0.36192295836998817,True,1
-32,08059,1,,Down the Rabbit Hole,,9,,0.3225377623184561,True,1
-33,60408,2,,Clairvoyance,,7,Arcane,0.3145819743451975,False,1
-34,06201,1,,Spectral Razor,,6,,0.3113028844450353,True,1
-35,04109,2,,Arcane Research,,4,,0.3103452988803675,False,1
-36,02153,1,,Hypnotic Gaze,,2,,0.3099596814389922,True,1
-37,04197,1,,Olive McBride,Will Try Anything Once,4,Ally,0.3083099627598337,True,1
-38,60407,2,,Azure Flame,,7,Arcane,0.2908520341821916,False,1
-39,03034,1,,Astral Travel,,3,,0.2884467660412859,False,0
-40,05112,1,,Sign Magick,,5,Hand,0.26809238068564173,True,1
+3,01000,1,,Random Basic Weakness,,1,,0.7458956607056644,False,0
+4,60416,1,,Voice of Ra,,7,,0.7279415718113441,True,2
+5,01065,1,,Ward of Protection,,1,,0.7091829161695378,True,2
+6,60416,2,,Voice of Ra,,7,,0.6250944481925162,True,2
+7,60419,1,,Prescient,,7,,0.6102161080800951,True,2
+8,60411,1,,Crystal Pendulum,,7,Accessory,0.5981759283817039,True,2
+9,01065,2,,Ward of Protection,,1,,0.594259043564334,True,2
+10,01063,1,,Arcane Initiate,,1,Ally,0.5898108088150361,True,2
+11,03033,1,,Uncage the Soul,,3,,0.587944912756469,True,2
+12,11067,1,,Eyes of the Dreamer,,12,Arcane,0.5736626322584781,True,2
+13,11067,2,,Eyes of the Dreamer,,12,Arcane,0.5736626322584781,True,2
+14,60419,2,,Prescient,,7,,0.5595304501795784,True,2
+15,03033,2,,Uncage the Soul,,3,,0.5154290694010768,True,2
+16,01089,1,,Guts,,1,,0.49878717248806126,True,2
+17,60411,2,,Crystal Pendulum,,7,Accessory,0.48302279389902275,True,2
+18,01089,2,,Guts,,1,,0.4624662900855747,True,2
+19,01060,1,,Shrivelling,,1,Arcane,0.46116968649440077,True,1
+20,01063,2,,Arcane Initiate,,1,Ally,0.4597736045179348,True,2
+21,60412,1,,Robes of Endless Night,,7,Body,0.4370218929029285,True,1
+22,05032,1,,Deny Existence,,5,,0.4307733392730798,True,2
+23,04109,1,,Arcane Research,,4,,0.4303021093014096,True,1
+24,60408,1,,Clairvoyance,,7,Arcane,0.3925044810776,True,1
+25,05032,2,,Deny Existence,,5,,0.3879270509494842,True,2
+26,60407,1,,Azure Flame,,7,Arcane,0.379257280368544,True,1
+27,06201,1,,Spectral Razor,,6,,0.376547543602782,True,2
+28,05158,1,,Sixth Sense,,5,Arcane,0.37502924349144007,True,1
+29,04109,2,,Arcane Research,,4,,0.37089529034560537,False,1
+30,04032,1,,Dark Prophecy,,4,,0.3591040070832,True,2
+31,02029,1,,Ritual Candles,,2,Hand,0.3386493328067234,True,1
+32,04032,2,,Dark Prophecy,,4,,0.32902762717875067,True,2
+33,06201,2,,Spectral Razor,,6,,0.32832579902138775,True,2
+34,08059,1,,Down the Rabbit Hole,,9,,0.3225377623184561,True,1
+35,60408,2,,Clairvoyance,,7,Arcane,0.31751079701686513,False,1
+36,01060,2,,Shrivelling,,1,Arcane,0.31393478309323264,False,1
+37,06117,1,,Read the Signs,,6,,0.3125722898452394,True,1
+38,05158,2,,Sixth Sense,,5,Arcane,0.31220665771512296,False,1
+39,01059,1,,Holy Rosary,,1,Accessory,0.3079527400781748,False,0
+40,06117,2,,Read the Signs,,6,,0.2993108942466943,False,1
+41,60407,2,,Azure Flame,,7,Arcane,0.29360821994726605,False,1
+42,04197,1,,Olive McBride,Will Try Anything Once,4,Ally,0.28077967347871874,False,0
+43,01067,1,,Fearless,,1,,0.2737741723793188,False,0
+44,60412,2,,Robes of Endless Night,,7,Body,0.2699299367670853,False,1
+45,01064,1,,Drawn to the Flame,,1,,0.265110821631779,False,0
+46,08125,1,,In the Thick of It,,9,,0.2520828745111728,False,0
+47,05033,1,,Eldritch Inspiration,,5,,0.24927518738767543,False,0
+48,02153,1,,Hypnotic Gaze,,2,,0.24676716630820952,False,0
+49,07029,1,,Sword Cane,,8,Hand,0.2433132536025542,True,1

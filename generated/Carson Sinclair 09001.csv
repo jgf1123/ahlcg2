@@ -2,40 +2,39 @@ rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,
 1,09002,1,,"""As you wish""",,10,,1.0,True,2
 2,09002,2,,"""As you wish""",,10,,1.0,True,2
 3,09003,1,,Selfless to a Fault,,10,,1.0,True,1
-4,01000,1,,Random Basic Weakness,,1,,0.894554409244007,False,0
-5,60110,1,,Safeguard,,7,,0.884579445654419,True,2
-6,60118,1,,Stand Together,,7,,0.8292389592979263,True,2
-7,60118,2,,Stand Together,,7,,0.8190987853933898,True,2
-8,05313,1,,Hallowed Mirror,,5,Accessory,0.763011265992548,True,1
-9,60110,2,,Safeguard,,7,,0.6627171850150452,True,2
-10,01025,1,,Vicious Blow,,1,,0.6328047065155072,True,2
-11,01025,2,,Vicious Blow,,1,,0.6098085892951403,True,2
+4,60110,1,,Safeguard,,7,,0.9023254331789706,True,2
+5,01000,1,,Random Basic Weakness,,1,,0.8554947797792143,False,0
+6,60118,1,,Stand Together,,7,,0.7897709086981558,True,2
+7,60118,2,,Stand Together,,7,,0.7811744230874395,True,2
+8,05313,1,,Hallowed Mirror,,5,Accessory,0.7431683308721764,True,1
+9,60110,2,,Safeguard,,7,,0.6522987023671925,True,2
+10,01025,1,,Vicious Blow,,1,,0.6312958705289293,True,2
+11,01025,2,,Vicious Blow,,1,,0.6117092119548646,True,2
 12,11020,1,,The Book of War,Sun Tzu's Legacy,12,Hand,0.6057312755795611,True,2
 13,11020,2,,The Book of War,Sun Tzu's Legacy,12,Hand,0.6057312755795611,True,2
-14,10027,1,,Task Force,,11,,0.4525634747689771,True,2
-15,08125,1,,In the Thick of It,,9,,0.3974588075073641,False,0
-16,02260,1,,Leadership,,2,,0.3711770243254222,True,2
-17,01088,1,,Emergency Cache,,1,,0.36402019544298275,True,1
-18,10027,2,,Task Force,,11,,0.3402324638445042,True,2
-19,09024,1,,Obsidian Bracelet,,10,Hand,0.3263564864259464,True,1
-20,10048,1,,Thorough Inquiry,,11,,0.31297888996673146,True,1
-21,01091,1,,Overpower,,1,,0.3062663604496508,True,2
-22,06155,1,,Tetsuo Mori,Too Noble for His Own Good,6,Ally,0.3053079432485661,True,2
-23,09024,2,,Obsidian Bracelet,,10,Hand,0.2964509846974821,False,1
-24,02260,2,,Leadership,,2,,0.2950105770508893,True,2
-25,11088,1,,Contemplative,,12,,0.28211484359665895,False,0
-26,11088,2,,Contemplative,,12,,0.28211484359665895,False,0
-27,01065,1,,Ward of Protection,,1,,0.28177934627398893,False,0
-28,04150,1,,Take the Initiative,,4,,0.28150825662370915,True,2
-29,01065,2,,Ward of Protection,,1,,0.2733026931614623,False,0
-30,08020,1,,Toe to Toe,,9,,0.2713530286287366,True,1
-31,04150,2,,Take the Initiative,,4,,0.269980000551692,True,2
-32,06155,2,,Tetsuo Mori,Too Noble for His Own Good,6,Ally,0.26689596807530347,True,2
-33,06111,1,,Daring,,6,,0.26010118748814504,True,2
-34,01091,2,,Overpower,,1,,0.2554270764264354,True,2
-35,01021,1,,Guard Dog,,1,Ally,0.25270040472442556,True,1
-36,01090,1,,Perception,,1,,0.2518502705113662,True,1
-37,02184,1,,Prepared for the Worst,,2,,0.24931277115940595,True,1
-38,60106,1,,Flesh Ward,,7,Arcane,0.24700398018958922,True,1
-39,06111,2,,Daring,,6,,0.23719891321370207,True,2
-40,01024,1,,Dynamite Blast,,1,,0.2320530569545815,True,1
+14,08125,1,,In the Thick of It,,9,,0.5206731293321284,False,0
+15,10027,1,,Task Force,,11,,0.46750902569386116,True,2
+16,10027,2,,Task Force,,11,,0.35442889443023967,True,2
+17,09024,1,,Obsidian Bracelet,,10,Hand,0.3424382228758899,True,1
+18,08020,1,,Toe to Toe,,9,,0.3355229090934602,True,2
+19,01021,1,,Guard Dog,,1,Ally,0.3223550847316289,True,2
+20,10048,1,,Thorough Inquiry,,11,,0.31779985429586427,True,1
+21,09024,2,,Obsidian Bracelet,,10,Hand,0.3096750493322795,False,1
+22,02260,1,,Leadership,,2,,0.3074165187564607,True,2
+23,01091,1,,Overpower,,1,,0.3069844949252718,True,2
+24,01021,2,,Guard Dog,,1,Ally,0.3046387809901369,True,2
+25,01088,1,,Emergency Cache,,1,,0.2972517661638122,True,1
+26,11088,1,,Contemplative,,12,,0.28211484359665895,False,0
+27,11088,2,,Contemplative,,12,,0.28211484359665895,False,0
+28,04150,1,,Take the Initiative,,4,,0.27871291879734966,True,2
+29,08020,2,,Toe to Toe,,9,,0.2769603536364948,True,2
+30,04150,2,,Take the Initiative,,4,,0.26890888558513537,True,2
+31,01091,2,,Overpower,,1,,0.26376827295190525,True,2
+32,01090,1,,Perception,,1,,0.2607507091253305,True,2
+33,06155,1,,Tetsuo Mori,Too Noble for His Own Good,6,Ally,0.25615368633960256,True,1
+34,06111,1,,Daring,,6,,0.25044933295519506,True,2
+35,09028,1,,Motivational Speech,,10,,0.24967520176715707,True,1
+36,02260,2,,Leadership,,2,,0.24495827948165508,True,2
+37,01090,2,,Perception,,1,,0.2372015380031601,True,2
+38,01065,1,,Ward of Protection,,1,,0.23169911631099008,False,0
+39,06111,2,,Daring,,6,,0.2308452646104577,True,2

@@ -3,31 +3,31 @@ rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,
 2,60502,2,,Neither Rain nor Snow,,7,,1.0,True,3
 3,60502,3,,Neither Rain nor Snow,,7,,1.0,True,3
 4,60503,1,,Called by the Mists,,7,,1.0,True,1
-5,04201,1,,Take Heart,,4,,0.9890742910799137,True,2
-6,04201,2,,Take Heart,,4,,0.9874906239190427,True,2
-7,04200,1,,Live and Learn,,4,,0.9193847179016186,True,2
-8,04200,2,,Live and Learn,,4,,0.8973697159584421,True,2
-9,01075,1,,Rabbit's Foot,,1,Accessory,0.8276453158954978,True,2
-10,01079,1,,"""Look what I found!""",,1,,0.7967553386491546,True,2
-11,03039,1,,Resourceful,,3,,0.7779352205062943,True,2
-12,01079,2,,"""Look what I found!""",,1,,0.7738595703233603,True,2
-13,03039,2,,Resourceful,,3,,0.7545744894974995,True,2
-14,01000,1,,Random Basic Weakness,,1,,0.7373987158340717,False,0
-15,01080,1,,Lucky!,,1,,0.7207446897171778,True,2
-16,01080,2,,Lucky!,,1,,0.6967086258148466,True,2
-17,01075,2,,Rabbit's Foot,,1,Accessory,0.6837560656240452,True,2
-18,60507,1,,Old Keyring,,7,Hand,0.6638890610762402,True,2
-19,60507,2,,Old Keyring,,7,Hand,0.6233145432982835,True,2
-20,60505,1,,.18 Derringer,,7,Hand,0.6166532645649051,True,2
-21,60505,2,,.18 Derringer,,7,Hand,0.5927220742465018,True,2
-22,05036,1,,Track Shoes,,5,,0.5703302929158747,True,1
+5,04201,1,,Take Heart,,4,,0.9889733643359144,True,2
+6,04201,2,,Take Heart,,4,,0.9874096911538124,True,2
+7,04200,1,,Live and Learn,,4,,0.9174727478257259,True,2
+8,04200,2,,Live and Learn,,4,,0.8944760835364735,True,2
+9,01075,1,,Rabbit's Foot,,1,Accessory,0.8270219443272016,True,2
+10,01079,1,,"""Look what I found!""",,1,,0.7933505166501,True,2
+11,03039,1,,Resourceful,,3,,0.7899042589698746,True,2
+12,01079,2,,"""Look what I found!""",,1,,0.7701114852906307,True,2
+13,03039,2,,Resourceful,,3,,0.7660383240473081,True,2
+14,01000,1,,Random Basic Weakness,,1,,0.7450679828522526,False,0
+15,01080,1,,Lucky!,,1,,0.7190921441520979,True,2
+16,01080,2,,Lucky!,,1,,0.6939436800396765,True,2
+17,01075,2,,Rabbit's Foot,,1,Accessory,0.680110012159972,True,2
+18,60507,1,,Old Keyring,,7,Hand,0.6612841554171669,True,2
+19,60507,2,,Old Keyring,,7,Hand,0.6195607238276204,True,2
+20,60505,1,,.18 Derringer,,7,Hand,0.6152561457435402,True,2
+21,60505,2,,.18 Derringer,,7,Hand,0.5911163547394606,True,2
+22,05036,1,,Track Shoes,,5,,0.5818812606772301,True,1
 23,10111,1,,Sparrow Mask,The Wanderer's Companion,11,Mask,0.5679535102470037,True,1
-24,60508,1,,Granny Orne,Tough Old Bird,7,Ally,0.5127443805527878,True,2
+24,60508,1,,Granny Orne,Tough Old Bird,7,Ally,0.5150176697229042,True,2
 25,10116,1,,Long Shot,,11,,0.5006863754757405,True,2
 26,10116,2,,Long Shot,,11,,0.5006863754757405,True,2
-27,60508,2,,Granny Orne,Tough Old Bird,7,Ally,0.425765482404967,True,2
-28,60515,1,,Grit Your Teeth,,7,,0.3924754361611708,True,1
-29,01088,1,,Emergency Cache,,1,,0.38424066614866403,True,1
+27,60508,2,,Granny Orne,Tough Old Bird,7,Ally,0.4268967003405838,True,2
+28,01088,1,,Emergency Cache,,1,,0.3873548465758716,True,1
+29,60515,1,,Grit Your Teeth,,7,,0.3863884645470103,True,1
 30,11096,1,,Short Rest,,12,,0.3709711760339281,True,3
 31,11096,2,,Short Rest,,12,,0.3709711760339281,True,3
 32,11096,3,,Short Rest,,12,,0.3709711760339281,True,3

@@ -5,33 +5,33 @@ rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,
 4,11082,1,,Hand Hook,,12,Hand,0.7539163685703714,True,2
 5,05114,1,,Meat Cleaver,,5,Hand,0.7306964395688601,True,2
 6,05114,2,,Meat Cleaver,,5,Hand,0.7042006281739226,True,2
-7,01000,1,,Random Basic Weakness,,1,,0.6939281370421294,False,0
+7,01000,1,,Random Basic Weakness,,1,,0.6947579526018931,False,0
 8,10111,1,,Sparrow Mask,The Wanderer's Companion,11,Mask,0.6700151991414391,True,1
-9,01065,1,,Ward of Protection,,1,,0.6612506225644413,True,2
-10,02033,1,,Peter Sylvestre,Big Man on Campus,2,Ally,0.6610613638216559,True,2
-11,01065,2,,Ward of Protection,,1,,0.5961702460821529,True,2
+9,01065,1,,Ward of Protection,,1,,0.6650539466060325,True,2
+10,02033,1,,Peter Sylvestre,Big Man on Campus,2,Ally,0.6460617788170203,True,2
+11,01065,2,,Ward of Protection,,1,,0.6012604503705361,True,2
 12,08020,1,,Toe to Toe,,9,,0.5861024740227215,True,2
-13,03039,1,,Resourceful,,3,,0.5632714343220406,True,2
-14,03039,2,,Resourceful,,3,,0.5496656624543884,True,2
-15,04201,1,,Take Heart,,4,,0.5323765957586297,True,2
+13,03039,1,,Resourceful,,3,,0.5633018236841976,True,2
+14,03039,2,,Resourceful,,3,,0.5476799454556425,True,2
+15,04201,1,,Take Heart,,4,,0.5369887168739328,True,2
 16,08020,2,,Toe to Toe,,9,,0.5159145421696646,True,2
-17,02033,2,,Peter Sylvestre,Big Man on Campus,2,Ally,0.51401443373025,True,2
-18,10111,2,,Sparrow Mask,The Wanderer's Companion,11,Mask,0.5036635923361462,False,1
-19,04201,2,,Take Heart,,4,,0.5020560636037561,True,2
-20,01080,1,,Lucky!,,1,,0.49979982562605485,True,2
-21,02192,1,,Rise to the Occasion,,2,,0.48252915902262,True,2
-22,02192,2,,Rise to the Occasion,,2,,0.4625432934893112,True,2
-23,01080,2,,Lucky!,,1,,0.4568297504703796,True,2
+17,01080,1,,Lucky!,,1,,0.5124028236569198,True,2
+18,04201,2,,Take Heart,,4,,0.5057528081570596,True,2
+19,10111,2,,Sparrow Mask,The Wanderer's Companion,11,Mask,0.5036635923361462,False,1
+20,02033,2,,Peter Sylvestre,Big Man on Campus,2,Ally,0.5025888943831702,True,2
+21,02192,1,,Rise to the Occasion,,2,,0.49715853072227084,True,2
+22,02192,2,,Rise to the Occasion,,2,,0.475658397616095,True,2
+23,01080,2,,Lucky!,,1,,0.46760951103055653,True,2
 24,08116,1,,Talisman of Protection,,9,Arcane,0.4442907974448226,True,1
 25,11082,2,,Hand Hook,,12,Hand,0.43517947452818556,True,2
-26,01072,1,,Leather Coat,,1,Body,0.40078161383615307,True,2
-27,03155,1,,Fight or Flight,,3,,0.3952951003364055,True,2
-28,01079,1,,"""Look what I found!""",,1,,0.37908847251842837,True,2
+26,01072,1,,Leather Coat,,1,Body,0.41962164157788634,True,2
+27,03155,1,,Fight or Flight,,3,,0.4083262154785994,True,2
+28,01079,1,,"""Look what I found!""",,1,,0.38772207434890005,True,2
 29,08116,2,,Talisman of Protection,,9,Arcane,0.3498341519270386,False,1
-30,01079,2,,"""Look what I found!""",,1,,0.3322955851883413,True,2
-31,04111,1,,Perseverance,,4,,0.3262523399561241,True,1
-32,03155,2,,Fight or Flight,,3,,0.30671410751942724,True,2
-33,01072,2,,Leather Coat,,1,Body,0.29031151085383855,True,2
-34,01087,1,,Flashlight,,1,Hand,0.28890552967565863,True,1
-35,05036,1,,Track Shoes,,5,,0.2620366420632452,True,1
-36,03114,1,,Cherished Keepsake,,3,Accessory,0.25800704368521604,True,1
+30,01079,2,,"""Look what I found!""",,1,,0.34027725916031587,True,2
+31,04111,1,,Perseverance,,4,,0.3314630224911601,True,1
+32,03155,2,,Fight or Flight,,3,,0.32024719197288265,True,2
+33,01072,2,,Leather Coat,,1,Body,0.30845009528956996,True,2
+34,01087,1,,Flashlight,,1,Hand,0.28908160768675034,True,1
+35,03114,1,,Cherished Keepsake,,3,Accessory,0.27205117794083244,True,1
+36,05036,1,,Track Shoes,,5,,0.2620366420632452,True,1

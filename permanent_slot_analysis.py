@@ -28,8 +28,8 @@ from arkham_canonical import CanonicalMapper
 from arkham_popularity import (
     ArkhamPopularityEngine,
     STANDARD_ASSET_SLOT_TYPES,
-    asset_slot_counts,
     build_canonical_card_infos,
+    deck_asset_slot_totals,
     generation_slot_targets_differ,
     slot_phase_targets,
 )
@@ -69,33 +69,6 @@ def load_permanent_names(cards: dict[str, dict[str, Any]]) -> None:
         card = cards.get(cid)
         if card:
             PERMANENT_NAMES[cid] = card.get("name", cid)
-
-
-def deck_asset_slot_totals(
-    deck_slots: dict[str, int],
-    *,
-    cards: dict[str, dict[str, Any]],
-    canonical_cards: dict[str, Any],
-) -> dict[str, float]:
-    """Per asset-slot-type copies used by assets in this deck."""
-    totals: dict[str, float] = defaultdict(float)
-    for canonical_id, count in deck_slots.items():
-        card = cards.get(canonical_id)
-        if card is None or card.get("type_code") != "asset":
-            continue
-        info = canonical_cards.get(canonical_id)
-        if info is None:
-            continue
-        per_slot = asset_slot_counts(
-            canonical_id,
-            info.slot,
-            info.real_slot,
-            count,
-            name=info.name,
-        )
-        for slot_type, slot_copies in per_slot.items():
-            totals[slot_type] += slot_copies
-    return dict(totals)
 
 
 def weighted_average(entries: list[tuple[float, float]]) -> float | None:

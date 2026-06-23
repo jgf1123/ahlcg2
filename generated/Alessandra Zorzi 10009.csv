@@ -3,36 +3,36 @@ rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,
 2,10010,2,,Beguile,,11,,1.0,True,3
 3,10010,3,,Beguile,,11,,1.0,True,3
 4,10011,1,,Zamacona,,11,,1.0,True,1
-5,02272,1,,Fine Clothes,,2,Body,0.911151298997688,True,2
-6,10128,1,,Eldritch Tongue,,11,Arcane,0.9021678692511376,True,2
-7,02272,2,,Fine Clothes,,2,Body,0.8621297652653219,True,2
-8,01000,1,,Random Basic Weakness,,1,,0.7350517000167258,False,0
-9,10071,1,,Grift,,11,,0.7349373534961939,True,2
-10,11053,1,,"""Where's the party?""",,12,,0.7078325231874684,True,2
-11,10067,1,,Fox Mask,The Wise Trickster,11,Mask,0.7012951760997216,True,1
-12,10074,1,,Vamp,,11,,0.6890984992050669,True,2
-13,10071,2,,Grift,,11,,0.6420279029949526,True,2
-14,10073,1,,Stir the Pot,,11,,0.640219886667869,True,2
-15,10062,1,,"Bianca ""Die Katz""",Singing Your Song,11,Ally,0.6217483831047431,True,1
-16,10130,1,,Well-Dressed,,11,,0.6057236767613174,True,2
-17,10066,1,,Fake Credentials,,11,Hand,0.6017303523120311,True,2
-18,04107,1,,Lucky Cigarette Case,,4,Accessory,0.5751973714614084,True,2
-19,10074,2,,Vamp,,11,,0.5703486303720617,True,2
-20,01092,1,,Manual Dexterity,,1,,0.536277952897999,True,2
-21,10128,2,,Eldritch Tongue,,11,Arcane,0.534627612354128,True,2
-22,10130,2,,Well-Dressed,,11,,0.5059468937717632,True,2
-23,10065,1,,British Bull Dog,,11,Hand,0.49382565384499166,True,2
-24,11053,2,,"""Where's the party?""",,12,,0.46132901497018947,True,2
-25,04107,2,,Lucky Cigarette Case,,4,Accessory,0.42532172691570447,True,2
-26,10066,2,,Fake Credentials,,11,Hand,0.4228246148948885,True,2
-27,01092,2,,Manual Dexterity,,1,,0.42102134171214783,True,2
-28,10065,2,,British Bull Dog,,11,Hand,0.409554996666653,True,2
-29,01090,1,,Perception,,1,,0.3784584048984868,True,2
-30,01048,1,,Leo De Luca,The Louisiana Lion,1,Ally,0.3778165311695621,True,1
-31,60305,1,,Lockpicks,,7,Hand,0.37477307401692866,False,0
-32,10073,2,,Stir the Pot,,11,,0.3691177784225889,True,2
-33,11088,1,,Contemplative,,12,,0.35961202705282913,True,2
-34,10069,1,,Bank Job,,11,,0.33666445777372817,True,1
-35,11088,2,,Contemplative,,12,,0.3185624027712372,True,2
-36,08125,1,,In the Thick of It,,9,,0.3179229337392598,False,0
-37,01090,2,,Perception,,1,,0.31135572524730154,True,2
+5,02272,1,,Fine Clothes,,2,Body,0.9087134552358158,True,2
+6,10128,1,,Eldritch Tongue,,11,Arcane,0.9004277796215113,True,2
+7,02272,2,,Fine Clothes,,2,Body,0.8604628494594909,True,2
+8,11053,1,,"""Where's the party?""",,12,,0.8026901811909877,True,2
+9,01000,1,,Random Basic Weakness,,1,,0.7573522434963642,False,0
+10,10071,1,,Grift,,11,,0.7242186888169838,True,2
+11,10067,1,,Fox Mask,The Wise Trickster,11,Mask,0.7230964303128501,True,2
+12,10074,1,,Vamp,,11,,0.6765775864464748,True,2
+13,10073,1,,Stir the Pot,,11,,0.6354899531723336,True,2
+14,10071,2,,Grift,,11,,0.6306136717944221,True,2
+15,10062,1,,"Bianca ""Die Katz""",Singing Your Song,11,Ally,0.6105202795250477,True,1
+16,10130,1,,Well-Dressed,,11,,0.5975410648760545,True,2
+17,10066,1,,Fake Credentials,,11,Hand,0.5873709038416206,True,2
+18,04107,1,,Lucky Cigarette Case,,4,Accessory,0.5582311375220231,True,2
+19,10074,2,,Vamp,,11,,0.5565059069223735,True,2
+20,11053,2,,"""Where's the party?""",,12,,0.5231523820741518,True,2
+21,10128,2,,Eldritch Tongue,,11,Arcane,0.5221277917605319,True,2
+22,01092,1,,Manual Dexterity,,1,,0.5186940314844996,True,2
+23,10065,1,,British Bull Dog,,11,Hand,0.509693000761726,True,2
+24,10130,2,,Well-Dressed,,11,,0.49616035134793024,True,2
+25,01092,2,,Manual Dexterity,,1,,0.4346671458861123,True,2
+26,10065,2,,British Bull Dog,,11,Hand,0.4265675095871736,True,2
+27,11088,1,,Contemplative,,12,,0.40780415380411034,True,2
+28,04107,2,,Lucky Cigarette Case,,4,Accessory,0.4049760747385959,True,2
+29,10066,2,,Fake Credentials,,11,Hand,0.40344547468711306,True,2
+30,01090,1,,Perception,,1,,0.3773875266616007,True,1
+31,60305,1,,Lockpicks,,7,Hand,0.36878623903581514,False,0
+32,11088,2,,Contemplative,,12,,0.361253410128143,True,2
+33,10073,2,,Stir the Pot,,11,,0.3521238592552248,True,2
+34,01048,1,,Leo De Luca,The Louisiana Lion,1,Ally,0.35192466211523177,True,1
+35,08125,1,,In the Thick of It,,9,,0.3292342492139927,False,0
+36,10067,2,,Fox Mask,The Wise Trickster,11,Mask,0.3209523657263393,True,2
+37,10069,1,,Bank Job,,11,,0.3144526306581857,True,1

@@ -1,36 +1,36 @@
 rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
 1,60302,1,,"Anything You Can Do, Better",,7,,0.9799622455860817,True,1
 2,60303,1,,Arrogance,,7,,0.9799622455860817,True,1
-3,04107,1,,Lucky Cigarette Case,,4,Accessory,0.7675092011008519,True,2
-4,01053,1,,Opportunist,,1,,0.7586827630180094,True,2
-5,60305,1,,Lockpicks,,7,Hand,0.7049741776553085,True,2
-6,01092,1,,Manual Dexterity,,1,,0.665886255164919,True,2
-7,01000,1,,Random Basic Weakness,,1,,0.6645366229417445,False,0
-8,03233,1,,"""Watch this!""",,3,,0.6608766001927886,True,2
-9,02229,1,,Quick Thinking,,2,,0.6378227988786409,True,2
+3,04107,1,,Lucky Cigarette Case,,4,Accessory,0.7673564844730714,True,2
+4,01053,1,,Opportunist,,1,,0.7583254660696631,True,2
+5,60305,1,,Lockpicks,,7,Hand,0.7052971730470496,True,2
+6,01092,1,,Manual Dexterity,,1,,0.6654523899123257,True,2
+7,01000,1,,Random Basic Weakness,,1,,0.6650036955258102,False,0
+8,03233,1,,"""Watch this!""",,3,,0.6607791494096442,True,2
+9,02229,1,,Quick Thinking,,2,,0.6386365660367117,True,2
 10,11054,1,,"""You've had worse...""",,12,,0.6046702004945554,True,2
-11,01053,2,,Opportunist,,1,,0.5996893343886125,True,2
-12,04107,2,,Lucky Cigarette Case,,4,Accessory,0.5842344199655329,True,2
-13,01093,1,,Unexpected Courage,,1,,0.556138364390512,True,2
+11,01053,2,,Opportunist,,1,,0.6000422745907794,True,2
+12,04107,2,,Lucky Cigarette Case,,4,Accessory,0.5840077407275437,True,2
+13,01093,1,,Unexpected Courage,,1,,0.5560363449282641,True,2
 14,09064,1,,Thieves' Kit,,10,Hand,0.55463395093415,True,2
-15,60305,2,,Lockpicks,,7,Hand,0.5518928756806881,True,2
-16,01092,2,,Manual Dexterity,,1,,0.5365318124890188,True,2
-17,60317,1,,Nimble,,7,,0.5341627063627105,True,1
-18,01051,1,,Backstab,,1,,0.5219712489947124,True,2
-19,03233,2,,"""Watch this!""",,3,,0.510097905624887,True,2
-20,02229,2,,Quick Thinking,,2,,0.5044134232660002,True,2
-21,60315,1,,Pilfer,,7,,0.4683474013180131,True,1
-22,01093,2,,Unexpected Courage,,1,,0.4253159844293662,True,2
-23,01046,1,,Pickpocketing,,1,,0.4159566745971645,True,1
-24,60306,1,,Mauser C96,,7,Hand,0.36824086681789786,True,1
+15,60305,2,,Lockpicks,,7,Hand,0.5521963933331466,True,2
+16,01092,2,,Manual Dexterity,,1,,0.53604443653164,True,2
+17,60317,1,,Nimble,,7,,0.5339946459285544,True,1
+18,01051,1,,Backstab,,1,,0.5215743468229933,True,2
+19,03233,2,,"""Watch this!""",,3,,0.5099579312055655,True,2
+20,02229,2,,Quick Thinking,,2,,0.5051866419703441,True,2
+21,60315,1,,Pilfer,,7,,0.46793171287138624,True,1
+22,01093,2,,Unexpected Courage,,1,,0.42518352175672003,True,2
+23,01046,1,,Pickpocketing,,1,,0.4153089944879254,True,1
+24,60306,1,,Mauser C96,,7,Hand,0.3685334753759247,True,1
 25,08125,1,,In the Thick of It,,9,,0.36080268529583537,False,0
-26,01048,1,,Leo De Luca,The Louisiana Lion,1,Ally,0.35145664698434387,True,1
+26,01048,1,,Leo De Luca,The Louisiana Lion,1,Ally,0.35158708524771226,True,1
 27,09064,2,,Thieves' Kit,,10,Hand,0.3459207775624977,True,2
-28,60318,1,,Daredevil,,7,,0.3348556170412084,True,1
+28,60318,1,,Daredevil,,7,,0.335088080942179,True,1
 29,08047,1,,Scout Ahead,,9,,0.33136474349496375,True,1
-30,01051,2,,Backstab,,1,,0.32796238207428086,True,2
-31,60306,2,,Mauser C96,,7,Hand,0.31736155092110485,False,1
-32,01090,1,,Perception,,1,,0.31397241330925924,True,1
-33,60310,1,,Leather Jacket,,7,Body,0.3024468590941712,True,1
+30,01051,2,,Backstab,,1,,0.3282952515703746,True,2
+31,60306,2,,Mauser C96,,7,Hand,0.3176553993945069,False,1
+32,01090,1,,Perception,,1,,0.3142047495717541,True,1
+33,60310,1,,Leather Jacket,,7,Body,0.30264160678773355,True,1
 34,11054,2,,"""You've had worse...""",,12,,0.3023351002472777,True,2
-35,07114,1,,Breaking and Entering,,8,,0.2931335760466528,True,1
+35,07114,1,,Breaking and Entering,,8,,0.29353991324008977,True,1

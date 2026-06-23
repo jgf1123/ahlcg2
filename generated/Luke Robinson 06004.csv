@@ -1,46 +1,67 @@
 rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
-1,06013,1,,Gate Box,Worlds within Worlds,6,,0.9918839405715933,True,1
-2,06014,1,,Detached from Reality,,6,,0.9918839405715933,True,1
-3,01000,1,,Random Basic Weakness,,1,,0.794756189470864,False,0
-4,06117,1,,Read the Signs,,6,,0.5962424223076386,True,2
-5,10043,1,,Mouse Mask,The Meek Watcher,11,Mask,0.5812236428125392,True,1
-6,01065,1,,Ward of Protection,,1,,0.5800970988097549,True,2
-7,06117,2,,Read the Signs,,6,,0.5619681417053765,True,2
-8,01065,2,,Ward of Protection,,1,,0.5110738817303228,True,2
-9,01064,1,,Drawn to the Flame,,1,,0.4644192591912426,True,2
-10,04157,1,,Enraptured,,4,,0.4563910986850603,True,2
-11,06201,1,,Spectral Razor,,6,,0.42462684477963863,True,2
-12,01039,1,,Deduction,,1,,0.4225105778212724,True,2
-13,04157,2,,Enraptured,,4,,0.41500429444629927,True,2
-14,01039,2,,Deduction,,1,,0.40479704977808606,True,2
-15,01064,2,,Drawn to the Flame,,1,,0.38588305114702437,True,2
-16,06201,2,,Spectral Razor,,6,,0.38251678648751614,True,2
-17,05032,1,,Deny Existence,,5,,0.3509191447555038,True,2
-18,08125,1,,In the Thick of It,,9,,0.33102122787228627,False,0
-19,01060,1,,Shrivelling,,1,Arcane,0.3262624478612918,True,2
-20,01059,1,,Holy Rosary,,1,Accessory,0.32499402310611025,True,1
-21,05154,1,,Hawk-Eye Folding Camera,,5,Hand,0.3225357539473745,True,2
-22,11068a,1,,The Great Work,Divide and Unite,12,,0.31135561811501816,True,1
-23,05032,2,,Deny Existence,,5,,0.30031977870216553,True,2
-24,04109,1,,Arcane Research,,4,,0.29973838158859306,True,1
-25,03153,1,,Storm of Spirits,,3,,0.29660070319012893,True,1
-26,07032,1,,Promise of Power,,8,,0.28246711746717446,True,1
-27,05154,2,,Hawk-Eye Folding Camera,,5,Hand,0.2823316821821898,True,2
-28,01060,2,,Shrivelling,,1,Arcane,0.2719981368226454,True,2
-29,05110,1,,Crack the Case,,5,,0.26536168224994827,True,1
-30,10043,2,,Mouse Mask,The Meek Watcher,11,Mask,0.26422379051117906,False,1
-31,03269,1,,St. Hubert's Key,Cleansing Fire,3,Accessory,0.26246323069862754,True,1
-32,60213,1,,Whitton Greene,Hunter of Rare Books,7,Ally,0.258684592010687,True,2
-33,01090,1,,Perception,,1,,0.25734906588285644,True,2
-34,04109,2,,Arcane Research,,4,,0.24823261644517372,False,1
-35,05158,1,,Sixth Sense,,5,Arcane,0.24508808262248213,True,1
-36,01037,1,,Working a Hunch,,1,,0.2430965408338111,True,1
-37,01090,2,,Perception,,1,,0.2394173231486381,True,2
-38,01059,2,,Holy Rosary,,1,Accessory,0.2314889788704069,False,1
-39,02022,1,,Shortcut,,2,,0.22617031889250105,False,0
-40,05116,1,,Scroll of Secrets,,5,Hand,0.22360685638420735,False,0
-41,05110,2,,Crack the Case,,5,,0.22287912598556883,False,1
-42,03153,2,,Storm of Spirits,,3,,0.22273880504535828,False,1
-43,03033,1,,Uncage the Soul,,3,,0.22012655085729416,False,0
-44,07032,2,,Promise of Power,,8,,0.21274358646591693,False,1
-45,60213,2,,Whitton Greene,Hunter of Rare Books,7,Ally,0.20193712003176625,True,2
+1,06013,1,,Gate Box,Worlds within Worlds,6,,0.9920861970747279,True,1
+2,06014,1,,Detached from Reality,,6,,0.9920861970747279,True,1
+3,01000,1,,Random Basic Weakness,,1,,0.8108451188346716,False,0
+4,06117,1,,Read the Signs,,6,,0.6152496057858456,True,2
+5,10043,1,,Mouse Mask,The Meek Watcher,11,Mask,0.596369286309602,True,1
+6,06117,2,,Read the Signs,,6,,0.5787297364252161,True,2
+7,01065,1,,Ward of Protection,,1,,0.546907569422314,True,2
+8,01064,1,,Drawn to the Flame,,1,,0.5074035321412025,True,2
+9,04157,1,,Enraptured,,4,,0.4970657336844493,True,2
+10,01065,2,,Ward of Protection,,1,,0.4811528152863061,True,2
+11,01039,1,,Deduction,,1,,0.464782158448549,True,2
+12,04157,2,,Enraptured,,4,,0.4566779518862629,True,2
+13,06201,1,,Spectral Razor,,6,,0.43805220390113997,True,2
+14,01064,2,,Drawn to the Flame,,1,,0.4335587652137993,True,2
+15,06201,2,,Spectral Razor,,6,,0.3942203729312217,True,2
+16,01039,2,,Deduction,,1,,0.39409633889130835,True,2
+17,05032,1,,Deny Existence,,5,,0.3681088447891487,True,2
+18,05154,1,,Hawk-Eye Folding Camera,,5,Hand,0.3481981762944707,True,2
+19,08125,1,,In the Thick of It,,9,,0.33686095602876603,False,0
+20,11068a,1,,The Great Work,Divide and Unite,12,,0.3356788901650602,True,1
+21,01059,1,,Holy Rosary,,1,Accessory,0.32731093695001556,True,1
+22,01060,1,,Shrivelling,,1,Arcane,0.31708648931308525,True,2
+23,05032,2,,Deny Existence,,5,,0.3164055401725501,True,2
+24,05154,2,,Hawk-Eye Folding Camera,,5,Hand,0.30273958919700095,True,2
+25,01037,1,,Working a Hunch,,1,,0.29255189369961343,True,1
+26,03153,1,,Storm of Spirits,,3,,0.289646482441248,True,1
+27,04109,1,,Arcane Research,,4,,0.2801669765455813,True,1
+28,07032,1,,Promise of Power,,8,,0.2798084105404817,True,1
+29,05158,1,,Sixth Sense,,5,Arcane,0.27735000841914975,True,1
+30,02022,1,,Shortcut,,2,,0.2761786244764115,True,1
+31,10043,2,,Mouse Mask,The Meek Watcher,11,Mask,0.2703010783704371,False,1
+32,05110,1,,Crack the Case,,5,,0.2663686025591634,True,1
+33,01060,2,,Shrivelling,,1,Arcane,0.2640138336341529,True,2
+34,03269,1,,St. Hubert's Key,Cleansing Fire,3,Accessory,0.26378949225523596,True,1
+35,60213,1,,Whitton Greene,Hunter of Rare Books,7,Ally,0.2556287006043333,True,2
+36,01037,2,,Working a Hunch,,1,,0.2492901409877721,False,1
+37,02022,2,,Shortcut,,2,,0.23767003563319244,False,1
+38,01090,1,,Perception,,1,,0.23407340297929657,False,0
+39,01059,2,,Holy Rosary,,1,Accessory,0.23140169142775946,False,1
+40,04109,2,,Arcane Research,,4,,0.229042493534697,False,1
+41,05110,2,,Crack the Case,,5,,0.22808251557789685,False,1
+42,03153,2,,Storm of Spirits,,3,,0.21865826263111404,False,1
+43,01090,2,,Perception,,1,,0.21629495281075553,False,0
+44,03033,1,,Uncage the Soul,,3,,0.2128588785464642,False,0
+45,06029,1,,Open Gate,,6,,0.21226833718754956,False,0
+46,07032,2,,Promise of Power,,8,,0.20959274006505565,False,1
+47,04306,1,,Vantage Point,,4,,0.20911448271470856,False,0
+48,06029,2,,Open Gate,,6,,0.20885077696539397,False,0
+49,05116,1,,Scroll of Secrets,,5,Hand,0.20460043446991708,False,0
+50,06029,3,,Open Gate,,6,,0.20439259524464526,False,0
+51,03269,2,,St. Hubert's Key,Cleansing Fire,3,Accessory,0.20419756620748342,False,1
+52,60408,1,,Clairvoyance,,7,Arcane,0.20140616875507006,False,0
+53,60213,2,,Whitton Greene,Hunter of Rare Books,7,Ally,0.19761316462928835,True,2
+54,11040,1,,Correlate All Its Contents,,12,,0.19282246403478479,False,0
+55,05116,2,,Scroll of Secrets,,5,Hand,0.1828739911938803,False,0
+56,08059,1,,Down the Rabbit Hole,,9,,0.17876798695676102,False,0
+57,01088,1,,Emergency Cache,,1,,0.17396859763709183,False,0
+58,03033,2,,Uncage the Soul,,3,,0.1737738502173766,False,0
+59,04306,2,,Vantage Point,,4,,0.17291262143982702,False,0
+60,10047,1,,Testing Sprint,,11,,0.17157406114393095,False,0
+61,05158,2,,Sixth Sense,,5,Arcane,0.17077247993414232,False,1
+62,01089,1,,Guts,,1,,0.1702190350322868,False,0
+63,06023,1,,Astounding Revelation,,6,,0.16804411721747717,False,0
+64,02023,1,,Seeking Answers,,2,,0.16464516496387377,False,0
+65,01038,1,,Barricade,,1,,0.16180535398922558,False,0
+66,01033,1,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.15851949803757603,True,1

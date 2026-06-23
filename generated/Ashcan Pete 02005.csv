@@ -1,41 +1,44 @@
 rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
 1,02015,1,,Wracked by Nightmares,,2,,1.0,True,1
-2,02014,1,,Duke,Loyal Hound,2,,0.9969350789284616,True,1
-3,01000,1,,Random Basic Weakness,,1,,0.7953995068395892,False,0
-4,01080,1,,Lucky!,,1,,0.738629934101213,True,2
-5,01080,2,,Lucky!,,1,,0.6491832472527563,True,2
-6,03039,1,,Resourceful,,3,,0.6003410070203226,True,2
-7,03039,2,,Resourceful,,3,,0.5671551340053015,True,2
-8,01090,1,,Perception,,1,,0.5538467798614618,True,2
-9,01091,1,,Overpower,,1,,0.49146250858906054,True,2
-10,01090,2,,Perception,,1,,0.4873601370662565,True,2
-11,01093,1,,Unexpected Courage,,1,,0.4712360150938227,True,2
-12,01079,1,,"""Look what I found!""",,1,,0.4584761683848552,True,2
+2,02014,1,,Duke,Loyal Hound,2,,0.9969592804103627,True,1
+3,01000,1,,Random Basic Weakness,,1,,0.7882278799587434,False,0
+4,01080,1,,Lucky!,,1,,0.7399256544187006,True,2
+5,01080,2,,Lucky!,,1,,0.650673351816575,True,2
+6,03039,1,,Resourceful,,3,,0.6048413455739415,True,2
+7,03039,2,,Resourceful,,3,,0.5715848380587892,True,2
+8,01090,1,,Perception,,1,,0.5578699140286818,True,2
+9,01091,1,,Overpower,,1,,0.4979962107604187,True,2
+10,01090,2,,Perception,,1,,0.4790591366813342,True,2
+11,01093,1,,Unexpected Courage,,1,,0.47471435158337766,True,2
+12,01079,1,,"""Look what I found!""",,1,,0.4618946043638668,True,2
 13,10116,1,,Long Shot,,11,,0.4511714035005026,True,2
 14,10116,2,,Long Shot,,11,,0.43999313912008864,True,2
-15,01093,2,,Unexpected Courage,,1,,0.4265548335057664,True,2
-16,04201,1,,Take Heart,,4,,0.41374029154823805,True,2
-17,08125,1,,In the Thick of It,,9,,0.4104200737974631,False,0
+15,01093,2,,Unexpected Courage,,1,,0.4307444048840419,True,2
+16,04201,1,,Take Heart,,4,,0.4170073806405815,True,2
+17,08125,1,,In the Thick of It,,9,,0.41070363598314946,False,0
 18,10023,1,,Wolf Mask,The Moon's Sire,11,Mask,0.37647673985203844,True,1
-19,01079,2,,"""Look what I found!""",,1,,0.3583334850905047,True,2
-20,01091,2,,Overpower,,1,,0.351434728405473,True,2
-21,04201,2,,Take Heart,,4,,0.32999189020394365,True,2
-22,01088,1,,Emergency Cache,,1,,0.3257886166670544,True,2
-23,02234,1,,Dark Horse,,2,,0.3214812919270004,True,1
-24,02033,1,,Peter Sylvestre,Big Man on Campus,2,Ally,0.3207541916856654,True,2
-25,05036,1,,Track Shoes,,5,,0.3207291167981952,True,1
-26,02032,1,,Fire Axe,,2,Hand,0.298097517077425,True,2
-27,01075,1,,Rabbit's Foot,,1,Accessory,0.296269814710654,True,1
-28,01089,1,,Guts,,1,,0.2932205870105853,True,1
-29,06165,1,,Scrounge for Supplies,,6,,0.29031950192910133,True,1
-30,01088,2,,Emergency Cache,,1,,0.27033617951968986,True,2
-31,01072,1,,Leather Coat,,1,Body,0.2623282347621479,True,1
-32,06165,2,,Scrounge for Supplies,,6,,0.2579509951670746,False,1
-33,02032,2,,Fire Axe,,2,Hand,0.25413960577273903,True,2
-34,11085,1,,Profane Idol,,12,Accessory,0.25370170312085794,False,0
-35,08071,1,,Short Supply,,9,,0.25194674758225133,False,0
-36,02234,2,,Dark Horse,,2,,0.2502663301857106,False,1
-37,04200,1,,Live and Learn,,4,,0.24753523017706375,False,0
-38,60511,1,,Scrapper,,7,,0.23664625846491003,False,0
-39,02033,2,,Peter Sylvestre,Big Man on Campus,2,Ally,0.23626921967797473,True,2
-40,01030,1,,Magnifying Glass,,1,Hand,0.2314448720460824,True,1
+19,01079,2,,"""Look what I found!""",,1,,0.36247167369111727,True,2
+20,01091,2,,Overpower,,1,,0.35957041934361195,True,2
+21,04201,2,,Take Heart,,4,,0.3323020813780487,True,2
+22,01088,1,,Emergency Cache,,1,,0.330218915575413,True,2
+23,02234,1,,Dark Horse,,2,,0.3215561707233493,True,1
+24,02033,1,,Peter Sylvestre,Big Man on Campus,2,Ally,0.32131804622271354,True,2
+25,05036,1,,Track Shoes,,5,,0.320549308771883,True,1
+26,01075,1,,Rabbit's Foot,,1,Accessory,0.30433696568444657,True,1
+27,01089,1,,Guts,,1,,0.2987055746576938,True,1
+28,02032,1,,Fire Axe,,2,Hand,0.29676639186664083,True,2
+29,06165,1,,Scrounge for Supplies,,6,,0.29368810131705625,True,1
+30,01088,2,,Emergency Cache,,1,,0.2758167755469451,True,2
+31,01072,1,,Leather Coat,,1,Body,0.2704284909304906,True,1
+32,06165,2,,Scrounge for Supplies,,6,,0.26096457323517624,False,1
+33,11085,1,,Profane Idol,,12,Accessory,0.25370170312085794,False,0
+34,02032,2,,Fire Axe,,2,Hand,0.2536713586663539,True,2
+35,08071,1,,Short Supply,,9,,0.2524412452381217,False,0
+36,02234,2,,Dark Horse,,2,,0.2504905240994736,False,1
+37,04200,1,,Live and Learn,,4,,0.25009799955578366,False,0
+38,02033,2,,Peter Sylvestre,Big Man on Campus,2,Ally,0.2366818891548875,True,2
+39,04200,2,,Live and Learn,,4,,0.2337450494796037,False,0
+40,60511,1,,Scrapper,,7,,0.23349758672664256,False,0
+41,03198,1,,Madame Labranche,Mysterious Benefactress,3,Ally,0.2301651132044408,False,0
+42,60513,1,,A Test of Will,,7,,0.22743137134286964,False,0
+43,01030,1,,Magnifying Glass,,1,Hand,0.2270435667327812,True,1

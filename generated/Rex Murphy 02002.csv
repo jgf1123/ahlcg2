@@ -1,34 +1,34 @@
 rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
 1,02008,1,,Search for the Truth,,2,,0.9802987753790897,True,1
-2,02009,1,,Rex's Curse,,2,,0.9802136148681776,True,1
-3,01039,1,,Deduction,,1,,0.8808040347991709,True,2
-4,01033,1,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.8307802098794362,True,2
-5,01039,2,,Deduction,,1,,0.7716595319855085,True,2
-6,01030,1,,Magnifying Glass,,1,Hand,0.7370431060990538,True,2
-7,01000,1,,Random Basic Weakness,,1,,0.7227562048716359,False,0
-8,01090,1,,Perception,,1,,0.6826950741419924,True,2
-9,01033,2,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.6351011724643217,True,2
-10,01090,2,,Perception,,1,,0.6021526335725189,True,2
-11,01030,2,,Magnifying Glass,,1,Hand,0.593362466032195,True,2
-12,01088,1,,Emergency Cache,,1,,0.4690917640424302,True,2
-13,02022,1,,Shortcut,,2,,0.4486466128910618,True,2
-14,02227,1,,Inquiring Mind,,2,,0.4172518546095555,True,2
-15,02107,1,,"""I've got a plan!""",,2,,0.41586594656023,True,2
-16,02022,2,,Shortcut,,2,,0.39038770936076633,True,2
-17,01088,2,,Emergency Cache,,1,,0.3878415278803798,True,2
-18,05110,1,,Crack the Case,,5,,0.3669523140140085,True,2
-19,02227,2,,Inquiring Mind,,2,,0.364644913803606,True,2
-20,02186,1,,Preposterous Sketches,,2,,0.33946199218279777,True,1
-21,02107,2,,"""I've got a plan!""",,2,,0.3345245263139663,True,2
-22,01093,1,,Unexpected Courage,,1,,0.32966625516857495,True,1
-23,01036,1,,Mind over Matter,,1,,0.3263981381167695,True,1
-24,05110,2,,Crack the Case,,5,,0.30934967596943147,True,2
-25,03231,1,,Eureka!,,3,,0.3054269733513567,True,2
-26,01034,1,,Hyperawareness,,1,,0.29832092084080797,True,1
-27,60211,1,,Higher Education,,7,,0.28339332179877763,True,1
-28,01037,1,,Working a Hunch,,1,,0.27838899472547135,True,1
-29,01087,1,,Flashlight,,1,Hand,0.27820781051168963,True,1
-30,03231,2,,Eureka!,,3,,0.26774457400127916,True,2
-31,60214,1,,Burning the Midnight Oil,,7,,0.26449291746123066,True,1
-32,02023,1,,Seeking Answers,,2,,0.25410132076414005,True,1
-33,09044,1,,Grim Memoir,,10,Hand,0.25403622573191176,True,1
+2,02009,1,,Rex's Curse,,2,,0.9802145132388862,True,1
+3,01039,1,,Deduction,,1,,0.8829248197688562,True,2
+4,01033,1,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.8248079823583572,True,2
+5,01039,2,,Deduction,,1,,0.7622709191422865,True,2
+6,01000,1,,Random Basic Weakness,,1,,0.7535867340854795,False,0
+7,01030,1,,Magnifying Glass,,1,Hand,0.7367020216510465,True,2
+8,01090,1,,Perception,,1,,0.6820930524334862,True,2
+9,01033,2,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.6188314523679378,True,2
+10,01090,2,,Perception,,1,,0.5899354246289976,True,2
+11,01030,2,,Magnifying Glass,,1,Hand,0.5796858607969791,True,2
+12,01088,1,,Emergency Cache,,1,,0.4659448684970543,True,2
+13,02022,1,,Shortcut,,2,,0.44835934489373785,True,2
+14,02227,1,,Inquiring Mind,,2,,0.4118264085578922,True,2
+15,02107,1,,"""I've got a plan!""",,2,,0.39672622504206145,True,2
+16,02022,2,,Shortcut,,2,,0.3876242381278793,True,2
+17,01088,2,,Emergency Cache,,1,,0.3814212238059524,True,2
+18,05110,1,,Crack the Case,,5,,0.3781878694210394,True,2
+19,02227,2,,Inquiring Mind,,2,,0.3579548669942902,True,2
+20,02186,1,,Preposterous Sketches,,2,,0.3448391264968802,True,1
+21,01036,1,,Mind over Matter,,1,,0.32883056799483107,True,1
+22,01093,1,,Unexpected Courage,,1,,0.3182630124141713,True,1
+23,03231,1,,Eureka!,,3,,0.3168484308523985,True,2
+24,05110,2,,Crack the Case,,5,,0.31493797346997,True,2
+25,02107,2,,"""I've got a plan!""",,2,,0.31248997556220226,True,2
+26,01034,1,,Hyperawareness,,1,,0.30694237358776455,True,1
+27,60211,1,,Higher Education,,7,,0.2894867055026018,True,1
+28,01087,1,,Flashlight,,1,Hand,0.2763666190363344,True,1
+29,03231,2,,Eureka!,,3,,0.2742000873270134,True,2
+30,01037,1,,Working a Hunch,,1,,0.2720228575002859,True,1
+31,02023,1,,Seeking Answers,,2,,0.26384399567697886,True,1
+32,10044,1,,Ravenous Myconid,Unidentified,11,,0.26334544497644913,True,1
+33,09044,1,,Grim Memoir,,10,Hand,0.2599385656929118,True,1

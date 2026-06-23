@@ -30,6 +30,7 @@ from arkham_deck_options import (
     all_deck_requirement_card_ids,
     choose_signature_from_group,
     effective_deck_size_from_slots,
+    investigator_requirement_card_ids,
     investigator_option_slug,
     merge_deck_options_with_permanents,
     parse_investigator_option,
@@ -244,6 +245,71 @@ def asset_slot_counts(
         if part:
             counts[part] = counts.get(part, 0.0) + slot_copies
     return counts
+
+
+def accumulate_asset_slot_usage(
+    slots: dict[str, int],
+    weight: float,
+    slot_totals: dict[str, float],
+    *,
+    cards: dict[str, dict[str, Any]],
+    canonical_cards: dict[str, Any],
+) -> None:
+    """Add weighted asset-slot copies from a deck's slots into slot_totals."""
+    for canonical_id, count in slots.items():
+        card = cards.get(canonical_id)
+        if card is None or card.get("type_code") != "asset":
+            continue
+        info = canonical_cards.get(canonical_id)
+        if info is None:
+            continue
+        per_slot = asset_slot_counts(
+            canonical_id,
+            info.slot,
+            info.real_slot,
+            count,
+            name=info.name,
+        )
+        for slot_type, slot_copies in per_slot.items():
+            slot_totals[slot_type] += weight * slot_copies
+
+
+def deck_asset_slot_totals(
+    slots: dict[str, int],
+    *,
+    cards: dict[str, dict[str, Any]],
+    canonical_cards: dict[str, Any],
+) -> dict[str, float]:
+    """Per asset-slot-type copies used by assets in one deck."""
+    totals: dict[str, float] = defaultdict(float)
+    accumulate_asset_slot_usage(
+        slots, 1.0, totals, cards=cards, canonical_cards=canonical_cards
+    )
+    return dict(totals)
+
+
+def investigator_decks(
+    decks: list[PreparedDecklist],
+    canonical_front: str,
+    canonical_back: str,
+    *,
+    exclude_ignored: bool = False,
+    require_cycle: bool = False,
+) -> list[PreparedDecklist]:
+    """Filter prepared decks for one (canonical_front, canonical_back) tuple."""
+    matched: list[PreparedDecklist] = []
+    for deck in decks:
+        if (
+            deck.canonical_front != canonical_front
+            or deck.canonical_back != canonical_back
+        ):
+            continue
+        if exclude_ignored and deck.is_ignore:
+            continue
+        if require_cycle and deck.cycle is None:
+            continue
+        matched.append(deck)
+    return matched
 
 
 def slot_phase_targets(weighted_avg: float) -> tuple[int, int, int]:
@@ -1063,12 +1129,7 @@ class ArkhamPopularityEngine:
         canonical_front: str,
         canonical_back: str,
     ) -> list[dict[str, Any]]:
-        inv_decks = [
-            deck
-            for deck in decks
-            if deck.canonical_front == canonical_front
-            and deck.canonical_back == canonical_back
-        ]
+        inv_decks = investigator_decks(decks, canonical_front, canonical_back)
         user_weights = self.assign_user_weights(decks)
         active = [deck for deck in inv_decks if not deck.is_ignore]
         cycle_weights = self.assign_cycle_weights(active, user_weights)
@@ -1241,9 +1302,9 @@ class ArkhamPopularityEngine:
                     continue
                 inv_weight = sum(
                     self.deck_weight(deck, user_weights, cycle_weights)
-                    for deck in pool
-                    if deck.canonical_front == canonical_front
-                    and deck.canonical_back == canonical_back
+                    for deck in investigator_decks(
+                        pool, canonical_front, canonical_back
+                    )
                 )
                 rows.append(
                     {
@@ -1265,14 +1326,13 @@ class ArkhamPopularityEngine:
         canonical_back: str,
     ) -> list[dict[str, Any]]:
         """Weighted average asset copies per asset slot type (spec: assets in each slot)."""
-        inv_decks = [
-            deck
-            for deck in decks
-            if deck.canonical_front == canonical_front
-            and deck.canonical_back == canonical_back
-            and not deck.is_ignore
-            and deck.cycle is not None
-        ]
+        inv_decks = investigator_decks(
+            decks,
+            canonical_front,
+            canonical_back,
+            exclude_ignored=True,
+            require_cycle=True,
+        )
         user_weights = self.assign_user_weights(decks)
         cycle_weights = self.assign_cycle_weights(inv_decks, user_weights)
 
@@ -1283,22 +1343,13 @@ class ArkhamPopularityEngine:
             if not weight:
                 continue
             total_weight += weight
-            for canonical_id, count in deck.slots.items():
-                card = self.cards.get(canonical_id)
-                if card is None or card.get("type_code") != "asset":
-                    continue
-                info = self.canonical_cards.get(canonical_id)
-                if info is None:
-                    continue
-                per_slot = asset_slot_counts(
-                    canonical_id,
-                    info.slot,
-                    info.real_slot,
-                    count,
-                    name=info.name,
-                )
-                for slot_type, slot_copies in per_slot.items():
-                    slot_totals[slot_type] += weight * slot_copies
+            accumulate_asset_slot_usage(
+                deck.slots,
+                weight,
+                slot_totals,
+                cards=self.cards,
+                canonical_cards=self.canonical_cards,
+            )
 
         if not total_weight:
             return []
@@ -1422,15 +1473,6 @@ class ArkhamPopularityEngine:
             return False
         return True
 
-    def _row_already_satisfied(self, row: dict[str, Any], slots: dict[str, int]) -> bool:
-        canonical_id = row["canonical_id"]
-        if row.get("is_customizable"):
-            return slots.get(canonical_id, 0) >= 1
-        card_index = row.get("card_index")
-        if card_index is None:
-            return slots.get(canonical_id, 0) >= 1
-        return self.upgrades.count_option_in_slots(slots, canonical_id) >= int(card_index)
-
     def _can_add_generation_copy(
         self,
         canonical_id: str,
@@ -1478,22 +1520,13 @@ class ArkhamPopularityEngine:
         weight: float,
         slot_totals: dict[str, float],
     ) -> None:
-        for canonical_id, count in deck.slots.items():
-            card = self.cards.get(canonical_id)
-            if card is None or card.get("type_code") != "asset":
-                continue
-            info = self.canonical_cards.get(canonical_id)
-            if info is None:
-                continue
-            per_slot = asset_slot_counts(
-                canonical_id,
-                info.slot,
-                info.real_slot,
-                count,
-                name=info.name,
-            )
-            for slot_type, slot_copies in per_slot.items():
-                slot_totals[slot_type] += weight * slot_copies
+        accumulate_asset_slot_usage(
+            deck.slots,
+            weight,
+            slot_totals,
+            cards=self.cards,
+            canonical_cards=self.canonical_cards,
+        )
 
     def _smoothed_slot_averages(
         self,
@@ -1636,14 +1669,13 @@ class ArkhamPopularityEngine:
         *,
         required_permanents: frozenset[str] | None = None,
     ) -> dict[str, dict[str, float | int]]:
-        inv_decks = [
-            deck
-            for deck in decks
-            if deck.canonical_front == canonical_front
-            and deck.canonical_back == canonical_back
-            and not deck.is_ignore
-            and deck.cycle is not None
-        ]
+        inv_decks = investigator_decks(
+            decks,
+            canonical_front,
+            canonical_back,
+            exclude_ignored=True,
+            require_cycle=True,
+        )
         user_weights = self.assign_user_weights(decks)
         cycle_weights = self.assign_cycle_weights(inv_decks, user_weights)
         permanent_set = required_permanents or frozenset()
@@ -1733,16 +1765,16 @@ class ArkhamPopularityEngine:
         popularity_rows = self._zero_xp_popularity_rows(
             decks, canonical_front, canonical_back
         )
-        inv_decks = [
-            deck
-            for deck in decks
-            if deck.canonical_front == canonical_front
-            and deck.canonical_back == canonical_back
-            and not deck.is_ignore
-        ]
-        active_inv = [
-            deck for deck in inv_decks if deck.cycle is not None
-        ]
+        inv_decks = investigator_decks(
+            decks, canonical_front, canonical_back, exclude_ignored=True
+        )
+        active_inv = investigator_decks(
+            decks,
+            canonical_front,
+            canonical_back,
+            exclude_ignored=True,
+            require_cycle=True,
+        )
         user_weights = self.assign_user_weights(decks)
         cycle_weights = self.assign_cycle_weights(active_inv, user_weights)
         weighted_decks = [
@@ -2003,14 +2035,13 @@ class ArkhamPopularityEngine:
         )
 
     def _requirement_ids_for_investigator(self, canonical_front: str) -> set[str]:
-        inv_card = self.cards.get(canonical_front) or {}
-        requirements = inv_card.get("deck_requirements") or {}
-        groups = deck_requirement_signature_groups(
-            requirements, self.mapper.to_canonical
+        return set(
+            investigator_requirement_card_ids(
+                self.cards, canonical_front, self.mapper.to_canonical
+            )
         )
-        return set(all_deck_requirement_card_ids(groups))
 
-    def _popularity_row_in_generated(
+    def _popularity_row_in_slots(
         self,
         row: dict[str, Any],
         slots: dict[str, int],
@@ -2023,6 +2054,9 @@ class ArkhamPopularityEngine:
         if card_index is None:
             return count >= 1
         return count >= int(card_index)
+
+    def _row_already_satisfied(self, row: dict[str, Any], slots: dict[str, int]) -> bool:
+        return self._popularity_row_in_slots(row, slots)
 
     def generation_popularity_table(
         self,
@@ -2055,14 +2089,14 @@ class ArkhamPopularityEngine:
 
         last_index = -1
         for index, row in enumerate(popularity_rows):
-            if self._popularity_row_in_generated(row, generated.slots):
+            if self._row_already_satisfied(row, generated.slots):
                 last_index = index
 
         truncated = popularity_rows[: last_index + 1] if last_index >= 0 else []
         covered_ids = {
             row["canonical_id"]
             for row in truncated
-            if self._popularity_row_in_generated(row, generated.slots)
+            if self._row_already_satisfied(row, generated.slots)
         }
         missing_ids = sorted(deck_ids - covered_ids)
 
@@ -2081,7 +2115,7 @@ class ArkhamPopularityEngine:
                     "cycle": info.cycle if info else None,
                     "slot": row.get("slot"),
                     "p5_popularity": row.get("p5_popularity"),
-                    "included_in_generated": self._popularity_row_in_generated(
+                    "included_in_generated": self._row_already_satisfied(
                         row, generated.slots
                     ),
                     "generated_count": generated.slots.get(canonical_id, 0),

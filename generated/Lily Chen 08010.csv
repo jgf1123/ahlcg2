@@ -1,49 +1,54 @@
 rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
 1,08015,1,,Burden of Destiny,,9,,1.0,True,4
-2,01000,1,,Random Basic Weakness,,1,,0.7273864385434459,False,0
-3,01065,1,,Ward of Protection,,1,,0.7227397505063018,True,2
-4,01088,1,,Emergency Cache,,1,,0.6607172033482902,True,2
-5,01065,2,,Ward of Protection,,1,,0.6568073932483287,True,2
-6,01091,1,,Overpower,,1,,0.6219787255550427,True,2
-7,01091,2,,Overpower,,1,,0.5641621735731908,True,2
-8,11068a,1,,The Great Work,Divide and Unite,12,,0.5593915405646168,True,1
-9,08060,1,,Dragon Pole,,9,Hand x2,0.5529314265287955,True,2
-10,01088,2,,Emergency Cache,,1,,0.5432750502727112,True,2
-11,02184,1,,Prepared for the Worst,,2,,0.539138542583579,True,1
-12,01089,1,,Guts,,1,,0.5363409654593637,True,2
-13,01059,1,,Holy Rosary,,1,Accessory,0.5096869303082692,True,2
-14,06201,1,,Spectral Razor,,6,,0.5073503913971659,True,2
-15,08015,2,,Burden of Destiny,,9,,0.48146258473268605,True,4
-16,06201,2,,Spectral Razor,,6,,0.46355562137168993,True,2
-17,08060,2,,Dragon Pole,,9,Hand x2,0.4510810647394966,True,2
-18,05118,1,,Enchanted Blade,,5,Hand. Arcane,0.4184064885462626,True,2
-19,08125,1,,In the Thick of It,,9,,0.40658037309504325,False,0
-20,01089,2,,Guts,,1,,0.39791363545036246,True,2
-21,01025,1,,Vicious Blow,,1,,0.39014356023868607,True,2
-22,08013a,1,,Discipline,Prescience of Fate,9,,0.3851779176545203,True,1
-23,08015,3,,Burden of Destiny,,9,,0.38361105140650453,True,4
-24,01059,2,,Holy Rosary,,1,Accessory,0.3662893415927774,True,2
-25,08015,4,,Burden of Destiny,,9,,0.35508111108281654,True,4
-26,01061,1,,Scrying,,1,Arcane,0.3387952269683514,True,1
-27,05118,2,,Enchanted Blade,,5,Hand. Arcane,0.3286181894343985,True,2
-28,08011a,1,,Discipline,Alignment of Spirit,9,,0.3269524411873075,True,1
-29,01093,1,,Unexpected Courage,,1,,0.3074186995786685,True,1
-30,01063,1,,Arcane Initiate,,1,Ally,0.30486129346408836,True,1
-31,05032,1,,Deny Existence,,5,,0.3029488001589461,True,1
-32,10023,1,,Wolf Mask,The Moon's Sire,11,Mask,0.30228918637285845,True,1
-33,08116,1,,Talisman of Protection,,9,Arcane,0.28544396777617537,True,2
-34,10084,1,,Cat Mask,The Capricious Meddler,11,Mask,0.28311626592505645,False,0
-35,01025,2,,Vicious Blow,,1,,0.2591634694448824,True,2
-36,11071,1,,Spectral Shield,,12,,0.25483013104606544,True,2
-37,11071,2,,Spectral Shield,,12,,0.25483013104606544,True,2
-38,60110,1,,Safeguard,,7,,0.2478951459117299,True,1
-39,02111,1,,Delve Too Deep,,2,,0.24702267818089194,False,0
-40,01093,2,,Unexpected Courage,,1,,0.23852027789039032,False,1
-41,08116,2,,Talisman of Protection,,9,Arcane,0.22818046738101103,True,2
-42,05032,2,,Deny Existence,,5,,0.22797226294208528,False,1
-43,01063,2,,Arcane Initiate,,1,Ally,0.225463930017979,False,1
-44,01064,1,,Drawn to the Flame,,1,,0.2253704132778262,False,0
-45,11067,1,,Eyes of the Dreamer,,12,Arcane,0.22092117225103744,False,0
-46,01061,2,,Scrying,,1,Arcane,0.21380839766291776,False,1
-47,05158,1,,Sixth Sense,,5,Arcane,0.2134409838985136,False,0
-48,04037,1,,Backpack,,4,Body,0.20856843565873615,True,1
+2,01000,1,,Random Basic Weakness,,1,,0.7806947355687648,False,0
+3,01065,1,,Ward of Protection,,1,,0.6267133754926555,True,2
+4,11068a,1,,The Great Work,Divide and Unite,12,,0.6234426550230536,True,1
+5,01059,1,,Holy Rosary,,1,Accessory,0.5789058425592721,True,2
+6,01065,2,,Ward of Protection,,1,,0.5698841681008893,True,2
+7,08060,1,,Dragon Pole,,9,Hand x2,0.567131870016385,True,2
+8,01088,1,,Emergency Cache,,1,,0.5612699242269776,True,2
+9,01091,1,,Overpower,,1,,0.5305021852388713,True,2
+10,01089,1,,Guts,,1,,0.5231840726445618,True,2
+11,06201,1,,Spectral Razor,,6,,0.5070029075187631,True,2
+12,06201,2,,Spectral Razor,,6,,0.48493214682906893,True,2
+13,01091,2,,Overpower,,1,,0.48114664895679765,True,2
+14,08015,2,,Burden of Destiny,,9,,0.47348421068154894,True,4
+15,01088,2,,Emergency Cache,,1,,0.47329507166599427,True,2
+16,08060,2,,Dragon Pole,,9,Hand x2,0.46130679037839006,True,2
+17,02184,1,,Prepared for the Worst,,2,,0.4488188730484562,True,1
+18,08125,1,,In the Thick of It,,9,,0.4115795048229849,False,0
+19,08013a,1,,Discipline,Prescience of Fate,9,,0.3969574490839388,True,1
+20,01059,2,,Holy Rosary,,1,Accessory,0.39255437028822643,True,2
+21,08015,3,,Burden of Destiny,,9,,0.38670493747088774,True,4
+22,05118,1,,Enchanted Blade,,5,Hand. Arcane,0.38225758695068945,True,2
+23,08015,4,,Burden of Destiny,,9,,0.35817298608790765,True,4
+24,01093,1,,Unexpected Courage,,1,,0.33835886969657286,True,2
+25,01089,2,,Guts,,1,,0.3380770964545546,True,2
+26,01025,1,,Vicious Blow,,1,,0.3260597069486921,True,1
+27,05032,1,,Deny Existence,,5,,0.3260269767375237,True,1
+28,08011a,1,,Discipline,Alignment of Spirit,9,,0.3158338962762229,True,1
+29,10023,1,,Wolf Mask,The Moon's Sire,11,Mask,0.31399786253685164,True,1
+30,05118,2,,Enchanted Blade,,5,Hand. Arcane,0.312263500842039,True,2
+31,10084,1,,Cat Mask,The Capricious Meddler,11,Mask,0.293934472850686,False,0
+32,08116,1,,Talisman of Protection,,9,Arcane,0.2927946980928421,True,1
+33,01063,1,,Arcane Initiate,,1,Ally,0.2870868602672604,True,1
+34,11071,1,,Spectral Shield,,12,,0.2840085377745894,True,2
+35,11071,2,,Spectral Shield,,12,,0.2840085377745894,True,2
+36,01093,2,,Unexpected Courage,,1,,0.28236058253288354,True,2
+37,01061,1,,Scrying,,1,Arcane,0.27671358972492416,True,1
+38,01064,1,,Drawn to the Flame,,1,,0.2716790781860271,True,1
+39,11067,1,,Eyes of the Dreamer,,12,Arcane,0.24621695573010258,True,1
+40,08116,2,,Talisman of Protection,,9,Arcane,0.2331814167595854,False,1
+41,05158,1,,Sixth Sense,,5,Arcane,0.226827480839212,False,0
+42,02111,1,,Delve Too Deep,,2,,0.22571471463236645,False,0
+43,01025,2,,Vicious Blow,,1,,0.2244311788481103,False,1
+44,01063,2,,Arcane Initiate,,1,Ally,0.21678959172833082,False,1
+45,60110,1,,Safeguard,,7,,0.21470650284568848,False,0
+46,08061,1,,Meditative Trance,,9,,0.19022753523174032,False,0
+47,05313,1,,Hallowed Mirror,,5,Accessory,0.18933760304721836,False,0
+48,05032,2,,Deny Existence,,5,,0.1881549565226191,False,1
+49,11067,2,,Eyes of the Dreamer,,12,Arcane,0.18331907792179578,False,1
+50,05158,2,,Sixth Sense,,5,Arcane,0.18232903914183207,False,0
+51,01061,2,,Scrying,,1,Arcane,0.1817846647152105,False,1
+52,03112,1,,David Renfield,Esteemed Eschatologist,3,Ally,0.1817248511587024,False,0
+53,04037,1,,Backpack,,4,Body,0.18026686833299302,True,1

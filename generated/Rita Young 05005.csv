@@ -1,54 +1,55 @@
 rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
-1,05016,1,,"""I'm done runnin'!""",,5,,0.999886743345705,True,1
-2,05017,1,,Hoods,,5,,0.999886743345705,True,1
+1,05016,1,,"""I'm done runnin'!""",,5,,0.9998846105463564,True,1
+2,05017,1,,Hoods,,5,,0.9998846105463564,True,1
 3,11053,1,,"""Where's the party?""",,12,,0.9679016619744963,True,2
 4,11053,2,,"""Where's the party?""",,12,,0.9679016619744963,True,2
-5,02033,1,,Peter Sylvestre,Big Man on Campus,2,Ally,0.902293717164161,True,2
-6,05036,1,,Track Shoes,,5,,0.8657310661769155,True,2
-7,02033,2,,Peter Sylvestre,Big Man on Campus,2,Ally,0.8633850177611143,True,2
-8,01000,1,,Random Basic Weakness,,1,,0.8200309806181354,False,0
-9,03039,1,,Resourceful,,3,,0.6825479262618539,True,2
-10,03039,2,,Resourceful,,3,,0.645725346553997,True,2
-11,07114,1,,Breaking and Entering,,8,,0.5679214207403058,True,2
-12,01080,1,,Lucky!,,1,,0.5497838445596935,True,2
-13,05036,2,,Track Shoes,,5,,0.5259873852737426,True,2
-14,03194,1,,Cheap Shot,,3,,0.4980260998435939,True,2
-15,01080,2,,Lucky!,,1,,0.48289713917767685,True,2
+5,02033,1,,Peter Sylvestre,Big Man on Campus,2,Ally,0.9076196779648098,True,2
+6,02033,2,,Peter Sylvestre,Big Man on Campus,2,Ally,0.8708083371704392,True,2
+7,05036,1,,Track Shoes,,5,,0.8670661742343048,True,2
+8,01000,1,,Random Basic Weakness,,1,,0.8297446704589481,False,0
+9,03039,1,,Resourceful,,3,,0.6454814903067897,True,2
+10,03039,2,,Resourceful,,3,,0.6106604786975535,True,2
+11,01080,1,,Lucky!,,1,,0.5747060154595409,True,2
+12,07114,1,,Breaking and Entering,,8,,0.5679214207403058,True,2
+13,05036,2,,Track Shoes,,5,,0.5271274881081869,True,2
+14,03194,1,,Cheap Shot,,3,,0.5254272283952833,True,2
+15,01080,2,,Lucky!,,1,,0.5114337483433098,True,2
 16,10116,1,,Long Shot,,11,,0.4640341715100211,True,2
-17,10071,1,,Grift,,11,,0.44410779093937786,True,2
-18,60315,1,,Pilfer,,7,,0.43424843270542196,True,1
-19,10071,2,,Grift,,11,,0.43357270865210046,True,2
-20,07114,2,,Breaking and Entering,,8,,0.42286708593598576,True,2
-21,03194,2,,Cheap Shot,,3,,0.42278940542716736,True,2
-22,01079,1,,"""Look what I found!""",,1,,0.41489459982472676,True,1
-23,10116,2,,Long Shot,,11,,0.4124301995485045,True,2
-24,04201,1,,Take Heart,,4,,0.4090997836692724,True,2
-25,60316,1,,Sneak By,,7,,0.39166480004388093,True,2
-26,04201,2,,Take Heart,,4,,0.3836506909335591,True,2
-27,10111,1,,Sparrow Mask,The Wanderer's Companion,11,Mask,0.36769777981056917,True,1
-28,05160,1,,Belly of the Beast,,5,,0.3673917142777503,True,1
-29,60316,2,,Sneak By,,7,,0.3663570561800319,True,2
-30,01092,1,,Manual Dexterity,,1,,0.3639627480608742,False,0
-31,01079,2,,"""Look what I found!""",,1,,0.360598732515426,False,1
-32,60315,2,,Pilfer,,7,,0.33591895048277404,False,1
-33,05160,2,,Belly of the Beast,,5,,0.324700508687537,False,1
-34,03114,1,,Cherished Keepsake,,3,Accessory,0.32062601468179264,True,1
-35,01092,2,,Manual Dexterity,,1,,0.3110905770837917,False,0
-36,01088,1,,Emergency Cache,,1,,0.3041078555032194,False,0
-37,03237,1,,Waylay,,3,,0.28306463711754765,False,0
-38,09062,1,,Disguise,,10,,0.27520374989964147,False,0
-39,08125,1,,In the Thick of It,,9,,0.27213528663810027,False,0
-40,01093,1,,Unexpected Courage,,1,,0.2663765729887231,False,0
-41,01093,2,,Unexpected Courage,,1,,0.24649976689049224,False,0
-42,03237,2,,Waylay,,3,,0.2345952102317223,False,0
-43,09062,2,,Disguise,,10,,0.22674583157903364,False,0
-44,01088,2,,Emergency Cache,,1,,0.22075571229923552,False,0
-45,09067,1,,"""I'll take that!""",,10,,0.2186651613766898,False,0
-46,03114,2,,Cherished Keepsake,,3,Accessory,0.20572890556874515,False,1
-47,05114,1,,Meat Cleaver,,5,Hand,0.20345741780666288,True,1
-48,10111,2,,Sparrow Mask,The Wanderer's Companion,11,Mask,0.2001509610622643,False,1
-49,01089,1,,Guts,,1,,0.19933129977100233,False,0
-50,01074,1,,Baseball Bat,,1,Hand x2,0.1926603761421222,True,1
-51,01081,1,,Survival Instinct,,1,,0.1883781464600523,False,0
-52,10070,1,,False Surrender,,11,,0.1844205530624526,False,0
-53,11081,1,,Anchor Chain,,12,Hand,0.18001949675879828,True,1
+17,03194,2,,Cheap Shot,,3,,0.4543395999792152,True,2
+18,01079,1,,"""Look what I found!""",,1,,0.44721354721840495,True,2
+19,10071,1,,Grift,,11,,0.44410779093937786,True,2
+20,60315,1,,Pilfer,,7,,0.43424843270542196,True,1
+21,10071,2,,Grift,,11,,0.43357270865210046,True,2
+22,04201,1,,Take Heart,,4,,0.42308725270781866,True,2
+23,07114,2,,Breaking and Entering,,8,,0.42286708593598576,True,2
+24,10116,2,,Long Shot,,11,,0.4124301995485045,True,2
+25,04201,2,,Take Heart,,4,,0.3989670378748596,True,2
+26,01079,2,,"""Look what I found!""",,1,,0.3958591986786515,True,2
+27,60316,1,,Sneak By,,7,,0.39166480004388093,True,1
+28,05160,1,,Belly of the Beast,,5,,0.36795639121774043,True,1
+29,10111,1,,Sparrow Mask,The Wanderer's Companion,11,Mask,0.36769777981056917,True,1
+30,60316,2,,Sneak By,,7,,0.3663570561800319,False,1
+31,01092,1,,Manual Dexterity,,1,,0.35927075650956675,False,0
+32,03114,1,,Cherished Keepsake,,3,Accessory,0.3578957595389785,True,1
+33,60315,2,,Pilfer,,7,,0.33591895048277404,False,1
+34,05160,2,,Belly of the Beast,,5,,0.3251808650430082,False,1
+35,03237,1,,Waylay,,3,,0.3225180689477961,False,0
+36,01092,2,,Manual Dexterity,,1,,0.30933544967028964,False,0
+37,01093,1,,Unexpected Courage,,1,,0.30670185142607287,False,0
+38,01088,1,,Emergency Cache,,1,,0.30285387661744595,False,0
+39,01093,2,,Unexpected Courage,,1,,0.2878709801225634,False,0
+40,03237,2,,Waylay,,3,,0.2766452805278685,False,0
+41,09062,1,,Disguise,,10,,0.27520374989964147,False,0
+42,08125,1,,In the Thick of It,,9,,0.27213528663810027,False,0
+43,01081,1,,Survival Instinct,,1,,0.23276653284906798,False,0
+44,03114,2,,Cherished Keepsake,,3,Accessory,0.2283275785782512,False,1
+45,09062,2,,Disguise,,10,,0.22674583157903364,False,0
+46,01088,2,,Emergency Cache,,1,,0.22409507644698787,False,0
+47,09067,1,,"""I'll take that!""",,10,,0.2186651613766898,False,0
+48,01089,1,,Guts,,1,,0.2038800419570278,False,0
+49,05114,1,,Meat Cleaver,,5,Hand,0.20374271912871994,True,1
+50,10111,2,,Sparrow Mask,The Wanderer's Companion,11,Mask,0.2001509610622643,False,1
+51,10070,1,,False Surrender,,11,,0.1844205530624526,False,0
+52,01074,1,,Baseball Bat,,1,Hand x2,0.18230287870692616,True,1
+53,01081,2,,Survival Instinct,,1,,0.1801093074162145,False,0
+54,11081,1,,Anchor Chain,,12,Hand,0.18001949675879828,True,1
