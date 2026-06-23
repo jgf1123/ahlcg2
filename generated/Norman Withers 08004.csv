@@ -1,6 +1,6 @@
 rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
-1,08005,1,,Livre d'Eibon,Hyperborean Grimoire,9,Hand,0.9164877682759256,True,1
-2,08006,1,,The Harbinger,,9,,0.9152025815773166,True,1
+1,08005,1,,Livre d'Eibon,Hyperborean Grimoire,9,Hand,0.9164877682759256,False,0
+2,08006,1,,The Harbinger,,9,,0.9152025815773166,False,0
 3,01039,1,,Deduction,,1,,0.7930671133530869,True,2
 4,01039,2,,Deduction,,1,,0.7299212869598007,True,2
 5,01000,1,,Random Basic Weakness,,1,,0.707669480531781,False,0
@@ -9,7 +9,7 @@ rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,
 8,08034,1,,Written in the Stars,,9,,0.5452063930134246,True,2
 9,08034,2,,Written in the Stars,,9,,0.521725833446924,True,2
 10,01033,1,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.513024678152879,True,2
-11,98009,1,,Vengeful Hound,,,,0.49283318814268856,False,0
+11,98009,1,,Vengeful Hound,,,,0.49283318814268856,True,1
 12,98008,1,,Split the Angle,Ire of the Void,,,0.4918546464726,True,1
 13,02022,1,,Shortcut,,2,,0.46220116932112426,True,2
 14,03231,1,,Eureka!,,3,,0.4263163176780368,True,2
@@ -44,3 +44,11 @@ rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,
 43,01089,2,,Guts,,1,,0.24647727391667684,False,1
 44,10043,1,,Mouse Mask,The Meek Watcher,11,Mask,0.24578269253815782,False,0
 45,09044,1,,Grim Memoir,,10,Hand,0.244464804011422,True,1
+46,10047,1,,Testing Sprint,,11,,0.2384697407798107,False,0
+47,01093,2,,Unexpected Courage,,1,,0.2338451470226159,False,0
+48,04157,1,,Enraptured,,4,,0.23231320651707074,False,0
+49,05110,2,,Crack the Case,,5,,0.22639300130398884,False,1
+50,05032,1,,Deny Existence,,5,,0.22580508421480025,False,0
+51,11040,1,,Correlate All Its Contents,,12,,0.2151066637790909,False,0
+52,06023,1,,Astounding Revelation,,6,,0.21317489383704794,False,0
+53,05154,1,,Hawk-Eye Folding Camera,,5,Hand,0.20453106707640822,True,1

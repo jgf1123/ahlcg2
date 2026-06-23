@@ -9,7 +9,7 @@ rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,
 8,01000,1,,Random Basic Weakness,,1,,0.7350517000167258,False,0
 9,10071,1,,Grift,,11,,0.7349373534961939,True,2
 10,11053,1,,"""Where's the party?""",,12,,0.7078325231874684,True,2
-11,10067,1,,Fox Mask,The Wise Trickster,11,Mask,0.7012951760997216,True,2
+11,10067,1,,Fox Mask,The Wise Trickster,11,Mask,0.7012951760997216,True,1
 12,10074,1,,Vamp,,11,,0.6890984992050669,True,2
 13,10071,2,,Grift,,11,,0.6420279029949526,True,2
 14,10073,1,,Stir the Pot,,11,,0.640219886667869,True,2
@@ -31,11 +31,8 @@ rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,
 30,01048,1,,Leo De Luca,The Louisiana Lion,1,Ally,0.3778165311695621,True,1
 31,60305,1,,Lockpicks,,7,Hand,0.37477307401692866,False,0
 32,10073,2,,Stir the Pot,,11,,0.3691177784225889,True,2
-33,11088,1,,Contemplative,,12,,0.35961202705282913,False,0
+33,11088,1,,Contemplative,,12,,0.35961202705282913,True,2
 34,10069,1,,Bank Job,,11,,0.33666445777372817,True,1
-35,11088,2,,Contemplative,,12,,0.3185624027712372,False,0
+35,11088,2,,Contemplative,,12,,0.3185624027712372,True,2
 36,08125,1,,In the Thick of It,,9,,0.3179229337392598,False,0
 37,01090,2,,Perception,,1,,0.31135572524730154,True,2
-38,10067,2,,Fox Mask,The Wise Trickster,11,Mask,0.3091545905050445,True,2
-39,60305,2,,Lockpicks,,7,Hand,0.2844695701849028,False,0
-40,01089,1,,Guts,,1,,0.2785996076225405,True,1

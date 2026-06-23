@@ -18,19 +18,19 @@ rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,
 17,01088,2,,Emergency Cache,,1,,0.38886060630059505,True,2
 18,01064,1,,Drawn to the Flame,,1,,0.3770963916720256,True,1
 19,60416,1,,Voice of Ra,,7,,0.3484871959059054,True,2
-20,05158,1,,Sixth Sense,,5,Arcane,0.3273171026054275,True,1
+20,05158,1,,Sixth Sense,,5,Arcane,0.3273171026054275,True,2
 21,04197,2,,Olive McBride,Will Try Anything Once,4,Ally,0.317648984080743,True,2
 22,60416,2,,Voice of Ra,,7,,0.317066675094894,True,2
 23,05032,1,,Deny Existence,,5,,0.31327718148851563,True,1
 24,06201,1,,Spectral Razor,,6,,0.3128489233291494,True,1
 25,04109,1,,Arcane Research,,4,,0.31047599148920635,True,1
 26,01063,1,,Arcane Initiate,,1,Ally,0.30046396512769363,True,1
-27,06117,1,,Read the Signs,,6,,0.29750061956418117,True,2
+27,06117,1,,Read the Signs,,6,,0.29750061956418117,True,1
 28,01093,1,,Unexpected Courage,,1,,0.2889164668520559,True,1
 29,02028,1,,Rite of Seeking,,2,Arcane,0.27825489457253383,True,2
-30,06117,2,,Read the Signs,,6,,0.275829791859257,True,2
+30,06117,2,,Read the Signs,,6,,0.275829791859257,False,1
 31,01064,2,,Drawn to the Flame,,1,,0.27283747191188024,False,1
-32,11095,1,,Ascetic,,12,,0.27272320443438314,False,0
+32,11095,1,,Ascetic,,12,,0.27272320443438314,True,1
 33,06201,2,,Spectral Razor,,6,,0.269572673924229,False,1
 34,05032,2,,Deny Existence,,5,,0.26075650000232126,False,1
 35,04030,1,,The Chthonian Stone,Stygian Waymark,4,Hand,0.2509834208012063,True,1
@@ -43,7 +43,7 @@ rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,
 42,03269,1,,St. Hubert's Key,Cleansing Fire,3,Accessory,0.22442510375051164,False,0
 43,01063,2,,Arcane Initiate,,1,Ally,0.22429430520889918,False,1
 44,02028,2,,Rite of Seeking,,2,Arcane,0.2200665718220659,True,2
-45,05158,2,,Sixth Sense,,5,Arcane,0.21275903465244742,False,1
+45,05158,2,,Sixth Sense,,5,Arcane,0.21275903465244742,True,2
 46,07034,2,,Keep Faith,,8,,0.21218616902626788,False,0
 47,10084,2,,Cat Mask,The Capricious Meddler,11,Mask,0.19977576535553954,False,1
 48,04029,1,,Mists of R'lyeh,,4,Arcane,0.1996315941030562,False,0

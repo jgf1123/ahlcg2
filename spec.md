@@ -529,17 +529,22 @@ I5. Popularity = I4 / I3.
 
 # Automatic Decklist Generation
 
-**Plain language:** Build a synthetic 0 XP decklist for an investigator by following what the community actually plays. Use the same popularity ranking as `show_investigator_card_popularity` and the same per-slot averages as `show_slot_usage_for_investigator`. Fill required signature cards first, then add popular assets until each asset-slot type hits its typical count, then fill remaining deck slots with popular events/skills (and more assets if slot caps allow). Output is a display table like the popularity viewer, not a new scraped decklist.
+**Plain language:** Build a synthetic 0 XP decklist for an investigator by following what the community actually plays. Resolve deck-size and class branches first, add required signatures, then pre-select popular **permanent** cards, derive **final deck size** and deckbuilding rules from that set, and compute **smoothed conditional slot averages** for phase targets. Fill popular assets until each slot type hits its targets, then fill remaining slots to **final deck size** with popular events/skills (and more assets if slot ceilings allow). Output is a display table like the popularity viewer, not a new scraped decklist.
 
-**Status:** Implemented in `ArkhamPopularityEngine.generate_decklist()`; notebook helper `show_generated_decklist()`.
+**Status:** Implemented in `ArkhamPopularityEngine.generate_decklist()` including Phase 0.5 (permanent selection, `final_deck_size`, smoothed conditional `E[t]`). Slot-capacity enforcement during asset adds (e.g. Charisma +1 ally) remains deferred.
 
 ## Inputs
 
 G0. **Card popularity** — 0 XP options from P1–P5 for `(canonical_front, canonical_back)`, sorted by P5 descending (same slice and weights as Popularity by Investigator: `is_ignore=False` decks only).
 
-G0b. **Slot averages** — `E[t]` = weighted average asset copies per asset-slot type `t`, from the assets-in-each-slot function. These averages **include** required signature assets in the training decks (same as current slot-usage implementation).
+G0b. **Slot averages** — per asset-slot type `t`, compute a **smoothed conditional** average `E[t]` (see *Conditional slot averages* below). Unconditional `E_all[t]` is the weighted average from all training decks for the investigator (same weights and slot parsing as assets-in-each-slot). Signature assets in training decks are included in these averages.
 
 G0c. **Investigator rules** — `deck_requirements` and `deck_options` from the `canonical_front` investigator card in `card_json`. **Assumption:** rules are read from `canonical_front`; when front = back (typical case) this matches ArkhamDB. Parallel-only `(canonical_front, canonical_back)` tuples are out of scope for v1.
+
+G0d. **Deck sizes:**
+
+- **`deck_size`** — player-card target after resolving `deck_size_select` / `investigator_option` (base size for the Phase 0.5 popularity cutoff and for permanent deck-size deltas).
+- **`final_deck_size`** — `deck_size` plus net modifiers from every permanent included in Phase 0.5 (and any other resolved deck-size rules). Phase 2 stops when non-permanent cards in the generated deck equal **`final_deck_size`**, not `deck_size`.
 
 ## Taboo: training vs generation
 
@@ -570,10 +575,21 @@ When an investigator’s `deck_options` include `faction_select` or `deck_size_s
 For each `(canonical_front, canonical_back)` with training decks:
 
 1. Compute `deck_weight` for every non-ignored training decklist (same formula as P3/P4).
-2. **`faction_select`:** For each training deck and each candidate faction, count copies that would match that branch’s constraints (level, `type`, etc.). Split that deck’s weight across factions in proportion to those copy counts. Sum across decks; pick the faction with the highest **weighted total**. Tie-break: alphabetical faction name. Multiple `faction_select` blocks (e.g. Charlie Kane) resolve sequentially, excluding factions already chosen.
+2. **`faction_select`:** For investigators with one secondary-class branch, pick the faction with the highest weighted total among decks whose `meta.faction_selected` matches a candidate (decks without meta do not vote). Tie-break: alphabetical faction name. **Dual class exception:** two `faction_select` blocks with ids `faction_1` / `faction_2` resolve jointly as one unordered class pair from `meta.faction_1` and `meta.faction_2` only. Diagnostics use `resolution_kind=faction_pair` with choices like `guardian+survivor`.
 3. **`deck_size_select`:** Add each deck’s weight to its player-card-count bucket (among allowed sizes). Pick the size with the highest weighted total; tie-break: larger size.
 
 **Diagnostics:** `export_generated_decklist_csvs(..., diagnostics=True)` also writes `generated/{name} {canonical_front} resolution.csv` listing each candidate choice, its `weighted_total`, `weight_share`, and whether it was `selected`.
+
+**Explicit option variants:** pass `investigator_option` to `generate_decklist()` or `export_generated_decklist()` to build a specific branch instead of the popularity winner. When omitted, choices resolve from deck meta (`faction_1`/`faction_2` for dual class, `faction_selected` for secondary class) using decklist weights; decks without relevant meta do not vote. Supported forms:
+
+- Dual class pair (Charlie Kane): `"guardian+survivor"` or `("guardian", "survivor")` or `{"faction_1": "guardian", "faction_2": "survivor"}`
+- Secondary class: `"guardian"` or `{"faction": "guardian"}` / `{"secondary_class": "guardian"}`
+- Deck size (Mandy): `40` or `{"deck_size": 40}`
+- Combined (Mandy): `{"deck_size": 40, "faction": "rogue"}`
+
+Variant exports add a suffix to filenames, e.g. `Charlie Kane 09018 guardian+survivor.csv`.
+
+Resolve **`deck_size_select`** / **`investigator_option`** (and **`faction_select`** where applicable) **before** Phase 0.5 so **`deck_size`** is known for the permanent cutoff.
 
 **Still deferred:**
 
@@ -582,7 +598,26 @@ For each `(canonical_front, canonical_back)` with training decks:
 - Parallel investigators as generation targets (`canonical_front != canonical_back`)
 - Complex fan-content rules (`base_level`, `permanent`, …)
 
-**Same algorithm, different deck size:** Non-30 `deck_requirements.size` (33, 35, 40, …) — only the deck-size stop changes.
+**Same algorithm, different deck size:** Non-30 base `deck_size` (33, 35, 40, …) — the Phase 0.5 cutoff and `final_deck_size` use the resolved base size for that investigator.
+
+## Conditional slot averages
+
+After Phase 0.5 selects a set of permanent cards `S`, slot targets use a **smoothed** average per slot type `t`:
+
+1. **`E_all[t]`** — weighted average over **all** non-ignored training decks for `(canonical_front, canonical_back)` (same formula as `slot_usage_for_investigator()`).
+2. **`E_S[t]`** — weighted average over training decks that **include every permanent in `S`** (deck permanent set ⊇ `S`; decks may contain additional permanents not in `S`). When `S` is empty, `E_S[t] = E_all[t]`.
+3. **Weights:** `W_all` = total decklist weight in the all-decks pool; `W_S` = total weight in the ⊇ `S` pool (same `user_weight × Cycle.weight × deck_xp_weight` formula as popularity).
+4. **Relative-mass interpolation** (investigator-relative; no global pseudocount):
+
+   `λ = min(1, W_S / (ρ × W_all))`
+
+   `E[t] = λ × E_S[t] + (1 − λ) × E_all[t]`
+
+   **`ρ`** is a fixed fraction (implementation default e.g. `0.05`: trust `E_S` fully once ⊇ `S` decks account for at least 5% of investigator weight). When `W_S = 0`, use `E[t] = E_all[t]`.
+
+**Rationale:** `E` reflects both slot **capacity** and how an investigator is **played** (e.g. Hand usage often exceeds nominal capacity because deck slots compete on popularity). Conditioning on permanents in `S` shifts targets toward builds that actually take those cards; smoothing back to `E_all` avoids overfitting when few decks match. Superset matching (⊇ `S`) yields more training mass than exact-set equality while still requiring every selected permanent.
+
+Apply `slot_phase_targets(E[t])` to the smoothed `E[t]` for phase 1 / phase 2 limits (see *Slot vectors and targets*).
 
 ## Slot vectors and targets
 
@@ -590,16 +625,46 @@ Parse each asset’s slot usage the same way as assets-in-each-slot: `asset_slot
 
 Let `current[t]` be asset-slot usage while building (starts at 0).
 
-**Required signatures (phase 0):** Add all `deck_requirements.card` entries, each at its required copy count (`quantity` on the requirement card in `card_json`, default 1). They do **not** count toward `deck_requirements.size`. Only **assets** among requirements increment `current[t]` (per copy). Non-asset requirements (e.g. weaknesses) do not affect `current[t]`.
+**Targets** from smoothed average `E[t]` (map via `slot_phase_targets()`):
+
+| Name | Role | Rule |
+|------|------|------|
+| **phase1_goal** | Phase 1 stop: every slot `t` must reach at least this | Non-integer `E`: `floor(E)`; integer tie-break: `ceil(E − 1)` (or `0` when `E = 0`) |
+| **phase1_cap** | Phase 1 max: do not add assets that would exceed this | Always `floor(E)` (spec Phase 1 inequality `current + v ≤ floor(E)`) |
+| **phase2_ceiling** | Phase 2 max for assets | Non-integer `E`: `ceil(E)`; integer tie-break: `floor(E + 1)` |
+
+Examples: `E = 1.8` → goal/cap/ceiling = `1/1/2`; `E = 2` → `1/2/3`; `E = 0` → `0/0/1`.
+
+Apply targets to **global** `current[t]` (requirements count toward `current` before phase 1).
+
+## Phase 0 — required signatures
+
+Add all `deck_requirements.card` entries. Each entry is an **OR-group** when its value is a dict of interchangeable printings (e.g. Norman Withers: `08005` Livre d'Eibon **or** `98008` Split the Angle; `08006` The Harbinger **or** `98009` Vengeful Hound). Pick **one** card per group by exclusive training-deck count (decks with exactly that signature and no other from the group). **Every** printing in every OR-group is a requirement id (does not count toward **`deck_size`** / **`final_deck_size`**, and Phase 2 must not add unchosen alternatives).
+
+Single-code entries (no alternatives) behave as before. Copy count from `quantity` on the chosen card (default 1). Only **assets** among chosen signatures increment `current[t]` (per copy). Non-asset requirements (e.g. weaknesses) do not affect `current[t]`.
 
 **Random basic weakness:** Omit from generated output (or use a placeholder only). Weakness is chosen at end of deck construction and does not affect slot-driven card selection.
 
-**Targets** from average `E[t]`:
+## Phase 0.5 — select permanents
 
-- Normally: phase 1 goal = `floor(E[t])`; phase 2 ceiling = `ceil(E[t])`.
-- **Integer tie-break** when `E[t] == floor(E[t]) == ceil(E[t])`: phase 1 goal = `ceil(E[t] - 1)`; phase 2 ceiling = `floor(E[t] + 1)`. (E.g. `E=0` → aim for 0, allow up to 1; `E=2` → aim for 1, allow up to 3.)
+Run **after** resolving `deck_size_select` / `investigator_option` (so **`deck_size`** is known) and **after** Phase 0, **before** Phase 1.
 
-Apply targets to **global** `current[t]` (requirements count toward `current` before phase 1).
+Walk the 0 XP popularity list (P5 order). Count only cards that **count toward player deck size** (`counts_toward_player_deck_size`: not a signature/requirement, not a weakness, not a permanent). Skip rows already satisfied in the deck.
+
+1. When the count reaches **`deck_size`**, the current row is the **cutoff** (a non-permanent card).
+2. Include every **permanent** that appears **strictly above** the cutoff (earlier / more popular in the list). Do not include permanents at or below the cutoff.
+3. A permanent is eligible only if legal at **current taboo** and under the investigator’s base **`deck_options`** (before merging permanent grants). Do not include forbidden or otherwise barred permanents.
+4. Add each included permanent at one copy (typical). Recompute:
+   - **`final_deck_size`** from included permanents (`effective_deck_size_from_slots()`).
+   - **`deck_options`** = base options merged with permanent-granted options (`merge_deck_options_with_permanents()`).
+   - Smoothed **`E[t]`** from the permanent set `S` (see *Conditional slot averages*).
+5. Rebuild the deck-options validator from merged options and seeded Phase 0 slots.
+
+**Phase 2 must not add further permanents** — Phase 0.5 is the only permanent-selection step.
+
+**Hard composition rules** from included permanents must be enforced in all later phases (e.g. On Your Own — no ally-slot assets; Ancestral Knowledge — skill minimum; Underworld Support — singleton-by-title). **Occult Reliquary:** grants one movable slot among Hand / Accessory / Arcane; the player need not fix the slot at deck creation (it may be moved during play). For slot accounting, treat Reliquary as one flexible slot without forcing a branch at generation time.
+
+**Still deferred (separate from Phase 0.5 selection), probably won't be needed:** slot-**capacity** enforcement during asset adds (e.g. Charisma +1 ally slot) — permanents are included and options merged, but asset slot limits during Phase 1/2 may not yet reflect capacity grants. Use `E[t]` instead.
 
 ## Phase 1 — fill slot floors (0 XP assets only)
 
@@ -609,19 +674,18 @@ Walk 0 XP asset options in P5 order. For each `(canonical_id, card_index)` not y
 - Must respect **deck_limit** and name-level copy limits.
 - **Customizable** cards: allowed at base, no customization indices, no XP upgrades.
 - **Skip slotless assets:** Phase 1 only adds assets whose slot vector is non-empty (they consume at least one asset slot type). Other slotless assets (e.g. Safeguard) are deferred to Phase 2. Mask-trait assets without an ArkhamDB slot are patched to the Mask slot type at load time (see assets-in-each-slot).
-- Let `v` = slot vector of one copy. Add if for **all** slot types `t`: `current[t] + v[t] ≤ floor(E[t])` (integer tie-break above when applicable).
-- Stop phase 1 when every `t` has `current[t] ≥` phase 1 goal, or the list is exhausted.
+- Let `v` = slot vector of one copy. Add if for **all** slot types `t`: `current[t] + v[t] ≤` **phase1_cap** (equivalently `≤ floor(E[t])` with integer tie-break).
+- Stop phase 1 when every `t` has `current[t] ≥` **phase1_goal**, or the list is exhausted.
 
 Multi-slot assets are allowed in phase 1 when the inequality holds for every coordinate (strict floor on global counts).
 
-## Phase 2 — fill deck size (0 XP)
+## Phase 2 — fill final deck size (0 XP)
 
-Walk the **full** 0 XP popularity list (assets, events, skills). Skip options already included.
+Walk the **full** 0 XP popularity list (assets, events, skills). Skip options already included. **Do not add permanents** (already fixed in Phase 0.5).
 
-- **Events / skills:** Does not interact with slot ceilings; each copy counts 1 toward `deck_requirements.size` unless `permanent=True`.
-- **Assets:** Add only if for all `t`: `current[t] + v[t] ≤` phase 2 ceiling (integer tie-break when applicable).
-- **Permanent:** Does not count toward deck size (v1: treat as not consuming asset slots; slot-capacity permanents like Charisma deferred).
-- Stop when non-permanent cards in deck = `deck_requirements.size`, or list exhausted.
+- **Events / skills:** Does not interact with slot ceilings; each copy counts 1 toward **`final_deck_size`** unless `permanent=True`.
+- **Assets:** Add only if for all `t`: `current[t] + v[t] ≤` **phase2_ceiling**.
+- Stop when non-permanent cards in deck = **`final_deck_size`**, or list exhausted.
 
 ## Legality
 
@@ -645,4 +709,3 @@ Not in v1. Planned behavior:
 - Optional `08125` at construction (+3 XP budget).
 - Purchase 1+ XP options by popularity; **swap** out least popular eligible card (lowest P5), not add past deck size.
 - Swap constraints: same-`name` limit, slot ceiling, legality.
-- **Conditional slot averages** when deck includes slot-modifying cards (e.g. Charisma) — v1 uses unconditional `E[t]` only.

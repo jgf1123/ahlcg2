@@ -11,6 +11,7 @@ from arkham_deck_options import (
     DeckOptionsValidator,
     deck_options_support,
     is_standard_deck_options,
+    parse_investigator_option,
     resolve_deck_options,
 )
 from arkham_popularity import ArkhamPopularityEngine, slot_phase_targets
@@ -258,8 +259,8 @@ class DeckOptionsValidatorTests(unittest.TestCase):
         resolved, _, resolutions = resolve_deck_options(
             options,
             weighted_decks=[
-                ({"01050": 1}, 0.9),
-                ({"01078": 10}, 0.1),
+                ({"01050": 1}, 0.9, {"faction_selected": "rogue"}),
+                ({"01078": 10}, 0.1, {"faction_selected": "survivor"}),
             ],
             cards=cards,
             default_deck_size=30,
@@ -269,6 +270,231 @@ class DeckOptionsValidatorTests(unittest.TestCase):
         self.assertEqual(secondary["faction"], ["rogue"])
         self.assertEqual(resolutions[0].choice, "rogue")
         self.assertGreater(resolutions[0].weight_shares["rogue"], 0.5)
+
+    def test_resolve_charlie_class_pair_from_meta_only(self):
+        options = [
+            {"faction": ["neutral"], "level": {"min": 0, "max": 5}},
+            {"trait": ["ally"], "level": {"min": 0, "max": 5}},
+            {
+                "name": "Class Choice",
+                "id": "faction_1",
+                "faction_select": ["guardian", "seeker", "rogue", "mystic", "survivor"],
+                "level": {"min": 0, "max": 2},
+            },
+            {
+                "name": "Class Choice",
+                "id": "faction_2",
+                "faction_select": ["guardian", "seeker", "rogue", "mystic", "survivor"],
+                "level": {"min": 0, "max": 2},
+            },
+        ]
+        resolved, _, resolutions = resolve_deck_options(
+            options,
+            weighted_decks=[
+                ({"01050": 1}, 0.8, {"faction_1": "guardian", "faction_2": "survivor"}),
+                ({"01078": 1}, 0.1, {"faction_1": "guardian", "faction_2": "rogue"}),
+                ({"01025": 1}, 0.9, None),
+            ],
+            cards={
+                "01050": _card("01050", type_code="event", faction_code="rogue"),
+                "01078": _card("01078", type_code="event", faction_code="survivor"),
+                "01025": _card("01025", type_code="event", faction_code="guardian"),
+            },
+            default_deck_size=30,
+            xp_for_card=lambda card, _cid: int(card.get("xp") or 0),
+            investigator_code="09018",
+        )
+        class_options = [opt for opt in resolved if opt.get("level") == {"min": 0, "max": 2}]
+        self.assertEqual(
+            [opt["faction"] for opt in class_options],
+            [["guardian"], ["survivor"]],
+        )
+        self.assertEqual(len(resolutions), 1)
+        self.assertEqual(resolutions[0].kind, "faction_pair")
+        self.assertEqual(resolutions[0].choice, "guardian+survivor")
+        self.assertGreater(
+            resolutions[0].weighted_totals["guardian+survivor"],
+            resolutions[0].weighted_totals["guardian+rogue"],
+        )
+
+    def test_investigator_option_overrides_dual_class_pair(self):
+        options = [
+            {"faction": ["neutral"], "level": {"min": 0, "max": 5}},
+            {"trait": ["ally"], "level": {"min": 0, "max": 5}},
+            {
+                "name": "Class Choice",
+                "id": "faction_1",
+                "faction_select": ["guardian", "seeker", "rogue", "mystic", "survivor"],
+                "level": {"min": 0, "max": 2},
+            },
+            {
+                "name": "Class Choice",
+                "id": "faction_2",
+                "faction_select": ["guardian", "seeker", "rogue", "mystic", "survivor"],
+                "level": {"min": 0, "max": 2},
+            },
+        ]
+        resolved, _, resolutions = resolve_deck_options(
+            options,
+            weighted_decks=[],
+            cards={},
+            default_deck_size=30,
+            xp_for_card=lambda card, _cid: 0,
+            investigator_option="guardian+survivor",
+        )
+        class_options = [opt for opt in resolved if opt.get("level") == {"min": 0, "max": 2}]
+        self.assertEqual(
+            [opt["faction"] for opt in class_options],
+            [["guardian"], ["survivor"]],
+        )
+        self.assertEqual(resolutions[0].choice, "guardian+survivor")
+
+    def test_investigator_option_overrides_secondary_class_and_deck_size(self):
+        options = [
+            {"name": "Deck Size", "deck_size_select": ["30", "40", "50"], "faction": []},
+            {"faction": ["seeker", "neutral"], "level": {"min": 0, "max": 5}},
+            {
+                "name": "Secondary Class",
+                "faction_select": ["mystic", "rogue", "survivor"],
+                "level": {"min": 0, "max": 1},
+                "type": ["event", "skill"],
+                "limit": 10,
+            },
+        ]
+        resolved, deck_size, resolutions = resolve_deck_options(
+            options,
+            weighted_decks=[],
+            cards={},
+            default_deck_size=30,
+            xp_for_card=lambda card, _cid: 0,
+            investigator_option={"deck_size": 40, "faction": "rogue"},
+        )
+        self.assertEqual(deck_size, 40)
+        secondary = [opt for opt in resolved if opt.get("limit") == 10][0]
+        self.assertEqual(secondary["faction"], ["rogue"])
+        self.assertEqual(resolutions[0].choice, "40")
+        self.assertEqual(resolutions[1].choice, "rogue")
+
+    def test_parse_investigator_option_rejects_invalid_pair(self):
+        options = [
+            {"faction": ["neutral"], "level": {"min": 0, "max": 5}},
+            {
+                "id": "faction_1",
+                "faction_select": ["guardian", "seeker", "rogue", "mystic", "survivor"],
+                "level": {"min": 0, "max": 2},
+            },
+            {
+                "id": "faction_2",
+                "faction_select": ["guardian", "seeker", "rogue", "mystic", "survivor"],
+                "level": {"min": 0, "max": 2},
+            },
+        ]
+        with self.assertRaises(ValueError):
+            parse_investigator_option("guardian+guardian", options)
+
+    def test_zorzi_parley_tag_allows_contemplative(self):
+        if not CARD_JSON.exists():
+            self.skipTest("card_json.pickle missing")
+        with CARD_JSON.open("rb") as file:
+            cards = pickle.load(file)
+        options = cards["10009"]["deck_options"]
+        validator = DeckOptionsValidator.from_options(options)
+        contemplative = cards["11088"]
+        self.assertTrue(validator.is_card_allowed(contemplative, 0))
+        self.assertTrue(validator.is_card_allowed(cards["09101"], 0))  # Grizzled
+        self.assertEqual(
+            validator.first_matching_option_index(contemplative, 0),
+            1,
+        )
+
+
+        self.assertEqual(
+            validator.first_matching_option_index(contemplative, 0),
+            1,
+        )
+
+    def test_on_your_own_blocks_ally_slot_assets(self):
+        from arkham_deck_options import apply_permanent_composition_rules, asset_takes_ally_slot
+
+        on_your_own = _card(
+            "53010",
+            name="On Your Own",
+            type_code="asset",
+            faction_code="survivor",
+            permanent=True,
+            real_text="No assets that take up an ally slot.",
+        )
+        ally = _card(
+            "01031",
+            name="Beat Cop",
+            type_code="asset",
+            faction_code="guardian",
+            slot="Ally",
+        )
+        event = _card("01050", type_code="event", faction_code="survivor")
+        options = [
+            {"faction": ["survivor", "neutral"], "level": {"min": 0, "max": 5}},
+        ]
+        validator = DeckOptionsValidator.from_options(options)
+        slots = {"53010": 1}
+        apply_permanent_composition_rules(
+            validator,
+            slots,
+            {"53010": on_your_own, "01031": ally, "01050": event},
+            requirement_ids=set(),
+        )
+        self.assertTrue(asset_takes_ally_slot(ally))
+        self.assertFalse(validator.can_add_copy(ally, 0))
+        self.assertTrue(validator.can_add_copy(event, 0))
+
+    def test_underworld_support_singleton_by_title(self):
+        from arkham_deck_options import apply_permanent_composition_rules
+
+        support = _card(
+            "08046",
+            name="Underworld Support",
+            type_code="asset",
+            faction_code="rogue",
+            permanent=True,
+            real_text="cannot include more than 1 copy of each non-weakness, non-signature card (by title).",
+        )
+        card_a = _card("01050", name="Backstab", type_code="event", faction_code="rogue")
+        card_b = _card("01051", name="Backstab", type_code="event", faction_code="rogue")
+        options = [{"faction": ["rogue", "neutral"], "level": {"min": 0, "max": 5}}]
+        validator = DeckOptionsValidator.from_options(options)
+        cards = {"08046": support, "01050": card_a, "01051": card_b}
+        apply_permanent_composition_rules(
+            validator, {"08046": 1, "01050": 1}, cards, requirement_ids=set()
+        )
+        self.assertFalse(validator.can_add_copy(card_b, 0))
+
+    def test_deck_requirement_signature_groups(self):
+        from arkham_deck_options import (
+            all_deck_requirement_card_ids,
+            choose_signature_from_group,
+            deck_requirement_signature_groups,
+        )
+
+        requirements = {
+            "card": {
+                "08005": {"08005": "08005", "98008": "98008"},
+                "08006": {"08006": "08006", "98009": "98009"},
+            }
+        }
+        groups = deck_requirement_signature_groups(requirements, lambda c: c)
+        self.assertEqual(len(groups), 2)
+        all_ids = all_deck_requirement_card_ids(groups)
+        self.assertEqual(all_ids, frozenset({"08005", "98008", "08006", "98009"}))
+        chosen = choose_signature_from_group(
+            frozenset({"08005", "98008"}),
+            {"08005": 0.9, "98008": 0.5},
+        )
+        self.assertEqual(chosen, "08005")
+        chosen_alt = choose_signature_from_group(
+            frozenset({"08005", "98008"}),
+            {"08005": 0.3, "98008": 0.5},
+        )
+        self.assertEqual(chosen_alt, "98008")
 
 
 @unittest.skipUnless(CARD_JSON.exists() and TABOO_JSON.exists(), "data files missing")
@@ -349,6 +575,72 @@ class DeckOptionsIntegrationTests(unittest.TestCase):
             [],
             "popularity rows after the last included option should be omitted",
         )
+
+    def test_generate_norman_replacement_signatures(self):
+        if not self.prepared:
+            self.skipTest("decklist_json.pickle missing")
+        from arkham_deck_options import counts_toward_player_deck_size
+
+        result = self.engine.generate_decklist(self.prepared, "08004", "08004")
+        self.assertIsNone(result.skipped_reason)
+        self.assertEqual(result.deck_count, 30)
+        req_ids = self.engine._requirement_ids_for_investigator("08004")
+        self.assertEqual(result.slots.get("98008"), 1)
+        self.assertEqual(result.slots.get("98009"), 1)
+        self.assertNotIn("08005", result.slots)
+        self.assertNotIn("08006", result.slots)
+        counting = sum(
+            count
+            for cid, count in result.slots.items()
+            if counts_toward_player_deck_size(self.cards[cid])
+            and cid not in req_ids
+        )
+        self.assertEqual(counting, 30)
+
+    def test_export_generated_decklist_with_option_suffix(self):
+        if not self.prepared:
+            self.skipTest("decklist_json.pickle missing")
+        import tempfile
+        from pathlib import Path
+
+        from arkham_popularity import generation_export_filename
+
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp)
+            paths = self.engine.export_generated_decklist(
+                self.prepared,
+                "09018",
+                "09018",
+                out,
+                investigator_option="guardian+survivor",
+            )
+            expected = out / generation_export_filename(
+                "Charlie Kane", "09018", option_suffix="guardian+survivor"
+            )
+            self.assertIn(expected, paths)
+            self.assertTrue(expected.exists())
+
+    def test_export_resolution_diagnostics_for_charlie_kane(self):
+        if not self.prepared:
+            self.skipTest("decklist_json.pickle missing")
+        import tempfile
+        from pathlib import Path
+
+        from arkham_popularity import resolution_export_filename
+
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp)
+            self.engine.export_generated_decklist_csvs(
+                self.prepared, out, diagnostics=True
+            )
+            resolution_path = out / resolution_export_filename(
+                "Charlie Kane", "09018"
+            )
+            self.assertTrue(resolution_path.exists())
+            text = resolution_path.read_text(encoding="utf-8")
+            self.assertIn("faction_pair", text)
+            self.assertIn("guardian+survivor", text)
+            self.assertNotIn("faction_select,Class Choice,guardian", text)
 
     def test_export_resolution_diagnostics_for_tony_morgan(self):
         if not self.prepared:

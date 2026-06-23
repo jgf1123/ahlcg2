@@ -20,7 +20,7 @@ rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,
 19,11067,1,,Eyes of the Dreamer,,12,Arcane,0.43936568079940996,True,2
 20,02028,2,,Rite of Seeking,,2,Arcane,0.42009621458512936,True,2
 21,01093,1,,Unexpected Courage,,1,,0.40623734967567804,True,2
-22,01088,1,,Emergency Cache,,1,,0.3991157453987013,True,1
+22,01088,1,,Emergency Cache,,1,,0.3991157453987013,True,2
 23,04109,1,,Arcane Research,,4,,0.37263695158603277,True,1
 24,01064,1,,Drawn to the Flame,,1,,0.3703173672544463,True,1
 25,01067,1,,Fearless,,1,,0.3644205489956644,True,1
@@ -31,19 +31,5 @@ rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,
 30,01093,2,,Unexpected Courage,,1,,0.3401786946692243,True,2
 31,60412,1,,Robes of Endless Night,,7,Body,0.32683274012086816,True,1
 32,06201,1,,Spectral Razor,,6,,0.3152628530543459,True,1
-33,01088,2,,Emergency Cache,,1,,0.3137637437588605,False,1
+33,01088,2,,Emergency Cache,,1,,0.3137637437588605,True,2
 34,08060,1,,Dragon Pole,,9,Hand x2,0.31325269118296006,True,1
-35,03153,1,,Storm of Spirits,,3,,0.2939220180506211,False,0
-36,10094,1,,Drain Essence,,11,,0.29328920129569835,False,0
-37,08060,2,,Dragon Pole,,9,Hand x2,0.2923241897570089,False,1
-38,01064,2,,Drawn to the Flame,,1,,0.27939259750881396,False,1
-39,06201,2,,Spectral Razor,,6,,0.2730523184561546,False,1
-40,02111,1,,Delve Too Deep,,2,,0.2726238285175965,False,0
-41,04109,2,,Arcane Research,,4,,0.26978919566604653,False,1
-42,60408,1,,Clairvoyance,,7,Arcane,0.266253898334415,False,0
-43,01067,2,,Fearless,,1,,0.26073297197906,False,1
-44,03235,1,,Torrent of Power,,3,,0.25983332679436016,False,0
-45,03032,2,,Alchemical Transmutation,,3,Arcane,0.2590268566781161,False,1
-46,05032,2,,Deny Existence,,5,,0.2535616987277077,False,1
-47,60407,1,,Azure Flame,,7,Arcane,0.2524773077050616,False,0
-48,05112,1,,Sign Magick,,5,Hand,0.2389640059488883,True,1

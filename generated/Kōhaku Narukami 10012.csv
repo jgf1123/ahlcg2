@@ -29,9 +29,9 @@ rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,
 28,06201,2,,Spectral Razor,,6,,0.30218910028394425,True,2
 29,01088,2,,Emergency Cache,,1,,0.2909804785911406,True,2
 30,10075,1,,Diabolical Luck,,11,,0.2697370422490639,True,1
-31,07031,1,,Ward of Radiance,,8,,0.2662389537588174,True,1
+31,07031,1,,Ward of Radiance,,8,,0.2662389537588174,True,2
 32,02111,1,,Delve Too Deep,,2,,0.2658759862951333,True,1
-33,07031,2,,Ward of Radiance,,8,,0.26466221301557186,False,1
+33,07031,2,,Ward of Radiance,,8,,0.26466221301557186,True,2
 34,60416,1,,Voice of Ra,,7,,0.2624972109096842,False,0
 35,07029,1,,Sword Cane,,8,Hand,0.2624840056831293,True,1
 36,07035,1,,Predestined,,8,,0.2606166538749733,False,0
@@ -51,13 +51,3 @@ rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,
 50,05116,2,,Scroll of Secrets,,5,Hand,0.22152325295807096,False,0
 51,05032,1,,Deny Existence,,5,,0.21829563982616418,False,0
 52,10019,1,,Ancestral Token,,11,Accessory,0.21340929232622713,True,1
-53,10046,1,,Control Variable,,11,,0.20710604062521928,False,0
-54,05032,2,,Deny Existence,,5,,0.19733315972037452,False,0
-55,01090,1,,Perception,,1,,0.19154165699485096,False,0
-56,01090,2,,Perception,,1,,0.19154165699485096,False,0
-57,60408,1,,Clairvoyance,,7,Arcane,0.1857751072087818,False,0
-58,60407,1,,Azure Flame,,7,Arcane,0.18373653452562402,False,0
-59,08116,1,,Talisman of Protection,,9,Arcane,0.18246059452025815,False,0
-60,07018,2,,Blessed Blade,,8,Hand,0.1789673268901045,False,0
-61,11068a,1,,The Great Work,Divide and Unite,12,,0.17010309278350513,False,0
-62,60410,1,,Familiar Spirit,,7,Ally,0.1571812441965161,True,1

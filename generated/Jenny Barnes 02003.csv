@@ -9,12 +9,12 @@ rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,
 8,01091,1,,Overpower,,1,,0.39544909421344654,True,2
 9,01088,1,,Emergency Cache,,1,,0.391874418051635,True,2
 10,01093,1,,Unexpected Courage,,1,,0.38187429346839463,True,2
-11,01089,1,,Guts,,1,,0.3765321454464761,True,1
+11,01089,1,,Guts,,1,,0.3765321454464761,True,2
 12,60311,1,,Streetwise,,7,,0.37393285029042955,True,1
 13,01047,1,,.41 Derringer,,1,Hand,0.36870041085195243,True,1
 14,01049,1,,Hard Knocks,,1,,0.3656208078505974,True,1
 15,01090,1,,Perception,,1,,0.35816182485990555,True,1
-16,01087,1,,Flashlight,,1,Hand,0.34545478617140396,True,2
+16,01087,1,,Flashlight,,1,Hand,0.34545478617140396,True,1
 17,05111,1,,Intel Report,,5,,0.3390196467548404,True,1
 18,10069,2,,Bank Job,,11,,0.3344371324819987,True,2
 19,11068a,1,,The Great Work,Divide and Unite,12,,0.32949774529622144,True,1
@@ -30,7 +30,8 @@ rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,
 29,05028,1,,Well Connected,,5,,0.2780446403378856,True,1
 30,60305,1,,Lockpicks,,7,Hand,0.2731524964759098,True,1
 31,01051,1,,Backstab,,1,,0.27146964008830454,True,1
-32,01087,2,,Flashlight,,1,Hand,0.2711477277457784,True,2
+32,01087,2,,Flashlight,,1,Hand,0.2711477277457784,False,1
 33,03233,1,,"""Watch this!""",,3,,0.2681963162690917,True,1
 34,01052,1,,Sneak Attack,,1,,0.2582495188531282,True,1
 35,01091,2,,Overpower,,1,,0.2487635111811385,True,2
+36,01089,2,,Guts,,1,,0.24759438503247827,True,2

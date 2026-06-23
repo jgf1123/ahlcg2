@@ -12,7 +12,7 @@ rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,
 11,11024,1,,Ready for Anything,,12,,0.37921675440126634,True,2
 12,11024,2,,Ready for Anything,,12,,0.37921675440126634,True,2
 13,01019,1,,First Aid,,1,,0.3787467745487068,True,2
-14,02033,1,,Peter Sylvestre,Big Man on Campus,2,Ally,0.36743120588205164,False,0
+14,02033,1,,Peter Sylvestre,Big Man on Campus,2,Ally,0.36743120588205164,True,2
 15,01090,1,,Perception,,1,,0.3567876092719668,True,2
 16,01065,2,,Ward of Protection,,1,,0.3559562272673854,True,2
 17,01030,2,,Magnifying Glass,,1,Hand,0.34741136552990054,True,2
@@ -21,18 +21,18 @@ rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,
 20,03269,2,,St. Hubert's Key,Cleansing Fire,3,Accessory,0.32132049113611105,False,1
 21,01090,2,,Perception,,1,,0.3212895136637239,True,2
 22,03228,1,,Inspiring Presence,,3,,0.31785627110936326,True,2
-23,02033,2,,Peter Sylvestre,Big Man on Campus,2,Ally,0.31328152418028077,False,0
+23,02033,2,,Peter Sylvestre,Big Man on Campus,2,Ally,0.31328152418028077,True,2
 24,01088,1,,Emergency Cache,,1,,0.31297633373691924,True,1
 25,60118,1,,Stand Together,,7,,0.3014133780908547,True,1
-26,02024,1,,Liquid Courage,,2,,0.29432268322449945,False,0
+26,02024,1,,Liquid Courage,,2,,0.29432268322449945,True,1
 27,08020,1,,Toe to Toe,,9,,0.2772157969634883,True,1
 28,03191,2,,Logical Reasoning,,3,,0.26943090748330206,True,2
 29,60110,1,,Safeguard,,7,,0.26780977610217865,True,1
 30,10027,1,,Task Force,,11,,0.26713359418358673,True,1
-31,05151,1,,Alice Luxley,Fearless Flatfoot,5,Ally,0.26702923780736276,True,2
+31,05151,1,,Alice Luxley,Fearless Flatfoot,5,Ally,0.26702923780736276,True,1
 32,03228,2,,Inspiring Presence,,3,,0.26178863231944355,True,2
 33,01019,2,,First Aid,,1,,0.25756805500462754,True,2
-34,01067,1,,Fearless,,1,,0.25686470571666903,True,1
+34,01067,1,,Fearless,,1,,0.25686470571666903,False,0
 35,60118,2,,Stand Together,,7,,0.25419468759226427,False,1
 36,01058,1,,Forbidden Knowledge,,1,,0.25045149180494913,False,0
 37,01089,1,,Guts,,1,,0.2342246766378849,False,0
@@ -42,10 +42,3 @@ rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,
 41,10027,2,,Task Force,,11,,0.21524506676632144,False,1
 42,08020,2,,Toe to Toe,,9,,0.2129997358870686,False,1
 43,11020,1,,The Book of War,Sun Tzu's Legacy,12,Hand,0.2114597963517043,True,1
-44,98011,1,,Foolishness,Foolish Cat of Ulthar,,Ally,0.20956451451267147,True,1
-45,03231,1,,Eureka!,,3,,0.20312579869580985,False,0
-46,98012,1,,To Fight the Black Wind,,,,0.20301116827739957,False,0
-47,02117,1,,Painkillers,,2,,0.2014515489029721,False,0
-48,02024,2,,Liquid Courage,,2,,0.20096143033424088,False,0
-49,01093,1,,Unexpected Courage,,1,,0.20052155879201625,False,0
-50,05151,2,,Alice Luxley,Fearless Flatfoot,5,Ally,0.199855085311873,True,2

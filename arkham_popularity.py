@@ -21,8 +21,18 @@ from arkham_canonical import (
 from arkham_deck_options import (
     DeckOptionResolution,
     DeckOptionsValidator,
+    InvestigatorOptionInput,
+    apply_permanent_composition_rules,
     card_has_trait,
+    counts_toward_player_deck_size,
     deck_options_support,
+    deck_requirement_signature_groups,
+    all_deck_requirement_card_ids,
+    choose_signature_from_group,
+    effective_deck_size_from_slots,
+    investigator_option_slug,
+    merge_deck_options_with_permanents,
+    parse_investigator_option,
     resolve_deck_options,
 )
 
@@ -32,6 +42,9 @@ UPGRADE_PATTERN = re.compile(r"\d+\|\d+.*")
 P_D_FLOOR = 1.0 / 30.0
 # Spec B2: floor on P(i|C) when i = C to avoid division by zero.
 INV_PROB_FLOOR = 0.01
+
+# Spec: relative-mass smoothing for conditional slot averages (Phase 0.5).
+SLOT_AVERAGE_SMOOTHING_RHO = 0.05
 
 # Scraping/cleaning: manually confirmed joke decklists.
 KNOWN_JOKE_DECKLIST_IDS = frozenset({43839, 44599, 45550})
@@ -251,6 +264,11 @@ def slot_phase_targets(weighted_avg: float) -> tuple[int, int, int]:
     return phase1_goal, phase1_cap, phase2_ceiling
 
 
+def generation_slot_targets_differ(avg_a: float, avg_b: float) -> bool:
+    """True when two weighted averages map to different phase 1/2 slot targets."""
+    return slot_phase_targets(avg_a) != slot_phase_targets(avg_b)
+
+
 def card_restricted_to_investigator(
     card: dict[str, Any],
     investigator_code: str,
@@ -273,6 +291,7 @@ class GeneratedDecklist:
     entries: list[dict[str, Any]]
     slot_targets: dict[str, dict[str, float | int]]
     deck_count: int
+    base_deck_size: int | None = None
     skipped_reason: str | None = None
     first_add_phase: dict[str, str] = field(default_factory=dict)
     option_resolutions: list[DeckOptionResolution] = field(default_factory=list)
@@ -287,12 +306,28 @@ def sanitize_export_filename(name: str) -> str:
     return cleaned.strip() or "investigator"
 
 
-def generation_export_filename(name: str, canonical_front: str) -> str:
-    return f"{sanitize_export_filename(name)} {canonical_front}.csv"
+def generation_export_filename(
+    name: str,
+    canonical_front: str,
+    *,
+    option_suffix: str | None = None,
+) -> str:
+    base = f"{sanitize_export_filename(name)} {canonical_front}"
+    if option_suffix:
+        return f"{base} {option_suffix}.csv"
+    return f"{base}.csv"
 
 
-def resolution_export_filename(name: str, canonical_front: str) -> str:
-    return f"{sanitize_export_filename(name)} {canonical_front} resolution.csv"
+def resolution_export_filename(
+    name: str,
+    canonical_front: str,
+    *,
+    option_suffix: str | None = None,
+) -> str:
+    base = f"{sanitize_export_filename(name)} {canonical_front}"
+    if option_suffix:
+        return f"{base} {option_suffix} resolution.csv"
+    return f"{base} resolution.csv"
 
 
 def stratum_blend_weight(deck_cycle: int) -> float:
@@ -645,6 +680,7 @@ class PreparedDecklist:
     next_deck: Any = None
     date_creation: Any = None
     customizations: dict[str, str] = field(default_factory=dict)
+    meta: dict[str, Any] | None = None
 
 
 class ArkhamPopularityEngine:
@@ -745,9 +781,13 @@ class ArkhamPopularityEngine:
             is_ignore = not self.deck_passes_taboo(slots, taboo_id)
 
         customizations = {}
+        meta_dict: dict[str, Any] | None = None
         meta = decklist.get("meta") or ""
         if meta:
-            for key, value in json.loads(meta).items():
+            meta_json = json.loads(meta)
+            if isinstance(meta_json, dict):
+                meta_dict = meta_json
+            for key, value in meta_json.items():
                 if key.startswith("cus_"):
                     customizations[key.removeprefix("cus_")] = value
 
@@ -775,6 +815,7 @@ class ArkhamPopularityEngine:
             next_deck=decklist.get("next_deck"),
             date_creation=decklist.get("date_creation"),
             customizations=customizations,
+            meta=meta_dict,
         )
 
     def prepare_all(
@@ -1415,27 +1456,204 @@ class ArkhamPopularityEngine:
             name=info.name,
         )
 
-    def _slot_targets_for_investigator(
-        self,
-        decks: list[PreparedDecklist],
-        canonical_front: str,
-        canonical_back: str,
-    ) -> dict[str, dict[str, float | int]]:
-        usage = self.slot_usage_for_investigator(
-            decks, canonical_front, canonical_back
+    def _permanent_set_in_slots(self, slots: dict[str, int]) -> frozenset[str]:
+        return frozenset(
+            canonical_id
+            for canonical_id, count in slots.items()
+            if count > 0 and self.cards.get(canonical_id, {}).get("permanent")
         )
-        avg_by_slot = {row["slot_type"]: row["weighted_avg"] for row in usage}
+
+    def _deck_includes_all_permanents(
+        self,
+        deck_slots: dict[str, int],
+        required_permanents: frozenset[str],
+    ) -> bool:
+        if not required_permanents:
+            return True
+        return required_permanents.issubset(self._permanent_set_in_slots(deck_slots))
+
+    def _accumulate_weighted_slot_usage(
+        self,
+        deck: PreparedDecklist,
+        weight: float,
+        slot_totals: dict[str, float],
+    ) -> None:
+        for canonical_id, count in deck.slots.items():
+            card = self.cards.get(canonical_id)
+            if card is None or card.get("type_code") != "asset":
+                continue
+            info = self.canonical_cards.get(canonical_id)
+            if info is None:
+                continue
+            per_slot = asset_slot_counts(
+                canonical_id,
+                info.slot,
+                info.real_slot,
+                count,
+                name=info.name,
+            )
+            for slot_type, slot_copies in per_slot.items():
+                slot_totals[slot_type] += weight * slot_copies
+
+    def _smoothed_slot_averages(
+        self,
+        inv_decks: list[PreparedDecklist],
+        user_weights: dict[Any, float],
+        cycle_weights: dict[int, float],
+        required_permanents: frozenset[str],
+        *,
+        rho: float = SLOT_AVERAGE_SMOOTHING_RHO,
+    ) -> tuple[dict[str, float], dict[str, float | int]]:
+        slot_all: dict[str, float] = defaultdict(float)
+        slot_subset: dict[str, float] = defaultdict(float)
+        weight_all = 0.0
+        weight_subset = 0.0
+        for deck in inv_decks:
+            weight = self.deck_weight(deck, user_weights, cycle_weights)
+            if not weight:
+                continue
+            weight_all += weight
+            self._accumulate_weighted_slot_usage(deck, weight, slot_all)
+            if self._deck_includes_all_permanents(deck.slots, required_permanents):
+                weight_subset += weight
+                self._accumulate_weighted_slot_usage(deck, weight, slot_subset)
+
+        meta: dict[str, float | int] = {
+            "weight_all": weight_all,
+            "weight_subset": weight_subset,
+            "smoothing_rho": rho,
+        }
+        if not weight_all:
+            return {}, meta
+
+        average_all = {
+            slot_type: slot_all.get(slot_type, 0.0) / weight_all
+            for slot_type in STANDARD_ASSET_SLOT_TYPES
+        }
+        if not required_permanents or weight_subset == 0:
+            meta["smoothing_lambda"] = 0.0
+            return average_all, meta
+
+        average_subset = {
+            slot_type: slot_subset.get(slot_type, 0.0) / weight_subset
+            for slot_type in STANDARD_ASSET_SLOT_TYPES
+        }
+        smoothing_lambda = min(1.0, weight_subset / (rho * weight_all))
+        meta["smoothing_lambda"] = smoothing_lambda
+        smoothed = {
+            slot_type: (
+                smoothing_lambda * average_subset.get(slot_type, 0.0)
+                + (1.0 - smoothing_lambda) * average_all.get(slot_type, 0.0)
+            )
+            for slot_type in STANDARD_ASSET_SLOT_TYPES
+        }
+        return smoothed, meta
+
+    def _slot_targets_from_averages(
+        self,
+        averages: dict[str, float],
+        *,
+        smoothing_meta: dict[str, float | int] | None = None,
+    ) -> dict[str, dict[str, float | int]]:
         targets: dict[str, dict[str, float | int]] = {}
         for slot_type in STANDARD_ASSET_SLOT_TYPES:
-            avg = avg_by_slot.get(slot_type, 0.0)
+            avg = averages.get(slot_type, 0.0)
             goal, cap, ceiling = slot_phase_targets(avg)
-            targets[slot_type] = {
+            row: dict[str, float | int] = {
                 "weighted_avg": avg,
                 "phase1_goal": goal,
                 "phase1_cap": cap,
                 "phase2_ceiling": ceiling,
             }
+            if smoothing_meta is not None:
+                row.update(smoothing_meta)
+            targets[slot_type] = row
         return targets
+
+    def _select_phase05_permanents(
+        self,
+        popularity_rows: list[dict[str, Any]],
+        deck_size: int,
+        *,
+        slots: dict[str, int],
+        requirement_ids: set[str],
+        investigator_code: str,
+        options_validator: DeckOptionsValidator,
+    ) -> list[str]:
+        cutoff_index: int | None = None
+        counting = 0
+        for index, row in enumerate(popularity_rows):
+            if self._row_already_satisfied(row, slots):
+                continue
+            if not self._generation_eligible_row(
+                row,
+                investigator_code=investigator_code,
+                options_validator=options_validator,
+                requirement_ids=requirement_ids,
+            ):
+                continue
+            card = self.cards[row["canonical_id"]]
+            if card.get("permanent"):
+                continue
+            if not counts_toward_player_deck_size(card):
+                continue
+            counting += 1
+            if counting == deck_size:
+                cutoff_index = index
+                break
+
+        if cutoff_index is None:
+            return []
+
+        selected: list[str] = []
+        seen: set[str] = set()
+        for index in range(cutoff_index):
+            row = popularity_rows[index]
+            if self._row_already_satisfied(row, slots):
+                continue
+            canonical_id = row["canonical_id"]
+            if canonical_id in seen:
+                continue
+            card = self.cards.get(canonical_id)
+            if card is None or not card.get("permanent"):
+                continue
+            if not self._generation_eligible_row(
+                row,
+                investigator_code=investigator_code,
+                options_validator=options_validator,
+                requirement_ids=requirement_ids,
+            ):
+                continue
+            selected.append(canonical_id)
+            seen.add(canonical_id)
+        return selected
+
+    def _slot_targets_for_investigator(
+        self,
+        decks: list[PreparedDecklist],
+        canonical_front: str,
+        canonical_back: str,
+        *,
+        required_permanents: frozenset[str] | None = None,
+    ) -> dict[str, dict[str, float | int]]:
+        inv_decks = [
+            deck
+            for deck in decks
+            if deck.canonical_front == canonical_front
+            and deck.canonical_back == canonical_back
+            and not deck.is_ignore
+            and deck.cycle is not None
+        ]
+        user_weights = self.assign_user_weights(decks)
+        cycle_weights = self.assign_cycle_weights(inv_decks, user_weights)
+        permanent_set = required_permanents or frozenset()
+        averages, meta = self._smoothed_slot_averages(
+            inv_decks,
+            user_weights,
+            cycle_weights,
+            permanent_set,
+        )
+        return self._slot_targets_from_averages(averages, smoothing_meta=meta)
 
     def _zero_xp_popularity_rows(
         self,
@@ -1485,6 +1703,8 @@ class ArkhamPopularityEngine:
         decks: list[PreparedDecklist],
         canonical_front: str,
         canonical_back: str,
+        *,
+        investigator_option: InvestigatorOptionInput = None,
     ) -> GeneratedDecklist:
         """Build a synthetic 0 XP decklist per spec Automatic Decklist Generation."""
         supported, skip_reason = self.supports_decklist_generation(
@@ -1506,12 +1726,10 @@ class ArkhamPopularityEngine:
                 entries=[],
                 slot_targets={},
                 deck_count=0,
+                base_deck_size=deck_size_target,
                 skipped_reason=skip_reason,
             )
 
-        slot_targets = self._slot_targets_for_investigator(
-            decks, canonical_front, canonical_back
-        )
         popularity_rows = self._zero_xp_popularity_rows(
             decks, canonical_front, canonical_back
         )
@@ -1531,40 +1749,115 @@ class ArkhamPopularityEngine:
             (
                 deck.slots,
                 self.deck_weight(deck, user_weights, cycle_weights),
+                deck.meta,
             )
             for deck in active_inv
         ]
-        deck_options, deck_size_target, option_resolutions = resolve_deck_options(
+        resolved_deck_options, base_deck_size, option_resolutions = resolve_deck_options(
             deck_options,
             weighted_decks=weighted_decks,
             cards=self.cards,
             default_deck_size=deck_size_target,
             xp_for_card=self._xp_at_current_taboo,
+            investigator_code=canonical_front,
+            investigator_option=investigator_option,
         )
 
         slots: dict[str, int] = {}
         current_slots: dict[str, float] = defaultdict(float)
-        requirement_ids: set[str] = set()
         first_add_phase: dict[str, str] = {}
 
-        for card_code in (requirements.get("card") or {}):
-            canonical_id = self.mapper.to_canonical(card_code)
-            requirement_ids.add(canonical_id)
-            card = self.cards.get(canonical_id)
+        signature_groups = deck_requirement_signature_groups(
+            requirements, self.mapper.to_canonical
+        )
+        requirement_ids = set(all_deck_requirement_card_ids(signature_groups))
+        signature_weights: dict[str, float] = defaultdict(float)
+        for deck in active_inv:
+            for group in signature_groups:
+                present = [
+                    canonical_id
+                    for canonical_id in group
+                    if deck.slots.get(canonical_id, 0) > 0
+                ]
+                if len(present) != 1:
+                    continue
+                signature_weights[present[0]] += 1.0
+
+        for group in signature_groups:
+            chosen_id = choose_signature_from_group(group, signature_weights)
+            card = self.cards.get(chosen_id)
             copy_count = int(card.get("quantity") or 1) if card is not None else 1
-            slots[canonical_id] = slots.get(canonical_id, 0) + copy_count
-            first_add_phase[canonical_id] = "requirement"
+            slots[chosen_id] = slots.get(chosen_id, 0) + copy_count
+            first_add_phase[chosen_id] = "requirement"
             if card is not None and card.get("type_code") == "asset":
-                for slot_type, amount in self._slot_vector_for_card(canonical_id).items():
+                for slot_type, amount in self._slot_vector_for_card(chosen_id).items():
                     current_slots[slot_type] += amount * copy_count
 
-        options_validator = DeckOptionsValidator.from_options(deck_options)
+        base_options_validator = DeckOptionsValidator.from_options(resolved_deck_options)
+        base_options_validator.seed_counts_from_slots(
+            slots,
+            self.cards,
+            requirement_ids=requirement_ids,
+            xp_for_card=self._xp_at_current_taboo,
+        )
+
+        phase05_permanents = self._select_phase05_permanents(
+            popularity_rows,
+            base_deck_size,
+            slots=slots,
+            requirement_ids=requirement_ids,
+            investigator_code=canonical_front,
+            options_validator=base_options_validator,
+        )
+        for canonical_id in phase05_permanents:
+            if not self._can_add_generation_copy(canonical_id, slots):
+                continue
+            card = self.cards.get(canonical_id)
+            if card is None:
+                continue
+            xp = self._xp_at_current_taboo(card, canonical_id)
+            if not base_options_validator.can_add_copy(card, xp):
+                continue
+            slots[canonical_id] = slots.get(canonical_id, 0) + 1
+            first_add_phase[canonical_id] = "phase05"
+            base_options_validator.add_copy(card, xp)
+
+        merged_deck_options = merge_deck_options_with_permanents(
+            resolved_deck_options,
+            slots,
+            self.cards,
+        )
+        final_deck_size = effective_deck_size_from_slots(
+            slots,
+            self.cards,
+            base_size=base_deck_size,
+        )
+        permanent_set = self._permanent_set_in_slots(slots)
+        slot_averages, smoothing_meta = self._smoothed_slot_averages(
+            active_inv,
+            user_weights,
+            cycle_weights,
+            permanent_set,
+        )
+        slot_targets = self._slot_targets_from_averages(
+            slot_averages,
+            smoothing_meta=smoothing_meta,
+        )
+
+        options_validator = DeckOptionsValidator.from_options(merged_deck_options)
         options_validator.seed_counts_from_slots(
             slots,
             self.cards,
             requirement_ids=requirement_ids,
             xp_for_card=self._xp_at_current_taboo,
         )
+        apply_permanent_composition_rules(
+            options_validator,
+            slots,
+            self.cards,
+            requirement_ids=requirement_ids,
+        )
+        minimum_skills = options_validator.minimum_skills
 
         def phase1_goals_met() -> bool:
             return all(
@@ -1602,6 +1895,27 @@ class ArkhamPopularityEngine:
                     continue
                 total += count
             return total
+
+        def skills_in_deck() -> int:
+            total = 0
+            for canonical_id, count in slots.items():
+                if canonical_id in requirement_ids:
+                    continue
+                card = self.cards.get(canonical_id)
+                if card is None or card.get("type_code") != "skill":
+                    continue
+                total += count
+            return total
+
+        def remaining_skill_reserve() -> int:
+            return max(0, minimum_skills - skills_in_deck())
+
+        def phase2_complete() -> bool:
+            if non_permanent_count() < final_deck_size:
+                return False
+            if skills_in_deck() < minimum_skills:
+                return False
+            return True
 
         def try_add_copy(canonical_id: str, phase: str) -> bool:
             card = self.cards.get(canonical_id)
@@ -1645,7 +1959,7 @@ class ArkhamPopularityEngine:
                 try_add_copy(canonical_id, "phase1")
 
         for row in popularity_rows:
-            if non_permanent_count() >= deck_size_target:
+            if phase2_complete():
                 break
             if self._row_already_satisfied(row, slots):
                 continue
@@ -1659,8 +1973,11 @@ class ArkhamPopularityEngine:
             canonical_id = row["canonical_id"]
             card = self.cards[canonical_id]
             if card.get("permanent"):
-                try_add_copy(canonical_id, "phase2")
                 continue
+            if minimum_skills and card.get("type_code") != "skill":
+                slots_left = final_deck_size - non_permanent_count()
+                if slots_left <= remaining_skill_reserve():
+                    continue
             if card.get("type_code") == "asset":
                 slot_vector = self._slot_vector_for_card(canonical_id)
                 if not fits_phase2_ceiling(slot_vector):
@@ -1674,11 +1991,12 @@ class ArkhamPopularityEngine:
             canonical_front=canonical_front,
             canonical_back=canonical_back,
             investigator_name=inv_name,
-            deck_size=deck_size_target,
+            deck_size=final_deck_size,
             slots=slots,
             entries=entries,
             slot_targets=slot_targets,
             deck_count=non_permanent_count(),
+            base_deck_size=base_deck_size,
             skipped_reason=None,
             first_add_phase=first_add_phase,
             option_resolutions=option_resolutions,
@@ -1687,10 +2005,10 @@ class ArkhamPopularityEngine:
     def _requirement_ids_for_investigator(self, canonical_front: str) -> set[str]:
         inv_card = self.cards.get(canonical_front) or {}
         requirements = inv_card.get("deck_requirements") or {}
-        return {
-            self.mapper.to_canonical(card_code)
-            for card_code in (requirements.get("card") or {})
-        }
+        groups = deck_requirement_signature_groups(
+            requirements, self.mapper.to_canonical
+        )
+        return set(all_deck_requirement_card_ids(groups))
 
     def _popularity_row_in_generated(
         self,
@@ -1713,11 +2031,15 @@ class ArkhamPopularityEngine:
         canonical_back: str,
         *,
         generated: GeneratedDecklist | None = None,
+        investigator_option: InvestigatorOptionInput = None,
     ) -> list[dict[str, Any]]:
         """0 XP popularity rows through the last included generated option."""
         if generated is None:
             generated = self.generate_decklist(
-                decks, canonical_front, canonical_back
+                decks,
+                canonical_front,
+                canonical_back,
+                investigator_option=investigator_option,
             )
         if generated.skipped_reason:
             return []
@@ -1790,6 +2112,89 @@ class ArkhamPopularityEngine:
             next_rank += 1
 
         return export_rows
+
+    def export_generated_decklist(
+        self,
+        decks: list[PreparedDecklist],
+        canonical_front: str,
+        canonical_back: str,
+        output_dir: str | Path = "generated",
+        *,
+        investigator_option: InvestigatorOptionInput = None,
+        diagnostics: bool = False,
+    ) -> list[Path]:
+        """Write one generated deck CSV (and optional resolution CSV) for an investigator."""
+        out = Path(output_dir)
+        out.mkdir(parents=True, exist_ok=True)
+        inv_card = self.cards.get(canonical_front) or {}
+        inv_name = inv_card.get("name", canonical_front)
+        generated = self.generate_decklist(
+            decks,
+            canonical_front,
+            canonical_back,
+            investigator_option=investigator_option,
+        )
+        override = parse_investigator_option(
+            investigator_option,
+            inv_card.get("deck_options") or [],
+        )
+        option_suffix = investigator_option_slug(
+            override=override,
+            resolutions=generated.option_resolutions,
+        )
+        fieldnames = [
+            "rank",
+            "canonical_id",
+            "card_index",
+            "option_index",
+            "name",
+            "subname",
+            "cycle",
+            "slot",
+            "p5_popularity",
+            "included_in_generated",
+            "generated_count",
+        ]
+        resolution_fieldnames = [
+            "resolution_kind",
+            "option_name",
+            "choice",
+            "weighted_total",
+            "weight_share",
+            "selected",
+        ]
+        written: list[Path] = []
+        rows = self.generation_popularity_table(
+            decks,
+            canonical_front,
+            canonical_back,
+            generated=generated,
+            investigator_option=investigator_option,
+        )
+        path = out / generation_export_filename(
+            inv_name, canonical_front, option_suffix=option_suffix
+        )
+        with path.open("w", newline="", encoding="utf-8") as handle:
+            writer = csv.DictWriter(handle, fieldnames=fieldnames)
+            writer.writeheader()
+            for row in rows:
+                writer.writerow(row)
+        written.append(path)
+
+        if diagnostics and generated.option_resolutions:
+            resolution_path = out / resolution_export_filename(
+                inv_name, canonical_front, option_suffix=option_suffix
+            )
+            resolution_rows: list[dict[str, Any]] = []
+            for resolution in generated.option_resolutions:
+                resolution_rows.extend(resolution.to_csv_rows())
+            with resolution_path.open("w", newline="", encoding="utf-8") as handle:
+                writer = csv.DictWriter(handle, fieldnames=resolution_fieldnames)
+                writer.writeheader()
+                for row in resolution_rows:
+                    writer.writerow(row)
+            written.append(resolution_path)
+        return written
 
     def export_generated_decklist_csvs(
         self,

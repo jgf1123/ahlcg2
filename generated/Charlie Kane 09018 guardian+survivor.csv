@@ -1,0 +1,63 @@
+rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,included_in_generated,generated_count
+1,09019,1,,Bonnie Walsh,Loyal Assistant,10,Ally,1.0,True,1
+2,09020,1,,Burden of Leadership,,10,,1.0,True,1
+3,01000,1,,Random Basic Weakness,,1,,0.8172619366275188,False,0
+4,03158,1,,Calling in Favors,,3,,0.636313989189152,True,2
+5,03158,2,,Calling in Favors,,3,,0.567272003869837,True,2
+6,09028,1,,Motivational Speech,,10,,0.525829106189088,True,2
+7,02020,1,,Laboratory Assistant,,2,Ally,0.48777334828347235,True,2
+8,03228,1,,Inspiring Presence,,3,,0.4759131211256047,True,2
+9,09028,2,,Motivational Speech,,10,,0.471524525047813,True,2
+10,03228,2,,Inspiring Presence,,3,,0.4661341562608864,True,2
+11,02020,2,,Laboratory Assistant,,2,Ally,0.41989860807286616,True,2
+12,01025,1,,Vicious Blow,,1,,0.39383817097083695,True,2
+13,01048,1,,Leo De Luca,The Louisiana Lion,1,Ally,0.3898465933817309,True,1
+14,02270,1,,A Chance Encounter,,2,,0.3555651017874732,True,2
+15,04201,1,,Take Heart,,4,,0.3520366491054534,True,2
+16,02270,2,,A Chance Encounter,,2,,0.33332524533230745,True,2
+17,01025,2,,Vicious Blow,,1,,0.3333116922722921,True,2
+18,01088,1,,Emergency Cache,,1,,0.3294065559077297,True,1
+19,04201,2,,Take Heart,,4,,0.32906682010824384,True,2
+20,01090,1,,Perception,,1,,0.32109517999412235,True,2
+21,08125,1,,In the Thick of It,,9,,0.31969184984668886,False,0
+22,01090,2,,Perception,,1,,0.30971492405016265,True,2
+23,01091,1,,Overpower,,1,,0.30240570966720715,True,2
+24,01021,1,,Guard Dog,,1,Ally,0.3022321134881213,True,2
+25,01091,2,,Overpower,,1,,0.2978825502648864,True,2
+26,03039,1,,Resourceful,,3,,0.28982199596871533,False,0
+27,03039,2,,Resourceful,,3,,0.28982199596871533,False,0
+28,01033,1,,Dr. Milan Christopher,Professor of Entomology,1,Ally,0.2881586321863076,True,1
+29,01018,1,,Beat Cop,,1,Ally,0.26320290691429504,True,1
+30,01088,2,,Emergency Cache,,1,,0.24574251540732156,False,1
+31,01075,1,,Rabbit's Foot,,1,Accessory,0.23934732074655604,False,0
+32,06111,1,,Daring,,6,,0.23607581750568843,False,0
+33,06111,2,,Daring,,6,,0.22965990635767788,False,0
+34,60107,1,,Grete Wagner,The Purifier,7,Ally,0.22610334517515693,True,1
+35,04112,1,,Stunning Blow,,4,,0.21476174189684918,False,0
+36,04112,2,,Stunning Blow,,4,,0.21476174189684918,False,0
+37,10069,1,,Bank Job,,11,,0.21418900645572303,False,0
+38,02149,1,,Art Student,,2,Ally,0.20789861623025016,True,1
+39,01021,2,,Guard Dog,,1,Ally,0.2004594230039668,True,2
+40,05151,1,,Alice Luxley,Fearless Flatfoot,5,Ally,0.19962169025558174,True,1
+41,08083,1,,Medical Student,,9,Ally,0.1893614407862679,False,0
+42,02033,1,,Peter Sylvestre,Big Man on Campus,2,Ally,0.17582306046273202,False,0
+43,06162,1,,Gregory Gry,Muckraker,6,Ally,0.17265919883749545,False,0
+44,08032,1,,Jeremiah Kirby,Arctic Archaeologist,9,Ally,0.1672979614776284,False,0
+45,11068a,1,,The Great Work,Divide and Unite,12,,0.15631591023467992,False,0
+46,11071,1,,Spectral Shield,,12,,0.15631591023467992,False,0
+47,11071,2,,Spectral Shield,,12,,0.15631591023467992,False,0
+48,10069,2,,Bank Job,,11,,0.15477359728490547,False,0
+49,01076,1,,Stray Cat,,1,Ally,0.14281370104650457,False,0
+50,01018,2,,Beat Cop,,1,Ally,0.12948981871502044,False,1
+51,09066,1,,Hit and Run,,10,,0.12924945018223946,False,0
+52,01039,1,,Deduction,,1,,0.12502962949913052,False,0
+53,10023,1,,Wolf Mask,The Moon's Sire,11,Mask,0.1246372385250772,False,0
+54,05153,1,,"Mr. ""Rook""",Dealer in Secrets,5,Ally,0.12179216385643885,False,0
+55,02149,2,,Art Student,,2,Ally,0.12145898686221944,False,1
+56,01087,1,,Flashlight,,1,Hand,0.11890686496761224,True,1
+57,01048,2,,Leo De Luca,The Louisiana Lion,1,Ally,0.11746058738428523,False,1
+58,11066,1,,Breath of the Sleeper,,12,Arcane,0.11016053234858425,False,0
+59,03151,1,,Dario El-Amin,Unscrupulous Investor,3,Ally,0.10844547540238596,False,0
+60,01039,2,,Deduction,,1,,0.10070344395634698,False,0
+61,11021,1,,Crowbar,,12,Hand,0.0961044406839281,True,2
+62,11021,2,,Crowbar,,12,Hand,0.0961044406839281,True,2

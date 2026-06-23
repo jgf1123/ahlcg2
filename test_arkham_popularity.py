@@ -7,7 +7,7 @@ import unittest
 from pathlib import Path
 
 from arkham_canonical import CanonicalMapper, build_canonical_map
-from arkham_deck_options import is_standard_deck_options
+from arkham_deck_options import DeckOptionsValidator, is_standard_deck_options
 from arkham_popularity import (
     ArkhamPopularityEngine,
     InvCycleIndex,
@@ -23,6 +23,7 @@ from arkham_popularity import (
     apply_runtime_card_patches,
     slot_display_label,
     slot_phase_targets,
+    generation_slot_targets_differ,
     tilt_factor,
 )
 
@@ -377,6 +378,17 @@ class DeckGenerationTests(unittest.TestCase):
         self.assertEqual(slot_phase_targets(2), (1, 2, 3))
         self.assertEqual(slot_phase_targets(2.3), (2, 2, 3))
 
+    def test_slot_phase_targets_same_non_integer_interval(self):
+        """E in (1, 2) non-integer: same phase 1 goal/cap and phase 2 ceiling."""
+        self.assertEqual(slot_phase_targets(1.2), (1, 1, 2))
+        self.assertEqual(slot_phase_targets(1.8), (1, 1, 2))
+        self.assertFalse(generation_slot_targets_differ(1.2, 1.8))
+
+    def test_slot_phase_targets_differ_at_integer_boundary(self):
+        self.assertNotEqual(slot_phase_targets(1.8), slot_phase_targets(2.0))
+        self.assertTrue(generation_slot_targets_differ(1.8, 2.0))
+        self.assertFalse(generation_slot_targets_differ(2.3, 2.8))
+
     def test_is_standard_deck_options(self):
         self.assertTrue(
             is_standard_deck_options(
@@ -477,6 +489,54 @@ class DeckGenerationTests(unittest.TestCase):
         self.assertIn("01012", result.slots)
         self.assertNotIn("08125", result.slots)
 
+    def test_select_phase05_permanents_above_cutoff(self):
+        cards = {
+            "01004": _card(
+                "01004",
+                name="Agnes",
+                type_code="investigator",
+                faction_code="mystic",
+                deck_options=[
+                    {"faction": ["mystic", "neutral"], "level": {"min": 0, "max": 5}},
+                ],
+                deck_requirements={"size": 30, "card": {}},
+            ),
+            "P001": _card(
+                "P001",
+                name="Popular Permanent",
+                type_code="asset",
+                faction_code="neutral",
+                permanent=True,
+            ),
+            "C001": _card("C001", name="Card One", type_code="event", faction_code="neutral"),
+            "C002": _card("C002", name="Card Two", type_code="skill", faction_code="neutral"),
+            "P002": _card(
+                "P002",
+                name="Unpopular Permanent",
+                type_code="asset",
+                faction_code="neutral",
+                permanent=True,
+            ),
+        }
+        engine = self._engine(cards, {})
+        validator = DeckOptionsValidator.from_options(cards["01004"]["deck_options"])
+        popularity_rows = [
+            {"canonical_id": "P001", "card_index": 1, "xp": 0},
+            {"canonical_id": "C001", "card_index": 1, "xp": 0},
+            {"canonical_id": "C002", "card_index": 1, "xp": 0},
+            {"canonical_id": "P002", "card_index": 1, "xp": 0},
+        ]
+        selected = engine._select_phase05_permanents(
+            popularity_rows,
+            2,
+            slots={},
+            requirement_ids=set(),
+            investigator_code="01004",
+            options_validator=validator,
+        )
+        self.assertEqual(selected, ["P001"])
+        self.assertNotIn("P002", selected)
+
 
 @unittest.skipUnless(CARD_JSON.exists() and TABOO_JSON.exists(), "data files missing")
 class IntegrationTests(unittest.TestCase):
@@ -540,6 +600,46 @@ class IntegrationTests(unittest.TestCase):
             and info.slot == "Mask"
         )
         self.assertLessEqual(mask_copies, 1)
+
+
+    def test_smoothed_slot_averages_interpolate(self):
+        with Path(__file__).with_name("decklist_json.pickle").open("rb") as file:
+            decklist_json = pickle.load(file)
+        prepared = self.engine.prepare_all(decklist_json)
+        inv_decks = [
+            deck
+            for deck in prepared
+            if deck.canonical_front == "02001"
+            and deck.canonical_back == "02001"
+            and not deck.is_ignore
+            and deck.cycle is not None
+        ]
+        user_weights = self.engine.assign_user_weights(prepared)
+        cycle_weights = self.engine.assign_cycle_weights(inv_decks, user_weights)
+        averages, meta = self.engine._smoothed_slot_averages(
+            inv_decks,
+            user_weights,
+            cycle_weights,
+            frozenset({"02158"}),
+            rho=0.05,
+        )
+        self.assertGreater(meta["weight_all"], 0)
+        self.assertGreater(meta["weight_subset"], 0)
+        self.assertGreater(meta["smoothing_lambda"], 0)
+        self.assertLess(meta["smoothing_lambda"], 1)
+        self.assertIn("Ally", averages)
+
+    def test_generate_george_barnaby_includes_forced_learning(self):
+        with Path(__file__).with_name("decklist_json.pickle").open("rb") as file:
+            decklist_json = pickle.load(file)
+        prepared = self.engine.prepare_all(decklist_json)
+        result = self.engine.generate_decklist(prepared, "11017", "11017")
+        self.assertIsNone(result.skipped_reason)
+        self.assertEqual(result.base_deck_size, 35)
+        self.assertEqual(result.deck_size, 50)
+        self.assertEqual(result.deck_count, 50)
+        self.assertEqual(result.slots.get("08031"), 1)
+        self.assertEqual(result.first_add_phase.get("08031"), "phase05")
 
 
 if __name__ == "__main__":

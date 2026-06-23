@@ -37,7 +37,7 @@ rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,
 36,05021,2,,Delay the Inevitable,,5,,0.3074733942391601,True,2
 37,01089,1,,Guts,,1,,0.30015942250424954,True,1
 38,02153,1,,Hypnotic Gaze,,2,,0.296327751017708,True,1
-39,10084,1,,Cat Mask,The Capricious Meddler,11,Mask,0.29493802319040746,False,0
+39,10084,1,,Cat Mask,The Capricious Meddler,11,Mask,0.29493802319040746,True,1
 40,01088,1,,Emergency Cache,,1,,0.293828172796831,False,0
 41,03153,1,,Storm of Spirits,,3,,0.29024874641470744,False,0
 42,05158,1,,Sixth Sense,,5,Arcane,0.2888949148899891,False,0
@@ -61,7 +61,7 @@ rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,
 60,60416,1,,Voice of Ra,,7,,0.21142657753083893,False,0
 61,02029,1,,Ritual Candles,,2,Hand,0.2084810910234234,True,2
 62,60407,2,,Azure Flame,,7,Arcane,0.19070026763081616,False,0
-63,10084,2,,Cat Mask,The Capricious Meddler,11,Mask,0.1902593298911402,False,0
+63,10084,2,,Cat Mask,The Capricious Meddler,11,Mask,0.1902593298911402,False,1
 64,04197,2,,Olive McBride,Will Try Anything Once,4,Ally,0.18782350125402208,False,0
 65,02028,1,,Rite of Seeking,,2,Arcane,0.1867898749252167,False,0
 66,07020,1,,Hand of Fate,,8,,0.1861106404257674,False,0
@@ -86,7 +86,3 @@ rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,
 85,02028,2,,Rite of Seeking,,2,Arcane,0.1427741631306851,False,0
 86,05313,1,,Hallowed Mirror,,5,Accessory,0.14187444347079325,False,0
 87,02029,2,,Ritual Candles,,2,Hand,0.14012387109973934,True,2
-88,07032,1,,Promise of Power,,8,,0.13966626724357353,False,0
-89,03153,2,,Storm of Spirits,,3,,0.13958752598021965,False,0
-90,08059,1,,Down the Rabbit Hole,,9,,0.13812452328851185,False,0
-91,05116,1,,Scroll of Secrets,,5,Hand,0.13692400837194202,True,1

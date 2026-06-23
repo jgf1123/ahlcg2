@@ -22,7 +22,7 @@ rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,
 21,05154,1,,Hawk-Eye Folding Camera,,5,Hand,0.3225357539473745,True,2
 22,11068a,1,,The Great Work,Divide and Unite,12,,0.31135561811501816,True,1
 23,05032,2,,Deny Existence,,5,,0.30031977870216553,True,2
-24,04109,1,,Arcane Research,,4,,0.29973838158859306,True,2
+24,04109,1,,Arcane Research,,4,,0.29973838158859306,True,1
 25,03153,1,,Storm of Spirits,,3,,0.29660070319012893,True,1
 26,07032,1,,Promise of Power,,8,,0.28246711746717446,True,1
 27,05154,2,,Hawk-Eye Folding Camera,,5,Hand,0.2823316821821898,True,2
@@ -31,14 +31,14 @@ rank,canonical_id,card_index,option_index,name,subname,cycle,slot,p5_popularity,
 30,10043,2,,Mouse Mask,The Meek Watcher,11,Mask,0.26422379051117906,False,1
 31,03269,1,,St. Hubert's Key,Cleansing Fire,3,Accessory,0.26246323069862754,True,1
 32,60213,1,,Whitton Greene,Hunter of Rare Books,7,Ally,0.258684592010687,True,2
-33,01090,1,,Perception,,1,,0.25734906588285644,True,1
-34,04109,2,,Arcane Research,,4,,0.24823261644517372,True,2
+33,01090,1,,Perception,,1,,0.25734906588285644,True,2
+34,04109,2,,Arcane Research,,4,,0.24823261644517372,False,1
 35,05158,1,,Sixth Sense,,5,Arcane,0.24508808262248213,True,1
 36,01037,1,,Working a Hunch,,1,,0.2430965408338111,True,1
-37,01090,2,,Perception,,1,,0.2394173231486381,False,1
+37,01090,2,,Perception,,1,,0.2394173231486381,True,2
 38,01059,2,,Holy Rosary,,1,Accessory,0.2314889788704069,False,1
 39,02022,1,,Shortcut,,2,,0.22617031889250105,False,0
-40,05116,1,,Scroll of Secrets,,5,Hand,0.22360685638420735,True,1
+40,05116,1,,Scroll of Secrets,,5,Hand,0.22360685638420735,False,0
 41,05110,2,,Crack the Case,,5,,0.22287912598556883,False,1
 42,03153,2,,Storm of Spirits,,3,,0.22273880504535828,False,1
 43,03033,1,,Uncage the Soul,,3,,0.22012655085729416,False,0

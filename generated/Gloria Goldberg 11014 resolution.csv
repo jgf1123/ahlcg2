@@ -1,4 +1,4 @@
 resolution_kind,option_name,choice,weighted_total,weight_share,selected
-faction_select,Secondary Class,seeker,1.2635100624950502,0.5130190200911114,True
-faction_select,Secondary Class,guardian,0.717953241501658,0.2915082984769348,False
-faction_select,Secondary Class,rogue,0.48142795931484034,0.1954726814319537,False
+faction_select,Secondary Class,seeker,1.3210115162651606,0.5126502346913417,True
+faction_select,Secondary Class,guardian,0.7563327724185023,0.29351309092393274,False
+faction_select,Secondary Class,rogue,0.499483784087083,0.19383667438472557,False

@@ -3,10 +3,18 @@
 
 from __future__ import annotations
 
+import json
 import re
 from collections import Counter
 from dataclasses import dataclass, field
+from itertools import combinations
 from typing import Any
+
+CHARLIE_KANE_CODE = "09018"
+CLASS_CHOICE_FACTIONS = frozenset(
+    {"guardian", "seeker", "rogue", "mystic", "survivor"}
+)
+WeightedTrainingDeck = tuple[dict[str, int], float, dict[str, Any] | None]
 
 SUPPORTED_DECK_OPTION_KEYS = frozenset(
     {
@@ -94,10 +102,49 @@ def card_has_tag(card: dict[str, Any], target_tag: str) -> bool:
     if not tags:
         return False
     if isinstance(tags, str):
-        return target_tag in tags.split()
-    if isinstance(tags, list):
         return target_tag in tags
+    if isinstance(tags, list):
+        return any(target_tag in str(tag) for tag in tags)
     return False
+
+
+def _card_text_matches_patterns(
+    card: dict[str, Any],
+    patterns: list[str],
+    *,
+    text_regexes: dict[str, re.Pattern[str]] | None = None,
+) -> bool:
+    if not patterns:
+        return False
+    text = get_card_text(card)
+    for pattern in patterns:
+        regex = (text_regexes or {}).get(pattern)
+        if regex is not None:
+            if not regex.search(text):
+                return False
+        elif not re.search(f"(?i){pattern}", text):
+            return False
+    return True
+
+
+def _matches_tag_or_text_constraints(
+    card: dict[str, Any],
+    option: dict[str, Any],
+    *,
+    text_regexes: dict[str, re.Pattern[str]] | None = None,
+) -> bool:
+    """When an option lists tag and/or text, ArkhamDB treats them as alternate paths."""
+    tags = option.get("tag")
+    patterns = _option_text_patterns(option)
+    if not tags and not patterns:
+        return True
+    tag_match = any(card_has_tag(card, tag) for tag in tags) if tags else False
+    text_match = _card_text_matches_patterns(
+        card, patterns, text_regexes=text_regexes
+    )
+    if tags and patterns:
+        return tag_match or text_match
+    return tag_match if tags else text_match
 
 
 def card_has_uses(card: dict[str, Any], uses_values: list[str]) -> bool:
@@ -153,6 +200,37 @@ def counts_toward_player_deck_size(card: dict[str, Any]) -> bool:
     if is_scenario_reward_card(card):
         return False
     return True
+
+
+def deck_requirement_signature_groups(
+    deck_requirements: dict[str, Any],
+    to_canonical: Any,
+) -> list[frozenset[str]]:
+    """OR-groups of interchangeable signature cards from deck_requirements.card."""
+    groups: list[frozenset[str]] = []
+    for key, value in (deck_requirements.get("card") or {}).items():
+        if isinstance(value, dict):
+            codes = {to_canonical(str(code)) for code in value.values()}
+        else:
+            codes = {to_canonical(str(key))}
+        groups.append(frozenset(codes))
+    return groups
+
+
+def all_deck_requirement_card_ids(groups: list[frozenset[str]]) -> frozenset[str]:
+    """Every signature printing in any OR-group (all exempt from deck size)."""
+    combined: set[str] = set()
+    for group in groups:
+        combined |= group
+    return frozenset(combined)
+
+
+def choose_signature_from_group(
+    group: frozenset[str],
+    weights_by_id: dict[str, float],
+) -> str:
+    """Pick one signature from an OR-group by highest weight; tie-break by id."""
+    return max(group, key=lambda canonical_id: (weights_by_id.get(canonical_id, 0.0), canonical_id))
 
 
 CLASS_FACTIONS = ["guardian", "seeker", "rogue", "mystic", "survivor"]
@@ -315,6 +393,75 @@ class DeckOptionResolution:
         return rows
 
 
+def asset_takes_ally_slot(card: dict[str, Any]) -> bool:
+    """True when an asset uses the ally slot."""
+    if card.get("type_code") != "asset":
+        return False
+    slot = card.get("real_slot") or card.get("slot") or ""
+    for part in slot.split(". "):
+        base = part.split(" x2", 1)[0].strip()
+        if base == "Ally":
+            return True
+    return False
+
+
+def _title_counts_from_slots(
+    slots: dict[str, int],
+    cards: dict[str, dict[str, Any]],
+    *,
+    requirement_ids: frozenset[str],
+) -> Counter:
+    counts: Counter = Counter()
+    for canonical_id, count in slots.items():
+        if count <= 0:
+            continue
+        if canonical_id in requirement_ids:
+            continue
+        card = cards.get(canonical_id)
+        if card is None:
+            continue
+        if card.get("subtype_code") in ("basicweakness", "weakness"):
+            continue
+        name = card.get("name")
+        if name:
+            counts[name] += count
+    return counts
+
+
+def apply_permanent_composition_rules(
+    validator: DeckOptionsValidator,
+    slots: dict[str, int],
+    cards: dict[str, dict[str, Any]],
+    *,
+    requirement_ids: set[str],
+) -> None:
+    """Configure validator flags from permanent cards already in the deck."""
+    req = frozenset(requirement_ids)
+    validator.requirement_ids = req
+    validator.forbid_ally_slot_assets = False
+    validator.singleton_by_title = False
+    validator.minimum_skills = 0
+    for canonical_id, copies in slots.items():
+        if copies <= 0:
+            continue
+        card = cards.get(canonical_id)
+        if card is None or not card.get("permanent"):
+            continue
+        text = get_card_text(card).lower()
+        if "no assets that take up an ally slot" in text:
+            validator.forbid_ally_slot_assets = True
+        if "cannot include more than 1 copy of each" in text and "by title" in text:
+            validator.singleton_by_title = True
+        if "must include at least 10 skills" in text:
+            validator.minimum_skills = max(validator.minimum_skills, 10)
+    if validator.singleton_by_title:
+        validator.title_counts = _title_counts_from_slots(
+            slots, cards, requirement_ids=req
+        )
+    else:
+        validator.title_counts = Counter()
+
+
 @dataclass
 class DeckOptionsValidator:
     """Check card legality and option limits for an investigator."""
@@ -322,6 +469,11 @@ class DeckOptionsValidator:
     deck_options: list[dict[str, Any]]
     text_regexes: dict[str, re.Pattern[str]] = field(default_factory=dict)
     option_counts: list[int] = field(default_factory=list)
+    forbid_ally_slot_assets: bool = False
+    singleton_by_title: bool = False
+    minimum_skills: int = 0
+    title_counts: Counter = field(default_factory=Counter)
+    requirement_ids: frozenset[str] = frozenset()
 
     @classmethod
     def from_options(cls, deck_options: list[dict[str, Any]]) -> DeckOptionsValidator:
@@ -417,22 +569,16 @@ class DeckOptionsValidator:
                 return False
 
         tags = option.get("tag")
-        if tags:
-            if not any(card_has_tag(card, tag) for tag in tags):
+        patterns = _option_text_patterns(option)
+        if tags or patterns:
+            if not _matches_tag_or_text_constraints(
+                card, option, text_regexes=self.text_regexes
+            ):
                 return False
 
         uses = option.get("uses")
         if uses:
             if not card_has_uses(card, uses):
-                return False
-
-        for pattern in _option_text_patterns(option):
-            regex = self.text_regexes.get(pattern)
-            text = get_card_text(card)
-            if regex is not None:
-                if not regex.search(text):
-                    return False
-            elif not re.search(f"(?i){pattern}", text):
                 return False
 
         return True
@@ -458,6 +604,12 @@ class DeckOptionsValidator:
     def can_add_copy(self, card: dict[str, Any], xp: int) -> bool:
         if not self.is_card_allowed(card, xp):
             return False
+        if self.forbid_ally_slot_assets and asset_takes_ally_slot(card):
+            return False
+        if self.singleton_by_title:
+            name = card.get("name")
+            if name and self.title_counts.get(name, 0) >= 1:
+                return False
         option_index = self.first_matching_option_index(card, xp)
         if option_index < 0:
             return False
@@ -470,6 +622,9 @@ class DeckOptionsValidator:
         option_index = self.first_matching_option_index(card, xp)
         if option_index >= 0:
             self.option_counts[option_index] += 1
+        name = card.get("name")
+        if self.singleton_by_title and name:
+            self.title_counts[name] += 1
 
 
 def primary_factions_from_options(deck_options: list[dict[str, Any]]) -> set[str]:
@@ -534,8 +689,11 @@ def _card_matches_option_criteria(
             return False
 
     tags = option.get("tag")
-    if tags:
-        if not any(card_has_tag(card, tag) for tag in tags):
+    patterns = _option_text_patterns(option)
+    if tags or patterns:
+        if not _matches_tag_or_text_constraints(
+            card, option, text_regexes=regexes
+        ):
             return False
 
     uses = option.get("uses")
@@ -543,16 +701,260 @@ def _card_matches_option_criteria(
         if not card_has_uses(card, uses):
             return False
 
-    for pattern in _option_text_patterns(option):
-        regex = regexes.get(pattern)
-        text = get_card_text(card)
-        if regex is not None:
-            if not regex.search(text):
-                return False
-        elif not re.search(f"(?i){pattern}", text):
-            return False
-
     return True
+
+
+def parse_deck_meta_json(meta: Any) -> dict[str, Any] | None:
+    if not meta:
+        return None
+    if isinstance(meta, dict):
+        return meta
+    if isinstance(meta, str):
+        try:
+            parsed = json.loads(meta)
+        except json.JSONDecodeError:
+            return None
+        return parsed if isinstance(parsed, dict) else None
+    return None
+
+
+def meta_class_pair(meta: dict[str, Any] | None) -> tuple[str, str] | None:
+    """Return an unordered class pair from Charlie-style deck meta."""
+    if meta is None:
+        return None
+    f1 = meta.get("faction_1")
+    f2 = meta.get("faction_2")
+    if not f1 or not f2:
+        return None
+    if f1 not in CLASS_CHOICE_FACTIONS or f2 not in CLASS_CHOICE_FACTIONS:
+        return None
+    return tuple(sorted((f1, f2)))
+
+
+def is_charlie_dual_class_select(deck_options: list[dict[str, Any]]) -> bool:
+    faction_selects = [option for option in deck_options if option.get("faction_select")]
+    if len(faction_selects) != 2:
+        return False
+    return {option.get("id") for option in faction_selects} == {
+        "faction_1",
+        "faction_2",
+    }
+
+
+def format_faction_pair(f1: str, f2: str) -> str:
+    ordered = sorted((f1, f2))
+    return f"{ordered[0]}+{ordered[1]}"
+
+
+InvestigatorOptionInput = str | int | tuple[str, str] | dict[str, Any] | None
+
+
+@dataclass
+class InvestigatorOptionOverride:
+    """Explicit deck_options branches to use instead of popularity resolution."""
+
+    deck_size: int | None = None
+    factions_by_option_id: dict[str, str] = field(default_factory=dict)
+
+
+def is_dual_class_select(deck_options: list[dict[str, Any]]) -> bool:
+    return is_charlie_dual_class_select(deck_options)
+
+
+def faction_select_options(
+    deck_options: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    return [option for option in deck_options if option.get("faction_select")]
+
+
+def deck_size_select_option(
+    deck_options: list[dict[str, Any]],
+) -> dict[str, Any] | None:
+    for option in deck_options:
+        if option.get("deck_size_select"):
+            return option
+    return None
+
+
+def _faction_select_option_key(option: dict[str, Any]) -> str:
+    return str(option.get("id") or "")
+
+
+def _normalize_class_pair(
+    value: str | tuple[str, str] | list[str],
+    *,
+    candidate_factions: set[str],
+) -> tuple[str, str]:
+    if isinstance(value, str):
+        if "+" not in value:
+            raise ValueError(f"class pair must contain '+', got {value!r}")
+        left, right = value.split("+", 1)
+        f1, f2 = left.strip(), right.strip()
+    else:
+        if len(value) != 2:
+            raise ValueError(f"class pair must have exactly two factions, got {value!r}")
+        f1, f2 = value[0], value[1]
+    if f1 not in candidate_factions or f2 not in candidate_factions:
+        raise ValueError(f"invalid class pair factions: {f1!r}, {f2!r}")
+    if f1 == f2:
+        raise ValueError(f"class pair factions must differ: {f1!r}")
+    return tuple(sorted((f1, f2)))
+
+
+def parse_investigator_option(
+    spec: InvestigatorOptionInput,
+    deck_options: list[dict[str, Any]],
+) -> InvestigatorOptionOverride | None:
+    """Parse user-facing investigator_option into a normalized override."""
+    if spec is None:
+        return None
+
+    faction_selects = faction_select_options(deck_options)
+    size_option = deck_size_select_option(deck_options)
+    size_choices = (
+        [int(value) for value in size_option["deck_size_select"]]
+        if size_option is not None
+        else []
+    )
+    candidate_factions = (
+        set(faction_selects[0]["faction_select"]) if faction_selects else set()
+    )
+    override = InvestigatorOptionOverride()
+
+    if isinstance(spec, int):
+        override.deck_size = spec
+    elif isinstance(spec, str):
+        if "+" in spec:
+            pair = _normalize_class_pair(spec, candidate_factions=candidate_factions)
+            override.factions_by_option_id["faction_1"] = pair[0]
+            override.factions_by_option_id["faction_2"] = pair[1]
+        elif spec.isdigit() and size_choices:
+            override.deck_size = int(spec)
+        else:
+            if len(faction_selects) != 1:
+                raise ValueError(
+                    f"ambiguous faction option {spec!r}; use a dict for investigators "
+                    "with multiple choices"
+                )
+            if spec not in candidate_factions:
+                raise ValueError(f"invalid faction {spec!r}")
+            override.factions_by_option_id[_faction_select_option_key(faction_selects[0])] = spec
+    elif isinstance(spec, tuple):
+        pair = _normalize_class_pair(spec, candidate_factions=candidate_factions)
+        override.factions_by_option_id["faction_1"] = pair[0]
+        override.factions_by_option_id["faction_2"] = pair[1]
+    elif isinstance(spec, dict):
+        if "deck_size" in spec or "size" in spec:
+            override.deck_size = int(spec.get("deck_size", spec.get("size")))
+        pair_value = spec.get("class_pair", spec.get("classes"))
+        if pair_value is not None:
+            pair = _normalize_class_pair(pair_value, candidate_factions=candidate_factions)
+            override.factions_by_option_id["faction_1"] = pair[0]
+            override.factions_by_option_id["faction_2"] = pair[1]
+        faction_value = (
+            spec.get("faction")
+            or spec.get("faction_select")
+            or spec.get("secondary_class")
+            or spec.get("faction_selected")
+        )
+        if faction_value is not None:
+            if faction_value not in candidate_factions:
+                raise ValueError(f"invalid faction {faction_value!r}")
+            if len(faction_selects) != 1:
+                raise ValueError(
+                    "ambiguous faction override; use faction_1/faction_2 for dual class "
+                    "investigators"
+                )
+            override.factions_by_option_id[
+                _faction_select_option_key(faction_selects[0])
+            ] = str(faction_value)
+        for option in faction_selects:
+            option_id = _faction_select_option_key(option)
+            if option_id in spec:
+                faction = spec[option_id]
+                if faction not in option["faction_select"]:
+                    raise ValueError(f"invalid faction {faction!r} for {option_id}")
+                override.factions_by_option_id[option_id] = faction
+    else:
+        raise TypeError(f"unsupported investigator_option type: {type(spec).__name__}")
+
+    if override.deck_size is not None and size_choices:
+        if override.deck_size not in size_choices:
+            raise ValueError(
+                f"invalid deck size {override.deck_size}; choices are {size_choices}"
+            )
+    elif override.deck_size is not None and not size_choices:
+        raise ValueError("investigator has no deck_size_select option")
+
+    if is_dual_class_select(deck_options):
+        f1 = override.factions_by_option_id.get("faction_1")
+        f2 = override.factions_by_option_id.get("faction_2")
+        if (f1 is None) ^ (f2 is None):
+            raise ValueError("dual class override requires both faction_1 and faction_2")
+        if f1 and f2 and f1 == f2:
+            raise ValueError(f"class pair factions must differ: {f1!r}")
+
+    return override
+
+
+def investigator_option_slug(
+    *,
+    override: InvestigatorOptionOverride | None = None,
+    resolutions: list[DeckOptionResolution] | None = None,
+) -> str | None:
+    """Build a filename suffix for a specific investigator option variant."""
+    parts: list[str] = []
+    if override is not None:
+        if override.deck_size is not None:
+            parts.append(str(override.deck_size))
+        if is_dual_class_select_resolved(override):
+            parts.append(
+                format_faction_pair(
+                    override.factions_by_option_id["faction_1"],
+                    override.factions_by_option_id["faction_2"],
+                )
+            )
+        else:
+            for faction in override.factions_by_option_id.values():
+                if faction not in parts:
+                    parts.append(faction)
+    elif resolutions:
+        for resolution in resolutions:
+            if resolution.kind == "deck_size_select":
+                parts.append(resolution.choice)
+            elif resolution.kind in {"faction_select", "faction_pair"}:
+                parts.append(resolution.choice)
+    if not parts:
+        return None
+    return " ".join(parts)
+
+
+def is_dual_class_select_resolved(override: InvestigatorOptionOverride) -> bool:
+    return (
+        "faction_1" in override.factions_by_option_id
+        and "faction_2" in override.factions_by_option_id
+    )
+
+
+def _apply_forced_choice(
+    resolution: DeckOptionResolution,
+    choice: str,
+) -> DeckOptionResolution:
+    return DeckOptionResolution(
+        kind=resolution.kind,
+        option_name=resolution.option_name,
+        choice=choice,
+        weighted_totals=resolution.weighted_totals,
+        weight_shares=resolution.weight_shares,
+    )
+
+
+def _unpack_weighted_deck(
+    entry: WeightedTrainingDeck | tuple[dict[str, int], float],
+) -> WeightedTrainingDeck:
+    slots, weight = entry[0], entry[1]
+    meta = entry[2] if len(entry) > 2 else None
+    return slots, weight, meta
 
 
 def _faction_select_criteria(option: dict[str, Any]) -> dict[str, Any]:
@@ -563,12 +965,97 @@ def _faction_select_criteria(option: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def _weighted_meta_faction_pair_resolution(
+    option: dict[str, Any],
+    *,
+    candidate_factions: list[str],
+    weighted_decks: list[WeightedTrainingDeck | tuple[dict[str, int], float]],
+) -> tuple[str, str, DeckOptionResolution]:
+    """Resolve Charlie Kane's two classes from meta.faction_1 / faction_2 only."""
+    pair_weights: Counter[str] = Counter()
+    for entry in weighted_decks:
+        _, deck_weight, meta = _unpack_weighted_deck(entry)
+        if deck_weight <= 0:
+            continue
+        pair = meta_class_pair(meta)
+        if pair is None:
+            continue
+        pair_weights[format_faction_pair(pair[0], pair[1])] += deck_weight
+
+    all_pair_labels = [
+        format_faction_pair(a, b)
+        for a, b in combinations(sorted(candidate_factions), 2)
+    ]
+    duplicate_labels = [f"{faction}+{faction}" for faction in sorted(candidate_factions)]
+    totals = {
+        label: pair_weights.get(label, 0.0)
+        for label in all_pair_labels + duplicate_labels
+    }
+    pool_total = sum(pair_weights.values())
+    shares = {
+        label: (totals[label] / pool_total if pool_total else 0.0) for label in totals
+    }
+    valid_totals = {
+        label: weight
+        for label, weight in totals.items()
+        if label.split("+", 1)[0] != label.split("+", 1)[1]
+    }
+    if valid_totals:
+        choice_label = max(
+            valid_totals,
+            key=lambda label: (valid_totals[label], label),
+        )
+    else:
+        choice_label = all_pair_labels[0]
+    f1, f2 = choice_label.split("+", 1)
+    resolution = DeckOptionResolution(
+        kind="faction_pair",
+        option_name=option.get("name"),
+        choice=choice_label,
+        weighted_totals=totals,
+        weight_shares=shares,
+    )
+    return f1, f2, resolution
+
+
+def _weighted_meta_faction_selected_resolution(
+    option: dict[str, Any],
+    *,
+    choices: list[str],
+    weighted_decks: list[WeightedTrainingDeck | tuple[dict[str, int], float]],
+) -> DeckOptionResolution:
+    """Resolve a single faction_select from meta.faction_selected only."""
+    faction_weights: Counter[str] = Counter()
+    for entry in weighted_decks:
+        _, deck_weight, meta = _unpack_weighted_deck(entry)
+        if deck_weight <= 0:
+            continue
+        faction = (meta or {}).get("faction_selected")
+        if faction in choices:
+            faction_weights[faction] += deck_weight
+
+    totals = {faction: faction_weights.get(faction, 0.0) for faction in choices}
+    pool_total = sum(totals.values())
+    shares = {
+        faction: (totals[faction] / pool_total if pool_total else 0.0)
+        for faction in choices
+    }
+    choice = max(choices, key=lambda faction: (totals[faction], faction))
+    return DeckOptionResolution(
+        kind="faction_select",
+        option_name=option.get("name"),
+        choice=choice,
+        weighted_totals=totals,
+        weight_shares=shares,
+    )
+
+
 def _weighted_faction_select_resolution(
     option: dict[str, Any],
     *,
     choices: list[str],
     primary_factions: set[str],
-    weighted_decks: list[tuple[dict[str, int], float]],
+    weighted_decks: list[WeightedTrainingDeck | tuple[dict[str, int], float]],
     cards: dict[str, dict[str, Any]],
     xp_for_card: Any,
 ) -> DeckOptionResolution:
@@ -576,7 +1063,8 @@ def _weighted_faction_select_resolution(
     text_regexes = _compile_option_text_regexes(criteria)
     faction_weights: Counter[str] = Counter()
 
-    for slots, deck_weight in weighted_decks:
+    for entry in weighted_decks:
+        slots, deck_weight, _meta = _unpack_weighted_deck(entry)
         if deck_weight <= 0:
             continue
         deck_counts: Counter[str] = Counter()
@@ -622,13 +1110,14 @@ def _weighted_faction_select_resolution(
 def _weighted_deck_size_resolution(
     option: dict[str, Any],
     *,
-    weighted_decks: list[tuple[dict[str, int], float]],
+    weighted_decks: list[WeightedTrainingDeck | tuple[dict[str, int], float]],
     cards: dict[str, dict[str, Any]],
     default_deck_size: int,
 ) -> tuple[int, DeckOptionResolution]:
     choices = [int(value) for value in option["deck_size_select"]]
     size_weights: Counter[int] = Counter()
-    for slots, deck_weight in weighted_decks:
+    for entry in weighted_decks:
+        slots, deck_weight, _meta = _unpack_weighted_deck(entry)
         if deck_weight <= 0:
             continue
         player_cards = sum(
@@ -661,17 +1150,43 @@ def _weighted_deck_size_resolution(
 def resolve_deck_options(
     deck_options: list[dict[str, Any]],
     *,
-    weighted_decks: list[tuple[dict[str, int], float]],
+    weighted_decks: list[WeightedTrainingDeck | tuple[dict[str, int], float]],
     cards: dict[str, dict[str, Any]],
     default_deck_size: int,
     xp_for_card: Any,
+    investigator_code: str | None = None,
+    investigator_option: InvestigatorOptionInput = None,
 ) -> tuple[list[dict[str, Any]], int, list[DeckOptionResolution]]:
     """Expand faction_select / deck_size_select using weighted training decks."""
+    del investigator_code  # retained for API compatibility
+    override = parse_investigator_option(investigator_option, deck_options)
     deck_size = default_deck_size
     resolved: list[dict[str, Any]] = []
     resolutions: list[DeckOptionResolution] = []
-    primary_factions = primary_factions_from_options(deck_options)
     selected_secondaries: list[str] = []
+    dual_class_pair: tuple[str, str] | None = None
+    dual_class_resolution: DeckOptionResolution | None = None
+
+    if is_dual_class_select(deck_options):
+        class_option = faction_select_options(deck_options)[0]
+        dual_class_resolution = _weighted_meta_faction_pair_resolution(
+            class_option,
+            candidate_factions=list(class_option["faction_select"]),
+            weighted_decks=weighted_decks,
+        )[2]
+        dual_class_pair = tuple(
+            dual_class_resolution.choice.split("+", 1)
+        )
+        if override is not None and is_dual_class_select_resolved(override):
+            dual_class_pair = (
+                override.factions_by_option_id["faction_1"],
+                override.factions_by_option_id["faction_2"],
+            )
+            dual_class_resolution = _apply_forced_choice(
+                dual_class_resolution,
+                format_faction_pair(dual_class_pair[0], dual_class_pair[1]),
+            )
+        resolutions.append(dual_class_resolution)
 
     for option in deck_options:
         if option.get("deck_size_select"):
@@ -681,28 +1196,46 @@ def resolve_deck_options(
                 cards=cards,
                 default_deck_size=default_deck_size,
             )
+            if override is not None and override.deck_size is not None:
+                deck_size = override.deck_size
+                resolution = _apply_forced_choice(resolution, str(deck_size))
             resolutions.append(resolution)
             continue
 
         if option.get("faction_select"):
-            choices = [
-                faction
-                for faction in option["faction_select"]
-                if faction not in selected_secondaries
-            ]
-            if not choices:
-                choices = list(option["faction_select"])
-            resolution = _weighted_faction_select_resolution(
-                option,
-                choices=choices,
-                primary_factions=primary_factions,
-                weighted_decks=weighted_decks,
-                cards=cards,
-                xp_for_card=xp_for_card,
-            )
-            faction = resolution.choice
-            selected_secondaries.append(faction)
-            resolutions.append(resolution)
+            option_id = _faction_select_option_key(option)
+            if dual_class_pair is not None:
+                if option_id == "faction_1":
+                    faction = dual_class_pair[0]
+                elif option_id == "faction_2":
+                    faction = dual_class_pair[1]
+                else:
+                    faction = dual_class_pair[0]
+            elif override is not None and option_id in override.factions_by_option_id:
+                faction = override.factions_by_option_id[option_id]
+                resolution = _weighted_meta_faction_selected_resolution(
+                    option,
+                    choices=list(option["faction_select"]),
+                    weighted_decks=weighted_decks,
+                )
+                resolution = _apply_forced_choice(resolution, faction)
+                resolutions.append(resolution)
+            else:
+                choices = [
+                    faction
+                    for faction in option["faction_select"]
+                    if faction not in selected_secondaries
+                ]
+                if not choices:
+                    choices = list(option["faction_select"])
+                resolution = _weighted_meta_faction_selected_resolution(
+                    option,
+                    choices=choices,
+                    weighted_decks=weighted_decks,
+                )
+                faction = resolution.choice
+                selected_secondaries.append(faction)
+                resolutions.append(resolution)
             new_option = {
                 key: value
                 for key, value in option.items()
