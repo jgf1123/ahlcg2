@@ -572,7 +572,6 @@ class DeckGenerationTests(unittest.TestCase):
         self.assertIsNone(result.skipped_reason)
         self.assertEqual(result.deck_count, 2)
         self.assertIn("01012", result.slots)
-        self.assertNotIn("08125", result.slots)
 
     def test_select_phase05_permanents_above_cutoff(self):
         cards = {
@@ -622,6 +621,102 @@ class DeckGenerationTests(unittest.TestCase):
         self.assertEqual(selected, ["P001"])
         self.assertNotIn("P002", selected)
 
+    def test_phase05_can_include_thick_of_it(self):
+        cards = {
+            "01004": _card(
+                "01004",
+                name="Agnes",
+                type_code="investigator",
+                faction_code="mystic",
+                deck_options=[
+                    {"faction": ["mystic", "neutral"], "level": {"min": 0, "max": 5}},
+                ],
+                deck_requirements={"size": 30, "card": {}},
+            ),
+            "08125": _card(
+                "08125",
+                name="In the Thick of It",
+                type_code="asset",
+                faction_code="neutral",
+                permanent=True,
+                pack_code="eoec",
+            ),
+            "C001": _card("C001", name="Card One", type_code="event", faction_code="neutral"),
+            "C002": _card("C002", name="Card Two", type_code="skill", faction_code="neutral"),
+        }
+        engine = self._engine(cards, {})
+        validator = DeckOptionsValidator.from_options(cards["01004"]["deck_options"])
+        popularity_rows = [
+            {"canonical_id": "08125", "card_index": 1, "xp": 0},
+            {"canonical_id": "C001", "card_index": 1, "xp": 0},
+            {"canonical_id": "C002", "card_index": 1, "xp": 0},
+        ]
+        selected = engine._select_phase05_permanents(
+            popularity_rows,
+            2,
+            slots={},
+            requirement_ids=set(),
+            investigator_code="01004",
+            options_validator=validator,
+        )
+        self.assertEqual(selected, ["08125"])
+        self.assertTrue(
+            engine._generation_eligible_row(
+                popularity_rows[0],
+                investigator_code="01004",
+                options_validator=validator,
+                requirement_ids=set(),
+            )
+        )
+
+
+class GenerationExportHelperTests(unittest.TestCase):
+    def test_diff_generation_options(self):
+        from arkham_popularity import diff_generation_options
+
+        previous = [("01025", 1), ("01025", 2), ("01091", 1)]
+        current = [("01025", 2), ("01091", 1), ("01091", 2)]
+        removed, added = diff_generation_options(previous, current)
+        self.assertEqual(removed, [("01025", 1)])
+        self.assertEqual(added, [("01091", 2)])
+
+    def test_generation_export_includes_p3_p4(self):
+        cards = {
+            "01004": _card(
+                "01004",
+                name="Agnes",
+                type_code="investigator",
+                faction_code="mystic",
+                deck_options=[
+                    {"faction": ["mystic", "neutral"], "level": {"min": 0, "max": 5}},
+                ],
+                deck_requirements={"size": 30, "card": {}},
+            ),
+            "01017": _card("01017", name="Steal Away", type_code="event", faction_code="mystic"),
+        }
+        decklists = {
+            1: {
+                "id": 1,
+                "user_id": 1,
+                "investigator_code": "01004",
+                "investigator_name": "Agnes",
+                "slots": {"01017": 2},
+            },
+        }
+        mapper = CanonicalMapper(cards, chapter=1)
+        engine = ArkhamPopularityEngine(
+            cards, mapper, [{"id": 1, "cards": "[]"}], bias_compensation=False
+        )
+        prepared = engine.prepare_all(decklists)
+        result = engine.generate_decklist(prepared, "01004", "01004")
+        rows = engine.generation_popularity_table(
+            prepared, "01004", "01004", generated=result
+        )
+        ranked = [row for row in rows if row.get("p5_popularity") is not None]
+        self.assertTrue(ranked)
+        self.assertIsNotNone(ranked[0].get("p3_opportunity_weight"))
+        self.assertIsNotNone(ranked[0].get("p4_choice_weight"))
+
 
 @unittest.skipUnless(CARD_JSON.exists() and TABOO_JSON.exists(), "data files missing")
 class IntegrationTests(unittest.TestCase):
@@ -655,7 +750,6 @@ class IntegrationTests(unittest.TestCase):
         self.assertIsNone(result.skipped_reason)
         self.assertEqual(result.deck_count, result.deck_size)
         self.assertIn("04006", result.slots)
-        self.assertNotIn("08125", result.slots)
         requirement_ids = {"04006", "04007"}
         player_types = {
             self.engine.cards[cid].get("type_code")

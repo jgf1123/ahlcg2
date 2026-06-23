@@ -299,13 +299,13 @@ Y1. Count decklists by (`user_id`, `canonical_front`, `canonical_back`). Let `De
 
     *(Optional future refinement: weight by upgrade chain using `previous_deck` / `next_deck`, giving each chain total weight 1. Legacy name: `chain_weight`.)*
 
-Y2. For each `cycle`, consider all decklists with `Decklist.cycle = cycle`. Let `sum_user_weight` = Σ `Decklist.user_weight` over those decklists. Let `raw_cycle_weight[cycle] = 1 / sum_user_weight`.
+Y2. For each `cycle`, consider all decklists with `Decklist.cycle = C`. Let `sum_user_weight` = Σ `Decklist.user_weight` over those decklists. Let `raw_cycle_weight[C] = 1 / sum_user_weight`.
 
-Y2b. Enforce monotonicity: after computing `raw_cycle_weight`, let `Cycle.weight[cycle] = min(raw_cycle_weight[j] for j from cycle through `MAX_CYCLE`). This guarantees `Cycle.weight` is non-decreasing in `cycle`, so earlier cycles never receive a larger per-deck multiplier than later ones when `sum_user_weight` happens to be smaller at low cycles.
+Y2b. Enforce monotonicity: after computing `raw_cycle_weight`, let `Cycle.weight[C] = min(raw_cycle_weight[j] for j from C through MAX_CYCLE)`. This guarantees `Cycle.weight` is non-decreasing in `cycle`, so earlier cycles never receive a larger per-deck multiplier than later ones when `sum_user_weight` happens to be smaller at low cycles.
 
 **What Y2 does and does not do:**
 
-- **Y2 compensates for deck-count imbalance.** Each `Decklist.cycle = C` stratum contributes total weight 1.0 (Σ `user_weight` × `Cycle.weight` over decks in C = 1). Middle cycles have more raw decklists than cycle 12, but without Y2 those extra lists would dominate pooled sums; Y2 prevents that.
+- **Y2 compensates for deck-count imbalance.** Each `Decklist.cycle = C` stratum contributes total weight 1.0, i.e., (Σ `user_weight` × `Cycle.weight` over decks in C) = 1. Middle cycles have more raw decklists than cycle 12, but without Y2 those extra lists would dominate pooled sums; Y2 prevents that.
 
 - **Y2 does not compensate for composition drift across strata.** For fixed `CanonicalCard.cycle = k`, the expected slot share `b_C(k)` falls as `C` grows (e.g. cycle-2 is ~25% of slots at `Decklist.cycle = 3` but ~6% at `Decklist.cycle = 12` in a rough prior). Y2 gives strata 3 and 12 equal *total* weight, not equal *compositional* footing: lower-`C` strata are built from smaller pools, so older cycles occupy a larger fraction of each deck. Pooling eligible strata without further adjustment still mixes unlike deck environments.
 
@@ -318,8 +318,8 @@ Y3. **`Decklist.deck_xp_weight`** down-weights high-XP deck snapshots (upgrade-c
 Empirical analysis shows confounding beyond Y2 and P1 below:
 
 1. **Core overhang** — cycle-1 slot share stays ~20–40% even at high `Decklist.cycle`.
-2. **Investigator–cycle coupling** — `inv_cycle = Decklist.cycle` is ~2–3× more common than investigator-pool share would predict.
-3. **Per-deck novelty tilt** — some decks at `Decklist.cycle = C` over-use cycle-`C` cards; others do not. A single adjustment for all decks in stratum `C` is too blunt.
+2. **Investigator–cycle coupling** — `inv_cycle = Decklist.cycle` is ~2–3× more common than other investigators because players are selecting `cycle = C` investigators to play the `cycle = C` campaign.
+3. **Per-deck novelty tilt** — some decks at `Decklist.cycle = C` over-use cycle-`C` cards; others do not. A single adjustment for all decks in stratum `C` is blunt.
 4. **`Decklist.cycle = 7`** — starter-deck stratum is structurally different (many cycle-7 cards tuned to starter investigators). Cycle-7 **cards** must remain eligible for non–cycle-7 investigators; only the **deck stratum** is special.
 
 Rejected approaches:
@@ -327,15 +327,29 @@ Rejected approaches:
 - **Global (C, I, k) normalization** — overfits sparse cells and penalizes genuinely strong cards (e.g. if cycle-9 cards are above-average, many decks will legitimately run more of them; shrinking all cycle-9 popularity to a stratum average would be wrong).
 - **Exclude k = C slot copies** — invalid under P1: only `Decklist.cycle = 12` can include `CanonicalCard.cycle = 12` at all.
 
-### B1. Stratify by `Decklist.cycle`, weight toward high C
+### B1. Weight toward high `Decklist.cycle` (`g(C)`)
 
-For each `Decklist.cycle = C`, compute popularity statistics P3/P4/P5 **within that stratum only** (still applying P1/P2 inside the stratum). Combine:
+Apply `g(C)` as a **per-deck multiplier** on the same footing as `user_weight`, `Cycle.weight`, and `deck_xp_weight`. Due to oversight, this was previously accidentally implemented as a post-hoc blend of per-stratum popularity rates.
+
+After P1/P2 eligibility, each deck `d` with `Decklist.cycle = C` contributes weight:
 
 $$
-\text{pop}(option) = \frac{\sum_C g(C) \cdot \text{pop}_C(option)}{\sum_C g(C)}
+w_\text{deck}(d) = \text{user\_weight} \times \text{Cycle.weight} \times \text{deck\_xp\_weight} \times g(C) \times \text{inv\_adjust} \times \text{tilt}_d(k)
 $$
 
-where `g(C)` is increasing. Rationale: decklists with higher `Decklist.cycle` draw from a larger card pool and are more informative about utility at the margin. This is separate from Y2: Y2 equalizes *within*-stratum contribution; `g(C)` tilts the *between*-stratum blend.
+where `inv_adjust` is from B2, `tilt_d(k)` from B3 for the option's card cycle `k`, and `g(C)` is increasing (default **`g(C) = C`**). Then, over all eligible decks in one pool:
+
+$$
+P3 = \sum_{d \in \text{eligible}} w_\text{deck}(d), \quad
+P4 = \sum_{d \in \text{eligible},\,\text{has option}} w_\text{deck}(d), \quad
+P5 = P4 / P3
+$$
+
+**Rationale:** decklists with higher `Decklist.cycle` draw from a larger card pool and are more informative about utility at the margin. This is separate from Y2: Y2 equalizes *within*-stratum contribution (`Cycle.weight`); `g(C)` then re-tilts the pooled sum toward high-`C` decks.
+
+**Why not blend per-stratum `pop_C`?** Summing `g(C) \cdot P3_C` and `g(C) \cdot P4_C` is equivalent to the pooled formula above for P3/P4, but averaging stratum rates `P5_C = P4_C / P3_C` is **not** the same as `P4 / P3`. The pooled form matches the definition of P5 as a single weighted inclusion ratio (same pattern as `faction_select` / signature OR-groups: weight decks, then take the ratio).
+
+**Per-stratum diagnostics:** optional `P3_C`, `P4_C`, `P5_C` for `Decklist.cycle = C` may still be computed for EDA (e.g. copy-count tables by cycle); they are not used to form reported P3/P4/P5.
 
 **Choosing `g(C)` (Core dominance caveat):** `g(C) = C` and `g(C) ∝ N_C` (cumulative canonical player cards published through cycle `C`) are both monotone proxies for pool size. They correlate strongly (`N_12 / N_1 ≈ 14×` vs `12/1` for linear `C`), with cumulative-card weight slightly *more* aggressive at high `C`. Neither accounts for the fact that **cycle 1 occupies ~20–40% of slots at every `Decklist.cycle`**, so most of the incremental pool from `C−1` to `C` is *not* cycle-1 cards — yet `g(C)` weights the entire decklist observation, including its Core staples.
 
@@ -344,10 +358,12 @@ where `g(C)` is increasing. Rationale: decklists with higher `Decklist.cycle` dr
 | `g(C) = C` | Simple, interpretable | Coarse; same weight rationale for Core staples and marginal cycle-`C` picks |
 | `g(C) ∝ N_C` (cumulative cards) | Tied to published pool size | Overweights late strata for **cycle-1** cards (Core is already saturated in low-`C` decks, which are the natural habitat for measuring Core staples) |
 | `g(C) ∝ N_C - N_1` (pool beyond Core) | Emphasizes post-Core choice expansion | Ignores that Core-vs-non-Core tradeoffs matter at high `C` too |
-| `g_k(C) = 0` if `C < k`, else increasing | For a cycle-`k` card, only blend strata that could include it; e.g. Core popularity leans on low/mid `C` | More complex; separate blend per card cycle |
+| `g_k(C) = 0` if `C < k`, else increasing | For a cycle-`k` card, zero weight below `C < k` (P1 already excludes those decks from eligibility; this flattens `g` among remaining strata) | Redundant with P1 unless `g` is defined per card cycle `k` |
 | Moderate: `g(C) = √N_C` or cap `g(C)/g(C_min)` | Softens late-stratum dominance | Less principled |
 
-**Practical recommendation:** start with **`g(C) = C`** (or `√N_C`) for a global default, but recognize that for **cycle-1 options** a flatter `g(C)` (or `g_1(C)` that peaks in mid strata) may be more appropriate than aggressive late weighting. B3 tilt on `k = 1` partially addresses Core-overhang within each stratum without changing `g(C)`. Decide whether B1's goal is "meta at maximum pool" (favor high `C`) vs "typical usage at each era" (flatter `g`).
+**Practical recommendation:** start with **`g(C) = C`** (or `√N_C`) as a global default, but recognize that for **cycle-1 options** a flatter `g` (or card-specific `g_k`) may be more appropriate than aggressive late weighting. B3 tilt on `k = 1` partially addresses Core-overhang within each stratum without changing `g(C)`. Decide whether B1's goal is "meta at maximum pool" (favor high `C`) vs "typical usage at each era" (flatter `g`).
+
+**Rejected:** $\text{pop}(\text{option}) = \sum_C g(C) \cdot \text{pop}_C(\text{option}) / \sum_C g(C)$ when `pop_C` is **P5** (or any rate). Use the pooled `P4/P3` form above instead.
 
 ### B2. Investigator–cycle reweighting
 
@@ -409,15 +425,17 @@ Apply `tilt_d(k)` when deck `d` contributes to popularity of **cycle-`k` cards**
 
 ### B4. `Decklist.cycle = 7` stratum
 
-Treat `Decklist.cycle = 7` as a separate stratum in B1 (its own `pop_7`, own `b_7(k)` prior). Do **not** exclude cycle-7 cards from other strata. Starter-tuned cards that are generically playable should still accrue popularity from `Decklist.cycle ≠ 7` decks at `b_C(7)` tilt.
+When `Decklist.cycle = 7`, use the cycle-7 row of `b_C(k)` for B3 tilt (starter-deck stratum is structurally different). Do **not** exclude cycle-7 cards from decks at other `Decklist.cycle`. Starter-tuned cards that are generically playable should still accrue popularity from `Decklist.cycle ≠ 7` decks at `b_C(7)` tilt.
 
 ### Combined deck weight
 
+Bias-compensated popularity uses the full B1 formula in one pass (no separate stratum blend). With `C = Decklist.cycle` and card cycle `k`:
+
 $$
-w_\text{deck} = \text{user\_weight} \times \text{Cycle.weight} \times \text{inv\_adjust} \times \text{tilt}_d(k)
+w_\text{deck} = \text{user\_weight} \times \text{Cycle.weight} \times \text{deck\_xp\_weight} \times g(C) \times \text{inv\_adjust} \times \text{tilt}_d(k)
 $$
 
-with `inv_adjust` from B2 (diagonal-only, capped at 1) and `tilt_d(k)` from B3 when scoring cycle-`k` cards. Apply B1 when aggregating across `Decklist.cycle` after per-stratum P5.
+`inv_adjust` from B2 (diagonal-only, capped at 1); `tilt_d(k)` from B3 when scoring cycle-`k` cards; `g(C)` from B1 (default `g(C) = C`).
 
 ## Popularity by Investigator
 
@@ -427,11 +445,11 @@ P1. Slice all decklists with `Decklist.cycle >= CanonicalCard.cycle`. When `Cano
 
 P2. If `CanonicalCard.has_xp_cost`, further restrict the DataFrame to decklists where `Decklist.xp_cost >= min_xp_cost`. (See Implementation Notes about `min_xp_cost`)
 
-P3. These are all the decklists that *could* include the option. Calculate the total weight of these decklists. Base weight is `Decklist.user_weight * Cycle.weight * Decklist.deck_xp_weight` (Y1/Y2/Y3). With bias compensation enabled, multiply by B2 `inv_adjust` (diagonal-only) and `tilt_d(k)` for the option's card cycle `k` (B3). Compute P3/P4/P5 **within each `Decklist.cycle` stratum**, then blend strata with `g(C) = C` (B1).
+P3. These are all the decklists that *could* include the option (P1/P2). Sum `w_deck` from B1 over eligible decks → **P3**.
 
-P4. Similarly, calculate the total weight of the decklists that include the option. See "Definition of a decklist containing an option" below.
+P4. Similarly, sum `w_deck` over eligible decks that include the option → **P4**. See "Definition of a decklist containing an option" below.
 
-P5. An option's popularity is P4=(weight of decklists with it) over P3=(weight of decklists that had the opportunity to use it).
+P5. **P4 / P3** (single pooled ratio; do not average per-`Decklist.cycle` stratum rates).
 
 Return P4, P3, and P5. `prepare_arkham_data.ipynb` does this as a DataFrame.
 
@@ -560,7 +578,7 @@ G0d. **Deck sizes:**
 | Popularity / slot averages (training) | Existing D4: decklist `taboo_id` must be legal for every card in `slots`; else `is_ignore=True` and excluded from P3/P4 and slot averages. |
 | Decklist generation (output) | Evaluate legality at **current taboo** (`MAX_TABOO`): hard-exclude **Forbidden** cards; apply taboo XP when considering 1+ XP cards (future). Wording-only taboo changes do not exclude 0 XP cards. |
 
-Decklists that contain `08125` (*In the Thick of It*) remain in popularity training data. Generated decklists **must not** include `08125` in v1 (0 XP construction only).
+Decklists that contain `08125` (*In the Thick of It*) remain in popularity training data. **Phase 0.5** may include `08125` when it meets the same conditions as other permanents (strictly above the player-card cutoff, legal at current taboo, allowed by base `deck_options`). The card is still **0 XP at current taboo** for generation eligibility; its **+3 XP deck-building budget** is **not** applied during 0 XP construction — defer spending that budget until the future 1+ XP upgrade phase.
 
 ## Investigator scope (v1 → v2)
 
@@ -667,6 +685,8 @@ Walk the 0 XP popularity list (P5 order). Count only cards that **count toward p
    - Smoothed **`E[t]`** from the permanent set `S` (see *Conditional slot averages*).
 5. Rebuild the deck-options validator from merged options and seeded Phase 0 slots.
 
+**In the Thick of It (`08125`):** eligible in this step like any other permanent when it passes the cutoff and legality checks above. Inclusion does not enable 1+ XP purchases in v1.
+
 **Phase 2 must not add further permanents** — Phase 0.5 is the only permanent-selection step.
 
 **Hard composition rules** from included permanents must be enforced in all later phases (e.g. On Your Own — no ally-slot assets; Ancestral Knowledge — skill minimum; Underworld Support — singleton-by-title). **Occult Reliquary:** grants one movable slot among Hand / Accessory / Arcane; the player need not fix the slot at deck creation (it may be moved during play). For slot accounting, treat Reliquary as one flexible slot without forcing a branch at generation time.
@@ -707,12 +727,20 @@ Display table per generated deck (similar columns to `show_investigator_card_pop
 
 One generated list per in-scope `(canonical_front, canonical_back)` for v1.
 
-**CSV export:** `export_generated_decklist_csvs()` writes `generated/{name} {canonical_front}.csv` for each supported investigator with training decks. Each file lists 0 XP popularity options through the last row with `included_in_generated=True`, with `subname`, `included_in_generated`, and `generated_count` columns. Deck cards absent from the popularity list are appended at the end. Pass `diagnostics=True` to also write `{name} {canonical_front} resolution.csv` for `faction_select` / `deck_size_select` weight calculations.
+**CSV export:** `export_generated_decklist_csvs()` writes `generated/{name} {canonical_front}.csv` for each supported investigator with training decks. Each file lists 0 XP popularity options through the last row with `included_in_generated=True`, with `p3_opportunity_weight`, `p4_choice_weight`, `p5_popularity`, `subname`, `included_in_generated`, and `generated_count` columns. Deck cards absent from the popularity list are appended at the end (P3/P4/P5 blank). Pass `diagnostics=True` to also write `{name} {canonical_front} resolution.csv` for `signature_select` / `faction_select` / `deck_size_select` weight calculations.
+
+**Versioned updates:** `update_generated_decklist()` / `update_generated_decklist_csvs(changelog=...)` regenerate CSV(s), compare against the previous export on disk, and **prepend** to `generated/{name} {canonical_front} version.md` (create if missing):
+
+1. The required `changelog` string (what changed in the generator/spec).
+2. **Removed** — `(canonical_id, card_index)` options present before but not after.
+3. **Added** — `(canonical_id, card_index)` options present after but not before.
+
+Entries are separated by `---`. Diff keys off `included_in_generated=True` rows in the popularity export (one row per popularity option). Use this workflow instead of hand-diffing ArkhamDB imports when iterating on generation rules.
 
 ## Future: XP upgrades
 
 Not in v1. Planned behavior:
 
-- Optional `08125` at construction (+3 XP budget).
+- `08125` may already be included in Phase 0.5; when 1+ XP construction lands, apply its **+3 XP budget** then.
 - Purchase 1+ XP options by popularity; **swap** out least popular eligible card (lowest P5), not add past deck size.
 - Swap constraints: same-`name` limit, slot ceiling, legality.

@@ -396,6 +396,115 @@ def resolution_export_filename(
     return f"{base} resolution.csv"
 
 
+GENERATION_EXPORT_FIELDNAMES = [
+    "rank",
+    "canonical_id",
+    "card_index",
+    "option_index",
+    "name",
+    "subname",
+    "cycle",
+    "slot",
+    "p3_opportunity_weight",
+    "p4_choice_weight",
+    "p5_popularity",
+    "included_in_generated",
+    "generated_count",
+]
+
+RESOLUTION_EXPORT_FIELDNAMES = [
+    "resolution_kind",
+    "option_name",
+    "choice",
+    "weighted_total",
+    "weight_share",
+    "selected",
+]
+
+
+def version_export_filename(
+    name: str,
+    canonical_front: str,
+    *,
+    option_suffix: str | None = None,
+) -> str:
+    base = f"{sanitize_export_filename(name)} {canonical_front}"
+    if option_suffix:
+        return f"{base} {option_suffix} version.md"
+    return f"{base} version.md"
+
+
+def read_generation_csv_rows(path: Path) -> list[dict[str, Any]]:
+    if not path.is_file():
+        return []
+    with path.open(newline="", encoding="utf-8") as handle:
+        return list(csv.DictReader(handle))
+
+
+def included_generation_options(
+    rows: list[dict[str, Any]],
+) -> list[tuple[str, int]]:
+    """Decode included popularity options from a generation export CSV."""
+    options: list[tuple[str, int]] = []
+    for row in rows:
+        flag = str(row.get("included_in_generated", "")).strip().lower()
+        if flag not in {"true", "1", "yes"}:
+            continue
+        canonical_id = row["canonical_id"]
+        raw_index = row.get("card_index")
+        card_index = int(raw_index) if raw_index not in (None, "") else 1
+        options.append((canonical_id, card_index))
+    return options
+
+
+def diff_generation_options(
+    previous: list[tuple[str, int]],
+    current: list[tuple[str, int]],
+) -> tuple[list[tuple[str, int]], list[tuple[str, int]]]:
+    """Return (removed, added) multiset differences between two generated decks."""
+    from collections import Counter
+
+    prev_counter = Counter(previous)
+    curr_counter = Counter(current)
+    removed = sorted((prev_counter - curr_counter).elements())
+    added = sorted((curr_counter - prev_counter).elements())
+    return removed, added
+
+
+def format_generation_version_entry(
+    changelog: str,
+    removed: list[tuple[str, int]],
+    added: list[tuple[str, int]],
+) -> str:
+    lines = [changelog.strip(), "", "Removed:"]
+    if removed:
+        lines.extend(f"- ({canonical_id}, {card_index})" for canonical_id, card_index in removed)
+    else:
+        lines.append("- (none)")
+    lines.append("")
+    lines.append("Added:")
+    if added:
+        lines.extend(f"- ({canonical_id}, {card_index})" for canonical_id, card_index in added)
+    else:
+        lines.append("- (none)")
+    return "\n".join(lines)
+
+
+def prepend_generation_version_changelog(
+    path: Path,
+    changelog: str,
+    removed: list[tuple[str, int]],
+    added: list[tuple[str, int]],
+) -> None:
+    entry = format_generation_version_entry(changelog, removed, added)
+    existing = path.read_text(encoding="utf-8") if path.is_file() else ""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    if existing:
+        path.write_text(entry + "\n\n---\n\n" + existing, encoding="utf-8")
+    else:
+        path.write_text(entry + "\n", encoding="utf-8")
+
+
 def stratum_blend_weight(deck_cycle: int) -> float:
     """Spec B1: g(C) = C."""
     return float(deck_cycle)
@@ -1447,8 +1556,6 @@ class ArkhamPopularityEngine:
         canonical_id = row["canonical_id"]
         if canonical_id in requirement_ids:
             return False
-        if canonical_id == IN_THE_THICK_OF_IT_CANONICAL_ID:
-            return False
         if self.taboo.is_forbidden(canonical_id, self.taboo.max_taboo):
             return False
         card = self.cards.get(canonical_id)
@@ -2110,6 +2217,8 @@ class ArkhamPopularityEngine:
                     "subname": row.get("subname") or (info.subname if info else ""),
                     "cycle": info.cycle if info else None,
                     "slot": row.get("slot"),
+                    "p3_opportunity_weight": row.get("p3_opportunity_weight"),
+                    "p4_choice_weight": row.get("p4_choice_weight"),
                     "p5_popularity": row.get("p5_popularity"),
                     "included_in_generated": self._row_already_satisfied(
                         row, generated.slots
@@ -2134,6 +2243,8 @@ class ArkhamPopularityEngine:
                     "subname": info.subname,
                     "cycle": info.cycle,
                     "slot": slot_display_label(info.slot, info.real_slot),
+                    "p3_opportunity_weight": None,
+                    "p4_choice_weight": None,
                     "p5_popularity": None,
                     "included_in_generated": True,
                     "generated_count": generated.slots.get(canonical_id, 0),
@@ -2142,6 +2253,92 @@ class ArkhamPopularityEngine:
             next_rank += 1
 
         return export_rows
+
+    def _write_generation_csv(
+        self,
+        path: Path,
+        rows: list[dict[str, Any]],
+    ) -> None:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        with path.open("w", newline="", encoding="utf-8") as handle:
+            writer = csv.DictWriter(handle, fieldnames=GENERATION_EXPORT_FIELDNAMES)
+            writer.writeheader()
+            for row in rows:
+                writer.writerow(row)
+
+    def _write_resolution_csv(
+        self,
+        path: Path,
+        resolutions: list[DeckOptionResolution],
+    ) -> None:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        resolution_rows: list[dict[str, Any]] = []
+        for resolution in resolutions:
+            resolution_rows.extend(resolution.to_csv_rows())
+        with path.open("w", newline="", encoding="utf-8") as handle:
+            writer = csv.DictWriter(handle, fieldnames=RESOLUTION_EXPORT_FIELDNAMES)
+            writer.writeheader()
+            for row in resolution_rows:
+                writer.writerow(row)
+
+    def update_generated_decklist(
+        self,
+        decks: list[PreparedDecklist],
+        canonical_front: str,
+        canonical_back: str,
+        changelog: str,
+        output_dir: str | Path = "generated",
+        *,
+        investigator_option: InvestigatorOptionInput = None,
+        diagnostics: bool = False,
+    ) -> tuple[list[Path], list[tuple[str, int]], list[tuple[str, int]]]:
+        """Regenerate one CSV, prepend a version changelog, and return paths + diff."""
+        if not changelog.strip():
+            raise ValueError("changelog is required and must be non-empty")
+        out = Path(output_dir)
+        inv_card = self.cards.get(canonical_front) or {}
+        inv_name = inv_card.get("name", canonical_front)
+        override = parse_investigator_option(
+            investigator_option,
+            inv_card.get("deck_options") or [],
+        )
+        generated = self.generate_decklist(
+            decks,
+            canonical_front,
+            canonical_back,
+            investigator_option=investigator_option,
+        )
+        option_suffix = investigator_option_slug(
+            override=override,
+            resolutions=generated.option_resolutions,
+        )
+        csv_path = out / generation_export_filename(
+            inv_name, canonical_front, option_suffix=option_suffix
+        )
+        previous_rows = read_generation_csv_rows(csv_path)
+        previous_options = included_generation_options(previous_rows)
+        rows = self.generation_popularity_table(
+            decks,
+            canonical_front,
+            canonical_back,
+            generated=generated,
+            investigator_option=investigator_option,
+        )
+        current_options = included_generation_options(rows)
+        removed, added = diff_generation_options(previous_options, current_options)
+        self._write_generation_csv(csv_path, rows)
+        version_path = out / version_export_filename(
+            inv_name, canonical_front, option_suffix=option_suffix
+        )
+        prepend_generation_version_changelog(version_path, changelog, removed, added)
+        written: list[Path] = [csv_path, version_path]
+        if diagnostics and generated.option_resolutions:
+            resolution_path = out / resolution_export_filename(
+                inv_name, canonical_front, option_suffix=option_suffix
+            )
+            self._write_resolution_csv(resolution_path, generated.option_resolutions)
+            written.append(resolution_path)
+        return written, removed, added
 
     def export_generated_decklist(
         self,
@@ -2172,27 +2369,6 @@ class ArkhamPopularityEngine:
             override=override,
             resolutions=generated.option_resolutions,
         )
-        fieldnames = [
-            "rank",
-            "canonical_id",
-            "card_index",
-            "option_index",
-            "name",
-            "subname",
-            "cycle",
-            "slot",
-            "p5_popularity",
-            "included_in_generated",
-            "generated_count",
-        ]
-        resolution_fieldnames = [
-            "resolution_kind",
-            "option_name",
-            "choice",
-            "weighted_total",
-            "weight_share",
-            "selected",
-        ]
         written: list[Path] = []
         rows = self.generation_popularity_table(
             decks,
@@ -2204,25 +2380,14 @@ class ArkhamPopularityEngine:
         path = out / generation_export_filename(
             inv_name, canonical_front, option_suffix=option_suffix
         )
-        with path.open("w", newline="", encoding="utf-8") as handle:
-            writer = csv.DictWriter(handle, fieldnames=fieldnames)
-            writer.writeheader()
-            for row in rows:
-                writer.writerow(row)
+        self._write_generation_csv(path, rows)
         written.append(path)
 
         if diagnostics and generated.option_resolutions:
             resolution_path = out / resolution_export_filename(
                 inv_name, canonical_front, option_suffix=option_suffix
             )
-            resolution_rows: list[dict[str, Any]] = []
-            for resolution in generated.option_resolutions:
-                resolution_rows.extend(resolution.to_csv_rows())
-            with resolution_path.open("w", newline="", encoding="utf-8") as handle:
-                writer = csv.DictWriter(handle, fieldnames=resolution_fieldnames)
-                writer.writeheader()
-                for row in resolution_rows:
-                    writer.writerow(row)
+            self._write_resolution_csv(resolution_path, generated.option_resolutions)
             written.append(resolution_path)
         return written
 
@@ -2237,27 +2402,6 @@ class ArkhamPopularityEngine:
         out = Path(output_dir)
         out.mkdir(parents=True, exist_ok=True)
         written: list[Path] = []
-        fieldnames = [
-            "rank",
-            "canonical_id",
-            "card_index",
-            "option_index",
-            "name",
-            "subname",
-            "cycle",
-            "slot",
-            "p5_popularity",
-            "included_in_generated",
-            "generated_count",
-        ]
-        resolution_fieldnames = [
-            "resolution_kind",
-            "option_name",
-            "choice",
-            "weighted_total",
-            "weight_share",
-            "selected",
-        ]
 
         for investigator in self.list_generatable_investigators(decks):
             if not investigator["supported"]:
@@ -2275,31 +2419,47 @@ class ArkhamPopularityEngine:
                 canonical_back,
                 generated=generated,
             )
-            filename = generation_export_filename(
+            path = out / generation_export_filename(
                 investigator["name"], canonical_front
             )
-            path = out / filename
-            with path.open("w", newline="", encoding="utf-8") as handle:
-                writer = csv.DictWriter(handle, fieldnames=fieldnames)
-                writer.writeheader()
-                for row in rows:
-                    writer.writerow(row)
+            self._write_generation_csv(path, rows)
             written.append(path)
 
             if diagnostics and generated.option_resolutions:
                 resolution_path = out / resolution_export_filename(
                     investigator["name"], canonical_front
                 )
-                resolution_rows: list[dict[str, Any]] = []
-                for resolution in generated.option_resolutions:
-                    resolution_rows.extend(resolution.to_csv_rows())
-                with resolution_path.open("w", newline="", encoding="utf-8") as handle:
-                    writer = csv.DictWriter(handle, fieldnames=resolution_fieldnames)
-                    writer.writeheader()
-                    for row in resolution_rows:
-                        writer.writerow(row)
+                self._write_resolution_csv(resolution_path, generated.option_resolutions)
                 written.append(resolution_path)
 
+        return written
+
+    def update_generated_decklist_csvs(
+        self,
+        decks: list[PreparedDecklist],
+        changelog: str,
+        output_dir: str | Path = "generated",
+        *,
+        diagnostics: bool = False,
+    ) -> list[Path]:
+        """Regenerate all supported CSVs and prepend one changelog entry per investigator."""
+        if not changelog.strip():
+            raise ValueError("changelog is required and must be non-empty")
+        written: list[Path] = []
+        for investigator in self.list_generatable_investigators(decks):
+            if not investigator["supported"]:
+                continue
+            if investigator["training_decks"] <= 0:
+                continue
+            paths, _removed, _added = self.update_generated_decklist(
+                decks,
+                investigator["canonical_front"],
+                investigator["canonical_back"],
+                changelog,
+                output_dir,
+                diagnostics=diagnostics,
+            )
+            written.extend(paths)
         return written
 
 

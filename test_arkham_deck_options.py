@@ -637,6 +637,23 @@ class DeckOptionsIntegrationTests(unittest.TestCase):
             )
             self.assertIn(expected, paths)
             self.assertTrue(expected.exists())
+            header = expected.read_text(encoding="utf-8").splitlines()[0]
+            self.assertIn("p3_opportunity_weight", header)
+            update_paths, _removed, _added = self.engine.update_generated_decklist(
+                self.prepared,
+                "09018",
+                "09018",
+                "test changelog",
+                out,
+                investigator_option="guardian+survivor",
+            )
+            self.assertTrue(update_paths)
+            version_path = out / "Charlie Kane 09018 guardian+survivor version.md"
+            self.assertTrue(version_path.exists())
+            version_text = version_path.read_text(encoding="utf-8")
+            self.assertIn("test changelog", version_text)
+            self.assertIn("Removed:", version_text)
+            self.assertIn("Added:", version_text)
 
     def test_export_resolution_diagnostics_for_charlie_kane(self):
         if not self.prepared:
