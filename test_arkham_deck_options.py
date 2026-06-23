@@ -576,7 +576,25 @@ class DeckOptionsIntegrationTests(unittest.TestCase):
             "popularity rows after the last included option should be omitted",
         )
 
-    def test_generate_norman_replacement_signatures(self):
+    def test_resolve_signature_groups_weighted(self):
+        from arkham_deck_options import resolve_signature_groups
+
+        group = frozenset({"08005", "98008"})
+        weighted_decks = [
+            ({"08005": 1}, 8.0, None),
+            ({"08005": 1}, 1.0, None),
+            ({"98008": 1}, 2.0, None),
+        ]
+        chosen, resolution = resolve_signature_groups(
+            [group], weighted_decks=weighted_decks
+        )[0]
+        self.assertEqual(chosen, "08005")
+        self.assertEqual(resolution.kind, "signature_select")
+        self.assertEqual(resolution.weighted_totals["08005"], 9.0)
+        self.assertEqual(resolution.weighted_totals["98008"], 2.0)
+        self.assertEqual(resolution.choice, "08005")
+
+    def test_generate_norman_default_signatures(self):
         if not self.prepared:
             self.skipTest("decklist_json.pickle missing")
         from arkham_deck_options import counts_toward_player_deck_size
@@ -585,10 +603,10 @@ class DeckOptionsIntegrationTests(unittest.TestCase):
         self.assertIsNone(result.skipped_reason)
         self.assertEqual(result.deck_count, 30)
         req_ids = self.engine._requirement_ids_for_investigator("08004")
-        self.assertEqual(result.slots.get("98008"), 1)
-        self.assertEqual(result.slots.get("98009"), 1)
-        self.assertNotIn("08005", result.slots)
-        self.assertNotIn("08006", result.slots)
+        self.assertEqual(result.slots.get("08005"), 1)
+        self.assertEqual(result.slots.get("08006"), 1)
+        self.assertNotIn("98008", result.slots)
+        self.assertNotIn("98009", result.slots)
         counting = sum(
             count
             for cid, count in result.slots.items()

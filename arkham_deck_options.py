@@ -245,6 +245,60 @@ def choose_signature_from_group(
     return max(group, key=lambda canonical_id: (weights_by_id.get(canonical_id, 0.0), canonical_id))
 
 
+def resolve_signature_groups(
+    groups: list[frozenset[str]],
+    *,
+    weighted_decks: list[WeightedTrainingDeck | tuple[dict[str, int], float]],
+    cards: dict[str, dict[str, Any]] | None = None,
+) -> list[tuple[str, DeckOptionResolution]]:
+    """Pick one signature per OR-group using weighted training decks (deck_options-style)."""
+    results: list[tuple[str, DeckOptionResolution]] = []
+    for group in groups:
+        choices = sorted(group)
+        totals: Counter[str] = Counter()
+        for entry in weighted_decks:
+            slots, deck_weight, _meta = _unpack_weighted_deck(entry)
+            if deck_weight <= 0:
+                continue
+            present = [
+                canonical_id
+                for canonical_id in group
+                if slots.get(canonical_id, 0) > 0
+            ]
+            if len(present) != 1:
+                continue
+            totals[present[0]] += deck_weight
+        pool_total = sum(totals[choice] for choice in choices)
+        weighted_totals = {choice: totals.get(choice, 0.0) for choice in choices}
+        shares = {
+            choice: (
+                weighted_totals[choice] / pool_total if pool_total else 0.0
+            )
+            for choice in choices
+        }
+        chosen = (
+            choose_signature_from_group(group, weighted_totals)
+            if pool_total
+            else max(group)
+        )
+        option_name = None
+        if cards is not None:
+            option_name = (cards.get(chosen) or {}).get("name")
+        results.append(
+            (
+                chosen,
+                DeckOptionResolution(
+                    kind="signature_select",
+                    option_name=option_name,
+                    choice=chosen,
+                    weighted_totals=weighted_totals,
+                    weight_shares=shares,
+                ),
+            )
+        )
+    return results
+
+
 CLASS_FACTIONS = ["guardian", "seeker", "rogue", "mystic", "survivor"]
 
 DECK_SIZE_DELTA_RE = re.compile(
@@ -378,7 +432,7 @@ def _option_can_allow_cards(option: dict[str, Any]) -> bool:
 
 @dataclass
 class DeckOptionResolution:
-    """How a `faction_select` or `deck_size_select` choice was resolved."""
+    """How a deck_options or signature OR-group choice was resolved."""
 
     kind: str
     option_name: str | None

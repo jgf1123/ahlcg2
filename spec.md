@@ -646,7 +646,7 @@ Apply targets to **global** `current[t]` (requirements count toward `current` be
 
 ## Phase 0 — required signatures
 
-Add all `deck_requirements.card` entries. Each entry is an **OR-group** when its value is a dict of interchangeable printings (e.g. Norman Withers: `08005` Livre d'Eibon **or** `98008` Split the Angle; `08006` The Harbinger **or** `98009` Vengeful Hound). Pick **one** card per group by exclusive training-deck count (decks with exactly that signature and no other from the group). **Every** printing in every OR-group is a requirement id (does not count toward **`deck_size`** / **`final_deck_size`**, and Phase 2 must not add unchosen alternatives).
+Add all `deck_requirements.card` entries. Each entry is an **OR-group** when its value is a dict of interchangeable printings (e.g. Norman Withers: `08005` Livre d'Eibon **or** `98008` Split the Angle; `08006` The Harbinger **or** `98009` Vengeful Hound). Pick **one** card per group the same way as `deck_size_select` / `faction_select`: each training deck with exactly one printing from the group casts its full **`deck_weight`** (`user_weight × cycle_weight × deck_xp_weight`) to that choice; sum weights per alternative; pick the highest (tie-break by `canonical_id`). Decks with both or neither printing in the group are excluded from that group's pool. **Every** printing in every OR-group is a requirement id (does not count toward **`deck_size`** / **`final_deck_size`**, and Phase 2 must not add unchosen alternatives).
 
 Single-code entries (no alternatives) behave as before. Copy count from `quantity` on the chosen card (default 1). Only **assets** among chosen signatures increment `current[t]` (per copy). Non-asset requirements (e.g. weaknesses) do not affect `current[t]`.
 

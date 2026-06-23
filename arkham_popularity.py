@@ -28,13 +28,13 @@ from arkham_deck_options import (
     deck_options_support,
     deck_requirement_signature_groups,
     all_deck_requirement_card_ids,
-    choose_signature_from_group,
     effective_deck_size_from_slots,
     investigator_requirement_card_ids,
     investigator_option_slug,
     merge_deck_options_with_permanents,
     parse_investigator_option,
     resolve_deck_options,
+    resolve_signature_groups,
 )
 
 UPGRADE_PATTERN = re.compile(r"\d+\|\d+.*")
@@ -1803,20 +1803,16 @@ class ArkhamPopularityEngine:
             requirements, self.mapper.to_canonical
         )
         requirement_ids = set(all_deck_requirement_card_ids(signature_groups))
-        signature_weights: dict[str, float] = defaultdict(float)
-        for deck in active_inv:
-            for group in signature_groups:
-                present = [
-                    canonical_id
-                    for canonical_id in group
-                    if deck.slots.get(canonical_id, 0) > 0
-                ]
-                if len(present) != 1:
-                    continue
-                signature_weights[present[0]] += 1.0
+        signature_resolutions = resolve_signature_groups(
+            signature_groups,
+            weighted_decks=weighted_decks,
+            cards=self.cards,
+        )
+        option_resolutions = [
+            resolution for _chosen_id, resolution in signature_resolutions
+        ] + option_resolutions
 
-        for group in signature_groups:
-            chosen_id = choose_signature_from_group(group, signature_weights)
+        for chosen_id, _resolution in signature_resolutions:
             card = self.cards.get(chosen_id)
             copy_count = int(card.get("quantity") or 1) if card is not None else 1
             slots[chosen_id] = slots.get(chosen_id, 0) + copy_count

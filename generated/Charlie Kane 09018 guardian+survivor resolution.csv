@@ -1,15 +1,15 @@
 resolution_kind,option_name,choice,weighted_total,weight_share,selected
-faction_pair,Class Choice,guardian+rogue,0.7590544280401408,0.2620796829464716,False
-faction_pair,Class Choice,guardian+survivor,0.7240124155838807,0.24998068296032397,True
-faction_pair,Class Choice,guardian+seeker,0.300767500110275,0.10384637538183922,False
-faction_pair,Class Choice,rogue+survivor,0.24054416400068435,0.08305298791115096,False
-faction_pair,Class Choice,mystic+seeker,0.2052489154517962,0.07086655277883348,False
-faction_pair,Class Choice,mystic+rogue,0.17834874301324827,0.06157869619903202,False
-faction_pair,Class Choice,rogue+seeker,0.1436466914305535,0.049597074933917955,False
-faction_pair,Class Choice,seeker+survivor,0.13950154621542293,0.04816587539984311,False
-faction_pair,Class Choice,guardian+mystic,0.10396498525870398,0.03589612202709505,False
-faction_pair,Class Choice,guardian+guardian,0.07741981774324742,0.026730838446345117,False
-faction_pair,Class Choice,mystic+survivor,0.02376424520431349,0.008205111015147556,False
+faction_pair,Class Choice,guardian+rogue,0.8297355525332059,0.26512594405176954,False
+faction_pair,Class Choice,guardian+survivor,0.7142921036018449,0.22823822327245,True
+faction_pair,Class Choice,guardian+seeker,0.34058928289991375,0.10882871643509706,False
+faction_pair,Class Choice,rogue+survivor,0.27667619348032796,0.08840652515029646,False
+faction_pair,Class Choice,mystic+seeker,0.2218766517581559,0.07089639172484732,False
+faction_pair,Class Choice,mystic+rogue,0.19559350964179695,0.062498122125609415,False
+faction_pair,Class Choice,seeker+survivor,0.1605936614991878,0.051314597745886675,False
+faction_pair,Class Choice,rogue+seeker,0.15960523604863594,0.05099876551487971,False
+faction_pair,Class Choice,guardian+mystic,0.11701897126745231,0.03739114846233925,False
+faction_pair,Class Choice,guardian+guardian,0.08446946674324345,0.026990583982425802,False
+faction_pair,Class Choice,mystic+survivor,0.0291395564311965,0.009310981534398702,False
 faction_pair,Class Choice,mystic+mystic,0.0,0.0,False
 faction_pair,Class Choice,rogue+rogue,0.0,0.0,False
 faction_pair,Class Choice,seeker+seeker,0.0,0.0,False
