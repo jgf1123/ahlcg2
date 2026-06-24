@@ -1,0 +1,7 @@
+resolution_kind,option_name,choice,weighted_total,weight_share,selected
+signature_select,Jenny's Twin .45s,02010,8.915152162675636,0.9126039701610206,True
+signature_select,Jenny's Twin .45s,98002,0.8537645352241541,0.08739602983897939,False
+signature_select,Jenny's Twin .45s,90085,0.0,0.0,False
+signature_select,Searching for Izzie,02011,8.97998471744885,0.9170157206476798,True
+signature_select,Searching for Izzie,98003,0.8126333535983619,0.0829842793523203,False
+signature_select,Searching for Izzie,90086,0.0,0.0,False

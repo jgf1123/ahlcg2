@@ -33,8 +33,10 @@ from arkham_deck_options import (
     investigator_option_slug,
     merge_deck_options_with_permanents,
     parse_investigator_option,
+    permanent_deck_size_delta,
     resolve_deck_options,
     resolve_signature_groups,
+    get_card_text,
 )
 
 UPGRADE_PATTERN = re.compile(r"\d+\|\d+.*")
@@ -46,6 +48,7 @@ INV_PROB_FLOOR = 0.01
 
 # Spec: relative-mass smoothing for conditional slot averages (Phase 0.5).
 SLOT_AVERAGE_SMOOTHING_RHO = 0.05
+_FLEXIBLE_SLOT_GRANT_PHRASE = "additional hand, accessory, or arcane slot"
 
 # Scraping/cleaning: manually confirmed joke decklists.
 KNOWN_JOKE_DECKLIST_IDS = frozenset({43839, 44599, 45550})
@@ -443,9 +446,9 @@ def read_generation_csv_rows(path: Path) -> list[dict[str, Any]]:
 
 def included_generation_options(
     rows: list[dict[str, Any]],
-) -> list[tuple[str, int]]:
+) -> list[tuple[str, int, str]]:
     """Decode included popularity options from a generation export CSV."""
-    options: list[tuple[str, int]] = []
+    options: list[tuple[str, int, str]] = []
     for row in rows:
         flag = str(row.get("included_in_generated", "")).strip().lower()
         if flag not in {"true", "1", "yes"}:
@@ -453,38 +456,81 @@ def included_generation_options(
         canonical_id = row["canonical_id"]
         raw_index = row.get("card_index")
         card_index = int(raw_index) if raw_index not in (None, "") else 1
-        options.append((canonical_id, card_index))
+        name = (row.get("name") or "").strip()
+        options.append((canonical_id, card_index, name))
     return options
 
 
+def enrich_generation_option_names(
+    options: list[tuple[str, int, str]],
+    cards: dict[str, dict[str, Any]],
+) -> list[tuple[str, int, str]]:
+    """Fill missing names from the card database."""
+    enriched: list[tuple[str, int, str]] = []
+    for canonical_id, card_index, name in options:
+        if not name:
+            name = (cards.get(canonical_id) or {}).get("name", "") or canonical_id
+        enriched.append((canonical_id, card_index, name))
+    return enriched
+
+
 def diff_generation_options(
-    previous: list[tuple[str, int]],
-    current: list[tuple[str, int]],
-) -> tuple[list[tuple[str, int]], list[tuple[str, int]]]:
+    previous: list[tuple[str, int, str]],
+    current: list[tuple[str, int, str]],
+) -> tuple[list[tuple[str, int, str]], list[tuple[str, int, str]]]:
     """Return (removed, added) multiset differences between two generated decks."""
     from collections import Counter
 
-    prev_counter = Counter(previous)
-    curr_counter = Counter(current)
-    removed = sorted((prev_counter - curr_counter).elements())
-    added = sorted((curr_counter - prev_counter).elements())
+    prev_counter = Counter((canonical_id, card_index) for canonical_id, card_index, _ in previous)
+    curr_counter = Counter((canonical_id, card_index) for canonical_id, card_index, _ in current)
+    prev_names = {
+        (canonical_id, card_index): name
+        for canonical_id, card_index, name in previous
+    }
+    curr_names = {
+        (canonical_id, card_index): name
+        for canonical_id, card_index, name in current
+    }
+    removed = sorted(
+        (canonical_id, card_index, prev_names[(canonical_id, card_index)])
+        for canonical_id, card_index in (prev_counter - curr_counter).elements()
+    )
+    added = sorted(
+        (canonical_id, card_index, curr_names[(canonical_id, card_index)])
+        for canonical_id, card_index in (curr_counter - prev_counter).elements()
+    )
     return removed, added
+
+
+def format_generation_option_line(
+    canonical_id: str,
+    card_index: int,
+    name: str,
+) -> str:
+    label = name.strip() or canonical_id
+    return f"- ({canonical_id}, {card_index}) {label}"
 
 
 def format_generation_version_entry(
     changelog: str,
-    removed: list[tuple[str, int]],
-    added: list[tuple[str, int]],
+    removed: list[tuple[str, int, str]],
+    added: list[tuple[str, int, str]],
 ) -> str:
     lines = [changelog.strip(), "", "Removed:"]
     if removed:
-        lines.extend(f"- ({canonical_id}, {card_index})" for canonical_id, card_index in removed)
+        lines.extend(
+            format_generation_option_line(canonical_id, card_index, name)
+            for canonical_id, card_index, name in removed
+        )
     else:
         lines.append("- (none)")
     lines.append("")
     lines.append("Added:")
     if added:
-        lines.extend(f"- ({canonical_id}, {card_index})" for canonical_id, card_index in added)
+        lines.extend(
+            format_generation_option_line(canonical_id, card_index, name)
+            for canonical_id, card_index, name in added
+        )
     else:
         lines.append("- (none)")
     return "\n".join(lines)
@@ -493,8 +539,8 @@ def format_generation_version_entry(
 def prepend_generation_version_changelog(
     path: Path,
     changelog: str,
-    removed: list[tuple[str, int]],
-    added: list[tuple[str, int]],
+    removed: list[tuple[str, int, str]],
+    added: list[tuple[str, int, str]],
 ) -> None:
     entry = format_generation_version_entry(changelog, removed, added)
     existing = path.read_text(encoding="utf-8") if path.is_file() else ""
@@ -1538,6 +1584,48 @@ class ArkhamPopularityEngine:
             return True
         return required_permanents.issubset(self._permanent_set_in_slots(deck_slots))
 
+    def _permanent_changes_deck_size(self, canonical_id: str) -> bool:
+        card = self.cards.get(canonical_id)
+        if card is None or not card.get("permanent"):
+            return False
+        return permanent_deck_size_delta(card, 1) != 0
+
+    def _permanent_affects_slot_type(self, canonical_id: str, slot_type: str) -> bool:
+        """True when a permanent in S can change capacity or composition for slot type t."""
+        card = self.cards.get(canonical_id)
+        if card is None or not card.get("permanent"):
+            return False
+        if self._slot_vector_for_card(canonical_id).get(slot_type, 0) > 0:
+            return True
+        text = get_card_text(card).lower()
+        slot_lower = slot_type.lower()
+        if f"additional {slot_lower}" in text:
+            return True
+        if (
+            _FLEXIBLE_SLOT_GRANT_PHRASE in text
+            and slot_type in ("Hand", "Accessory", "Arcane")
+        ):
+            return True
+        if slot_type == "Ally" and "no assets that take up an ally slot" in text:
+            return True
+        return False
+
+    def _should_condition_slot_type(
+        self,
+        required_permanents: frozenset[str],
+        slot_type: str,
+    ) -> bool:
+        """Whether E_S should blend into E[t] for this slot type given permanents in S."""
+        if any(
+            self._permanent_changes_deck_size(permanent_id)
+            for permanent_id in required_permanents
+        ):
+            return True
+        return any(
+            self._permanent_affects_slot_type(permanent_id, slot_type)
+            for permanent_id in required_permanents
+        )
+
     def _accumulate_weighted_slot_usage(
         self,
         deck: PreparedDecklist,
@@ -1597,13 +1685,15 @@ class ArkhamPopularityEngine:
         }
         smoothing_lambda = min(1.0, weight_subset / (rho * weight_all))
         meta["smoothing_lambda"] = smoothing_lambda
-        smoothed = {
-            slot_type: (
-                smoothing_lambda * average_subset.get(slot_type, 0.0)
-                + (1.0 - smoothing_lambda) * average_all.get(slot_type, 0.0)
-            )
-            for slot_type in STANDARD_ASSET_SLOT_TYPES
-        }
+        smoothed = {}
+        for slot_type in STANDARD_ASSET_SLOT_TYPES:
+            if self._should_condition_slot_type(required_permanents, slot_type):
+                smoothed[slot_type] = (
+                    smoothing_lambda * average_subset.get(slot_type, 0.0)
+                    + (1.0 - smoothing_lambda) * average_all.get(slot_type, 0.0)
+                )
+            else:
+                smoothed[slot_type] = average_all.get(slot_type, 0.0)
         return smoothed, meta
 
     def _slot_targets_from_averages(
@@ -2208,7 +2298,7 @@ class ArkhamPopularityEngine:
         *,
         investigator_option: InvestigatorOptionInput = None,
         diagnostics: bool = False,
-    ) -> tuple[list[Path], list[tuple[str, int]], list[tuple[str, int]]]:
+    ) -> tuple[list[Path], list[tuple[str, int, str]], list[tuple[str, int, str]]]:
         """Regenerate one CSV, prepend a version changelog, and return paths + diff."""
         if not changelog.strip():
             raise ValueError("changelog is required and must be non-empty")
@@ -2242,7 +2332,10 @@ class ArkhamPopularityEngine:
             investigator_option=investigator_option,
         )
         current_options = included_generation_options(rows)
-        removed, added = diff_generation_options(previous_options, current_options)
+        removed, added = diff_generation_options(
+            enrich_generation_option_names(previous_options, self.cards),
+            enrich_generation_option_names(current_options, self.cards),
+        )
         self._write_generation_csv(csv_path, rows)
         version_path = out / version_export_filename(
             inv_name, canonical_front, option_suffix=option_suffix

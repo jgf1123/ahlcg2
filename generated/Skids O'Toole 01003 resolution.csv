@@ -1,0 +1,5 @@
+resolution_kind,option_name,choice,weighted_total,weight_share,selected
+signature_select,On the Lam,01010,11.259759789519824,0.993324000215621,True
+signature_select,On the Lam,90009,0.07567536263160432,0.006675999784378933,False
+signature_select,Hospital Debts,01011,11.247777457153063,0.9918091674955486,True
+signature_select,Hospital Debts,90010,0.09288950356399969,0.008190832504451427,False

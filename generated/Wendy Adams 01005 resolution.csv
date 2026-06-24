@@ -1,0 +1,5 @@
+resolution_kind,option_name,choice,weighted_total,weight_share,selected
+signature_select,Wendy's Amulet,01014,10.093795148337131,0.94007841433145,True
+signature_select,Wendy's Amulet,90039,0.6433891061438909,0.05992158566855001,False
+signature_select,Abandoned and Alone,01015,10.093795148337131,0.94007841433145,True
+signature_select,Abandoned and Alone,90040,0.6433891061438909,0.05992158566855001,False

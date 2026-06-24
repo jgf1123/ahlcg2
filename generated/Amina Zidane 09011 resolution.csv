@@ -1,0 +1,4 @@
+resolution_kind,option_name,choice,weighted_total,weight_share,selected
+signature_select,Word of Woe,09012,2.7939011559328013,1.0,True
+signature_select,Word of Weal,09013,2.7939011559328013,1.0,True
+signature_select,Deafening Silence,09014,2.7939011559328013,1.0,True

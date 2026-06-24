@@ -124,4 +124,85 @@ Tooth is cycle-4, Accessory, legal for many Seekers; generated Ursula lists incl
 
 **Schoffner's Catalogue** is a slotless campaign-adjacent asset (Circle Undone). Only **~1.5%** of Tommy training decks include it (rank **245**, P5 ≈ 0.035). Generation correctly skips it by popularity; thematic expectation (Tommy's story item) is not modeled separately. If desired later: investigator-specific allowlist or bonded/story cards.
 
+---
+
+## Shrewd Analysis (`04106`) + unidentified/untranslated Seeker assets (not yet enforced)
+
+**Symptom:** Generated **Carolyn Fern** (`05001`) includes *Shrewd Analysis* (`04106`, Phase 0.5 permanent) but no `(Unidentified)` / `(Untranslated)` Seeker asset — e.g. no `08033` *Archive of Conduits* at deck creation, even though training decks often pair them.
+
+**Card rule:** `04106` is a **permanent**. When you upgrade an `(Unidentified)` or `(Untranslated)` card, you may upgrade a **second copy** of that card at no XP; the two upgraded versions are chosen **at random** among eligible options (subject to deckbuilding). In practice you want **two copies of the same base line** in the deck at creation so Shrewd's discount applies to a pair.
+
+**Seeker unidentified / untranslated base assets** (10 lines in card data):
+
+| `canonical_id` | Name | Subtitle | ArkhamDB `xp` |
+|----------------|------|----------|---------------|
+| `02021` | Strange Solution | Unidentified | 0 |
+| `03025` | Archaic Glyphs | Untranslated | 0 |
+| `04022` | Ancient Stone | Unidentified | 1 |
+| `06112` | Dream Diary | Untranslated | 0 |
+| `07022` | Cryptic Grimoire | Untranslated | 0 |
+| `08033` | Archive of Conduits | Unidentified | 0 |
+| `10044` | Ravenous Myconid | Unidentified | 0 |
+| `11035` | Dial of Ancients | Unidentified | 0 |
+| `60210` | Forbidden Tome | Untranslated | 0 |
+| `60259` | Scroll of the Pharaohs | Untranslated | 0 |
+
+### Popularity fragmentation
+
+Players typically commit to **one** (sometimes two) unidentified **lines** per deck, not all ten. P5 is computed per `(canonical_id, card_index)`; mass splits across lines, so no single line reaches the Phase 0.5 / early Phase 1/2 ranks that *Shrewd Analysis* enjoys as a **single** permanent (~25% P5 for Carolyn).
+
+| Carolyn metric | Value |
+|----------------|-------|
+| Shrewd in training decks | 27% of deck weight |
+| Pooled P(any unid line, base in `slots`) | P5 ≈ 0.16 |
+| Shrewd P5 | ≈ 0.25 |
+| Archive of Conduits (`08033`) P5 | ≈ 0.19 (rank ~43; deck often full before pick) |
+| Ancient Stone (`04022`) P5 | ≈ 0.18 — **excluded from v1 0 XP generation** (ArkhamDB marks base at `xp=1`; Carolyn may still take 0–1 Seeker in real decks) |
+
+**Generation split:** Shrewd enters in **Phase 0.5** (permanent above cutoff). Unid assets compete in **Phase 1/2** on individual P5. Only Carolyn currently gets Shrewd in generated output (highest Shrewd rate in training data).
+
+### Co-occurrence — use upgrade-family “contains option”
+
+Raw `slots` often show **upgraded** printings, not the base unid card. Under [Definition of a decklist containing an option](spec.md#definition-of-a-decklist-containing-an-option), a deck with `04231` *Ancient Stone: Minds in Harmony* **contains** option (`04022`, 1) because upgrades count toward the family.
+
+Re-counting Carolyn **Shrewd** decks with `UpgradeGraph.count_option_in_slots` (not base-id-only):
+
+| Metric | % of Shrewd deck weight |
+|--------|-------------------------|
+| Contains **any** unid/untranslated line (family) | **59%** |
+| No unid family in `slots` | **41%** |
+| Contains (`04022`, 1) — Ancient Stone family | **52%** |
+| Contains (`08033`, 1) — Archive family | **24%** |
+| **2+ copies** in same family (Shrewd-relevant pair) | **46%** (almost all Ancient Stone) |
+
+The earlier “55% of Shrewd weight has no **base** unid in `slots`” figure **understates** pairing: many lists already show upgraded printings only. The upgrade-aware figure is still **~41%** with no unid family at all (theorycraft, not yet upgraded, or unrelated Shrewd include).
+
+**One copy is not enough:** Shrewd's benefit targets upgrading **two** copies of the same line. Training data weighted toward **two-copy Ancient Stone** families (~46% of Shrewd decks); Archive pairs are rarer at two copies.
+
+### Carolyn-specific: upgrades are not random
+
+Carolyn's `deck_options` include:
+
+- **0–1 Seeker/Mystic** (15-card cap) — allows base unid Seeker assets at level 0–1.
+- A **heal horror** text option (`[Hh]eals? … horror`) — cards must match that pattern to be legal picks.
+
+For the two dominant Shrewd partners, each unidentified line has only **one** horror-healing researched upgrade that fits Carolyn:
+
+| Base | Researched upgrade | Heals horror? |
+|------|-------------------|---------------|
+| `08033` Archive of Conduits | `08044` Gateway to Paradise | Yes |
+| `04022` Ancient Stone | `04231` Minds in Harmony | Yes |
+
+So Carolyn + Shrewd + Archive/Ancient Stone is **not** “random branch” behavior in training data — deckbuilding leaves **one** eligible upgrade per line. Shrewd's random-upgrade text matters less here than for investigators with multiple researched branches.
+
+**Design implication:** a pairing rule for Carolyn (and similar investigators) should prefer **two copies of one 0 XP unid line** (or one line with room for a second copy), not merely “any one unid asset.” Ancient Stone is the usual pair target in data; Archive is second.
+
+### Proposed directions (not implemented)
+
+1. **Composition rule:** if `04106 ∈ S` (Phase 0.5), require **≥2 copies** of the **same** unidentified/untranslated Seeker line at 0 XP (pick line by pooled P5 or investigator-conditional P5), before Phase 2 fills with events/skills.
+2. **OR-group popularity** for “one unid Seeker package (copy 1)” when scoring — analogous to signature OR-groups — then pick a representative `canonical_id` for the deck.
+3. **0 XP eligibility:** treat `04022` base as 0 XP at deck **creation** for generation (Carolyn's 0–1 Seeker access) if we confirm rules intent vs ArkhamDB `xp=1` on the unidentified printing.
+4. **Export / version diff:** flag generated decks with Shrewd but no unid family as incomplete.
+
+**Related:** global vs investigator-specific popularity ([faction vs investigator](#faction-vs-investigator-specific-popularity-future-eda)); Phase 0.5 permanent selection ([spec.md](spec.md#phase-05--select-permanents)).
 

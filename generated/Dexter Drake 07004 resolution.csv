@@ -1,0 +1,5 @@
+resolution_kind,option_name,choice,weighted_total,weight_share,selected
+signature_select,Showmanship,07012,2.9971882421607168,0.6440439502287196,True
+signature_select,Showmanship,98017,1.6565131723100257,0.3559560497712805,False
+signature_select,Occult Scraps,07013,3.111718366378832,0.6547120897127372,True
+signature_select,Occult Scraps,98018,1.6410858284301193,0.34528791028726274,False

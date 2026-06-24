@@ -539,6 +539,50 @@ class DeckGenerationTests(unittest.TestCase):
         self.assertTrue(generation_slot_targets_differ(1.8, 2.0))
         self.assertFalse(generation_slot_targets_differ(2.3, 2.8))
 
+    def test_permanent_affects_slot_type(self):
+        cards = {
+            "08125": _card("08125", name="In the Thick of It", permanent=True, pack_code="tic"),
+            "08031": _card(
+                "08031",
+                name="Forced Learning",
+                permanent=True,
+                pack_code="tic",
+                real_text="Increase your deck size by 15.",
+            ),
+            "02157": _card(
+                "02157",
+                name="Charisma",
+                permanent=True,
+                pack_code="ptc",
+                real_text="Permanent.\nYou have 1 additional accessory slot.",
+            ),
+            "10132": _card(
+                "10132",
+                name="Occult Reliquary",
+                permanent=True,
+                pack_code="eoep",
+                real_text="Permanent. You have 1 additional hand, accessory, or arcane slot.",
+            ),
+        }
+        mapper = CanonicalMapper(cards, chapter=12)
+        engine = ArkhamPopularityEngine(
+            cards, mapper, [{"id": 1, "cards": "[]"}], bias_compensation=False
+        )
+        self.assertFalse(engine._permanent_affects_slot_type("08125", "Arcane"))
+        self.assertFalse(engine._permanent_affects_slot_type("08125", "Hand"))
+        self.assertFalse(engine._permanent_changes_deck_size("08125"))
+        self.assertTrue(engine._permanent_changes_deck_size("08031"))
+        self.assertFalse(
+            engine._should_condition_slot_type(frozenset({"08125"}), "Arcane")
+        )
+        self.assertTrue(
+            engine._should_condition_slot_type(frozenset({"08031"}), "Arcane")
+        )
+        self.assertTrue(engine._permanent_affects_slot_type("02157", "Accessory"))
+        self.assertFalse(engine._permanent_affects_slot_type("02157", "Arcane"))
+        self.assertTrue(engine._permanent_affects_slot_type("10132", "Arcane"))
+        self.assertTrue(engine._permanent_affects_slot_type("10132", "Hand"))
+
     def test_is_standard_deck_options(self):
         self.assertTrue(
             is_standard_deck_options(
@@ -737,13 +781,27 @@ class DeckGenerationTests(unittest.TestCase):
 
 class GenerationExportHelperTests(unittest.TestCase):
     def test_diff_generation_options(self):
-        from arkham_popularity import diff_generation_options
+        from arkham_popularity import (
+            diff_generation_options,
+            format_generation_version_entry,
+        )
 
-        previous = [("01025", 1), ("01025", 2), ("01091", 1)]
-        current = [("01025", 2), ("01091", 1), ("01091", 2)]
+        previous = [
+            ("01025", 1, "Vicious Blow"),
+            ("01025", 2, "Vicious Blow"),
+            ("01091", 1, "Overpower"),
+        ]
+        current = [
+            ("01025", 2, "Vicious Blow"),
+            ("01091", 1, "Overpower"),
+            ("01091", 2, "Overpower"),
+        ]
         removed, added = diff_generation_options(previous, current)
-        self.assertEqual(removed, [("01025", 1)])
-        self.assertEqual(added, [("01091", 2)])
+        self.assertEqual(removed, [("01025", 1, "Vicious Blow")])
+        self.assertEqual(added, [("01091", 2, "Overpower")])
+        entry = format_generation_version_entry("test change", removed, added)
+        self.assertIn("(01025, 1) Vicious Blow", entry)
+        self.assertIn("(01091, 2) Overpower", entry)
 
     def test_generation_export_includes_p3_p4(self):
         cards = {
@@ -867,6 +925,45 @@ class IntegrationTests(unittest.TestCase):
         self.assertGreater(meta["smoothing_lambda"], 0)
         self.assertLess(meta["smoothing_lambda"], 1)
         self.assertIn("Ally", averages)
+
+    def test_thick_of_it_does_not_raise_arcane_slot_targets(self):
+        with Path(__file__).with_name("decklist_json.pickle").open("rb") as file:
+            decklist_json = pickle.load(file)
+        prepared = self.engine.prepare_all(decklist_json)
+        inv_decks = investigator_decks(
+            prepared, "01001", "01001", exclude_ignored=True, require_cycle=True
+        )
+        user_weights = self.engine.assign_user_weights(prepared)
+        cycle_weights = self.engine.assign_cycle_weights(inv_decks, user_weights)
+        usage = self.engine.slot_usage_for_investigator(prepared, "01001", "01001")
+        arcane_all = next(
+            row["weighted_avg"] for row in usage if row["slot_type"] == "Arcane"
+        )
+        averages, _meta = self.engine._smoothed_slot_averages(
+            inv_decks,
+            user_weights,
+            cycle_weights,
+            frozenset({"08125"}),
+        )
+        self.assertAlmostEqual(averages["Arcane"], arcane_all)
+        self.assertEqual(slot_phase_targets(averages["Arcane"]), (0, 0, 1))
+
+    def test_generate_roland_arcane_not_forced_in_phase1(self):
+        with Path(__file__).with_name("decklist_json.pickle").open("rb") as file:
+            decklist_json = pickle.load(file)
+        prepared = self.engine.prepare_all(decklist_json)
+        result = self.engine.generate_decklist(prepared, "01001", "01001")
+        self.assertIsNone(result.skipped_reason)
+        arcane_targets = result.slot_targets["Arcane"]
+        self.assertEqual(arcane_targets["phase1_goal"], 0)
+        self.assertEqual(arcane_targets["phase1_cap"], 0)
+        arcane_phase1 = [
+            canonical_id
+            for canonical_id, phase in result.first_add_phase.items()
+            if phase == "phase1"
+            and self.engine._slot_vector_for_card(canonical_id).get("Arcane", 0) > 0
+        ]
+        self.assertEqual(arcane_phase1, [])
 
     def test_generate_george_barnaby_includes_forced_learning(self):
         with Path(__file__).with_name("decklist_json.pickle").open("rb") as file:

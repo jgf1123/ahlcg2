@@ -1,0 +1,4 @@
+resolution_kind,option_name,choice,weighted_total,weight_share,selected
+signature_select,The Home Front,03007,8.53466714446108,1.0,True
+signature_select,Shell Shock,03008,8.53721903591253,1.0,True
+signature_select,Sophie,03009,8.53721903591253,1.0,True

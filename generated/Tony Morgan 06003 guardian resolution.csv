@@ -1,4 +1,7 @@
 resolution_kind,option_name,choice,weighted_total,weight_share,selected
+signature_select,Bounty Contracts,06010,7.524281848329692,1.0,True
+signature_select,Tony's .38 Long Colt,06011,7.524281848329692,1.0,True
+signature_select,Tony's Quarry,06012,7.524281848329692,1.0,True
 faction_select,Secondary Class,guardian,5.2608640084544325,0.7074977069827756,True
 faction_select,Secondary Class,survivor,1.6593431450687974,0.22315373831125895,False
 faction_select,Secondary Class,seeker,0.5156671348757167,0.06934855470596551,False

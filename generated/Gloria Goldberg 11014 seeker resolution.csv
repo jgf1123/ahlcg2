@@ -1,0 +1,8 @@
+resolution_kind,option_name,choice,weighted_total,weight_share,selected
+signature_select,Ruth Westmacott,98020,2.051566512489187,0.5976397448853326,True
+signature_select,Ruth Westmacott,11015,1.381214740843981,0.40236025511466733,False
+signature_select,Liber Omnium Finium,98021,2.051566512489187,0.5930261408693601,True
+signature_select,Liber Omnium Finium,11016,1.4079209722979869,0.4069738591306399,False
+faction_select,Secondary Class,seeker,1.661210595640528,0.49110379398008447,True
+faction_select,Secondary Class,guardian,1.040882475813609,0.30771615248598033,False
+faction_select,Secondary Class,rogue,0.6805128379351404,0.2011800535339352,False

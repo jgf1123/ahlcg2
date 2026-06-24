@@ -1,0 +1,5 @@
+resolution_kind,option_name,choice,weighted_total,weight_share,selected
+signature_select,Search for the Truth,02008,9.558781540452028,0.9947845247881909,True
+signature_select,Search for the Truth,90079,0.05011496151886885,0.005215475211809149,False
+signature_select,Rex's Curse,02009,9.55755612817453,0.9947838595793908,True
+signature_select,Rex's Curse,90080,0.05011496151886885,0.00521614042060927,False

@@ -1,0 +1,7 @@
+resolution_kind,option_name,choice,weighted_total,weight_share,selected
+signature_select,Sea Change Harpoon,07014,4.77994629117971,0.8721066217229312,True
+signature_select,Sea Change Harpoon,98014,0.7009733258924119,0.1278933782770688,False
+signature_select,Silas's Net,07015,4.77994629117971,0.8756538682308234,True
+signature_select,Silas's Net,98014,0.6787702914777086,0.12434613176917657,False
+signature_select,Siren Call,07016,4.797708718711473,0.8789078249554123,True
+signature_select,Siren Call,98015,0.6610078639459459,0.12109217504458775,False

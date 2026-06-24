@@ -1,0 +1,3 @@
+resolution_kind,option_name,choice,weighted_total,weight_share,selected
+signature_select,Flux Stabilizer,10005,1.951898235636571,1.0,True
+signature_select,Failed Experiment,10008,1.951898235636571,1.0,True

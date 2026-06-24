@@ -640,6 +640,11 @@ After Phase 0.5 selects a set of permanent cards `S`, slot targets use a **smoot
 
    **`ρ`** is a fixed fraction (implementation default e.g. `0.05`: trust `E_S` fully once ⊇ `S` decks account for at least 5% of investigator weight). When `W_S = 0`, use `E[t] = E_all[t]`.
 
+   **Which slot types use `E_S`?**
+   - **Deck-size permanents** in `S` (e.g. Forced Learning +15, Versatile +5): blend `E_S[t]` into **every** slot type `t`. Larger decks hold more assets on average in each slot category.
+   - **Slot-capacity / composition permanents** (extra ally/accessory/arcane slot, Reliquary, On Your Own, …): blend only for the slot types they affect.
+   - **Other permanents** (e.g. **In the Thick of It** — +3 XP at deck creation, **no** deck-size change): do **not** shift slot targets; use `E_all[t]`.
+
 **Rationale:** `E` reflects both slot **capacity** and how an investigator is **played** (e.g. Hand usage often exceeds nominal capacity because deck slots compete on popularity). Conditioning on permanents in `S` shifts targets toward builds that actually take those cards; smoothing back to `E_all` avoids overfitting when few decks match. Superset matching (⊇ `S`) yields more training mass than exact-set equality while still requiring every selected permanent.
 
 Apply `slot_phase_targets(E[t])` to the smoothed `E[t]` for phase 1 / phase 2 limits (see *Slot vectors and targets*).
@@ -693,6 +698,8 @@ Walk the 0 XP popularity list (P5 order). Count only cards that **count toward p
 
 **Still deferred (separate from Phase 0.5 selection), probably won't be needed:** slot-**capacity** enforcement during asset adds (e.g. Charisma +1 ally slot) — permanents are included and options merged, but asset slot limits during Phase 1/2 may not yet reflect capacity grants. Use `E[t]` instead.
 
+**Shrewd Analysis + unidentified Seeker assets:** Phase 0.5 may include `04106` (*Shrewd Analysis*) without any matching `(Unidentified)` / `(Untranslated)` Seeker asset in Phase 1/2. See [research_notes.md — Shrewd Analysis](research_notes.md#shrewd-analysis-04106--unidentifieduntranslated-seeker-assets-not-yet-enforced).
+
 ## Phase 1 — fill slot floors (0 XP assets only)
 
 Walk 0 XP asset options in P5 order. For each `(canonical_id, card_index)` not yet included:
@@ -732,8 +739,8 @@ One generated list per in-scope `(canonical_front, canonical_back)` for v1.
 **Versioned updates:** `update_generated_decklist()` / `update_generated_decklist_csvs(changelog=...)` regenerate CSV(s), compare against the previous export on disk, and **prepend** to `generated/{name} {canonical_front} version.md` (create if missing):
 
 1. The required `changelog` string (what changed in the generator/spec).
-2. **Removed** — `(canonical_id, card_index)` options present before but not after.
-3. **Added** — `(canonical_id, card_index)` options present after but not before.
+2. **Removed** — `(canonical_id, card_index) Name` options present before but not after.
+3. **Added** — `(canonical_id, card_index) Name` options present after but not before.
 
 Entries are separated by `---`. Diff keys off `included_in_generated=True` rows in the popularity export (one row per popularity option). Use this workflow instead of hand-diffing ArkhamDB imports when iterating on generation rules.
 

@@ -1,0 +1,4 @@
+resolution_kind,option_name,choice,weighted_total,weight_share,selected
+signature_select,Smuggled Goods,04010,8.35407337374252,1.0,True
+signature_select,Finn's Trusty .38,04011,8.383384219918733,1.0,True
+signature_select,Caught Red-Handed,04012,8.383384219918733,1.0,True

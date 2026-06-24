@@ -1,6 +1,8 @@
 resolution_kind,option_name,choice,weighted_total,weight_share,selected
-faction_pair,Class Choice,guardian+rogue,0.8297355525332059,0.26512594405176954,False
-faction_pair,Class Choice,guardian+survivor,0.7142921036018449,0.22823822327245,True
+signature_select,Bonnie Walsh,09019,3.138270053778088,1.0,True
+signature_select,Burden of Leadership,09020,3.138270053778088,1.0,True
+faction_pair,Class Choice,guardian+rogue,0.8297355525332059,0.26512594405176954,True
+faction_pair,Class Choice,guardian+survivor,0.7142921036018449,0.22823822327245,False
 faction_pair,Class Choice,guardian+seeker,0.34058928289991375,0.10882871643509706,False
 faction_pair,Class Choice,rogue+survivor,0.27667619348032796,0.08840652515029646,False
 faction_pair,Class Choice,mystic+seeker,0.2218766517581559,0.07089639172484732,False
