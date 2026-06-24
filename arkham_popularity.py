@@ -1087,6 +1087,23 @@ class ArkhamPopularityEngine:
             * deck.deck_xp_weight
         )
 
+    def investigator_deck_weight(
+        self,
+        deck: PreparedDecklist,
+        user_weights: dict[Any, float],
+        cycle_weights: dict[int, float],
+        inv_index: InvCycleIndex | None,
+    ) -> float:
+        """Spec I3/I4: deck_weight × g(C) × inv_adjust (B1+B2; no B3 tilt)."""
+        base = self.deck_weight(deck, user_weights, cycle_weights)
+        if not base or not self.bias_compensation or inv_index is None:
+            return base
+        if deck.cycle is None:
+            return 0.0
+        inv_cycle = self.mapper.cycle_for_slot(deck.canonical_front)
+        inv_adjust = inv_index.adjust(deck.cycle, inv_cycle)
+        return base * stratum_blend_weight(deck.cycle) * inv_adjust
+
     def adjusted_deck_weight(
         self,
         deck: PreparedDecklist,
@@ -1349,6 +1366,14 @@ class ArkhamPopularityEngine:
         user_weights = self.assign_user_weights(decks)
         active = [deck for deck in decks if not deck.is_ignore and deck.cycle is not None]
         cycle_weights = self.assign_cycle_weights(active, user_weights)
+        inv_index = (
+            InvCycleIndex(self.mapper, active) if self.bias_compensation else None
+        )
+
+        def weight(deck: PreparedDecklist) -> float:
+            return self.investigator_deck_weight(
+                deck, user_weights, cycle_weights, inv_index
+            )
 
         tuples = {
             (deck.canonical_front, deck.canonical_back)
@@ -1361,22 +1386,38 @@ class ArkhamPopularityEngine:
 
         rows: list[dict[str, Any]] = []
         for cycle in range(1, MAX_CYCLE + 1):
-            pool = [
+            pool_cohort = [
                 deck
                 for deck in active
                 if deck.cycle is not None and deck.cycle >= cycle
             ]
-            pool_weight = sum(
-                self.deck_weight(deck, user_weights, cycle_weights) for deck in pool
-            )
+            pool_global = active
+            pool_weight_cohort = sum(weight(deck) for deck in pool_cohort)
+            pool_weight_global = sum(weight(deck) for deck in pool_global)
             for canonical_front, canonical_back in tuples:
                 if inv_cycle.get((canonical_front, canonical_back)) != cycle:
                     continue
-                inv_weight = sum(
-                    self.deck_weight(deck, user_weights, cycle_weights)
+                inv_weight_cohort = sum(
+                    weight(deck)
                     for deck in investigator_decks(
-                        pool, canonical_front, canonical_back
+                        pool_cohort, canonical_front, canonical_back
                     )
+                )
+                inv_weight_global = sum(
+                    weight(deck)
+                    for deck in investigator_decks(
+                        pool_global, canonical_front, canonical_back
+                    )
+                )
+                popularity_cohort = (
+                    (inv_weight_cohort / pool_weight_cohort)
+                    if pool_weight_cohort
+                    else 0.0
+                )
+                popularity_global = (
+                    (inv_weight_global / pool_weight_global)
+                    if pool_weight_global
+                    else 0.0
                 )
                 rows.append(
                     {
@@ -1384,11 +1425,68 @@ class ArkhamPopularityEngine:
                         "canonical_back": canonical_back,
                         "cycle": cycle,
                         "inv_cycle": cycle,
-                        "pool_weight": pool_weight,
-                        "investigator_weight": inv_weight,
-                        "popularity": (inv_weight / pool_weight) if pool_weight else 0.0,
+                        "pool_weight": pool_weight_cohort,
+                        "investigator_weight": inv_weight_cohort,
+                        "popularity": popularity_cohort,
+                        "pool_weight_cohort": pool_weight_cohort,
+                        "investigator_weight_cohort": inv_weight_cohort,
+                        "popularity_cohort": popularity_cohort,
+                        "pool_weight_global": pool_weight_global,
+                        "investigator_weight_global": inv_weight_global,
+                        "popularity_global": popularity_global,
                     }
                 )
+        return rows
+
+    def investigator_decklist_cycle_distribution(
+        self,
+        decks: list[PreparedDecklist],
+    ) -> list[dict[str, Any]]:
+        """Per-investigator counts and weights by Decklist.cycle (EDA)."""
+        user_weights = self.assign_user_weights(decks)
+        active = [deck for deck in decks if not deck.is_ignore and deck.cycle is not None]
+        cycle_weights = self.assign_cycle_weights(active, user_weights)
+        inv_index = (
+            InvCycleIndex(self.mapper, active) if self.bias_compensation else None
+        )
+
+        buckets: dict[
+            tuple[str, str, int], dict[str, float | int]
+        ] = defaultdict(
+            lambda: {"deck_count": 0, "sum_weight": 0.0, "min_decklist_id": None, "max_decklist_id": None}
+        )
+        inv_cycle_by_tuple: dict[tuple[str, str], int | None] = {}
+        for deck in active:
+            key = (deck.canonical_front, deck.canonical_back)
+            if key not in inv_cycle_by_tuple:
+                inv_cycle_by_tuple[key] = self.mapper.cycle_for_slot(deck.canonical_front)
+            bucket = buckets[(deck.canonical_front, deck.canonical_back, deck.cycle)]
+            bucket["deck_count"] = int(bucket["deck_count"]) + 1
+            bucket["sum_weight"] = float(bucket["sum_weight"]) + self.investigator_deck_weight(
+                deck, user_weights, cycle_weights, inv_index
+            )
+            decklist_id = deck.decklist_id
+            if bucket["min_decklist_id"] is None or decklist_id < bucket["min_decklist_id"]:
+                bucket["min_decklist_id"] = decklist_id
+            if bucket["max_decklist_id"] is None or decklist_id > bucket["max_decklist_id"]:
+                bucket["max_decklist_id"] = decklist_id
+
+        rows: list[dict[str, Any]] = []
+        for (canonical_front, canonical_back, decklist_cycle), stats in sorted(
+            buckets.items()
+        ):
+            rows.append(
+                {
+                    "canonical_front": canonical_front,
+                    "canonical_back": canonical_back,
+                    "inv_cycle": inv_cycle_by_tuple.get((canonical_front, canonical_back)),
+                    "decklist_cycle": decklist_cycle,
+                    "deck_count": stats["deck_count"],
+                    "sum_weight": stats["sum_weight"],
+                    "min_decklist_id": stats["min_decklist_id"],
+                    "max_decklist_id": stats["max_decklist_id"],
+                }
+            )
         return rows
 
     def slot_usage_for_investigator(
@@ -1407,11 +1505,16 @@ class ArkhamPopularityEngine:
         )
         user_weights = self.assign_user_weights(decks)
         cycle_weights = self.assign_cycle_weights(inv_decks, user_weights)
+        inv_index = (
+            InvCycleIndex(self.mapper, decks) if self.bias_compensation else None
+        )
 
         slot_totals: dict[str, float] = defaultdict(float)
         total_weight = 0.0
         for deck in inv_decks:
-            weight = self.deck_weight(deck, user_weights, cycle_weights)
+            weight = self.investigator_deck_weight(
+                deck, user_weights, cycle_weights, inv_index
+            )
             if not weight:
                 continue
             total_weight += weight
@@ -1647,6 +1750,7 @@ class ArkhamPopularityEngine:
         cycle_weights: dict[int, float],
         required_permanents: frozenset[str],
         *,
+        inv_index: InvCycleIndex | None = None,
         rho: float = SLOT_AVERAGE_SMOOTHING_RHO,
     ) -> tuple[dict[str, float], dict[str, float | int]]:
         slot_all: dict[str, float] = defaultdict(float)
@@ -1654,7 +1758,9 @@ class ArkhamPopularityEngine:
         weight_all = 0.0
         weight_subset = 0.0
         for deck in inv_decks:
-            weight = self.deck_weight(deck, user_weights, cycle_weights)
+            weight = self.investigator_deck_weight(
+                deck, user_weights, cycle_weights, inv_index
+            )
             if not weight:
                 continue
             weight_all += weight
@@ -1792,12 +1898,16 @@ class ArkhamPopularityEngine:
         )
         user_weights = self.assign_user_weights(decks)
         cycle_weights = self.assign_cycle_weights(inv_decks, user_weights)
+        inv_index = (
+            InvCycleIndex(self.mapper, decks) if self.bias_compensation else None
+        )
         permanent_set = required_permanents or frozenset()
         averages, meta = self._smoothed_slot_averages(
             inv_decks,
             user_weights,
             cycle_weights,
             permanent_set,
+            inv_index=inv_index,
         )
         return self._slot_targets_from_averages(averages, smoothing_meta=meta)
 
@@ -1891,10 +2001,15 @@ class ArkhamPopularityEngine:
         )
         user_weights = self.assign_user_weights(decks)
         cycle_weights = self.assign_cycle_weights(active_inv, user_weights)
+        inv_index = (
+            InvCycleIndex(self.mapper, decks) if self.bias_compensation else None
+        )
         weighted_decks = [
             (
                 deck.slots,
-                self.deck_weight(deck, user_weights, cycle_weights),
+                self.investigator_deck_weight(
+                    deck, user_weights, cycle_weights, inv_index
+                ),
                 deck.meta,
             )
             for deck in active_inv
@@ -1980,6 +2095,7 @@ class ArkhamPopularityEngine:
             user_weights,
             cycle_weights,
             permanent_set,
+            inv_index=inv_index,
         )
         slot_targets = self._slot_targets_from_averages(
             slot_averages,

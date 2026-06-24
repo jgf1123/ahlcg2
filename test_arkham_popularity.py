@@ -269,6 +269,159 @@ class BiasCompensationTests(unittest.TestCase):
         index._prob = {(10, 10): 0.5}
         self.assertAlmostEqual(index.adjust(10, 10), 0.2)
 
+    def test_investigator_deck_weight_applies_b1_b2_not_b3(self):
+        cards = {
+            "08007": _card(
+                "08007",
+                name="Monterey",
+                type_code="investigator",
+                faction_code="rogue",
+                pack_code="eoep",
+            ),
+            "08030": _card("08030", name="Edge Card", pack_code="eoep"),
+        }
+        decklists = {
+            1: {
+                "id": 1,
+                "user_id": 1,
+                "investigator_code": "08007",
+                "investigator_name": "Monterey",
+                "slots": {"08030": 2},
+            },
+            2: {
+                "id": 2,
+                "user_id": 2,
+                "investigator_code": "08007",
+                "investigator_name": "Monterey",
+                "slots": {"08030": 2},
+            },
+        }
+        mapper = CanonicalMapper(cards, chapter=1)
+        taboo = [{"id": 1, "cards": "[]"}]
+        engine = ArkhamPopularityEngine(cards, mapper, taboo, bias_compensation=True)
+        prepared = engine.prepare_all(decklists)
+        deck = prepared[0]
+        user_weights = engine.assign_user_weights(prepared)
+        cycle_weights = engine.assign_cycle_weights(prepared, user_weights)
+        inv_index = InvCycleIndex(mapper, prepared)
+        base = engine.deck_weight(deck, user_weights, cycle_weights)
+        inv_w = engine.investigator_deck_weight(
+            deck, user_weights, cycle_weights, inv_index
+        )
+        inv_cycle = mapper.cycle_for_slot(deck.canonical_front)
+        expected = (
+            base
+            * float(deck.cycle)
+            * inv_index.adjust(deck.cycle, inv_cycle)
+        )
+        self.assertAlmostEqual(inv_w, expected)
+        adj_card = engine.adjusted_deck_weight(
+            deck,
+            deck.cycle,
+            user_weights,
+            cycle_weights,
+            inv_index,
+            {deck.cycle: 1.0},
+        )
+        self.assertLessEqual(adj_card, inv_w)
+
+    def test_investigator_popularity_reports_cohort_and_global(self):
+        cards = {
+            "01001": _card(
+                "01001",
+                name="Roland",
+                type_code="investigator",
+                faction_code="guardian",
+                pack_code="core",
+            ),
+            "08007": _card(
+                "08007",
+                name="Monterey",
+                type_code="investigator",
+                faction_code="rogue",
+                pack_code="eoep",
+            ),
+            "01017": _card("01017", name="Physical Training", pack_code="core"),
+            "08030": _card("08030", name="Edge Card", pack_code="eoep"),
+        }
+        decklists = {
+            1: {
+                "id": 1,
+                "user_id": 1,
+                "investigator_code": "01001",
+                "investigator_name": "Roland",
+                "slots": {"01017": 2},
+            },
+            2: {
+                "id": 2,
+                "user_id": 2,
+                "investigator_code": "01001",
+                "investigator_name": "Roland",
+                "slots": {"01017": 2},
+            },
+            3: {
+                "id": 3,
+                "user_id": 3,
+                "investigator_code": "08007",
+                "investigator_name": "Monterey",
+                "slots": {"08030": 2},
+            },
+        }
+        mapper = CanonicalMapper(cards, chapter=1)
+        taboo = [{"id": 1, "cards": "[]"}]
+        engine = ArkhamPopularityEngine(
+            cards, mapper, taboo, bias_compensation=False
+        )
+        prepared = engine.prepare_all(decklists)
+        rows = engine.investigator_popularity_by_cycle(prepared)
+        roland = next(
+            r for r in rows if r["canonical_front"] == "01001" and r["inv_cycle"] == 1
+        )
+        self.assertAlmostEqual(roland["popularity_cohort"], roland["popularity"])
+        self.assertAlmostEqual(roland["popularity_global"], roland["popularity_cohort"])
+        monterey = next(
+            r for r in rows if r["canonical_front"] == "08007" and r["inv_cycle"] == 9
+        )
+        self.assertGreater(monterey["pool_weight_global"], monterey["pool_weight_cohort"])
+        self.assertLess(monterey["popularity_global"], monterey["popularity_cohort"])
+
+    def test_investigator_decklist_cycle_distribution(self):
+        cards = {
+            "01001": _card(
+                "01001",
+                name="Roland",
+                type_code="investigator",
+                faction_code="guardian",
+                pack_code="core",
+            ),
+            "01017": _card("01017", name="Physical Training", pack_code="core"),
+        }
+        decklists = {
+            100: {
+                "id": 100,
+                "user_id": 1,
+                "investigator_code": "01001",
+                "investigator_name": "Roland",
+                "slots": {"01017": 2},
+            },
+            200: {
+                "id": 200,
+                "user_id": 2,
+                "investigator_code": "01001",
+                "investigator_name": "Roland",
+                "slots": {"01017": 2},
+            },
+        }
+        mapper = CanonicalMapper(cards, chapter=1)
+        taboo = [{"id": 1, "cards": "[]"}]
+        engine = ArkhamPopularityEngine(cards, mapper, taboo, bias_compensation=False)
+        prepared = engine.prepare_all(decklists)
+        rows = engine.investigator_decklist_cycle_distribution(prepared)
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]["deck_count"], 2)
+        self.assertEqual(rows[0]["min_decklist_id"], 100)
+        self.assertEqual(rows[0]["max_decklist_id"], 200)
+
     def test_bias_off_matches_legacy_pooling(self):
         cards = {
             "01004": _card("01004", name="Agnes", type_code="investigator", faction_code="mystic"),
@@ -944,6 +1097,11 @@ class IntegrationTests(unittest.TestCase):
             user_weights,
             cycle_weights,
             frozenset({"08125"}),
+            inv_index=(
+                InvCycleIndex(self.engine.mapper, prepared)
+                if self.engine.bias_compensation
+                else None
+            ),
         )
         self.assertAlmostEqual(averages["Arcane"], arcane_all)
         self.assertEqual(slot_phase_targets(averages["Arcane"]), (0, 0, 1))

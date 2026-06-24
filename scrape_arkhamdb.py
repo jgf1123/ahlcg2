@@ -25,10 +25,14 @@ from typing import Any
 
 import requests
 
+from arkham_canonical import parse_investigator_front_back
+
 BASE_URL = "https://arkhamdb.com"
 DECKLIST_PICKLE = Path("decklist_json.pickle")
 CARD_PICKLE = Path("card_json.pickle")
 DEFAULT_MIN_DECKLIST_ID = 15614  # Circle Undone on arkhamdb; older ids are sparse
+# Bogus slot codes in scraped decklists; no public ArkhamDB card page exists.
+SKIP_CARD_IDS = frozenset({"07062"})
 
 
 def load_pickle(path: Path) -> dict:
@@ -191,10 +195,14 @@ def card_ids_needed(decklists: dict[Any, Any], cards: dict[str, Any]) -> list[st
         if not deck:
             continue
         needed.update(deck.get("slots") or {})
-        inv = deck.get("investigator_code")
-        if inv:
-            needed.add(inv)
-    return sorted(cid for cid in needed if cid not in cards)
+        inv_front, inv_back = parse_investigator_front_back(deck)
+        needed.add(inv_front)
+        needed.add(inv_back)
+    return sorted(
+        cid
+        for cid in needed
+        if cid not in cards and cid not in SKIP_CARD_IDS
+    )
 
 
 def patch_myriad_flags(cards: dict[str, Any]) -> int:

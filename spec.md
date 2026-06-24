@@ -13,7 +13,7 @@ Only the scrapper functions are allowed to overwrite the pickled data. The funct
 ## Scraping and cleaning
 
 - **Decklists:** scrape via `scrape_arkhamdb.py decklists` (default `--mode incremental` from max pickle id to current public max) or `--mode gaps` to fill historical holes; store as `{decklist_id: dict}` in `decklist_json.pickle`. Empty API responses (HTTP 200, zero body) may be deleted or privatized — use `--store-empty` to record as `None`, or `--verify` to re-check existing entries. Drop empty entries (`None`) at clean time. Remove known joke decklists (`43839`, `44599`, `45550`) and any deck with a slot copy count `≥ 4` above `deck_limit` for that `card_id` (see `clean_decklist_json` in `arkham_popularity.py`).
-- **Cards:** scrape via `scrape_arkhamdb.py cards` (missing ids only) or `cards --refresh-all` after a full card-data refresh; store as `{card_id: dict}` in `card_json.pickle`. (Done: ~~Re-scrape before canonicalization.~~)
+- **Cards:** scrape via `scrape_arkhamdb.py cards` (missing ids only) or `cards --refresh-all` after a full card-data refresh; store as `{card_id: dict}` in `card_json.pickle`. Card discovery uses `slots` plus investigator front/back from `investigator_code` and `meta.alternate_front` / `alternate_back`. Skip list `SKIP_CARD_IDS` (e.g. `07062`) omits bogus slot codes with no ArkhamDB card page.
 - **Taboo:** fetch `taboo.json` separately from the API.
 - Only scraper code may overwrite pickles. Popularity code may write CSV outputs but must not overwrite pickles.
 
@@ -532,25 +532,32 @@ A card json may have a `slot` or `real_slot` field when the asset occupies one o
 For each (`canonical_front`, `canonical_back`) tuple:
 
 1. For each of its decklists (same set of decklists in Popularity by Investigator), count **asset slot** usage by **assets** only (`type_code = asset`). E.g., if a decklist has 2 copies of a card that takes up 1 Hand slot, together they account for 2 Hand slots. Parse ArkhamDB `slot` / `real_slot`: split on `". "`, treat a trailing `" x2"` as doubling that slot type, and count Sled Dog (`08127`) as half an Ally slot per copy.
-2. For each slot type, calculate the weighted average using the same decklist weight as Popularity by Investigator: `Decklist.user_weight * Cycle.weight * Decklist.deck_xp_weight` for `Decklist.cycle`.
+2. For each slot type, calculate the weighted average using the same decklist weight as Investigator Popularity (I3/I4): `investigator_deck_weight` = `user_weight × Cycle.weight × deck_xp_weight × g(C) × inv_adjust` when bias compensation is on (no B3 tilt).
 
 Implemented in `ArkhamPopularityEngine.slot_usage_for_investigator()`; notebook helper `show_slot_usage_for_investigator()`.
 
 ## Investigator Popularity
 
-Within each cycle, we want to compare the popularity of `(canonical_front, canonical_back)` choices. This is analogous to "Popularity by Investigator":
+Within each `inv_cycle`, compare `(canonical_front, canonical_back)` choices. Investigator popularity reflects at least (1) perceived investigator strength and (2) interest in deckcrafting for that investigator as new cards enable new builds — see `research_notes.md` (cycle / investigator-age hypotheses).
 
 I1. Let `inv_cycle` = `CanonicalCard.cycle` of `canonical_front` (the investigator card's first printing cycle).
 
 For each `cycle` from 1 to `MAX_CYCLE`, and for each `(canonical_front, canonical_back)` with `inv_cycle = cycle`:
 
-I2. Slice all decklists with `Decklist.cycle >= cycle` and `is_ignore = False`.
+I2. Report **two pool slices** (same weight formula, different denominators):
 
-I3. Total weight of those decklists = Σ (`Decklist.user_weight` × `Cycle.weight` × `Decklist.deck_xp_weight` at `Decklist.cycle`).
+- **Cohort pool (I2a):** all decklists with `Decklist.cycle >= cycle` and `is_ignore = False`. Answers: among players building with at least this investigator's release-era card pool, what share pick this investigator?
+- **Global pool (I2b):** all non-ignored decklists with defined `Decklist.cycle`. Answers: what share of all weighted deck activity is this investigator?
 
-I4. Total weight of decklists using this `(canonical_front, canonical_back)` tuple (same slice, same weight formula).
+**Caveat — `popularity_global` and promo investigators:** Some investigators were released first as **promotional** (or otherwise pre-cycle) printings before their campaign cycle. Their early ArkhamDB lists often have **`Decklist.cycle` below `inv_cycle`** — the deck’s max card cycle reflects the promo-era card pool, not the investigator’s eventual publication cycle. Those decks count in the **global** pool (and in the investigator’s numerator) but are excluded from the **cohort** pool (`Decklist.cycle >= inv_cycle`). `popularity_global` therefore tends to **overstate** such investigators relative to `popularity_cohort`. Keep computing `popularity_global` for diagnostics and future compensation (e.g. promo-era down-weighting or a minimum-`Decklist.cycle` floor per investigator); **use `popularity_cohort` (alias `popularity`) for primary comparisons** until a fix is defined.
 
-I5. Popularity = I4 / I3.
+I3. Per deck, `investigator_deck_weight` = `user_weight × Cycle.weight × deck_xp_weight`, multiplied by `g(C)` and `inv_adjust` (B1+B2) when `bias_compensation` is on. Do **not** apply B3 `tilt_d(k)` (no card cycle for an investigator tuple).
+
+I4. **Cohort:** total cohort pool weight = Σ `investigator_deck_weight`; investigator cohort weight = Σ over decks with this tuple in the cohort pool. **Global:** same with the global pool.
+
+I5. `popularity_cohort` = I4 cohort / I3 cohort; `popularity_global` = I4 global / I3 global. Legacy fields `popularity`, `pool_weight`, and `investigator_weight` remain aliases for the **cohort** metrics.
+
+**EDA:** `investigator_decklist_cycle_distribution()` returns per-investigator `Decklist.cycle` counts and weights; CLI `investigator_decklist_cycle.py`. ArkhamDB `decklist_id` is chronological — use `min_decklist_id` / `max_decklist_id` per stratum to approximate when each cycle's card pool entered the dataset and to slice by era of list creation.
 
 # Automatic Decklist Generation
 
@@ -560,9 +567,9 @@ I5. Popularity = I4 / I3.
 
 ## Inputs
 
-G0. **Card popularity** — 0 XP options from P1–P5 for `(canonical_front, canonical_back)`, sorted by P5 descending (same slice and weights as Popularity by Investigator: `is_ignore=False` decks only).
+G0. **Card popularity** — 0 XP options from P1–P5 for `(canonical_front, canonical_back)`, sorted by P5 descending (`is_ignore=False` decks only). Uses full `adjusted_deck_weight` (B1+B2+B3) when `bias_compensation` is on.
 
-G0b. **Slot averages** — per asset-slot type `t`, compute a **smoothed conditional** average `E[t]` (see *Conditional slot averages* below). Unconditional `E_all[t]` is the weighted average from all training decks for the investigator (same weights and slot parsing as assets-in-each-slot). Signature assets in training decks are included in these averages.
+G0b. **Slot averages** — per asset-slot type `t`, compute a **smoothed conditional** average `E[t]` (see *Conditional slot averages* below). Unconditional `E_all[t]` uses **`investigator_deck_weight`** (B1+B2, no B3) over all training decks for the investigator — same as Investigator Popularity (I3).
 
 G0c. **Investigator rules** — `deck_requirements` and `deck_options` from the `canonical_front` investigator card in `card_json`. **Assumption:** rules are read from `canonical_front`; when front = back (typical case) this matches ArkhamDB. Parallel-only `(canonical_front, canonical_back)` tuples are out of scope for v1.
 
@@ -599,7 +606,7 @@ When an investigator’s `deck_options` include `faction_select` or `deck_size_s
 
 For each `(canonical_front, canonical_back)` with training decks:
 
-1. Compute `deck_weight` for every non-ignored training decklist (same formula as P3/P4).
+1. Compute `investigator_deck_weight` for every non-ignored training decklist (same B1+B2 stack as I3; no B3).
 2. **`faction_select`:** For investigators with one secondary-class branch, pick the faction with the highest weighted total among decks whose `meta.faction_selected` matches a candidate (decks without meta do not vote). Tie-break: alphabetical faction name. **Dual class exception:** two `faction_select` blocks with ids `faction_1` / `faction_2` resolve jointly as one unordered class pair from `meta.faction_1` and `meta.faction_2` only. Diagnostics use `resolution_kind=faction_pair` with choices like `guardian+survivor`.
 3. **`deck_size_select`:** Add each deck’s weight to its player-card-count bucket (among allowed sizes). Pick the size with the highest weighted total; tie-break: larger size.
 
@@ -669,7 +676,7 @@ Apply targets to **global** `current[t]` (requirements count toward `current` be
 
 ## Phase 0 — required signatures
 
-Add all `deck_requirements.card` entries. Each entry is an **OR-group** when its value is a dict of interchangeable printings (e.g. Norman Withers: `08005` Livre d'Eibon **or** `98008` Split the Angle; `08006` The Harbinger **or** `98009` Vengeful Hound). Pick **one** card per group the same way as `deck_size_select` / `faction_select`: each training deck with exactly one printing from the group casts its full **`deck_weight`** (`user_weight × cycle_weight × deck_xp_weight`) to that choice; sum weights per alternative; pick the highest (tie-break by `canonical_id`). Decks with both or neither printing in the group are excluded from that group's pool. **Every** printing in every OR-group is a requirement id (does not count toward **`deck_size`** / **`final_deck_size`**, and Phase 2 must not add unchosen alternatives).
+Add all `deck_requirements.card` entries. Each entry is an **OR-group** when its value is a dict of interchangeable printings (e.g. Norman Withers: `08005` Livre d'Eibon **or** `98008` Split the Angle; `08006` The Harbinger **or** `98009` Vengeful Hound). Pick **one** card per group the same way as `deck_size_select` / `faction_select`: each training deck with exactly one printing from the group casts its full **`investigator_deck_weight`** to that choice; sum weights per alternative; pick the highest (tie-break by `canonical_id`). Decks with both or neither printing in the group are excluded from that group's pool. **Every** printing in every OR-group is a requirement id (does not count toward **`deck_size`** / **`final_deck_size`**, and Phase 2 must not add unchosen alternatives).
 
 Single-code entries (no alternatives) behave as before. Copy count from `quantity` on the chosen card (default 1). Only **assets** among chosen signatures increment `current[t]` (per copy). Non-asset requirements (e.g. weaknesses) do not affect `current[t]`.
 

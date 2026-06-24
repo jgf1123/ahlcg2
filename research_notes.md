@@ -51,15 +51,22 @@ P = \frac{\sum \text{weight of decks that include the option}}{\sum \text{weight
 
 ## Cycle / investigator-age hypotheses (future EDA)
 
+**Motivation:** Investigator popularity mixes (at least) **strength** and **deckcraft interest** — including whether players revisit older investigators when new cards enable new builds. If early-cycle investigators' training decks stay concentrated on early-cycle *cards* despite B1–B3 on option popularity, that may mean players are not rebuilding legacy investigators for new pools, or that old published lists outweigh fresh designs in the data.
+
 1. **Investigator dominated by own era:** For investigator with `inv_cycle = C`, is P5 mass concentrated on cards with `cycle ≤ C` (signature + core pool) vs later cycles?
 
 2. **Inclusion skew vs eligibility:** For a card with cycle `k`, among investigators who *can* naturally include it, is the subset that *do* include it skewed toward investigators with `inv_cycle ≤ k` (or equal to card cycle)?
+
+3. **`Decklist.cycle` distribution per investigator:** For each `(canonical_front, canonical_back)`, histogram `Decklist.cycle` (counts and `investigator_deck_weight`). Compare early vs late investigators; contrast with **cohort** vs **global** investigator popularity (`popularity_cohort` vs `popularity_global`).
 
 **Possible metrics:**
 
 - Weighted share of P5 or slot usage from cards by cycle bucket.
 - For each `(card, investigator)` pair: include rate vs investigator cycle relative to card cycle.
 - Compare early investigators (Agnes, Roland) vs late (Marble) on the same Core card.
+- `investigator_decklist_cycle_distribution()` + `investigator_decklist_cycle.py`.
+
+**Chronological slicing:** ArkhamDB `decklist_id` increases with upload time. Per `Decklist.cycle` stratum, `min`/`max decklist_id` approximate when that card pool entered the scrape corpus. Cross-tab `Decklist.cycle` × creation era (e.g. decklist_id quantiles) to separate "old investigator, old list" from "old investigator, list built after cycle-`k` cards existed."
 
 **If confirmed:** generation might need cycle-aware popularity pools or inv_cycle floor when slicing training decks (related to existing `Decklist.cycle` bias in spec, but investigator-card cycle vs card cycle).
 

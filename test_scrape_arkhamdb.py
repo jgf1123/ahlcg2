@@ -43,6 +43,24 @@ class ScrapeArkhamdbTests(unittest.TestCase):
         cards = {"01001": {}}
         self.assertEqual(card_ids_needed(decklists, cards), ["01002"])
 
+    def test_card_ids_needed_includes_meta_alternate_front(self):
+        decklists = {
+            1: {
+                "slots": {"01006": 1},
+                "investigator_code": "08007",
+                "meta": '{"alternate_front":"90062","alternate_back":"90062"}',
+            },
+        }
+        cards = {"08007": {}, "01006": {}}
+        self.assertEqual(card_ids_needed(decklists, cards), ["90062"])
+
+    def test_card_ids_needed_skips_bogus_07062(self):
+        decklists = {
+            1: {"slots": {"07062": 1}, "investigator_code": "01004"},
+        }
+        cards = {"01004": {}}
+        self.assertEqual(card_ids_needed(decklists, cards), [])
+
     def test_patch_myriad(self):
         cards = {
             "x": {"text": "Myriad. Limit 3.", "myriad": False},
