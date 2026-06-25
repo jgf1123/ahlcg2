@@ -1,3 +1,25 @@
+New b_C_D(k)
+
+Removed:
+- (03021, 1) True Grit
+- (60115, 1) Glory
+
+Added:
+- (06111, 1) Daring
+- (09028, 1) Motivational Speech
+
+---
+
+Fix Uncanny Specimen (and Sled Dog) slots
+
+Removed:
+- (none)
+
+Added:
+- (none)
+
+---
+
 Fix asset slot target
 
 Removed:

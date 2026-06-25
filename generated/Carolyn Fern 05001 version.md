@@ -1,3 +1,25 @@
+New b_C_D(k)
+
+Removed:
+- (02033, 2) Peter Sylvestre
+- (03191, 2) Logical Reasoning
+
+Added:
+- (05151, 2) Alice Luxley
+- (10027, 2) Task Force
+
+---
+
+Fix Uncanny Specimen (and Sled Dog) slots
+
+Removed:
+- (none)
+
+Added:
+- (none)
+
+---
+
 Fix asset slot target
 
 Removed:

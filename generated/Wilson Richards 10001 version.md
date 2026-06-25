@@ -1,3 +1,25 @@
+New b_C_D(k)
+
+Removed:
+- (01025, 2) Vicious Blow
+- (60507, 2) Old Keyring
+
+Added:
+- (10108, 1) Matchbox
+- (11082, 1) Hand Hook
+
+---
+
+Fix Uncanny Specimen (and Sled Dog) slots
+
+Removed:
+- (11024, 1) Ready for Anything
+
+Added:
+- (09120, 2) Tool Belt
+
+---
+
 Fix asset slot target
 
 Removed:

@@ -1,3 +1,23 @@
+New b_C_D(k)
+
+Removed:
+- (02188, 1) Lone Wolf
+
+Added:
+- (07028, 1) Faustian Bargain
+
+---
+
+Fix Uncanny Specimen (and Sled Dog) slots
+
+Removed:
+- (none)
+
+Added:
+- (none)
+
+---
+
 Fix asset slot target
 
 Removed:

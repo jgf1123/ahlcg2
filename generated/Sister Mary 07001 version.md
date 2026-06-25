@@ -1,3 +1,23 @@
+New b_C_D(k)
+
+Removed:
+- (60118, 1) Stand Together
+
+Added:
+- (11067, 2) Eyes of the Dreamer
+
+---
+
+Fix Uncanny Specimen (and Sled Dog) slots
+
+Removed:
+- (none)
+
+Added:
+- (none)
+
+---
+
 Fix asset slot target
 
 Removed:

@@ -1,3 +1,23 @@
+New b_C_D(k)
+
+Removed:
+- (05110, 2) Crack the Case
+
+Added:
+- (11034, 2) Artistic Inspiration
+
+---
+
+Fix Uncanny Specimen (and Sled Dog) slots
+
+Removed:
+- (none)
+
+Added:
+- (none)
+
+---
+
 Fix asset slot target
 
 Removed:

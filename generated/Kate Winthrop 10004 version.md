@@ -1,3 +1,27 @@
+New b_C_D(k)
+
+Removed:
+- (02022, 2) Shortcut
+- (02227, 1) Inquiring Mind
+
+Added:
+- (10041, 1) Dr. Charles West III
+- (10050, 1) Transmogrify
+
+---
+
+Fix Uncanny Specimen (and Sled Dog) slots
+
+Removed:
+- (02227, 2) Inquiring Mind
+- (11034, 2) Artistic Inspiration
+
+Added:
+- (11039, 2) Uncanny Specimen
+- (11039, 3) Uncanny Specimen
+
+---
+
 Fix asset slot target
 
 Removed:

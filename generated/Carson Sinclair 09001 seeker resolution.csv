@@ -1,6 +1,6 @@
 resolution_kind,option_name,choice,weighted_total,weight_share,selected
-signature_select,"""As you wish""",09002,2.9821770597680457,1.0,True
-signature_select,Selfless to a Fault,09003,2.9821770597680457,1.0,True
-faction_select,Secondary Class,seeker,1.4222816684483561,0.4741541196632407,True
-faction_select,Secondary Class,survivor,1.1219425509511933,0.374028361864041,False
-faction_select,Secondary Class,mystic,0.45539470083361333,0.15181751847271824,False
+signature_select,"""As you wish""",09002,27.67163842319352,1.0,True
+signature_select,Selfless to a Fault,09003,27.67163842319352,1.0,True
+faction_select,Secondary Class,seeker,13.594960245459312,0.4912958183952144,True
+faction_select,Secondary Class,survivor,10.04784925261816,0.36311002257807645,False
+faction_select,Secondary Class,mystic,4.028828925116032,0.1455941590267092,False

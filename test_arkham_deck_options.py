@@ -496,6 +496,63 @@ class DeckOptionsValidatorTests(unittest.TestCase):
         )
         self.assertEqual(chosen_alt, "98008")
 
+    def test_published_training_pool_norman_and_marie(self):
+        from arkham_deck_options import excluded_from_published_training_pool
+
+        cards = {
+            "08004": {"deck_requirements": {"card": {
+                "08005": {"08005": "08005", "98008": "98008"},
+                "08006": {"08006": "08006", "98009": "98009"},
+            }}},
+            "05006": {"deck_requirements": {"card": {"05018": "05018", "05019": "05019"}}},
+        }
+        to_canonical = lambda c: {"99001": "05006", "98007": "08004"}.get(c, c)
+
+        self.assertFalse(
+            excluded_from_published_training_pool(
+                investigator_front="08004",
+                investigator_back="08004",
+                canonical_front="08004",
+                canonical_back="08004",
+                slots={"08005": 1, "08006": 1},
+                cards=cards,
+                to_canonical=to_canonical,
+            )
+        )
+        self.assertFalse(
+            excluded_from_published_training_pool(
+                investigator_front="98007",
+                investigator_back="98007",
+                canonical_front="08004",
+                canonical_back="08004",
+                slots={"08005": 1, "08006": 1},
+                cards=cards,
+                to_canonical=to_canonical,
+            )
+        )
+        self.assertTrue(
+            excluded_from_published_training_pool(
+                investigator_front="08004",
+                investigator_back="08004",
+                canonical_front="08004",
+                canonical_back="08004",
+                slots={"98008": 1, "98009": 1},
+                cards=cards,
+                to_canonical=to_canonical,
+            )
+        )
+        self.assertFalse(
+            excluded_from_published_training_pool(
+                investigator_front="99001",
+                investigator_back="99001",
+                canonical_front="05006",
+                canonical_back="05006",
+                slots={"05018": 1, "05019": 1},
+                cards=cards,
+                to_canonical=to_canonical,
+            )
+        )
+
 
 @unittest.skipUnless(CARD_JSON.exists() and TABOO_JSON.exists(), "data files missing")
 class DeckOptionsIntegrationTests(unittest.TestCase):

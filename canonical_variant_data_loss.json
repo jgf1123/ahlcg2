@@ -1,0 +1,2959 @@
+{
+  "summary": {
+    "weighted_total": 58.635232724770944,
+    "weighted_kept": 54.68773238843556,
+    "weighted_lost": 3.9475003363353807,
+    "pct_kept": 93.27,
+    "primary_tuple_weighted_total": 55.833715001733346,
+    "primary_tuple_weighted_kept": 53.253987738967105,
+    "primary_tuple_pct_kept": 95.38,
+    "lost_weight_by_reason": {
+      "bad_signature": 2.9508559935652197,
+      "ambiguous_signature": 0.6390334011557683,
+      "bad_front": 0.35761094161404594
+    },
+    "definition": {
+      "allowed": "published printing + alternative art (duplicate_of or fingerprint-merged reprint of same mechanics)",
+      "excluded": "promo front/back/signatures (98***/99***, pack_code=promo) and parallel front/back/signatures (900** signature alts, separate parallel investigator tuples)",
+      "signatures": "each OR-group: exactly one printing from allowed set (non-promo, non-parallel, plus duplicate_of reprints)",
+      "charlie_kane": "faction_select splits unchanged",
+      "weight": "investigator_deck_weight (B1+B2, no B3)"
+    }
+  },
+  "rows": [
+    {
+      "investigator_name": "Dexter Drake",
+      "canonical_front": "07004",
+      "canonical_back": "07004",
+      "inv_cycle": 8,
+      "published_signatures": [
+        "07012",
+        "07013"
+      ],
+      "allowed_signature_groups": [
+        [
+          "07012"
+        ],
+        [
+          "07013"
+        ]
+      ],
+      "deck_count": 495,
+      "weighted_total": 0.9535952934527402,
+      "weighted_kept": 0.5158784131726604,
+      "weighted_lost": 0.4377168802800798,
+      "pct_kept": 54.1,
+      "pct_lost": 45.9,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 150,
+      "lost_decks_ambiguous_signature": 82,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Marie Lambeau",
+      "canonical_front": "05006",
+      "canonical_back": "05006",
+      "inv_cycle": 5,
+      "published_signatures": [
+        "05018",
+        "05019"
+      ],
+      "allowed_signature_groups": [
+        [
+          "05018"
+        ],
+        [
+          "05019"
+        ]
+      ],
+      "deck_count": 343,
+      "weighted_total": 0.5238695095839151,
+      "weighted_kept": 0.1662585679698694,
+      "weighted_lost": 0.3576109416140457,
+      "pct_kept": 31.74,
+      "pct_lost": 68.26,
+      "lost_decks_bad_front": 242,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Norman Withers",
+      "canonical_front": "08004",
+      "canonical_back": "08004",
+      "inv_cycle": 9,
+      "published_signatures": [
+        "08005",
+        "08006"
+      ],
+      "allowed_signature_groups": [
+        [
+          "08005"
+        ],
+        [
+          "08006"
+        ]
+      ],
+      "deck_count": 709,
+      "weighted_total": 0.8687222219603851,
+      "weighted_kept": 0.550557587308729,
+      "weighted_lost": 0.3181646346516561,
+      "pct_kept": 63.38,
+      "pct_lost": 36.62,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 382,
+      "lost_decks_ambiguous_signature": 2,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Gloria Goldberg",
+      "canonical_front": "11014",
+      "canonical_back": "11014",
+      "inv_cycle": 12,
+      "published_signatures": [
+        "11015",
+        "11016"
+      ],
+      "allowed_signature_groups": [
+        [
+          "11015"
+        ],
+        [
+          "11016"
+        ]
+      ],
+      "deck_count": 227,
+      "weighted_total": 0.3995616694738695,
+      "weighted_kept": 0.14012061813175225,
+      "weighted_lost": 0.25944105134211726,
+      "pct_kept": 35.07,
+      "pct_lost": 64.93,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 153,
+      "lost_decks_ambiguous_signature": 1,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Roland Banks",
+      "canonical_front": "01001",
+      "canonical_back": "01001",
+      "inv_cycle": 1,
+      "published_signatures": [
+        "01006",
+        "01007"
+      ],
+      "allowed_signature_groups": [
+        [
+          "01006"
+        ],
+        [
+          "01007"
+        ]
+      ],
+      "deck_count": 2686,
+      "weighted_total": 2.1237110253277223,
+      "weighted_kept": 1.8950969055878106,
+      "weighted_lost": 0.22861411973991164,
+      "pct_kept": 89.24,
+      "pct_lost": 10.76,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 115,
+      "lost_decks_ambiguous_signature": 36,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Silas Marsh",
+      "canonical_front": "98013",
+      "canonical_back": "98013",
+      "inv_cycle": null,
+      "published_signatures": [
+        "07014",
+        "07015",
+        "07016"
+      ],
+      "allowed_signature_groups": [
+        [
+          "07014"
+        ],
+        [
+          "07015"
+        ],
+        [
+          "07016"
+        ]
+      ],
+      "deck_count": 236,
+      "weighted_total": 0.2147902073086046,
+      "weighted_kept": 0.009996112025417635,
+      "weighted_lost": 0.20479409528318696,
+      "pct_kept": 4.65,
+      "pct_lost": 95.35,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 234,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "\"Ashcan\" Pete",
+      "canonical_front": "90046",
+      "canonical_back": "90046",
+      "inv_cycle": null,
+      "published_signatures": [
+        "02014",
+        "02015"
+      ],
+      "allowed_signature_groups": [
+        [
+          "02014"
+        ],
+        [
+          "02015"
+        ]
+      ],
+      "deck_count": 46,
+      "weighted_total": 0.1853630510067196,
+      "weighted_kept": 0.004548765756218266,
+      "weighted_lost": 0.18081428525050133,
+      "pct_kept": 2.45,
+      "pct_lost": 97.55,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 24,
+      "lost_decks_ambiguous_signature": 21,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Jenny Barnes",
+      "canonical_front": "02003",
+      "canonical_back": "02003",
+      "inv_cycle": 2,
+      "published_signatures": [
+        "02010",
+        "02011"
+      ],
+      "allowed_signature_groups": [
+        [
+          "02010"
+        ],
+        [
+          "02011"
+        ]
+      ],
+      "deck_count": 2278,
+      "weighted_total": 1.6424323859409848,
+      "weighted_kept": 1.4715385241989805,
+      "weighted_lost": 0.17089386174200438,
+      "pct_kept": 89.6,
+      "pct_lost": 10.4,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 76,
+      "lost_decks_ambiguous_signature": 41,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Carolyn Fern",
+      "canonical_front": "05001",
+      "canonical_back": "05001",
+      "inv_cycle": 5,
+      "published_signatures": [
+        "05007",
+        "05008"
+      ],
+      "allowed_signature_groups": [
+        [
+          "05007"
+        ],
+        [
+          "05008"
+        ]
+      ],
+      "deck_count": 866,
+      "weighted_total": 1.2206073182545063,
+      "weighted_kept": 1.0499662383892012,
+      "weighted_lost": 0.17064107986530508,
+      "pct_kept": 86.02,
+      "pct_lost": 13.98,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 138,
+      "lost_decks_ambiguous_signature": 32,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Daisy Walker",
+      "canonical_front": "01002",
+      "canonical_back": "01002",
+      "inv_cycle": 1,
+      "published_signatures": [
+        "01008",
+        "01009"
+      ],
+      "allowed_signature_groups": [
+        [
+          "01008"
+        ],
+        [
+          "01009"
+        ]
+      ],
+      "deck_count": 1979,
+      "weighted_total": 2.176985207692809,
+      "weighted_kept": 2.0250145141867857,
+      "weighted_lost": 0.1519706935060232,
+      "pct_kept": 93.02,
+      "pct_lost": 6.98,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 69,
+      "lost_decks_ambiguous_signature": 8,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Roland Banks",
+      "canonical_front": "90024",
+      "canonical_back": "90024",
+      "inv_cycle": null,
+      "published_signatures": [
+        "01006",
+        "01007"
+      ],
+      "allowed_signature_groups": [
+        [
+          "01006"
+        ],
+        [
+          "01007"
+        ]
+      ],
+      "deck_count": 68,
+      "weighted_total": 0.2535782187724316,
+      "weighted_kept": 0.10769932075048715,
+      "weighted_lost": 0.14587889802194443,
+      "pct_kept": 42.47,
+      "pct_lost": 57.53,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 34,
+      "lost_decks_ambiguous_signature": 6,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Agnes Baker",
+      "canonical_front": "90017",
+      "canonical_back": "90017",
+      "inv_cycle": null,
+      "published_signatures": [
+        "01012",
+        "01013"
+      ],
+      "allowed_signature_groups": [
+        [
+          "01012"
+        ],
+        [
+          "01013"
+        ]
+      ],
+      "deck_count": 78,
+      "weighted_total": 0.32700261289688887,
+      "weighted_kept": 0.1946557407888594,
+      "weighted_lost": 0.13234687210802948,
+      "pct_kept": 59.53,
+      "pct_lost": 40.47,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 35,
+      "lost_decks_ambiguous_signature": 1,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Silas Marsh",
+      "canonical_front": "07005",
+      "canonical_back": "07005",
+      "inv_cycle": 8,
+      "published_signatures": [
+        "07014",
+        "07015",
+        "07016"
+      ],
+      "allowed_signature_groups": [
+        [
+          "07014"
+        ],
+        [
+          "07015"
+        ],
+        [
+          "07016"
+        ]
+      ],
+      "deck_count": 302,
+      "weighted_total": 0.5906662834221935,
+      "weighted_kept": 0.4790607550341892,
+      "weighted_lost": 0.1116055283880043,
+      "pct_kept": 81.11,
+      "pct_lost": 18.89,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 32,
+      "lost_decks_ambiguous_signature": 32,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Wendy Adams",
+      "canonical_front": "01005",
+      "canonical_back": "01005",
+      "inv_cycle": 1,
+      "published_signatures": [
+        "01014",
+        "01015"
+      ],
+      "allowed_signature_groups": [
+        [
+          "01014"
+        ],
+        [
+          "01015"
+        ]
+      ],
+      "deck_count": 902,
+      "weighted_total": 1.0452152672909887,
+      "weighted_kept": 0.9337787635360025,
+      "weighted_lost": 0.11143650375498615,
+      "pct_kept": 89.34,
+      "pct_lost": 10.66,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 28,
+      "lost_decks_ambiguous_signature": 6,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Jim Culver",
+      "canonical_front": "90049",
+      "canonical_back": "90049",
+      "inv_cycle": null,
+      "published_signatures": [
+        "02012",
+        "02013",
+        ""
+      ],
+      "allowed_signature_groups": [
+        [
+          "02012"
+        ],
+        [
+          "02013"
+        ],
+        []
+      ],
+      "deck_count": 21,
+      "weighted_total": 0.10578855111728261,
+      "weighted_kept": 0.0,
+      "weighted_lost": 0.10578855111728261,
+      "pct_kept": 0.0,
+      "pct_lost": 100.0,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 15,
+      "lost_decks_ambiguous_signature": 6,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "\"Skids\" O'Toole",
+      "canonical_front": "90008",
+      "canonical_back": "90008",
+      "inv_cycle": null,
+      "published_signatures": [
+        "01010",
+        "01011"
+      ],
+      "allowed_signature_groups": [
+        [
+          "01010"
+        ],
+        [
+          "01011"
+        ]
+      ],
+      "deck_count": 145,
+      "weighted_total": 0.2852467556442938,
+      "weighted_kept": 0.18164931882075816,
+      "weighted_lost": 0.10359743682353564,
+      "pct_kept": 63.68,
+      "pct_lost": 36.32,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 74,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Father Mateo",
+      "canonical_front": "90081",
+      "canonical_back": "04004",
+      "inv_cycle": null,
+      "published_signatures": [
+        "04013",
+        "04014"
+      ],
+      "allowed_signature_groups": [
+        [
+          "04013"
+        ],
+        [
+          "04014"
+        ]
+      ],
+      "deck_count": 39,
+      "weighted_total": 0.12550380274590667,
+      "weighted_kept": 0.047730568584784035,
+      "weighted_lost": 0.07777323416112264,
+      "pct_kept": 38.03,
+      "pct_lost": 61.97,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 23,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Jenny Barnes",
+      "canonical_front": "90084",
+      "canonical_back": "90084",
+      "inv_cycle": null,
+      "published_signatures": [
+        "02010",
+        "02011"
+      ],
+      "allowed_signature_groups": [
+        [
+          "02010"
+        ],
+        [
+          "02011"
+        ]
+      ],
+      "deck_count": 19,
+      "weighted_total": 0.0848454346596217,
+      "weighted_kept": 0.0331478975748567,
+      "weighted_lost": 0.051697537084765,
+      "pct_kept": 39.07,
+      "pct_lost": 60.93,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 15,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Lola Hayes",
+      "canonical_front": "03006",
+      "canonical_back": "03006",
+      "inv_cycle": 3,
+      "published_signatures": [
+        "03018",
+        "03019"
+      ],
+      "allowed_signature_groups": [
+        [
+          "03018"
+        ],
+        [
+          "03019"
+        ]
+      ],
+      "deck_count": 661,
+      "weighted_total": 1.0079253158992165,
+      "weighted_kept": 0.9616691905521065,
+      "weighted_lost": 0.04625612534710999,
+      "pct_kept": 95.41,
+      "pct_lost": 4.59,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 24,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Agnes Baker",
+      "canonical_front": "90017",
+      "canonical_back": "01004",
+      "inv_cycle": null,
+      "published_signatures": [
+        "01012",
+        "01013"
+      ],
+      "allowed_signature_groups": [
+        [
+          "01012"
+        ],
+        [
+          "01013"
+        ]
+      ],
+      "deck_count": 32,
+      "weighted_total": 0.09005517587799373,
+      "weighted_kept": 0.04382594871184081,
+      "weighted_lost": 0.04622922716615292,
+      "pct_kept": 48.67,
+      "pct_lost": 51.33,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 10,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Zoey Samaras",
+      "canonical_front": "90059",
+      "canonical_back": "90059",
+      "inv_cycle": null,
+      "published_signatures": [
+        "02006",
+        "02007"
+      ],
+      "allowed_signature_groups": [
+        [
+          "02006"
+        ],
+        [
+          "02007"
+        ]
+      ],
+      "deck_count": 74,
+      "weighted_total": 0.16442250786238147,
+      "weighted_kept": 0.12094378226951055,
+      "weighted_lost": 0.043478725592870915,
+      "pct_kept": 73.56,
+      "pct_lost": 26.44,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 16,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Roland Banks",
+      "canonical_front": "01001",
+      "canonical_back": "90024",
+      "inv_cycle": 1,
+      "published_signatures": [
+        "01006",
+        "01007"
+      ],
+      "allowed_signature_groups": [
+        [
+          "01006"
+        ],
+        [
+          "01007"
+        ]
+      ],
+      "deck_count": 25,
+      "weighted_total": 0.0574743839577562,
+      "weighted_kept": 0.0172719396868082,
+      "weighted_lost": 0.040202444270948,
+      "pct_kept": 30.05,
+      "pct_lost": 69.95,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 19,
+      "lost_decks_ambiguous_signature": 1,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "\"Ashcan\" Pete",
+      "canonical_front": "02005",
+      "canonical_back": "02005",
+      "inv_cycle": 2,
+      "published_signatures": [
+        "02014",
+        "02015"
+      ],
+      "allowed_signature_groups": [
+        [
+          "02014"
+        ],
+        [
+          "02015"
+        ]
+      ],
+      "deck_count": 1010,
+      "weighted_total": 1.2228299732792143,
+      "weighted_kept": 1.1867659241935973,
+      "weighted_lost": 0.036064049085617,
+      "pct_kept": 97.05,
+      "pct_lost": 2.95,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 37,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Daisy Walker",
+      "canonical_front": "01002",
+      "canonical_back": "90001",
+      "inv_cycle": 1,
+      "published_signatures": [
+        "01008",
+        "01009"
+      ],
+      "allowed_signature_groups": [
+        [
+          "01008"
+        ],
+        [
+          "01009"
+        ]
+      ],
+      "deck_count": 22,
+      "weighted_total": 0.0628734504345651,
+      "weighted_kept": 0.02957910223411247,
+      "weighted_lost": 0.033294348200452635,
+      "pct_kept": 47.05,
+      "pct_lost": 52.95,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 6,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Daisy Walker",
+      "canonical_front": "90001",
+      "canonical_back": "90001",
+      "inv_cycle": null,
+      "published_signatures": [
+        "01008",
+        "01009"
+      ],
+      "allowed_signature_groups": [
+        [
+          "01008"
+        ],
+        [
+          "01009"
+        ]
+      ],
+      "deck_count": 30,
+      "weighted_total": 0.08989871424503561,
+      "weighted_kept": 0.059573264527140506,
+      "weighted_lost": 0.030325449717895102,
+      "pct_kept": 66.27,
+      "pct_lost": 33.73,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 12,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Father Mateo",
+      "canonical_front": "90081",
+      "canonical_back": "90081",
+      "inv_cycle": null,
+      "published_signatures": [
+        "04013",
+        "04014"
+      ],
+      "allowed_signature_groups": [
+        [
+          "04013"
+        ],
+        [
+          "04014"
+        ]
+      ],
+      "deck_count": 20,
+      "weighted_total": 0.07603423514714593,
+      "weighted_kept": 0.04642117336863093,
+      "weighted_lost": 0.029613061778515,
+      "pct_kept": 61.05,
+      "pct_lost": 38.95,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 10,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Wendy Adams",
+      "canonical_front": "90037",
+      "canonical_back": "90037",
+      "inv_cycle": null,
+      "published_signatures": [
+        "01014",
+        "01015"
+      ],
+      "allowed_signature_groups": [
+        [
+          "01014"
+        ],
+        [
+          "01015"
+        ]
+      ],
+      "deck_count": 45,
+      "weighted_total": 0.07076971987400328,
+      "weighted_kept": 0.04419997132637872,
+      "weighted_lost": 0.02656974854762456,
+      "pct_kept": 62.46,
+      "pct_lost": 37.54,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 23,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "\"Skids\" O'Toole",
+      "canonical_front": "01003",
+      "canonical_back": "01003",
+      "inv_cycle": 1,
+      "published_signatures": [
+        "01010",
+        "01011"
+      ],
+      "allowed_signature_groups": [
+        [
+          "01010"
+        ],
+        [
+          "01011"
+        ]
+      ],
+      "deck_count": 1062,
+      "weighted_total": 1.0321096939918502,
+      "weighted_kept": 1.0066863789927691,
+      "weighted_lost": 0.025423314999081015,
+      "pct_kept": 97.54,
+      "pct_lost": 2.46,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 9,
+      "lost_decks_ambiguous_signature": 6,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Monterey Jack",
+      "canonical_front": "08007",
+      "canonical_back": "08007",
+      "inv_cycle": 9,
+      "published_signatures": [
+        "08008",
+        "08009"
+      ],
+      "allowed_signature_groups": [
+        [
+          "08008"
+        ],
+        [
+          "08009"
+        ]
+      ],
+      "deck_count": 290,
+      "weighted_total": 0.6043817187530431,
+      "weighted_kept": 0.5804088098429773,
+      "weighted_lost": 0.02397290891006587,
+      "pct_kept": 96.03,
+      "pct_lost": 3.97,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 11,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Roland Banks",
+      "canonical_front": "90024",
+      "canonical_back": "01001",
+      "inv_cycle": null,
+      "published_signatures": [
+        "01006",
+        "01007"
+      ],
+      "allowed_signature_groups": [
+        [
+          "01006"
+        ],
+        [
+          "01007"
+        ]
+      ],
+      "deck_count": 21,
+      "weighted_total": 0.06191033652638946,
+      "weighted_kept": 0.04088836456100187,
+      "weighted_lost": 0.02102197196538759,
+      "pct_kept": 66.04,
+      "pct_lost": 33.96,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 7,
+      "lost_decks_ambiguous_signature": 1,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Jenny Barnes",
+      "canonical_front": "90084",
+      "canonical_back": "02003",
+      "inv_cycle": null,
+      "published_signatures": [
+        "02010",
+        "02011"
+      ],
+      "allowed_signature_groups": [
+        [
+          "02010"
+        ],
+        [
+          "02011"
+        ]
+      ],
+      "deck_count": 2,
+      "weighted_total": 0.01664445304395095,
+      "weighted_kept": 0.0,
+      "weighted_lost": 0.01664445304395095,
+      "pct_kept": 0.0,
+      "pct_lost": 100.0,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 2,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Agnes Baker",
+      "canonical_front": "01004",
+      "canonical_back": "01004",
+      "inv_cycle": 1,
+      "published_signatures": [
+        "01012",
+        "01013"
+      ],
+      "allowed_signature_groups": [
+        [
+          "01012"
+        ],
+        [
+          "01013"
+        ]
+      ],
+      "deck_count": 1530,
+      "weighted_total": 1.5542141644613272,
+      "weighted_kept": 1.5377668971906473,
+      "weighted_lost": 0.01644726727067991,
+      "pct_kept": 98.94,
+      "pct_lost": 1.06,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 5,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Lola Hayes",
+      "canonical_front": "90087",
+      "canonical_back": "90087",
+      "inv_cycle": null,
+      "published_signatures": [
+        "03018",
+        "03019"
+      ],
+      "allowed_signature_groups": [
+        [
+          "03018"
+        ],
+        [
+          "03019"
+        ]
+      ],
+      "deck_count": 1,
+      "weighted_total": 0.013761321168069825,
+      "weighted_kept": 0.0,
+      "weighted_lost": 0.013761321168069825,
+      "pct_kept": 0.0,
+      "pct_lost": 100.0,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 1,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Winifred Habbamock",
+      "canonical_front": "60301",
+      "canonical_back": "60301",
+      "inv_cycle": 7,
+      "published_signatures": [
+        "60302",
+        "60303"
+      ],
+      "allowed_signature_groups": [
+        [
+          "60302"
+        ],
+        [
+          "60303"
+        ]
+      ],
+      "deck_count": 515,
+      "weighted_total": 0.8056059364591333,
+      "weighted_kept": 0.7926815521879419,
+      "weighted_lost": 0.012924384271191358,
+      "pct_kept": 98.4,
+      "pct_lost": 1.6,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 3,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Rex Murphy",
+      "canonical_front": "90078",
+      "canonical_back": "90078",
+      "inv_cycle": null,
+      "published_signatures": [
+        "02008",
+        "02009"
+      ],
+      "allowed_signature_groups": [
+        [
+          "02008"
+        ],
+        [
+          "02009"
+        ]
+      ],
+      "deck_count": 7,
+      "weighted_total": 0.04462951443645728,
+      "weighted_kept": 0.031705130165266035,
+      "weighted_lost": 0.012924384271191247,
+      "pct_kept": 71.04,
+      "pct_lost": 28.96,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 2,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "\"Skids\" O'Toole",
+      "canonical_front": "90008",
+      "canonical_back": "01003",
+      "inv_cycle": null,
+      "published_signatures": [
+        "01010",
+        "01011"
+      ],
+      "allowed_signature_groups": [
+        [
+          "01010"
+        ],
+        [
+          "01011"
+        ]
+      ],
+      "deck_count": 13,
+      "weighted_total": 0.049294797452902515,
+      "weighted_kept": 0.038058162164124075,
+      "weighted_lost": 0.01123663528877844,
+      "pct_kept": 77.21,
+      "pct_lost": 22.79,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 2,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Jacqueline Fine",
+      "canonical_front": "60401",
+      "canonical_back": "60401",
+      "inv_cycle": 7,
+      "published_signatures": [
+        "60402",
+        "60403"
+      ],
+      "allowed_signature_groups": [
+        [
+          "60402"
+        ],
+        [
+          "60403"
+        ]
+      ],
+      "deck_count": 532,
+      "weighted_total": 0.9785691972299599,
+      "weighted_kept": 0.9677719450070733,
+      "weighted_lost": 0.010797252222886633,
+      "pct_kept": 98.9,
+      "pct_lost": 1.1,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 8,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Harvey Walters",
+      "canonical_front": "60201",
+      "canonical_back": "60201",
+      "inv_cycle": 7,
+      "published_signatures": [
+        "60202",
+        "60203"
+      ],
+      "allowed_signature_groups": [
+        [
+          "60202"
+        ],
+        [
+          "60203"
+        ]
+      ],
+      "deck_count": 425,
+      "weighted_total": 0.6695297808212335,
+      "weighted_kept": 0.6604891595416088,
+      "weighted_lost": 0.009040621279624683,
+      "pct_kept": 98.65,
+      "pct_lost": 1.35,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 2,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Rex Murphy",
+      "canonical_front": "02002",
+      "canonical_back": "02002",
+      "inv_cycle": 2,
+      "published_signatures": [
+        "02008",
+        "02009"
+      ],
+      "allowed_signature_groups": [
+        [
+          "02008"
+        ],
+        [
+          "02009"
+        ]
+      ],
+      "deck_count": 1243,
+      "weighted_total": 1.1641508119828623,
+      "weighted_kept": 1.1566590436603161,
+      "weighted_lost": 0.007491768322546166,
+      "pct_kept": 99.36,
+      "pct_lost": 0.64,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 1,
+      "lost_decks_ambiguous_signature": 2,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Daisy Walker",
+      "canonical_front": "90001",
+      "canonical_back": "01002",
+      "inv_cycle": null,
+      "published_signatures": [
+        "01008",
+        "01009"
+      ],
+      "allowed_signature_groups": [
+        [
+          "01008"
+        ],
+        [
+          "01009"
+        ]
+      ],
+      "deck_count": 11,
+      "weighted_total": 0.018860028339907714,
+      "weighted_kept": 0.011448930167212637,
+      "weighted_lost": 0.007411098172695077,
+      "pct_kept": 60.7,
+      "pct_lost": 39.3,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 7,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Agatha Crane",
+      "canonical_front": "11007",
+      "canonical_back": "11007",
+      "inv_cycle": 12,
+      "published_signatures": [
+        "11009",
+        "11010"
+      ],
+      "allowed_signature_groups": [
+        [
+          "11009"
+        ],
+        [
+          "11010"
+        ]
+      ],
+      "deck_count": 27,
+      "weighted_total": 0.058428534786546006,
+      "weighted_kept": 0.0513137348065538,
+      "weighted_lost": 0.0071147999799922035,
+      "pct_kept": 87.82,
+      "pct_lost": 12.18,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 3,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Leo Anderson",
+      "canonical_front": "04001",
+      "canonical_back": "04001",
+      "inv_cycle": 4,
+      "published_signatures": [
+        "04006",
+        "04007"
+      ],
+      "allowed_signature_groups": [
+        [
+          "04006"
+        ],
+        [
+          "04007"
+        ]
+      ],
+      "deck_count": 1325,
+      "weighted_total": 1.546615835624805,
+      "weighted_kept": 1.5396152328746275,
+      "weighted_lost": 0.007000602750177443,
+      "pct_kept": 99.55,
+      "pct_lost": 0.45,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 3,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "\"Ashcan\" Pete",
+      "canonical_front": "90046",
+      "canonical_back": "02005",
+      "inv_cycle": null,
+      "published_signatures": [
+        "02014",
+        "02015"
+      ],
+      "allowed_signature_groups": [
+        [
+          "02014"
+        ],
+        [
+          "02015"
+        ]
+      ],
+      "deck_count": 2,
+      "weighted_total": 0.011795227849782559,
+      "weighted_kept": 0.0053330357141869325,
+      "weighted_lost": 0.006462192135595626,
+      "pct_kept": 45.21,
+      "pct_lost": 54.79,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 1,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Jenny Barnes",
+      "canonical_front": "02003",
+      "canonical_back": "90084",
+      "inv_cycle": 2,
+      "published_signatures": [
+        "02010",
+        "02011"
+      ],
+      "allowed_signature_groups": [
+        [
+          "02010"
+        ],
+        [
+          "02011"
+        ]
+      ],
+      "deck_count": 2,
+      "weighted_total": 0.006462192135595625,
+      "weighted_kept": 0.0,
+      "weighted_lost": 0.006462192135595625,
+      "pct_kept": 0.0,
+      "pct_lost": 100.0,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 2,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Ursula Downs",
+      "canonical_front": "04002",
+      "canonical_back": "04002",
+      "inv_cycle": 4,
+      "published_signatures": [
+        "04008",
+        "04009"
+      ],
+      "allowed_signature_groups": [
+        [
+          "04008"
+        ],
+        [
+          "04009"
+        ]
+      ],
+      "deck_count": 996,
+      "weighted_total": 1.326149969963587,
+      "weighted_kept": 1.3196877778279914,
+      "weighted_lost": 0.0064621921355956236,
+      "pct_kept": 99.51,
+      "pct_lost": 0.49,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 1,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Rex Murphy",
+      "canonical_front": "90078",
+      "canonical_back": "02002",
+      "inv_cycle": null,
+      "published_signatures": [
+        "02008",
+        "02009"
+      ],
+      "allowed_signature_groups": [
+        [
+          "02008"
+        ],
+        [
+          "02009"
+        ]
+      ],
+      "deck_count": 3,
+      "weighted_total": 0.012715926460365585,
+      "weighted_kept": 0.006462192135595625,
+      "weighted_lost": 0.0062537343247699596,
+      "pct_kept": 50.82,
+      "pct_lost": 49.18,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 2,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Trish Scarborough",
+      "canonical_front": "07003",
+      "canonical_back": "07003",
+      "inv_cycle": 8,
+      "published_signatures": [
+        "07010",
+        "07011"
+      ],
+      "allowed_signature_groups": [
+        [
+          "07010"
+        ],
+        [
+          "07011"
+        ]
+      ],
+      "deck_count": 571,
+      "weighted_total": 1.0770436199354132,
+      "weighted_kept": 1.071091278911298,
+      "weighted_lost": 0.0059523410241151264,
+      "pct_kept": 99.45,
+      "pct_lost": 0.55,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 4,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Wendy Adams",
+      "canonical_front": "90037",
+      "canonical_back": "01005",
+      "inv_cycle": null,
+      "published_signatures": [
+        "01014",
+        "01015"
+      ],
+      "allowed_signature_groups": [
+        [
+          "01014"
+        ],
+        [
+          "01015"
+        ]
+      ],
+      "deck_count": 1,
+      "weighted_total": 0.0053330357141869325,
+      "weighted_kept": 0.0,
+      "weighted_lost": 0.0053330357141869325,
+      "pct_kept": 0.0,
+      "pct_lost": 100.0,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 1,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Patrice Hathaway",
+      "canonical_front": "06005",
+      "canonical_back": "06005",
+      "inv_cycle": 6,
+      "published_signatures": [
+        "06016",
+        "06017"
+      ],
+      "allowed_signature_groups": [
+        [
+          "06016"
+        ],
+        [
+          "06017"
+        ]
+      ],
+      "deck_count": 412,
+      "weighted_total": 0.860590147440799,
+      "weighted_kept": 0.8560829456292477,
+      "weighted_lost": 0.004507201811551287,
+      "pct_kept": 99.48,
+      "pct_lost": 0.52,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 5,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Mark Harrigan",
+      "canonical_front": "03001",
+      "canonical_back": "03001",
+      "inv_cycle": 3,
+      "published_signatures": [
+        "03007",
+        "03008",
+        "03009"
+      ],
+      "allowed_signature_groups": [
+        [
+          "03007"
+        ],
+        [
+          "03008"
+        ],
+        [
+          "03009"
+        ]
+      ],
+      "deck_count": 1591,
+      "weighted_total": 1.8981192946903946,
+      "weighted_kept": 1.8936930176459181,
+      "weighted_lost": 0.004426277044476512,
+      "pct_kept": 99.77,
+      "pct_lost": 0.23,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 2,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Monterey Jack",
+      "canonical_front": "90062",
+      "canonical_back": "90062",
+      "inv_cycle": null,
+      "published_signatures": [
+        "08008",
+        "08009"
+      ],
+      "allowed_signature_groups": [
+        [
+          "08008"
+        ],
+        [
+          "08009"
+        ]
+      ],
+      "deck_count": 21,
+      "weighted_total": 0.033326619415826444,
+      "weighted_kept": 0.02935095953977668,
+      "weighted_lost": 0.003975659876049763,
+      "pct_kept": 88.07,
+      "pct_lost": 11.93,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 2,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Charlie Kane",
+      "canonical_front": "09018",
+      "canonical_back": "09018",
+      "inv_cycle": 10,
+      "published_signatures": [
+        "09019",
+        "09020"
+      ],
+      "allowed_signature_groups": [
+        [
+          "09019"
+        ],
+        [
+          "09020"
+        ]
+      ],
+      "deck_count": 369,
+      "weighted_total": 0.7379444281268632,
+      "weighted_kept": 0.7339687682508135,
+      "weighted_lost": 0.003975659876049753,
+      "pct_kept": 99.46,
+      "pct_lost": 0.54,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 1,
+      "charlie_faction_split_preserved": true
+    },
+    {
+      "investigator_name": "Mandy Thompson",
+      "canonical_front": "06002",
+      "canonical_back": "06002",
+      "inv_cycle": 6,
+      "published_signatures": [
+        "06008",
+        "06009"
+      ],
+      "allowed_signature_groups": [
+        [
+          "06008"
+        ],
+        [
+          "06009"
+        ]
+      ],
+      "deck_count": 484,
+      "weighted_total": 0.658630012040978,
+      "weighted_kept": 0.6546543521649283,
+      "weighted_lost": 0.003975659876049753,
+      "pct_kept": 99.4,
+      "pct_lost": 0.6,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 1,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Finn Edwards",
+      "canonical_front": "04003",
+      "canonical_back": "04003",
+      "inv_cycle": 4,
+      "published_signatures": [
+        "04010",
+        "04011",
+        "04012"
+      ],
+      "allowed_signature_groups": [
+        [
+          "04010"
+        ],
+        [
+          "04011"
+        ],
+        [
+          "04012"
+        ]
+      ],
+      "deck_count": 937,
+      "weighted_total": 1.1204903232870966,
+      "weighted_kept": 1.116514663411047,
+      "weighted_lost": 0.003975659876049642,
+      "pct_kept": 99.65,
+      "pct_lost": 0.35,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 1,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Agnes Baker",
+      "canonical_front": "01004",
+      "canonical_back": "90017",
+      "inv_cycle": 1,
+      "published_signatures": [
+        "01012",
+        "01013"
+      ],
+      "allowed_signature_groups": [
+        [
+          "01012"
+        ],
+        [
+          "01013"
+        ]
+      ],
+      "deck_count": 10,
+      "weighted_total": 0.016961581822287047,
+      "weighted_kept": 0.013079101474582203,
+      "weighted_lost": 0.0038824803477048447,
+      "pct_kept": 77.11,
+      "pct_lost": 22.89,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 4,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Luke Robinson",
+      "canonical_front": "06004",
+      "canonical_back": "06004",
+      "inv_cycle": 6,
+      "published_signatures": [
+        "06013",
+        "06014"
+      ],
+      "allowed_signature_groups": [
+        [
+          "06013"
+        ],
+        [
+          "06014"
+        ]
+      ],
+      "deck_count": 434,
+      "weighted_total": 0.8883257583345238,
+      "weighted_kept": 0.8847918384447016,
+      "weighted_lost": 0.0035339198898222124,
+      "pct_kept": 99.6,
+      "pct_lost": 0.4,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 1,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Jim Culver",
+      "canonical_front": "02004",
+      "canonical_back": "02004",
+      "inv_cycle": 2,
+      "published_signatures": [
+        "02012",
+        "02013"
+      ],
+      "allowed_signature_groups": [
+        [
+          "02012"
+        ],
+        [
+          "02013"
+        ]
+      ],
+      "deck_count": 996,
+      "weighted_total": 0.9467944247929122,
+      "weighted_kept": 0.9432605049030903,
+      "weighted_lost": 0.0035339198898218793,
+      "pct_kept": 99.63,
+      "pct_lost": 0.37,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 1,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "George Barnaby",
+      "canonical_front": "11017",
+      "canonical_back": "11017",
+      "inv_cycle": 12,
+      "published_signatures": [
+        "11018",
+        "11019"
+      ],
+      "allowed_signature_groups": [
+        [
+          "11018"
+        ],
+        [
+          "11019"
+        ]
+      ],
+      "deck_count": 114,
+      "weighted_total": 0.1873301754307197,
+      "weighted_kept": 0.18417605910492815,
+      "weighted_lost": 0.003154116325791545,
+      "pct_kept": 98.32,
+      "pct_lost": 1.68,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 1,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Carson Sinclair",
+      "canonical_front": "09001",
+      "canonical_back": "09001",
+      "inv_cycle": 10,
+      "published_signatures": [
+        "09002",
+        "09003"
+      ],
+      "allowed_signature_groups": [
+        [
+          "09002"
+        ],
+        [
+          "09003"
+        ]
+      ],
+      "deck_count": 148,
+      "weighted_total": 0.3809158523852524,
+      "weighted_kept": 0.37782367248165816,
+      "weighted_lost": 0.0030921799035942277,
+      "pct_kept": 99.19,
+      "pct_lost": 0.81,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 1,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Akachi Onyele",
+      "canonical_front": "03004",
+      "canonical_back": "03004",
+      "inv_cycle": 3,
+      "published_signatures": [
+        "03014",
+        "03015"
+      ],
+      "allowed_signature_groups": [
+        [
+          "03014"
+        ],
+        [
+          "03015"
+        ]
+      ],
+      "deck_count": 1106,
+      "weighted_total": 1.6006054412755815,
+      "weighted_kept": 1.5978531770419675,
+      "weighted_lost": 0.0027522642336139658,
+      "pct_kept": 99.83,
+      "pct_lost": 0.17,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 1,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "William Yorick",
+      "canonical_front": "03005",
+      "canonical_back": "03005",
+      "inv_cycle": 3,
+      "published_signatures": [
+        "03016",
+        "03017"
+      ],
+      "allowed_signature_groups": [
+        [
+          "03016"
+        ],
+        [
+          "03017"
+        ]
+      ],
+      "deck_count": 1536,
+      "weighted_total": 1.8745171476982279,
+      "weighted_kept": 1.8724899951406335,
+      "weighted_lost": 0.002027152557594336,
+      "pct_kept": 99.89,
+      "pct_lost": 0.11,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 1,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Diana Stanley",
+      "canonical_front": "05004",
+      "canonical_back": "05004",
+      "inv_cycle": 5,
+      "published_signatures": [
+        "05013",
+        "05014",
+        "05015"
+      ],
+      "allowed_signature_groups": [
+        [
+          "05013"
+        ],
+        [
+          "05014"
+        ],
+        [
+          "05015"
+        ]
+      ],
+      "deck_count": 1116,
+      "weighted_total": 1.352686379395094,
+      "weighted_kept": 1.3508563137378649,
+      "weighted_lost": 0.0018300656572292073,
+      "pct_kept": 99.86,
+      "pct_lost": 0.14,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 1,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Michael McGlen",
+      "canonical_front": "11011",
+      "canonical_back": "11011",
+      "inv_cycle": 12,
+      "published_signatures": [
+        "11012",
+        "11013"
+      ],
+      "allowed_signature_groups": [
+        [
+          "11012"
+        ],
+        [
+          "11013"
+        ]
+      ],
+      "deck_count": 199,
+      "weighted_total": 0.17278646008365525,
+      "weighted_kept": 0.17120940192075948,
+      "weighted_lost": 0.0015770581628957725,
+      "pct_kept": 99.09,
+      "pct_lost": 0.91,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 1,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Tommy Muldoon",
+      "canonical_front": "06001",
+      "canonical_back": "06001",
+      "inv_cycle": 6,
+      "published_signatures": [
+        "06006",
+        "06007"
+      ],
+      "allowed_signature_groups": [
+        [
+          "06006"
+        ],
+        [
+          "06007"
+        ]
+      ],
+      "deck_count": 671,
+      "weighted_total": 1.0658901607514295,
+      "weighted_kept": 1.0645791015091959,
+      "weighted_lost": 0.0013110592422336254,
+      "pct_kept": 99.88,
+      "pct_lost": 0.12,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 1,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Sefina Rousseau",
+      "canonical_front": "03003",
+      "canonical_back": "03003",
+      "inv_cycle": 3,
+      "published_signatures": [
+        "03012",
+        "03013"
+      ],
+      "allowed_signature_groups": [
+        [
+          "03012"
+        ],
+        [
+          "03013"
+        ]
+      ],
+      "deck_count": 1070,
+      "weighted_total": 1.2449356312455968,
+      "weighted_kept": 1.2436431928184777,
+      "weighted_lost": 0.0012924384271191247,
+      "pct_kept": 99.9,
+      "pct_lost": 0.1,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 1,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Zoey Samaras",
+      "canonical_front": "02001",
+      "canonical_back": "02001",
+      "inv_cycle": 2,
+      "published_signatures": [
+        "02006",
+        "02007"
+      ],
+      "allowed_signature_groups": [
+        [
+          "02006"
+        ],
+        [
+          "02007"
+        ]
+      ],
+      "deck_count": 2601,
+      "weighted_total": 2.5438443353319347,
+      "weighted_kept": 2.5426280437973783,
+      "weighted_lost": 0.0012162915345563796,
+      "pct_kept": 99.95,
+      "pct_lost": 0.05,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 1,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Joe Diamond",
+      "canonical_front": "05002",
+      "canonical_back": "05002",
+      "inv_cycle": 5,
+      "published_signatures": [
+        "05009",
+        "05010"
+      ],
+      "allowed_signature_groups": [
+        [
+          "05009"
+        ],
+        [
+          "05010"
+        ]
+      ],
+      "deck_count": 1144,
+      "weighted_total": 1.1899532103248196,
+      "weighted_kept": 1.1895870896157483,
+      "weighted_lost": 0.0003661207090712715,
+      "pct_kept": 99.97,
+      "pct_lost": 0.03,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 1,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Rita Young",
+      "canonical_front": "05005",
+      "canonical_back": "05005",
+      "inv_cycle": 5,
+      "published_signatures": [
+        "05016",
+        "05017"
+      ],
+      "allowed_signature_groups": [
+        [
+          "05016"
+        ],
+        [
+          "05017"
+        ]
+      ],
+      "deck_count": 540,
+      "weighted_total": 0.6326010854222013,
+      "weighted_kept": 0.6324637901562996,
+      "weighted_lost": 0.0001372952659016713,
+      "pct_kept": 99.98,
+      "pct_lost": 0.02,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 1,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "\"Ashcan\" Pete",
+      "canonical_front": "02005",
+      "canonical_back": "90046",
+      "inv_cycle": 2,
+      "published_signatures": [
+        "02014",
+        "02015"
+      ],
+      "allowed_signature_groups": [
+        [
+          "02014"
+        ],
+        [
+          "02015"
+        ]
+      ],
+      "deck_count": 1,
+      "weighted_total": 0.0053330357141869325,
+      "weighted_kept": 0.0053330357141869325,
+      "weighted_lost": 0.0,
+      "pct_kept": 100.0,
+      "pct_lost": 0.0,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "\"Skids\" O'Toole",
+      "canonical_front": "01003",
+      "canonical_back": "90008",
+      "inv_cycle": 1,
+      "published_signatures": [
+        "01010",
+        "01011"
+      ],
+      "allowed_signature_groups": [
+        [
+          "01010"
+        ],
+        [
+          "01011"
+        ]
+      ],
+      "deck_count": 25,
+      "weighted_total": 0.034000922617819875,
+      "weighted_kept": 0.034000922617819875,
+      "weighted_lost": 0.0,
+      "pct_kept": 100.0,
+      "pct_lost": 0.0,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Agatha Crane",
+      "canonical_front": "11008",
+      "canonical_back": "11008",
+      "inv_cycle": 12,
+      "published_signatures": [
+        "11009",
+        "11010"
+      ],
+      "allowed_signature_groups": [
+        [
+          "11009"
+        ],
+        [
+          "11010"
+        ]
+      ],
+      "deck_count": 31,
+      "weighted_total": 0.07528419293742977,
+      "weighted_kept": 0.07528419293742977,
+      "weighted_lost": 0.0,
+      "pct_kept": 100.0,
+      "pct_lost": 0.0,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Alessandra Zorzi",
+      "canonical_front": "10009",
+      "canonical_back": "10009",
+      "inv_cycle": 11,
+      "published_signatures": [
+        "10010",
+        "10011"
+      ],
+      "allowed_signature_groups": [
+        [
+          "10010"
+        ],
+        [
+          "10011"
+        ]
+      ],
+      "deck_count": 153,
+      "weighted_total": 0.47153721743565535,
+      "weighted_kept": 0.47153721743565535,
+      "weighted_lost": 0.0,
+      "pct_kept": 100.0,
+      "pct_lost": 0.0,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Amanda Sharpe",
+      "canonical_front": "07002",
+      "canonical_back": "07002",
+      "inv_cycle": 8,
+      "published_signatures": [
+        "07008",
+        "07009"
+      ],
+      "allowed_signature_groups": [
+        [
+          "07008"
+        ],
+        [
+          "07009"
+        ]
+      ],
+      "deck_count": 335,
+      "weighted_total": 0.5825772617526449,
+      "weighted_kept": 0.5825772617526449,
+      "weighted_lost": 0.0,
+      "pct_kept": 100.0,
+      "pct_lost": 0.0,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Amina Zidane",
+      "canonical_front": "09011",
+      "canonical_back": "09011",
+      "inv_cycle": 10,
+      "published_signatures": [
+        "09012",
+        "09013",
+        "09014"
+      ],
+      "allowed_signature_groups": [
+        [
+          "09012"
+        ],
+        [
+          "09013"
+        ],
+        [
+          "09014"
+        ]
+      ],
+      "deck_count": 69,
+      "weighted_total": 0.17681231127193006,
+      "weighted_kept": 0.17681231127193006,
+      "weighted_lost": 0.0,
+      "pct_kept": 100.0,
+      "pct_lost": 0.0,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Bob Jenkins",
+      "canonical_front": "08016",
+      "canonical_back": "08016",
+      "inv_cycle": 9,
+      "published_signatures": [
+        "08017",
+        "08018"
+      ],
+      "allowed_signature_groups": [
+        [
+          "08017"
+        ],
+        [
+          "08018"
+        ]
+      ],
+      "deck_count": 49,
+      "weighted_total": 0.1786652728880484,
+      "weighted_kept": 0.1786652728880484,
+      "weighted_lost": 0.0,
+      "pct_kept": 100.0,
+      "pct_lost": 0.0,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Calvin Wright",
+      "canonical_front": "04005",
+      "canonical_back": "04005",
+      "inv_cycle": 4,
+      "published_signatures": [
+        "04015",
+        "04016"
+      ],
+      "allowed_signature_groups": [
+        [
+          "04015"
+        ],
+        [
+          "04016"
+        ]
+      ],
+      "deck_count": 374,
+      "weighted_total": 0.49092745387801906,
+      "weighted_kept": 0.49092745387801906,
+      "weighted_lost": 0.0,
+      "pct_kept": 100.0,
+      "pct_lost": 0.0,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Daniela Reyes",
+      "canonical_front": "08001",
+      "canonical_back": "08001",
+      "inv_cycle": 9,
+      "published_signatures": [
+        "08002",
+        "08003"
+      ],
+      "allowed_signature_groups": [
+        [
+          "08002"
+        ],
+        [
+          "08003"
+        ]
+      ],
+      "deck_count": 296,
+      "weighted_total": 0.5475878206309062,
+      "weighted_kept": 0.5475878206309062,
+      "weighted_lost": 0.0,
+      "pct_kept": 100.0,
+      "pct_lost": 0.0,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Darrell Simmons",
+      "canonical_front": "09015",
+      "canonical_back": "09015",
+      "inv_cycle": 10,
+      "published_signatures": [
+        "09016",
+        "09017"
+      ],
+      "allowed_signature_groups": [
+        [
+          "09016"
+        ],
+        [
+          "09017"
+        ]
+      ],
+      "deck_count": 82,
+      "weighted_total": 0.2204018850383198,
+      "weighted_kept": 0.2204018850383198,
+      "weighted_lost": 0.0,
+      "pct_kept": 100.0,
+      "pct_lost": 0.0,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Father Mateo",
+      "canonical_front": "04004",
+      "canonical_back": "04004",
+      "inv_cycle": 4,
+      "published_signatures": [
+        "04013",
+        "04014"
+      ],
+      "allowed_signature_groups": [
+        [
+          "04013"
+        ],
+        [
+          "04014"
+        ]
+      ],
+      "deck_count": 692,
+      "weighted_total": 1.0367084721417081,
+      "weighted_kept": 1.0367084721417081,
+      "weighted_lost": 0.0,
+      "pct_kept": 100.0,
+      "pct_lost": 0.0,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Hank Samson",
+      "canonical_front": "10015",
+      "canonical_back": "10015",
+      "inv_cycle": 11,
+      "published_signatures": [
+        "10017",
+        "10018"
+      ],
+      "allowed_signature_groups": [
+        [
+          "10017"
+        ],
+        [
+          "10018"
+        ]
+      ],
+      "deck_count": 140,
+      "weighted_total": 0.20842150183599625,
+      "weighted_kept": 0.20842150183599625,
+      "weighted_lost": 0.0,
+      "pct_kept": 100.0,
+      "pct_lost": 0.0,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Jim Culver",
+      "canonical_front": "02004",
+      "canonical_back": "90049",
+      "inv_cycle": 2,
+      "published_signatures": [
+        "02012",
+        "02013"
+      ],
+      "allowed_signature_groups": [
+        [
+          "02012"
+        ],
+        [
+          "02013"
+        ]
+      ],
+      "deck_count": 2,
+      "weighted_total": 0.009554372039189882,
+      "weighted_kept": 0.009554372039189882,
+      "weighted_lost": 0.0,
+      "pct_kept": 100.0,
+      "pct_lost": 0.0,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Kate Winthrop",
+      "canonical_front": "10004",
+      "canonical_back": "10004",
+      "inv_cycle": 11,
+      "published_signatures": [
+        "10005",
+        "10008"
+      ],
+      "allowed_signature_groups": [
+        [
+          "10005"
+        ],
+        [
+          "10008"
+        ]
+      ],
+      "deck_count": 112,
+      "weighted_total": 0.2580595809056206,
+      "weighted_kept": 0.2580595809056206,
+      "weighted_lost": 0.0,
+      "pct_kept": 100.0,
+      "pct_lost": 0.0,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Kymani Jones",
+      "canonical_front": "09008",
+      "canonical_back": "09008",
+      "inv_cycle": 10,
+      "published_signatures": [
+        "09009",
+        "09010"
+      ],
+      "allowed_signature_groups": [
+        [
+          "09009"
+        ],
+        [
+          "09010"
+        ]
+      ],
+      "deck_count": 213,
+      "weighted_total": 0.4886358220190705,
+      "weighted_kept": 0.4886358220190705,
+      "weighted_lost": 0.0,
+      "pct_kept": 100.0,
+      "pct_lost": 0.0,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "K\u014dhaku Narukami",
+      "canonical_front": "10012",
+      "canonical_back": "10012",
+      "inv_cycle": 11,
+      "published_signatures": [
+        "10013",
+        "10014"
+      ],
+      "allowed_signature_groups": [
+        [
+          "10013"
+        ],
+        [
+          "10014"
+        ]
+      ],
+      "deck_count": 85,
+      "weighted_total": 0.18410772118951718,
+      "weighted_kept": 0.18410772118951718,
+      "weighted_lost": 0.0,
+      "pct_kept": 100.0,
+      "pct_lost": 0.0,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Lily Chen",
+      "canonical_front": "08010",
+      "canonical_back": "08010",
+      "inv_cycle": 9,
+      "published_signatures": [
+        "08015"
+      ],
+      "allowed_signature_groups": [
+        [
+          "08015"
+        ]
+      ],
+      "deck_count": 625,
+      "weighted_total": 0.9494039301331533,
+      "weighted_kept": 0.9494039301331533,
+      "weighted_lost": 0.0,
+      "pct_kept": 100.0,
+      "pct_lost": 0.0,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Lola Hayes",
+      "canonical_front": "90087",
+      "canonical_back": "03006",
+      "inv_cycle": null,
+      "published_signatures": [
+        "03018",
+        "03019"
+      ],
+      "allowed_signature_groups": [
+        [
+          "03018"
+        ],
+        [
+          "03019"
+        ]
+      ],
+      "deck_count": 2,
+      "weighted_total": 0.02349551977786467,
+      "weighted_kept": 0.02349551977786467,
+      "weighted_lost": 0.0,
+      "pct_kept": 100.0,
+      "pct_lost": 0.0,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Lucius Galloway",
+      "canonical_front": "11004",
+      "canonical_back": "11004",
+      "inv_cycle": 12,
+      "published_signatures": [
+        "11005",
+        "11006"
+      ],
+      "allowed_signature_groups": [
+        [
+          "11005"
+        ],
+        [
+          "11006"
+        ]
+      ],
+      "deck_count": 71,
+      "weighted_total": 0.13450607178287224,
+      "weighted_kept": 0.13450607178287224,
+      "weighted_lost": 0.0,
+      "pct_kept": 100.0,
+      "pct_lost": 0.0,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Marion Tavares",
+      "canonical_front": "11001",
+      "canonical_back": "11001",
+      "inv_cycle": 12,
+      "published_signatures": [
+        "11002",
+        "11003"
+      ],
+      "allowed_signature_groups": [
+        [
+          "11002"
+        ],
+        [
+          "11003"
+        ]
+      ],
+      "deck_count": 117,
+      "weighted_total": 0.17206818822173128,
+      "weighted_kept": 0.17206818822173128,
+      "weighted_lost": 0.0,
+      "pct_kept": 100.0,
+      "pct_lost": 0.0,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Minh Thi Phan",
+      "canonical_front": "03002",
+      "canonical_back": "03002",
+      "inv_cycle": 3,
+      "published_signatures": [
+        "03010",
+        "03011"
+      ],
+      "allowed_signature_groups": [
+        [
+          "03010"
+        ],
+        [
+          "03011"
+        ]
+      ],
+      "deck_count": 526,
+      "weighted_total": 0.7272818511463133,
+      "weighted_kept": 0.7272818511463133,
+      "weighted_lost": 0.0,
+      "pct_kept": 100.0,
+      "pct_lost": 0.0,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Nathaniel Cho",
+      "canonical_front": "60101",
+      "canonical_back": "60101",
+      "inv_cycle": 7,
+      "published_signatures": [
+        "60102",
+        "60103"
+      ],
+      "allowed_signature_groups": [
+        [
+          "60102"
+        ],
+        [
+          "60103"
+        ]
+      ],
+      "deck_count": 661,
+      "weighted_total": 0.9492468498434024,
+      "weighted_kept": 0.9492468498434024,
+      "weighted_lost": 0.0,
+      "pct_kept": 100.0,
+      "pct_lost": 0.0,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Preston Fairmont",
+      "canonical_front": "05003",
+      "canonical_back": "05003",
+      "inv_cycle": 5,
+      "published_signatures": [
+        "05011",
+        "05012"
+      ],
+      "allowed_signature_groups": [
+        [
+          "05011"
+        ],
+        [
+          "05012"
+        ]
+      ],
+      "deck_count": 598,
+      "weighted_total": 0.8212832390534525,
+      "weighted_kept": 0.8212832390534525,
+      "weighted_lost": 0.0,
+      "pct_kept": 100.0,
+      "pct_lost": 0.0,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Sister Mary",
+      "canonical_front": "07001",
+      "canonical_back": "07001",
+      "inv_cycle": 8,
+      "published_signatures": [
+        "07006",
+        "07007"
+      ],
+      "allowed_signature_groups": [
+        [
+          "07006"
+        ],
+        [
+          "07007"
+        ]
+      ],
+      "deck_count": 495,
+      "weighted_total": 0.9762802971486217,
+      "weighted_kept": 0.9762802971486217,
+      "weighted_lost": 0.0,
+      "pct_kept": 100.0,
+      "pct_lost": 0.0,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Stella Clark",
+      "canonical_front": "60501",
+      "canonical_back": "60501",
+      "inv_cycle": 7,
+      "published_signatures": [
+        "60502",
+        "60503"
+      ],
+      "allowed_signature_groups": [
+        [
+          "60502"
+        ],
+        [
+          "60503"
+        ]
+      ],
+      "deck_count": 290,
+      "weighted_total": 0.3706204616530556,
+      "weighted_kept": 0.3706204616530556,
+      "weighted_lost": 0.0,
+      "pct_kept": 100.0,
+      "pct_lost": 0.0,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Subject 5U-21",
+      "canonical_front": "89001",
+      "canonical_back": "89001",
+      "inv_cycle": null,
+      "published_signatures": [
+        "89002",
+        "89003",
+        "89004"
+      ],
+      "allowed_signature_groups": [
+        [
+          "89002"
+        ],
+        [
+          "89003"
+        ],
+        [
+          "89004"
+        ]
+      ],
+      "deck_count": 77,
+      "weighted_total": 0.14971688683178333,
+      "weighted_kept": 0.14971688683178333,
+      "weighted_lost": 0.0,
+      "pct_kept": 100.0,
+      "pct_lost": 0.0,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Tony Morgan",
+      "canonical_front": "06003",
+      "canonical_back": "06003",
+      "inv_cycle": 6,
+      "published_signatures": [
+        "06010",
+        "06011",
+        "06012"
+      ],
+      "allowed_signature_groups": [
+        [
+          "06010"
+        ],
+        [
+          "06011"
+        ],
+        [
+          "06012"
+        ]
+      ],
+      "deck_count": 651,
+      "weighted_total": 1.1486487295604533,
+      "weighted_kept": 1.1486487295604533,
+      "weighted_lost": 0.0,
+      "pct_kept": 100.0,
+      "pct_lost": 0.0,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Vincent Lee",
+      "canonical_front": "09004",
+      "canonical_back": "09004",
+      "inv_cycle": 10,
+      "published_signatures": [
+        "09005",
+        "09006",
+        "09007"
+      ],
+      "allowed_signature_groups": [
+        [
+          "09005"
+        ],
+        [
+          "09006"
+        ],
+        [
+          "09007"
+        ]
+      ],
+      "deck_count": 203,
+      "weighted_total": 0.41701600864286903,
+      "weighted_kept": 0.41701600864286903,
+      "weighted_lost": 0.0,
+      "pct_kept": 100.0,
+      "pct_lost": 0.0,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Wendy Adams",
+      "canonical_front": "01005",
+      "canonical_back": "90037",
+      "inv_cycle": 1,
+      "published_signatures": [
+        "01014",
+        "01015"
+      ],
+      "allowed_signature_groups": [
+        [
+          "01014"
+        ],
+        [
+          "01015"
+        ]
+      ],
+      "deck_count": 4,
+      "weighted_total": 0.01577088772583232,
+      "weighted_kept": 0.01577088772583232,
+      "weighted_lost": 0.0,
+      "pct_kept": 100.0,
+      "pct_lost": 0.0,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Wilson Richards",
+      "canonical_front": "10001",
+      "canonical_back": "10001",
+      "inv_cycle": 11,
+      "published_signatures": [
+        "10002",
+        "10003"
+      ],
+      "allowed_signature_groups": [
+        [
+          "10002"
+        ],
+        [
+          "10003"
+        ]
+      ],
+      "deck_count": 139,
+      "weighted_total": 0.29775185697616763,
+      "weighted_kept": 0.29775185697616763,
+      "weighted_lost": 0.0,
+      "pct_kept": 100.0,
+      "pct_lost": 0.0,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Zoey Samaras",
+      "canonical_front": "02001",
+      "canonical_back": "90059",
+      "inv_cycle": 2,
+      "published_signatures": [
+        "02006",
+        "02007"
+      ],
+      "allowed_signature_groups": [
+        [
+          "02006"
+        ],
+        [
+          "02007"
+        ]
+      ],
+      "deck_count": 1,
+      "weighted_total": 0.013761321168069825,
+      "weighted_kept": 0.013761321168069825,
+      "weighted_lost": 0.0,
+      "pct_kept": 100.0,
+      "pct_lost": 0.0,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    },
+    {
+      "investigator_name": "Zoey Samaras",
+      "canonical_front": "90059",
+      "canonical_back": "02001",
+      "inv_cycle": null,
+      "published_signatures": [
+        "02006",
+        "02007"
+      ],
+      "allowed_signature_groups": [
+        [
+          "02006"
+        ],
+        [
+          "02007"
+        ]
+      ],
+      "deck_count": 19,
+      "weighted_total": 0.06454292124756668,
+      "weighted_kept": 0.06454292124756668,
+      "weighted_lost": 0.0,
+      "pct_kept": 100.0,
+      "pct_lost": 0.0,
+      "lost_decks_bad_front": 0,
+      "lost_decks_bad_back": 0,
+      "lost_decks_bad_signature": 0,
+      "lost_decks_ambiguous_signature": 0,
+      "charlie_faction_split_preserved": false
+    }
+  ]
+}

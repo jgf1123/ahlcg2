@@ -1,9 +1,9 @@
 resolution_kind,option_name,choice,weighted_total,weight_share,selected
-signature_select,Occult Evidence,06008,6.512325251484522,1.0,True
-signature_select,Shocking Discovery,06009,6.471135636959318,1.0,True
+signature_select,Occult Evidence,06008,56.40265545900797,1.0,True
+signature_select,Shocking Discovery,06009,56.40265545900797,1.0,True
 deck_size_select,Deck Size,30,0.0,0.0,True
 deck_size_select,Deck Size,40,0.0,0.0,False
 deck_size_select,Deck Size,50,0.0,0.0,False
-faction_select,Secondary Class,rogue,2.535692298054992,0.39510763020378226,True
-faction_select,Secondary Class,mystic,2.229980364058427,0.3474720721121915,False
-faction_select,Secondary Class,survivor,1.6520527985342865,0.2574202976840262,False
+faction_select,Secondary Class,rogue,22.956935576443485,0.4123349437742519,True
+faction_select,Secondary Class,mystic,18.474650194587277,0.3318275570303389,False
+faction_select,Secondary Class,survivor,14.24386915478826,0.2558374991954091,False

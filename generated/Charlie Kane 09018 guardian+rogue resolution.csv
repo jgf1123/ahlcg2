@@ -1,17 +1,17 @@
 resolution_kind,option_name,choice,weighted_total,weight_share,selected
-signature_select,Bonnie Walsh,09019,3.138270053778088,1.0,True
-signature_select,Burden of Leadership,09020,3.138270053778088,1.0,True
-faction_pair,Class Choice,guardian+rogue,0.8297355525332059,0.26512594405176954,True
-faction_pair,Class Choice,guardian+survivor,0.7142921036018449,0.22823822327245,False
-faction_pair,Class Choice,guardian+seeker,0.34058928289991375,0.10882871643509706,False
-faction_pair,Class Choice,rogue+survivor,0.27667619348032796,0.08840652515029646,False
-faction_pair,Class Choice,mystic+seeker,0.2218766517581559,0.07089639172484732,False
-faction_pair,Class Choice,mystic+rogue,0.19559350964179695,0.062498122125609415,False
-faction_pair,Class Choice,seeker+survivor,0.1605936614991878,0.051314597745886675,False
-faction_pair,Class Choice,rogue+seeker,0.15960523604863594,0.05099876551487971,False
-faction_pair,Class Choice,guardian+mystic,0.11701897126745231,0.03739114846233925,False
-faction_pair,Class Choice,guardian+guardian,0.08446946674324345,0.026990583982425802,False
-faction_pair,Class Choice,mystic+survivor,0.0291395564311965,0.009310981534398702,False
+signature_select,Bonnie Walsh,09019,28.773671009180052,1.0,True
+signature_select,Burden of Leadership,09020,28.773671009180052,1.0,True
+faction_pair,Class Choice,guardian+rogue,7.747505405722909,0.27056264637173555,True
+faction_pair,Class Choice,guardian+survivor,5.815189315687388,0.2030812407362512,False
+faction_pair,Class Choice,guardian+seeker,2.982285379593929,0.10414901084710879,False
+faction_pair,Class Choice,mystic+seeker,2.589972777601827,0.09044845431422048,False
+faction_pair,Class Choice,rogue+survivor,2.1590937008988176,0.07540105813262359,False
+faction_pair,Class Choice,mystic+rogue,2.0676651226902094,0.07220813902141478,False
+faction_pair,Class Choice,rogue+seeker,1.5350398251401183,0.053607505335733704,False
+faction_pair,Class Choice,seeker+survivor,1.3766102596173382,0.048074740882326016,False
+faction_pair,Class Choice,guardian+mystic,1.1657063347126937,0.040709437979763924,False
+faction_pair,Class Choice,guardian+guardian,0.9810840963947125,0.034261958596078966,False
+faction_pair,Class Choice,mystic+survivor,0.2146409051501959,0.007495807782743056,False
 faction_pair,Class Choice,mystic+mystic,0.0,0.0,False
 faction_pair,Class Choice,rogue+rogue,0.0,0.0,False
 faction_pair,Class Choice,seeker+seeker,0.0,0.0,False

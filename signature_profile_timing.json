@@ -1,0 +1,235 @@
+[
+  {
+    "investigator": "Jenny Barnes",
+    "canonical_front": "02003",
+    "canonical_back": "02003",
+    "published_profile": [
+      "02010",
+      "02011"
+    ],
+    "promo_profiles_seen": [
+      [
+        "02010",
+        "98003"
+      ],
+      [
+        "98002",
+        "02011"
+      ],
+      [
+        "98002",
+        "98003"
+      ]
+    ],
+    "promo": {
+      "n": 76,
+      "min": 3913,
+      "median": 32249,
+      "max": 58606
+    },
+    "published": {
+      "n": 2161,
+      "min": 280,
+      "median": 14858,
+      "max": 63065
+    },
+    "median_delta_promo_minus_pub": 17391,
+    "verdict": "promo_later"
+  },
+  {
+    "investigator": "Roland Banks",
+    "canonical_front": "01001",
+    "canonical_back": "01001",
+    "published_profile": [
+      "01006",
+      "01007"
+    ],
+    "promo_profiles_seen": [
+      [
+        "01006",
+        "98006"
+      ],
+      [
+        "90030",
+        "98006"
+      ],
+      [
+        "98005",
+        "98006"
+      ]
+    ],
+    "promo": {
+      "n": 77,
+      "min": 4210,
+      "median": 17322,
+      "max": 60639
+    },
+    "published": {
+      "n": 2535,
+      "min": 1,
+      "median": 33902,
+      "max": 63249
+    },
+    "median_delta_promo_minus_pub": -16580,
+    "verdict": "promo_earlier"
+  },
+  {
+    "investigator": "Norman Withers",
+    "canonical_front": "08004",
+    "canonical_back": "08004",
+    "published_profile": [
+      "08005",
+      "08006"
+    ],
+    "promo_profiles_seen": [
+      [
+        "08005",
+        "98009"
+      ],
+      [
+        "98008",
+        "98009"
+      ]
+    ],
+    "promo": {
+      "n": 382,
+      "min": 4049,
+      "median": 12696,
+      "max": 62601
+    },
+    "published": {
+      "n": 325,
+      "min": 32588,
+      "median": 45137,
+      "max": 62613
+    },
+    "median_delta_promo_minus_pub": -32441,
+    "verdict": "promo_earlier"
+  },
+  {
+    "investigator": "Silas Marsh",
+    "canonical_front": "07005",
+    "canonical_back": "07005",
+    "published_profile": [
+      "07014",
+      "07015",
+      "07016"
+    ],
+    "promo_profiles_seen": [
+      [
+        "98014",
+        "98014",
+        "98015"
+      ]
+    ],
+    "promo": {
+      "n": 32,
+      "min": 26347,
+      "median": 31186,
+      "max": 60091
+    },
+    "published": {
+      "n": 238,
+      "min": 25815,
+      "median": 38400,
+      "max": 61976
+    },
+    "median_delta_promo_minus_pub": -7214,
+    "verdict": "promo_earlier"
+  },
+  {
+    "investigator": "Carolyn Fern",
+    "canonical_front": "05001",
+    "canonical_back": "05001",
+    "published_profile": [
+      "05007",
+      "05008"
+    ],
+    "promo_profiles_seen": [
+      [
+        "05007",
+        "98012"
+      ],
+      [
+        "98011",
+        "05008"
+      ],
+      [
+        "98011",
+        "98012"
+      ]
+    ],
+    "promo": {
+      "n": 138,
+      "min": 5162,
+      "median": 7838,
+      "max": 62696
+    },
+    "published": {
+      "n": 696,
+      "min": 9426,
+      "median": 31110,
+      "max": 62164
+    },
+    "median_delta_promo_minus_pub": -23271,
+    "verdict": "promo_earlier"
+  },
+  {
+    "investigator": "Dexter Drake",
+    "canonical_front": "07004",
+    "canonical_back": "07004",
+    "published_profile": [
+      "07012",
+      "07013"
+    ],
+    "promo_profiles_seen": [
+      [
+        "98017",
+        "98018"
+      ]
+    ],
+    "promo": {
+      "n": 150,
+      "min": 20655,
+      "median": 26881,
+      "max": 62551
+    },
+    "published": {
+      "n": 263,
+      "min": 25813,
+      "median": 38613,
+      "max": 62585
+    },
+    "median_delta_promo_minus_pub": -11732,
+    "verdict": "promo_earlier"
+  },
+  {
+    "investigator": "Gloria Goldberg",
+    "canonical_front": "11014",
+    "canonical_back": "11014",
+    "published_profile": [
+      "11015",
+      "11016"
+    ],
+    "promo_profiles_seen": [
+      [
+        "98020",
+        "98021"
+      ]
+    ],
+    "promo": {
+      "n": 153,
+      "min": 26859,
+      "median": 36850,
+      "max": 54092
+    },
+    "published": {
+      "n": 73,
+      "min": 53952,
+      "median": 58012,
+      "max": 63244
+    },
+    "median_delta_promo_minus_pub": -21162,
+    "verdict": "promo_earlier"
+  }
+]

@@ -225,6 +225,67 @@ def all_deck_requirement_card_ids(groups: list[frozenset[str]]) -> frozenset[str
     return frozenset(combined)
 
 
+def is_promo_signature_id(card_id: str) -> bool:
+    return card_id.startswith(("98", "99"))
+
+
+def is_parallel_signature_id(card_id: str) -> bool:
+    return card_id.startswith("900") and not is_promo_signature_id(card_id)
+
+
+def published_signature_profile_ok(
+    slots: dict[str, int],
+    groups: list[frozenset[str]],
+) -> bool:
+    """True when each OR-group has exactly one primary-cycle signature printing."""
+    for group in groups:
+        present = sorted(cid for cid in group if slots.get(cid, 0) > 0)
+        if len(present) != 1:
+            return False
+        chosen = present[0]
+        if is_promo_signature_id(chosen) or is_parallel_signature_id(chosen):
+            return False
+    return True
+
+
+def canonical_investigator_printing_ok(
+    raw_id: str,
+    canonical_id: str,
+    to_canonical: Any,
+) -> bool:
+    """Alt-art allowed when raw printing maps to the canonical investigator id."""
+    return to_canonical(raw_id) == canonical_id
+
+
+def excluded_from_published_training_pool(
+    *,
+    investigator_front: str,
+    investigator_back: str,
+    canonical_front: str,
+    canonical_back: str,
+    slots: dict[str, int],
+    cards: dict[str, dict[str, Any]],
+    to_canonical: Any,
+) -> bool:
+    """True when a deck should be excluded from published-training popularity pools."""
+    if not canonical_investigator_printing_ok(
+        investigator_front, canonical_front, to_canonical
+    ):
+        return True
+    if not canonical_investigator_printing_ok(
+        investigator_back, canonical_back, to_canonical
+    ):
+        return True
+    inv_card = cards.get(canonical_front) or {}
+    groups = deck_requirement_signature_groups(
+        inv_card.get("deck_requirements") or {},
+        to_canonical,
+    )
+    if not groups:
+        return False
+    return not published_signature_profile_ok(slots, groups)
+
+
 def investigator_requirement_card_ids(
     cards: dict[str, dict[str, Any]],
     canonical_front: str,

@@ -1,3 +1,25 @@
+New b_C_D(k)
+
+Removed:
+- (01080, 1) Lucky!
+- (01089, 2) Guts
+
+Added:
+- (09067, 1) "I'll take that!"
+- (10108, 1) Matchbox
+
+---
+
+Fix Uncanny Specimen (and Sled Dog) slots
+
+Removed:
+- (none)
+
+Added:
+- (none)
+
+---
+
 Fix asset slot target
 
 Removed:

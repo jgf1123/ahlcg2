@@ -1,0 +1,5 @@
+resolution_kind,option_name,choice,weighted_total,weight_share,selected
+signature_select,Daisy's Tote Bag,01008,32.46405960111318,1.0,True
+signature_select,Daisy's Tote Bag,90002,0.0,0.0,False
+signature_select,The Necronomicon,01009,32.46405960111318,1.0,True
+signature_select,The Necronomicon,90003,0.0,0.0,False

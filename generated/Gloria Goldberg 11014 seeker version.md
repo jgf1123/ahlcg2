@@ -1,3 +1,38 @@
+New b_C_D(k)
+
+Removed:
+- (01039, 1) Deduction
+- (03269, 2) St. Hubert's Key
+- (07029, 2) Sword Cane
+- (08125, 1) In the Thick of It
+- (60415, 2) Parallel Fates
+- (98020, 1) Ruth Westmacott
+- (98021, 1) Liber Omnium Finium
+
+Added:
+- (01059, 1) Holy Rosary
+- (03033, 2) Uncage the Soul
+- (11015, 1) Psychic Sensitivity
+- (11015, 2) Psychic Sensitivity
+- (11015, 3) Psychic Sensitivity
+- (11016, 1) Prophecy of the End
+- (11016, 2) Prophecy of the End
+- (11016, 3) Prophecy of the End
+- (60408, 1) Clairvoyance
+- (60412, 1) Robes of Endless Night
+
+---
+
+Fix Uncanny Specimen (and Sled Dog) slots
+
+Removed:
+- (01090, 1) Perception
+
+Added:
+- (07029, 2) Sword Cane
+
+---
+
 Fix asset slot target
 
 Removed:

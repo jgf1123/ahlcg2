@@ -1,3 +1,23 @@
+New b_C_D(k)
+
+Removed:
+- (06110, 2) First Watch
+
+Added:
+- (09028, 1) Motivational Speech
+
+---
+
+Fix Uncanny Specimen (and Sled Dog) slots
+
+Removed:
+- (none)
+
+Added:
+- (none)
+
+---
+
 Fix asset slot target
 
 Removed:

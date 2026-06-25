@@ -1,5 +1,5 @@
 resolution_kind,option_name,choice,weighted_total,weight_share,selected
-signature_select,Daisy's Tote Bag,01008,8.689656195952887,0.9470162361359049,True
-signature_select,Daisy's Tote Bag,90002,0.4861697977060505,0.052983763864095056,False
-signature_select,The Necronomicon,01009,8.723773031192565,0.9504898436419253,True
-signature_select,The Necronomicon,90003,0.45441344765111674,0.04951015635807459,False
+signature_select,Daisy's Tote Bag,01008,59.50216719378772,1.0,True
+signature_select,Daisy's Tote Bag,90002,0.0,0.0,False
+signature_select,The Necronomicon,01009,59.50216719378772,1.0,True
+signature_select,The Necronomicon,90003,0.0,0.0,False

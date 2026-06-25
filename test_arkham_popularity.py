@@ -15,6 +15,7 @@ from arkham_popularity import (
     PreparedDecklist,
     UpgradeGraph,
     baseline_composition,
+    BCdPrior,
     build_canonical_card_infos,
     clean_decklist_json,
     effective_deck_limit,
@@ -28,6 +29,8 @@ from arkham_popularity import (
     slot_display_label,
     slot_phase_targets,
     generation_slot_targets_differ,
+    popularity_engine_kwargs,
+    tilt_applies,
     tilt_factor,
 )
 
@@ -84,8 +87,20 @@ class SlotDisplayTests(unittest.TestCase):
         )
 
     def test_asset_slot_counts_sled_dog(self):
-        from arkham_popularity import SLED_DOG_CANONICAL_ID
+        from arkham_popularity import SLED_DOG_CANONICAL_ID, asset_slot_increment
 
+        self.assertEqual(
+            asset_slot_counts(SLED_DOG_CANONICAL_ID, "Ally", None, 1),
+            {"Ally": 1.0},
+        )
+        self.assertEqual(
+            asset_slot_counts(SLED_DOG_CANONICAL_ID, "Ally", None, 2),
+            {"Ally": 1.0},
+        )
+        self.assertEqual(
+            asset_slot_counts(SLED_DOG_CANONICAL_ID, "Ally", None, 3),
+            {"Ally": 2.0},
+        )
         self.assertEqual(
             asset_slot_counts(SLED_DOG_CANONICAL_ID, "Ally", None, 4),
             {"Ally": 2.0},
@@ -93,6 +108,40 @@ class SlotDisplayTests(unittest.TestCase):
         self.assertEqual(
             asset_slot_counts("99999", "Ally", None, 4, name="Sled Dog"),
             {"Ally": 2.0},
+        )
+        self.assertEqual(
+            asset_slot_increment(SLED_DOG_CANONICAL_ID, "Ally", None, 1),
+            {},
+        )
+        self.assertEqual(
+            asset_slot_increment(SLED_DOG_CANONICAL_ID, "Ally", None, 2),
+            {"Ally": 1.0},
+        )
+
+    def test_asset_slot_counts_uncanny_specimen(self):
+        from arkham_popularity import (
+            UNCANNY_SPECIMEN_CANONICAL_ID,
+            asset_slot_increment,
+        )
+
+        for copies in (1, 2, 3):
+            self.assertEqual(
+                asset_slot_counts(
+                    UNCANNY_SPECIMEN_CANONICAL_ID, "Arcane", None, copies
+                ),
+                {"Arcane": 1.0},
+            )
+        self.assertEqual(
+            asset_slot_counts(UNCANNY_SPECIMEN_CANONICAL_ID, "Arcane", None, 0),
+            {},
+        )
+        self.assertEqual(
+            asset_slot_increment(UNCANNY_SPECIMEN_CANONICAL_ID, "Arcane", None, 1),
+            {},
+        )
+        self.assertEqual(
+            asset_slot_increment(UNCANNY_SPECIMEN_CANONICAL_ID, "Arcane", None, 0),
+            {"Arcane": 1.0},
         )
 
     def test_apply_runtime_card_patches_assigns_mask_slot(self):
@@ -127,6 +176,7 @@ def _prep_deck(
     back: str = "01004",
     cycle: int | None = 1,
     is_ignore: bool = False,
+    excluded_from_published_pool: bool = False,
     slots: dict[str, int] | None = None,
 ) -> PreparedDecklist:
     return PreparedDecklist(
@@ -147,6 +197,7 @@ def _prep_deck(
         has_unknown_slots=False,
         has_chapter_2_cards=False,
         is_ignore=is_ignore,
+        excluded_from_published_pool=excluded_from_published_pool,
     )
 
 
@@ -255,6 +306,79 @@ class BiasCompensationTests(unittest.TestCase):
 
     def test_tilt_none_for_unordered_cards(self):
         self.assertEqual(tilt_factor(5, None, {1: 1.0}), 1.0)
+
+    def test_bcd_prior_loads_and_lookup(self):
+        path = Path(__file__).resolve().parent / "b_c_d_estimate.json"
+        if not path.is_file():
+            self.skipTest("b_c_d_estimate.json not present")
+        prior = BCdPrior.load(path)
+        # Nathaniel C=9, D=7, k=7 kit ridge (from 2026-06 estimate).
+        self.assertAlmostEqual(prior.lookup(9, 7, 7), 0.243935, places=4)
+        self.assertGreater(
+            prior.baseline(9, 7, 7),
+            baseline_composition(9, 7),
+        )
+
+    def test_tilt_uses_b_cd_when_prior_set(self):
+        path = Path(__file__).resolve().parent / "b_c_d_estimate.json"
+        if not path.is_file():
+            self.skipTest("b_c_d_estimate.json not present")
+        prior = BCdPrior.load(path)
+        # k=D ridge: b_{9,7}(7) >> legacy b_9(7) → less tilt when deck runs extra kit cards.
+        kit_shares = {7: 0.30, 1: 0.70}
+        legacy_kit = tilt_factor(9, 7, kit_shares)
+        with_prior_kit = tilt_factor(
+            9, 7, kit_shares, inv_cycle=7, bcd_prior=prior,
+        )
+        self.assertGreater(with_prior_kit, legacy_kit)
+        # Tail k=8: b_{9,7}(8) << legacy → more tilt for same observed share.
+        tail_shares = {8: 0.10, 1: 0.90}
+        legacy_tail = tilt_factor(9, 8, tail_shares)
+        with_prior_tail = tilt_factor(
+            9, 8, tail_shares, inv_cycle=7, bcd_prior=prior,
+        )
+        self.assertLess(with_prior_tail, legacy_tail)
+
+    def test_tilt_core_novelty_skips_mid_cycles(self):
+        shares = {5: 0.50, 1: 0.50}
+        self.assertEqual(
+            tilt_factor(10, 5, shares, tilt_scope="core_novelty"),
+            1.0,
+        )
+        self.assertLess(tilt_factor(10, 1, shares, tilt_scope="core_novelty"), 1.0)
+
+    def test_baseline_floor_limits_tilt_when_b_small(self):
+        tiny_prior = BCdPrior(b_cd={9: {7: {8: 0.01}}})
+        shares = {8: 0.08}
+        unfloored = tilt_factor(
+            9, 8, shares, inv_cycle=7, bcd_prior=tiny_prior, b_floor=0.0,
+        )
+        floored = tilt_factor(
+            9, 8, shares, inv_cycle=7, bcd_prior=tiny_prior,
+        )
+        self.assertAlmostEqual(unfloored, 0.01 / 0.08)
+        self.assertGreater(floored, unfloored)
+
+    def test_tilt_applies_scope(self):
+        self.assertTrue(tilt_applies(1, 10, tilt_scope="core_novelty"))
+        self.assertTrue(tilt_applies(10, 10, tilt_scope="core_novelty"))
+        self.assertFalse(tilt_applies(5, 10, tilt_scope="core_novelty"))
+
+    def test_popularity_engine_kwargs_loads_prior_when_present(self):
+        path = Path(__file__).resolve().parent / "b_c_d_estimate.json"
+        if not path.is_file():
+            self.skipTest("b_c_d_estimate.json not present")
+        kw = popularity_engine_kwargs(use_b_cd_prior=True, bcd_prior_path=path)
+        self.assertEqual(kw["bcd_prior_path"], path)
+
+    def test_popularity_engine_kwargs_legacy_when_disabled(self):
+        kw = popularity_engine_kwargs(use_b_cd_prior=False)
+        self.assertNotIn("bcd_prior_path", kw)
+
+    def test_popularity_engine_kwargs_core_novelty_scope(self):
+        kw = popularity_engine_kwargs(use_b_cd_prior=False, tilt_scope="core_novelty")
+        self.assertEqual(kw["tilt_scope"], "core_novelty")
+        self.assertNotIn("bcd_prior_path", kw)
 
     def test_inv_cycle_adjust_only_on_diagonal(self):
         index = InvCycleIndex.__new__(InvCycleIndex)
@@ -1119,7 +1243,13 @@ class IntegrationTests(unittest.TestCase):
             canonical_id
             for canonical_id, phase in result.first_add_phase.items()
             if phase == "phase1"
-            and self.engine._slot_vector_for_card(canonical_id).get("Arcane", 0) > 0
+            and self.engine._card_uses_asset_slot(canonical_id)
+            and (
+                self.engine._slot_usage_for_new_copies(canonical_id, 0, 1).get(
+                    "Arcane", 0
+                )
+                > 0
+            )
         ]
         self.assertEqual(arcane_phase1, [])
 
@@ -1134,6 +1264,39 @@ class IntegrationTests(unittest.TestCase):
         self.assertEqual(result.deck_count, 50)
         self.assertEqual(result.slots.get("08031"), 1)
         self.assertEqual(result.first_add_phase.get("08031"), "phase05")
+
+
+class PublishedTrainingPoolTests(unittest.TestCase):
+    def test_deck_weight_zero_when_excluded(self):
+        taboo = [{"id": 0, "cards": "[]"}]
+        engine = ArkhamPopularityEngine(
+            {"01004": _card("01004", name="Agnes", type_code="investigator")},
+            CanonicalMapper({"01004": _card("01004", name="Agnes", type_code="investigator")}),
+            taboo,
+        )
+        deck = _prep_deck(excluded_from_published_pool=True)
+        user_weights = {deck.deck_id: 1.0}
+        cycle_weights = {1: 1.0}
+        self.assertEqual(
+            engine.deck_weight(deck, user_weights, cycle_weights),
+            0.0,
+        )
+
+    def test_deck_weight_honored_when_filter_disabled(self):
+        taboo = [{"id": 0, "cards": "[]"}]
+        engine = ArkhamPopularityEngine(
+            {"01004": _card("01004", name="Agnes", type_code="investigator")},
+            CanonicalMapper({"01004": _card("01004", name="Agnes", type_code="investigator")}),
+            taboo,
+            published_training_filter=False,
+        )
+        deck = _prep_deck(excluded_from_published_pool=True)
+        user_weights = {deck.deck_id: 1.0}
+        cycle_weights = {1: 1.0}
+        self.assertEqual(
+            engine.deck_weight(deck, user_weights, cycle_weights),
+            1.0,
+        )
 
 
 if __name__ == "__main__":

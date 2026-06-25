@@ -1,3 +1,23 @@
+New b_C_D(k)
+
+Removed:
+- (01087, 1) Flashlight
+
+Added:
+- (11084, 1) Nautical Charts
+
+---
+
+Fix Uncanny Specimen (and Sled Dog) slots
+
+Removed:
+- (none)
+
+Added:
+- (none)
+
+---
+
 Fix asset slot target
 
 Removed:

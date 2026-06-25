@@ -1,0 +1,383 @@
+[
+  {
+    "investigator": "Jenny Barnes",
+    "canonical_front": "02003",
+    "inv_cycle": 2,
+    "promo_signature_ids": [
+      "98002",
+      "98003"
+    ],
+    "regular_signature_ids": [
+      "02010",
+      "02011",
+      "90085",
+      "90086"
+    ],
+    "promo_front_raw_id": null,
+    "counts": {
+      "both": 48,
+      "neither": 4,
+      "promo_signature": 75,
+      "regular_signature": 2339
+    },
+    "promo_only": {
+      "n": 75,
+      "min": 3916,
+      "p25": 12234,
+      "median": 32356,
+      "p75": 42208,
+      "max": 58606
+    },
+    "promo_including_both": {
+      "n": 123,
+      "min": 3913,
+      "p25": 9096,
+      "median": 22580,
+      "p75": 42173,
+      "max": 58606
+    },
+    "regular_signature": {
+      "n": 2339,
+      "min": 280,
+      "p25": 4325,
+      "median": 14826,
+      "p75": 31834,
+      "max": 63065
+    },
+    "promo_pre_pool_C_lt_inv_cycle": 0,
+    "promo_cohort_C_ge_inv_cycle": 115,
+    "median_timing": "promo_later_median",
+    "first_appearance_timing": "promo_first_appears_later"
+  },
+  {
+    "investigator": "Roland Banks",
+    "canonical_front": "01001",
+    "inv_cycle": 1,
+    "promo_signature_ids": [
+      "98005",
+      "98006"
+    ],
+    "regular_signature_ids": [
+      "01006",
+      "01007",
+      "90030",
+      "90031"
+    ],
+    "promo_front_raw_id": null,
+    "counts": {
+      "both": 42,
+      "neither": 35,
+      "promo_signature": 108,
+      "regular_signature": 2814
+    },
+    "promo_only": {
+      "n": 108,
+      "min": 4210,
+      "p25": 10602,
+      "median": 22256,
+      "p75": 40601,
+      "max": 60639
+    },
+    "promo_including_both": {
+      "n": 150,
+      "min": 4210,
+      "p25": 11440,
+      "median": 22258,
+      "p75": 40606,
+      "max": 60639
+    },
+    "regular_signature": {
+      "n": 2814,
+      "min": 1,
+      "p25": 13630,
+      "median": 33030,
+      "p75": 52682,
+      "max": 63249
+    },
+    "promo_pre_pool_C_lt_inv_cycle": 0,
+    "promo_cohort_C_ge_inv_cycle": 117,
+    "median_timing": "promo_earlier_median",
+    "first_appearance_timing": "promo_first_appears_later"
+  },
+  {
+    "investigator": "Norman Withers",
+    "canonical_front": "08004",
+    "inv_cycle": 9,
+    "promo_signature_ids": [
+      "98008",
+      "98009"
+    ],
+    "regular_signature_ids": [
+      "08005",
+      "08006"
+    ],
+    "promo_front_raw_id": null,
+    "counts": {
+      "both": 6,
+      "promo_signature": 441,
+      "regular_signature": 335
+    },
+    "promo_only": {
+      "n": 441,
+      "min": 4049,
+      "p25": 10620,
+      "median": 13510,
+      "p75": 21909,
+      "max": 62601
+    },
+    "promo_including_both": {
+      "n": 447,
+      "min": 4049,
+      "p25": 10626,
+      "median": 13513,
+      "p75": 22672,
+      "max": 62601
+    },
+    "regular_signature": {
+      "n": 335,
+      "min": 32588,
+      "p25": 36590,
+      "median": 45560,
+      "p75": 52591,
+      "max": 62852
+    },
+    "promo_pre_pool_C_lt_inv_cycle": 376,
+    "promo_cohort_C_ge_inv_cycle": 8,
+    "median_timing": "promo_earlier_median",
+    "first_appearance_timing": "promo_first_appears_earlier"
+  },
+  {
+    "investigator": "Silas Marsh",
+    "canonical_front": "07005",
+    "inv_cycle": 8,
+    "promo_signature_ids": [
+      "98014",
+      "98015"
+    ],
+    "regular_signature_ids": [
+      "07014",
+      "07015",
+      "07016"
+    ],
+    "promo_front_raw_id": null,
+    "counts": {
+      "both": 60,
+      "neither": 1,
+      "promo_signature": 46,
+      "regular_signature": 297
+    },
+    "promo_only": {
+      "n": 46,
+      "min": 26347,
+      "p25": 28426,
+      "median": 31830,
+      "p75": 40427,
+      "max": 60091
+    },
+    "promo_including_both": {
+      "n": 106,
+      "min": 26347,
+      "p25": 30515,
+      "median": 34055,
+      "p75": 42062,
+      "max": 60091
+    },
+    "regular_signature": {
+      "n": 297,
+      "min": 25815,
+      "p25": 33364,
+      "median": 39945,
+      "p75": 50010,
+      "max": 61976
+    },
+    "promo_pre_pool_C_lt_inv_cycle": 25,
+    "promo_cohort_C_ge_inv_cycle": 39,
+    "median_timing": "promo_earlier_median",
+    "first_appearance_timing": "promo_and_regular_same_era"
+  },
+  {
+    "investigator": "Carolyn Fern",
+    "canonical_front": "05001",
+    "inv_cycle": 5,
+    "promo_signature_ids": [
+      "98011",
+      "98012"
+    ],
+    "regular_signature_ids": [
+      "05007",
+      "05008"
+    ],
+    "promo_front_raw_id": null,
+    "counts": {
+      "both": 69,
+      "promo_signature": 149,
+      "regular_signature": 813
+    },
+    "promo_only": {
+      "n": 149,
+      "min": 5162,
+      "p25": 6250,
+      "median": 8176,
+      "p75": 11488,
+      "max": 62696
+    },
+    "promo_including_both": {
+      "n": 218,
+      "min": 5162,
+      "p25": 7105,
+      "median": 11482,
+      "p75": 24519,
+      "max": 62696
+    },
+    "regular_signature": {
+      "n": 813,
+      "min": 9426,
+      "p25": 18483,
+      "median": 30730,
+      "p75": 42594,
+      "max": 63256
+    },
+    "promo_pre_pool_C_lt_inv_cycle": 101,
+    "promo_cohort_C_ge_inv_cycle": 69,
+    "median_timing": "promo_earlier_median",
+    "first_appearance_timing": "promo_first_appears_earlier"
+  },
+  {
+    "investigator": "Dexter Drake",
+    "canonical_front": "07004",
+    "inv_cycle": 8,
+    "promo_signature_ids": [
+      "98017",
+      "98018"
+    ],
+    "regular_signature_ids": [
+      "07012",
+      "07013"
+    ],
+    "promo_front_raw_id": null,
+    "counts": {
+      "both": 81,
+      "neither": 2,
+      "promo_signature": 154,
+      "regular_signature": 279
+    },
+    "promo_only": {
+      "n": 154,
+      "min": 20655,
+      "p25": 23378,
+      "median": 27298,
+      "p75": 45016,
+      "max": 62551
+    },
+    "promo_including_both": {
+      "n": 235,
+      "min": 20655,
+      "p25": 25308,
+      "median": 29684,
+      "p75": 44238,
+      "max": 63176
+    },
+    "regular_signature": {
+      "n": 279,
+      "min": 25813,
+      "p25": 30500,
+      "median": 39921,
+      "p75": 49636,
+      "max": 62585
+    },
+    "promo_pre_pool_C_lt_inv_cycle": 72,
+    "promo_cohort_C_ge_inv_cycle": 158,
+    "median_timing": "promo_earlier_median",
+    "first_appearance_timing": "promo_first_appears_earlier"
+  },
+  {
+    "investigator": "Gloria Goldberg",
+    "canonical_front": "11014",
+    "inv_cycle": 12,
+    "promo_signature_ids": [
+      "98020",
+      "98021"
+    ],
+    "regular_signature_ids": [
+      "11015",
+      "11016"
+    ],
+    "promo_front_raw_id": null,
+    "counts": {
+      "both": 1,
+      "promo_signature": 154,
+      "regular_signature": 73
+    },
+    "promo_only": {
+      "n": 154,
+      "min": 26859,
+      "p25": 31121,
+      "median": 36848,
+      "p75": 44338,
+      "max": 54092
+    },
+    "promo_including_both": {
+      "n": 155,
+      "min": 26859,
+      "p25": 31122,
+      "median": 36850,
+      "p75": 44338,
+      "max": 55035
+    },
+    "regular_signature": {
+      "n": 73,
+      "min": 53952,
+      "p25": 55803,
+      "median": 58012,
+      "p75": 60644,
+      "max": 63244
+    },
+    "promo_pre_pool_C_lt_inv_cycle": 153,
+    "promo_cohort_C_ge_inv_cycle": 1,
+    "median_timing": "promo_earlier_median",
+    "first_appearance_timing": "promo_first_appears_earlier"
+  },
+  {
+    "investigator": "Marie Lambeau",
+    "canonical_front": "05006",
+    "inv_cycle": 5,
+    "promo_signature_ids": [],
+    "regular_signature_ids": [
+      "05018",
+      "05019"
+    ],
+    "promo_front_raw_id": "99001",
+    "counts": {
+      "promo_front": 294,
+      "regular_signature": 118
+    },
+    "promo_only": {
+      "n": 294,
+      "min": 207,
+      "p25": 12557,
+      "median": 22118,
+      "p75": 37755,
+      "max": 58982
+    },
+    "promo_including_both": {
+      "n": 294,
+      "min": 207,
+      "p25": 12557,
+      "median": 22118,
+      "p75": 37755,
+      "max": 58982
+    },
+    "regular_signature": {
+      "n": 118,
+      "min": 10097,
+      "p25": 17677,
+      "median": 30476,
+      "p75": 39994,
+      "max": 62123
+    },
+    "promo_pre_pool_C_lt_inv_cycle": 49,
+    "promo_cohort_C_ge_inv_cycle": 193,
+    "median_timing": "promo_earlier_median",
+    "first_appearance_timing": "promo_first_appears_earlier"
+  }
+]

@@ -1,3 +1,27 @@
+New b_C_D(k)
+
+Removed:
+- (01079, 1) "Look what I found!"
+- (04272, 2) Winging It
+- (07121, 1) Mariner's Compass
+
+Added:
+- (09044, 1) Grim Memoir
+- (09105, 1) Exploit Weakness
+- (10108, 2) Matchbox
+
+---
+
+Fix Uncanny Specimen (and Sled Dog) slots
+
+Removed:
+- (none)
+
+Added:
+- (none)
+
+---
+
 Fix asset slot target
 
 Removed:

@@ -1,3 +1,23 @@
+New b_C_D(k)
+
+Removed:
+- (08126, 2) Heavy Furs
+
+Added:
+- (11057, 2) Crack Shot
+
+---
+
+Fix Uncanny Specimen (and Sled Dog) slots
+
+Removed:
+- (none)
+
+Added:
+- (none)
+
+---
+
 Fix asset slot target
 
 Removed:

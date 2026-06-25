@@ -1,3 +1,25 @@
+New b_C_D(k)
+
+Removed:
+- (01087, 2) Flashlight
+- (02020, 2) Laboratory Assistant
+
+Added:
+- (01020, 1) Machete
+- (08032, 1) Jeremiah Kirby
+
+---
+
+Fix Uncanny Specimen (and Sled Dog) slots
+
+Removed:
+- (08083, 1) Medical Student
+
+Added:
+- (07028, 1) Faustian Bargain
+
+---
+
 Fix asset slot target
 
 Removed:

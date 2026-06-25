@@ -1,0 +1,5 @@
+resolution_kind,option_name,choice,weighted_total,weight_share,selected
+signature_select,Trusty Bullwhip,08008,13.630409356725146,1.0,True
+signature_select,Trusty Bullwhip,90063,0.0,0.0,False
+signature_select,Buried Secrets,08009,13.630409356725146,1.0,True
+signature_select,Buried Secrets,90064,0.0,0.0,False

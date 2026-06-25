@@ -1,0 +1,61 @@
+[
+  {
+    "investigator": "Norman Withers",
+    "inv_cycle": 9,
+    "pct_kept": 45.8,
+    "c_below_icy_all": 0.3567,
+    "c_below_icy_filtered": 0.0436
+  },
+  {
+    "investigator": "Gloria Goldberg",
+    "inv_cycle": 12,
+    "pct_kept": 32.2,
+    "c_below_icy_all": 0.8022,
+    "c_below_icy_filtered": 0.4584
+  },
+  {
+    "investigator": "Marie Lambeau",
+    "inv_cycle": 5,
+    "pct_kept": 100.0,
+    "c_below_icy_all": 0.095,
+    "c_below_icy_filtered": 0.095,
+    "kept_99001": 242,
+    "kept_05006": 101,
+    "kept_total": 343
+  },
+  {
+    "investigator": "Carolyn Fern",
+    "inv_cycle": 5,
+    "pct_kept": 80.4,
+    "c_below_icy_all": 0.0758,
+    "c_below_icy_filtered": 0.0125
+  },
+  {
+    "investigator": "Dexter Drake",
+    "inv_cycle": 8,
+    "pct_kept": 53.1,
+    "c_below_icy_all": 0.1232,
+    "c_below_icy_filtered": 0.0306
+  },
+  {
+    "investigator": "Silas Marsh",
+    "inv_cycle": 8,
+    "pct_kept": 78.8,
+    "c_below_icy_all": 0.2195,
+    "c_below_icy_filtered": 0.2147
+  },
+  {
+    "investigator": "Jenny Barnes",
+    "inv_cycle": 2,
+    "pct_kept": 94.9,
+    "c_below_icy_all": 0.0011,
+    "c_below_icy_filtered": 0.0012
+  },
+  {
+    "investigator": "Roland Banks",
+    "inv_cycle": 1,
+    "pct_kept": 94.4,
+    "c_below_icy_all": 0.0,
+    "c_below_icy_filtered": 0.0
+  }
+]

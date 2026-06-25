@@ -1,3 +1,23 @@
+New b_C_D(k)
+
+Removed:
+- (01067, 1) Fearless
+
+Added:
+- (60412, 2) Robes of Endless Night
+
+---
+
+Fix Uncanny Specimen (and Sled Dog) slots
+
+Removed:
+- (none)
+
+Added:
+- (none)
+
+---
+
 Fix asset slot target
 
 Removed:

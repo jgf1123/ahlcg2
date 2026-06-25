@@ -1,5 +1,5 @@
 resolution_kind,option_name,choice,weighted_total,weight_share,selected
-signature_select,Livre d'Eibon,08005,3.6602291250439642,0.706682947679581,True
-signature_select,Livre d'Eibon,98008,1.519221061298382,0.29331705232041905,False
-signature_select,The Harbinger,08006,3.6515489282928377,0.705007056139198,True
-signature_select,The Harbinger,98009,1.5279012580495084,0.29499294386080205,False
+signature_select,Livre d'Eibon,08005,35.90389796893084,1.0,True
+signature_select,Livre d'Eibon,98008,0.0,0.0,False
+signature_select,The Harbinger,08006,35.90389796893084,1.0,True
+signature_select,The Harbinger,98009,0.0,0.0,False

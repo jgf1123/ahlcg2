@@ -1,3 +1,23 @@
+New b_C_D(k)
+
+Removed:
+- (04028, 1) "You handle this one!"
+
+Added:
+- (11053, 1) "Where's the party?"
+
+---
+
+Fix Uncanny Specimen (and Sled Dog) slots
+
+Removed:
+- (none)
+
+Added:
+- (none)
+
+---
+
 Fix asset slot target
 
 Removed:

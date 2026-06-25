@@ -1,3 +1,29 @@
+New b_C_D(k)
+
+Removed:
+- (05116, 1) Scroll of Secrets
+- (60214, 1) Burning the Midnight Oil
+- (60215, 1) Cryptic Writings
+
+Added:
+- (05154, 2) Hawk-Eye Folding Camera
+- (11035, 1) Dial of Ancients
+- (60217, 1) Occult Invocation
+
+---
+
+Fix Uncanny Specimen (and Sled Dog) slots
+
+Removed:
+- (60215, 2) Cryptic Writings
+- (60217, 1) Occult Invocation
+
+Added:
+- (11039, 2) Uncanny Specimen
+- (11039, 3) Uncanny Specimen
+
+---
+
 Fix asset slot target
 
 Removed:

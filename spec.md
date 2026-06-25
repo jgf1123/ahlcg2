@@ -204,6 +204,19 @@ Some parallel printings are functionally identical but have different `card_id` 
 
 Use `investigator_name` from the decklist for display only. Do not use it as a grouping key.
 
+## Published training pool
+
+Some investigators have **promo or parallel signature** printings in `deck_requirements.card` OR-groups (e.g. Norman `98008`/`98009` vs `08005`/`08006`). Decklists using non-published signature or parallel investigator printings skew **`Decklist.cycle`** low relative to `inv_cycle` (pre-release card pool). Card-popularity training therefore uses a **published training pool** separate from `is_ignore`.
+
+On `prepare_decklist`, set **`excluded_from_published_pool = True`** when any of:
+
+1. **`to_canonical(investigator_front) ≠ canonical_front`** or back mismatch — excludes parallel investigator products (`90084` Jenny, …). **Alt-art** reprints that map to the same canonical id are **allowed** (`01501`, `98007`, `98019`, **`99001` Marie**).
+2. **Signature OR-groups** — not exactly one **primary published** printing per group (lowest non-promo, non-`900***` alt per group). Promo signatures (`98***`/`99***`) and parallel signature alts (`900***`) excluded. Both/neither in a group → excluded.
+
+**`ArkhamPopularityEngine.published_training_filter`** (default `True`): `deck_weight`, P3–P5, B2/B3, and composition EDA use only decks with `excluded_from_published_pool = False`. **`is_ignore`** still handles taboo, unknown slots, and Chapter 2. Investigator popularity (I1–I5) still uses all non-ignored decks unless noted otherwise.
+
+Set `published_training_filter=False` to reproduce unfiltered diagnostics. See [research_notes.md — Published training pool](research_notes.md#published-training-pool-2026-06).
+
 # Multiple Copies of `card_id`
 
 In general, a decklist can contain more than one copy of a single `canonical_id`. For the purposes of this project, we will treat each copy as a separate card, i.e., the popularity of (`canonical_id`, `card_index=1`) and (`canonical_id`, `card_index=2`) are calculated separately. This allows us to compare, say, the popularity of including a 2nd card A to including the 1st card B.
@@ -396,6 +409,8 @@ Sources (in order of preference):
 
 2. Column marginals from the `Decklist.cycle` × `CanonicalCard.cycle` pivot (Cell 5), with `Decklist.cycle = 7` as its own row — useful for calibration, not required if the prior is trusted.
 
+3. **`inv_cycle × k` slices** — twelve tables `inv_cycle_pivots/inv_cycle_{D:02d}.csv` (rows `Decklist.cycle = C`, columns `k`; **published training pool**). Empirical **`b_{C,D}(k)`** for calibrating whether `b_C(k)` should absorb an **`inv_cycle`** ridge at `k = D` and era dips at `k ∈ {4,6,8}`. EDA: `prior_calibration_eda.py`, `export_inv_cycle_card_cycle_pivots.py`, **`estimate_b_c_d.py`** → `b_c_d_estimate.json`; findings in [research_notes.md](research_notes.md#card-cycle-prior-bc-dk-2026-06).
+
 For deck `d` with `Decklist.cycle = C`, let `p_d(k)` = its slot-copy share from card cycle `k`. When deck `d` contributes to popularity of options whose cards have `CanonicalCard.cycle = k`:
 
 $$
@@ -422,6 +437,12 @@ Apply `tilt_d(k)` when deck `d` contributes to popularity of **cycle-`k` cards**
 | **Strong cards** | If cycle-9 is genuinely strong, many decks have `p_d(9) ≈ b_C(9)` → `tilt = 1`; only outliers penalized | Same for `k=C`; other cycles never tilted |
 
 **Practical recommendation:** implement **all-`k` tilt** with the hand prior above (and `p_d(k)` floor, e.g. treat `p_d(k) < ε` as `ε`). If results are too aggressive on mid/legacy cycles, fall back to **hybrid: tilt `k ∈ {1, C}` only** — Core basis + novelty, leave cycles 2…C−1 un-tilted.
+
+**`b_{C,D}(k)` prior (optional, `arkham_popularity.py`):** load `b_c_d_estimate.json` via `ArkhamPopularityEngine(bcd_prior_path=...)` or `popularity_engine_kwargs(use_b_cd_prior=True)` (used in `prepare_arkham_data.ipynb` cell 7: `USE_B_CD_PRIOR` / `B_CD_TILT_SCOPE`). Tilt uses `b_{C,D}(k)` when `inv_cycle = D` is known; missing `(C,D)` cells fall back to the mean over available `D` at fixed `(C,k)`, then legacy `b_C(k)`. **Small-`b` safeguards** (both default to `1/30`, one slot in a 30-card deck):
+
+- **`p_d(k)` floor** — caps tilt when observed share is tiny.
+- **`b_{C,D}(k)` floor** — caps how aggressive tilt is when baseline mass is thin (tail interiors after `τ(D)` spread).
+- **`tilt_scope="core_novelty"`** — skip tilt on mid cycles `2 … C−1`; use when all-`k` tilt is too twitchy.
 
 ### B4. `Decklist.cycle = 7` stratum
 
@@ -452,6 +473,10 @@ P4. Similarly, sum `w_deck` over eligible decks that include the option → **P4
 P5. **P4 / P3** (single pooled ratio; do not average per-`Decklist.cycle` stratum rates).
 
 Return P4, P3, and P5. `prepare_arkham_data.ipynb` does this as a DataFrame.
+
+**Future EDA:** pairwise option **lift** \(P_5(A \cap B) / (P_5(A) \cdot P_5(B))\) per investigator — distinct `canonical_id`s, exclude deckbuilding requirements, top \(D^2\) pairs for deck size \(D\). See [research_notes.md — Option co-occurrence](research_notes.md#option-co-occurrence--lift-future-eda).
+
+**Priority research (2026-06):** `inv_cycle` × `CanonicalCard.cycle` composition in training vs generated decks — see [research_notes.md — Priority: inv_cycle × CanonicalCard.cycle](research_notes.md#priority-invcycle--canonicalcardcycle-2026-06). EDA: `investigator_card_cycle_eda.py`.
 
 Also create functions that display the most popular options with `CanonicalCard.has_xp_cost` and `not CanonicalCard.has_xp_cost`. The display should include the following:
    - `canonical_id`
@@ -531,14 +556,14 @@ A card json may have a `slot` or `real_slot` field when the asset occupies one o
 
 For each (`canonical_front`, `canonical_back`) tuple:
 
-1. For each of its decklists (same set of decklists in Popularity by Investigator), count **asset slot** usage by **assets** only (`type_code = asset`). E.g., if a decklist has 2 copies of a card that takes up 1 Hand slot, together they account for 2 Hand slots. Parse ArkhamDB `slot` / `real_slot`: split on `". "`, treat a trailing `" x2"` as doubling that slot type, and count Sled Dog (`08127`) as half an Ally slot per copy.
+1. For each of its decklists (same set of decklists in Popularity by Investigator), count **asset slot** usage by **assets** only (`type_code = asset`). E.g., if a decklist has 2 copies of a card that takes up 1 Hand slot, together they account for 2 Hand slots. Parse ArkhamDB `slot` / `real_slot`: split on `". "`, treat a trailing `" x2"` as doubling that slot type. **Bundled slot exceptions:** Sled Dog (`08127`) uses `ceil(N/2)` Ally slots for `N` copies; Uncanny Specimen (`11039`, max 3 copies) uses `ceil(N/3)` Arcane slots (1–3 copies → 1 slot).
 2. For each slot type, calculate the weighted average using the same decklist weight as Investigator Popularity (I3/I4): `investigator_deck_weight` = `user_weight × Cycle.weight × deck_xp_weight × g(C) × inv_adjust` when bias compensation is on (no B3 tilt).
 
 Implemented in `ArkhamPopularityEngine.slot_usage_for_investigator()`; notebook helper `show_slot_usage_for_investigator()`.
 
 ## Investigator Popularity
 
-Within each `inv_cycle`, compare `(canonical_front, canonical_back)` choices. Investigator popularity reflects at least (1) perceived investigator strength and (2) interest in deckcrafting for that investigator as new cards enable new builds — see `research_notes.md` (cycle / investigator-age hypotheses).
+Within each `inv_cycle`, compare `(canonical_front, canonical_back)` choices. Investigator popularity reflects at least (1) perceived investigator strength and (2) interest in deckcrafting for that investigator as new cards enable new builds — see `research_notes.md` (priority: `inv_cycle` × card cycle).
 
 I1. Let `inv_cycle` = `CanonicalCard.cycle` of `canonical_front` (the investigator card's first printing cycle).
 
@@ -658,7 +683,7 @@ Apply `slot_phase_targets(E[t])` to the smoothed `E[t]` for phase 1 / phase 2 li
 
 ## Slot vectors and targets
 
-Parse each asset’s slot usage the same way as assets-in-each-slot: `asset_slot_counts()` — `. ` split, `" x2"` doubles that type, Sled Dog (`08127`) = half an Ally slot per copy. An asset maps to a **slot vector** `{t: copies}` over asset slot types `t` (possibly multiple types per card).
+Parse each asset’s slot usage the same way as assets-in-each-slot: `asset_slot_counts()` — `. ` split, `" x2"` doubles that type; Sled Dog (`08127`) = `ceil(N/2)` Ally slots for `N` copies; Uncanny Specimen (`11039`) = `ceil(N/3)` Arcane slots. Phase 1/2 apply **marginal** increments when adding copies (`asset_slot_increment`). An asset maps to a **slot vector** `{t: copies}` over asset slot types `t` (possibly multiple types per card).
 
 Let `current[t]` be asset-slot usage while building (starts at 0).
 

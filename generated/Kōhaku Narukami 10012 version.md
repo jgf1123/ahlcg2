@@ -1,3 +1,23 @@
+New b_C_D(k)
+
+Removed:
+- (02111, 2) Delve Too Deep
+
+Added:
+- (10046, 1) Control Variable
+
+---
+
+Fix Uncanny Specimen (and Sled Dog) slots
+
+Removed:
+- (none)
+
+Added:
+- (none)
+
+---
+
 Fix asset slot target
 
 Removed:

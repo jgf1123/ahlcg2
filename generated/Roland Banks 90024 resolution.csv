@@ -1,0 +1,7 @@
+resolution_kind,option_name,choice,weighted_total,weight_share,selected
+signature_select,Roland's .38 Special,01006,45.166666666666664,1.0,True
+signature_select,Roland's .38 Special,90030,0.0,0.0,False
+signature_select,Roland's .38 Special,98005,0.0,0.0,False
+signature_select,Cover Up,01007,45.166666666666664,1.0,True
+signature_select,Cover Up,90031,0.0,0.0,False
+signature_select,Cover Up,98006,0.0,0.0,False

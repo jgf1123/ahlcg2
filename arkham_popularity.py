@@ -7,6 +7,7 @@ import csv
 import json
 import math
 import re
+import warnings
 from collections import defaultdict
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -29,6 +30,7 @@ from arkham_deck_options import (
     deck_requirement_signature_groups,
     all_deck_requirement_card_ids,
     effective_deck_size_from_slots,
+    excluded_from_published_training_pool,
     investigator_requirement_card_ids,
     investigator_option_slug,
     merge_deck_options_with_permanents,
@@ -161,6 +163,7 @@ def slot_display_label(
 
 
 SLED_DOG_CANONICAL_ID = "08127"
+UNCANNY_SPECIMEN_CANONICAL_ID = "11039"
 IN_THE_THICK_OF_IT_CANONICAL_ID = "08125"
 DEFAULT_XP_THRES = 29
 STANDARD_DECK_OPTION_KEYS = frozenset({"faction", "level"})
@@ -220,6 +223,10 @@ def is_sled_dog(canonical_id: str, name: str | None = None) -> bool:
     return canonical_id == SLED_DOG_CANONICAL_ID or name == "Sled Dog"
 
 
+def is_uncanny_specimen(canonical_id: str, name: str | None = None) -> bool:
+    return canonical_id == UNCANNY_SPECIMEN_CANONICAL_ID or name == "Uncanny Specimen"
+
+
 def asset_slot_counts(
     canonical_id: str,
     slot: str | None,
@@ -228,11 +235,13 @@ def asset_slot_counts(
     *,
     name: str | None = None,
 ) -> dict[str, float]:
-    """Map asset slot type -> copies used (spec: Number of assets in each slot)."""
+    """Map asset slot type -> total copies used for `copies` of this asset together."""
     if copies <= 0:
         return {}
     if is_sled_dog(canonical_id, name):
-        return {"Ally": copies / 2}
+        return {"Ally": float(math.ceil(copies / 2))}
+    if is_uncanny_specimen(canonical_id, name):
+        return {"Arcane": float(math.ceil(copies / 3))}
     label = slot_display_label(slot, real_slot)
     if not label:
         return {}
@@ -248,6 +257,36 @@ def asset_slot_counts(
         if part:
             counts[part] = counts.get(part, 0.0) + slot_copies
     return counts
+
+
+def asset_slot_increment(
+    canonical_id: str,
+    slot: str | None,
+    real_slot: str | None,
+    copies_before: int,
+    *,
+    copies_add: int = 1,
+    name: str | None = None,
+) -> dict[str, float]:
+    """Slot-type delta when adding `copies_add` to an existing `copies_before` pile."""
+    if copies_add <= 0:
+        return {}
+    before = asset_slot_counts(
+        canonical_id, slot, real_slot, copies_before, name=name
+    )
+    after = asset_slot_counts(
+        canonical_id,
+        slot,
+        real_slot,
+        copies_before + copies_add,
+        name=name,
+    )
+    delta: dict[str, float] = {}
+    for slot_type in set(before) | set(after):
+        change = after.get(slot_type, 0.0) - before.get(slot_type, 0.0)
+        if change:
+            delta[slot_type] = change
+    return delta
 
 
 def accumulate_asset_slot_usage(
@@ -572,6 +611,110 @@ def baseline_composition(deck_cycle: int, card_cycle: int) -> float:
     return share / _BASELINE_STRUCTURAL_MASS
 
 
+# Spec B3: floor on b_{C,D}(k) when computing tilt (symmetric to p_d floor).
+B_BASELINE_FLOOR = P_D_FLOOR
+
+
+@dataclass(frozen=True)
+class BCdPrior:
+    """Fitted b_{C,D}(k) from ``estimate_b_c_d.py`` output; legacy fallback when missing."""
+
+    b_cd: dict[int, dict[int, dict[int, float]]]
+
+    @classmethod
+    def load(cls, path: str | Path) -> BCdPrior:
+        with open(path, encoding="utf-8") as handle:
+            payload = json.load(handle)
+        nested = payload.get("b_C_D", {})
+        b_cd: dict[int, dict[int, dict[int, float]]] = {}
+        for c_key, d_map in nested.items():
+            c = int(c_key)
+            b_cd[c] = {}
+            for d_key, k_map in d_map.items():
+                d = int(d_key)
+                b_cd[c][d] = {int(k_key): float(v) for k_key, v in k_map.items()}
+        return cls(b_cd=b_cd)
+
+    def lookup(self, deck_cycle: int, inv_cycle: int, card_cycle: int) -> float | None:
+        return self.b_cd.get(deck_cycle, {}).get(inv_cycle, {}).get(card_cycle)
+
+    def baseline(
+        self,
+        deck_cycle: int,
+        inv_cycle: int | None,
+        card_cycle: int,
+    ) -> float:
+        """b_{C,D}(k) when available; else mean over D at (C,k); else legacy b_C(k)."""
+        if card_cycle < 1 or card_cycle > deck_cycle:
+            return 0.0
+        if inv_cycle is not None:
+            hit = self.lookup(deck_cycle, inv_cycle, card_cycle)
+            if hit is not None:
+                return hit
+        pooled: list[float] = []
+        for d_map in self.b_cd.get(deck_cycle, {}).values():
+            if card_cycle in d_map:
+                pooled.append(d_map[card_cycle])
+        if pooled:
+            return sum(pooled) / len(pooled)
+        return baseline_composition(deck_cycle, card_cycle)
+
+
+def popularity_engine_kwargs(
+    *,
+    use_b_cd_prior: bool = True,
+    bcd_prior_path: str | Path = "b_c_d_estimate.json",
+    tilt_scope: str = "all",
+) -> dict[str, Any]:
+    """Kwargs for ``ArkhamPopularityEngine`` B3 prior (notebook / script toggle).
+
+    When ``use_b_cd_prior`` is True and the JSON exists, loads ``b_{C,D}(k)``.
+    Otherwise B3 tilt uses legacy ``b_C(k)``.
+    """
+    kwargs: dict[str, Any] = {}
+    if use_b_cd_prior:
+        path = Path(bcd_prior_path)
+        if path.is_file():
+            kwargs["bcd_prior_path"] = path
+        else:
+            warnings.warn(
+                f"b_{{C,D}} prior not found at {path}; B3 uses legacy b_C(k)",
+                stacklevel=2,
+            )
+    if tilt_scope != "all":
+        kwargs["tilt_scope"] = tilt_scope
+    return kwargs
+
+
+def baseline_composition_for_deck(
+    deck_cycle: int,
+    card_cycle: int,
+    *,
+    inv_cycle: int | None = None,
+    bcd_prior: BCdPrior | None = None,
+    b_floor: float = B_BASELINE_FLOOR,
+) -> float:
+    """Structural baseline share for tilt; uses b_{C,D} when prior and inv_cycle are set."""
+    if bcd_prior is not None and inv_cycle is not None:
+        baseline = bcd_prior.baseline(deck_cycle, inv_cycle, card_cycle)
+    else:
+        baseline = baseline_composition(deck_cycle, card_cycle)
+    if baseline <= 0.0:
+        return 0.0
+    return max(baseline, b_floor)
+
+
+def tilt_applies(card_cycle: int | None, deck_cycle: int | None, *, tilt_scope: str) -> bool:
+    """Whether B3 tilt runs for this card cycle under the chosen scope."""
+    if card_cycle is None or deck_cycle is None:
+        return False
+    if tilt_scope == "all":
+        return True
+    if tilt_scope == "core_novelty":
+        return card_cycle in (1, deck_cycle)
+    raise ValueError(f"unknown tilt_scope: {tilt_scope!r}")
+
+
 def deck_slot_cycle_shares(
     deck: PreparedDecklist,
     mapper: CanonicalMapper,
@@ -593,12 +736,25 @@ def tilt_factor(
     card_cycle: int | None,
     slot_shares: dict[int, float],
     *,
+    inv_cycle: int | None = None,
+    bcd_prior: BCdPrior | None = None,
+    tilt_scope: str = "all",
     p_floor: float = P_D_FLOOR,
+    b_floor: float = B_BASELINE_FLOOR,
 ) -> float:
-    """Spec B3: min(1, b_C(k) / p_d(k)); all-k tilt."""
-    if card_cycle is None or deck_cycle is None:
+    """Spec B3: min(1, b(k) / p_d(k)); b from b_{C,D} when prior is provided."""
+    if not tilt_applies(card_cycle, deck_cycle, tilt_scope=tilt_scope):
         return 1.0
-    baseline = baseline_composition(deck_cycle, card_cycle)
+    assert card_cycle is not None and deck_cycle is not None
+    baseline = baseline_composition_for_deck(
+        deck_cycle,
+        card_cycle,
+        inv_cycle=inv_cycle,
+        bcd_prior=bcd_prior,
+        b_floor=b_floor,
+    )
+    if baseline <= 0.0:
+        return 1.0
     observed = max(slot_shares.get(card_cycle, 0.0), p_floor)
     return min(1.0, baseline / observed)
 
@@ -897,6 +1053,7 @@ class PreparedDecklist:
     has_unknown_slots: bool
     has_chapter_2_cards: bool
     is_ignore: bool
+    excluded_from_published_pool: bool
     previous_deck: Any = None
     next_deck: Any = None
     date_creation: Any = None
@@ -916,6 +1073,10 @@ class ArkhamPopularityEngine:
         min_xp_cost: int = 1,
         bias_compensation: bool = True,
         xp_thres: int = DEFAULT_XP_THRES,
+        published_training_filter: bool = True,
+        bcd_prior: BCdPrior | None = None,
+        bcd_prior_path: str | Path | None = None,
+        tilt_scope: str = "all",
     ) -> None:
         self.cards = cards
         self.mapper = mapper
@@ -923,6 +1084,13 @@ class ArkhamPopularityEngine:
         self.min_xp_cost = min_xp_cost
         self.bias_compensation = bias_compensation
         self.xp_thres = xp_thres
+        self.published_training_filter = published_training_filter
+        if bcd_prior is not None and bcd_prior_path is not None:
+            raise ValueError("pass at most one of bcd_prior and bcd_prior_path")
+        if bcd_prior_path is not None:
+            bcd_prior = BCdPrior.load(bcd_prior_path)
+        self.bcd_prior = bcd_prior
+        self.tilt_scope = tilt_scope
         apply_runtime_card_patches(cards)
         self.canonical_cards = build_canonical_card_infos(cards, mapper, self.taboo)
         self.upgrades = UpgradeGraph(self.canonical_cards)
@@ -1014,6 +1182,16 @@ class ArkhamPopularityEngine:
 
         xp_cost = self.decklist_xp(decklist, slots)
 
+        excluded_from_published_pool = excluded_from_published_training_pool(
+            investigator_front=inv_front,
+            investigator_back=inv_back,
+            canonical_front=canon_front,
+            canonical_back=canon_back,
+            slots=slots,
+            cards=self.cards,
+            to_canonical=self.mapper.to_canonical,
+        )
+
         return PreparedDecklist(
             decklist_id=decklist_id,
             deck_id=decklist.get("id", decklist_id),
@@ -1032,6 +1210,7 @@ class ArkhamPopularityEngine:
             has_unknown_slots=has_unknown,
             has_chapter_2_cards=has_chapter_2,
             is_ignore=is_ignore,
+            excluded_from_published_pool=excluded_from_published_pool,
             previous_deck=decklist.get("previous_deck"),
             next_deck=decklist.get("next_deck"),
             date_creation=decklist.get("date_creation"),
@@ -1048,6 +1227,30 @@ class ArkhamPopularityEngine:
                 continue
             prepared.append(self.prepare_decklist(decklist_id, decklist))
         return prepared
+
+    def in_published_training_pool(self, deck: PreparedDecklist) -> bool:
+        """True when deck counts toward card-popularity / composition training."""
+        if deck.is_ignore or deck.cycle is None:
+            return False
+        if self.published_training_filter and deck.excluded_from_published_pool:
+            return False
+        return True
+
+    def training_pool_decks(
+        self, decks: list[PreparedDecklist]
+    ) -> list[PreparedDecklist]:
+        return [deck for deck in decks if self.in_published_training_pool(deck)]
+
+    def _bias_compensation_decks(
+        self, decks: list[PreparedDecklist]
+    ) -> list[PreparedDecklist]:
+        if self.published_training_filter:
+            return self.training_pool_decks(decks)
+        return [
+            deck
+            for deck in decks
+            if not deck.is_ignore and deck.cycle is not None
+        ]
 
     def assign_user_weights(self, decks: list[PreparedDecklist]) -> dict[Any, float]:
         counts: dict[tuple[Any, str, str], int] = defaultdict(int)
@@ -1067,7 +1270,7 @@ class ArkhamPopularityEngine:
     ) -> dict[int, float]:
         sums: dict[int, float] = defaultdict(float)
         for deck in decks:
-            if deck.is_ignore or deck.cycle is None:
+            if not self.in_published_training_pool(deck):
                 continue
             sums[deck.cycle] += user_weights[deck.deck_id]
         raw = {cycle: (1.0 / total if total else 0.0) for cycle, total in sums.items()}
@@ -1079,7 +1282,7 @@ class ArkhamPopularityEngine:
         user_weights: dict[Any, float],
         cycle_weights: dict[int, float],
     ) -> float:
-        if deck.is_ignore or deck.cycle is None:
+        if not self.in_published_training_pool(deck):
             return 0.0
         return (
             user_weights[deck.deck_id]
@@ -1119,7 +1322,14 @@ class ArkhamPopularityEngine:
             return 0.0
         inv_cycle = self.mapper.cycle_for_slot(deck.canonical_front)
         inv_adjust = inv_index.adjust(deck.cycle, inv_cycle)
-        tilt = tilt_factor(deck.cycle, card_cycle, slot_shares)
+        tilt = tilt_factor(
+            deck.cycle,
+            card_cycle,
+            slot_shares,
+            inv_cycle=inv_cycle,
+            bcd_prior=self.bcd_prior,
+            tilt_scope=self.tilt_scope,
+        )
         return base * stratum_blend_weight(deck.cycle) * inv_adjust * tilt
 
     def _deck_passes_p1_p2(
@@ -1127,7 +1337,7 @@ class ArkhamPopularityEngine:
         deck: PreparedDecklist,
         card_info: CanonicalCardInfo,
     ) -> bool:
-        if deck.is_ignore or deck.cycle is None:
+        if not self.in_published_training_pool(deck):
             return False
         if card_info.cycle is not None and deck.cycle < card_info.cycle:
             return False
@@ -1217,7 +1427,7 @@ class ArkhamPopularityEngine:
     def enumerate_options(self, decks: list[PreparedDecklist]) -> list[Option]:
         options: set[Option] = set()
         for deck in decks:
-            if deck.is_ignore:
+            if not self.in_published_training_pool(deck):
                 continue
             for canonical_id, count in deck.slots.items():
                 info = self.canonical_cards.get(canonical_id)
@@ -1244,16 +1454,18 @@ class ArkhamPopularityEngine:
     ) -> list[dict[str, Any]]:
         inv_decks = investigator_decks(decks, canonical_front, canonical_back)
         user_weights = self.assign_user_weights(decks)
-        active = [deck for deck in inv_decks if not deck.is_ignore]
+        active = [deck for deck in inv_decks if self.in_published_training_pool(deck)]
         cycle_weights = self.assign_cycle_weights(active, user_weights)
 
         inv_index = (
-            InvCycleIndex(self.mapper, decks) if self.bias_compensation else None
+            InvCycleIndex(self.mapper, self._bias_compensation_decks(decks))
+            if self.bias_compensation
+            else None
         )
         slot_shares_by_deck = {
             deck.deck_id: deck_slot_cycle_shares(deck, self.mapper)
             for deck in inv_decks
-            if not deck.is_ignore
+            if self.in_published_training_pool(deck)
         }
 
         rows: list[dict[str, Any]] = []
@@ -1367,7 +1579,7 @@ class ArkhamPopularityEngine:
         active = [deck for deck in decks if not deck.is_ignore and deck.cycle is not None]
         cycle_weights = self.assign_cycle_weights(active, user_weights)
         inv_index = (
-            InvCycleIndex(self.mapper, active) if self.bias_compensation else None
+            InvCycleIndex(self.mapper, self._bias_compensation_decks(active)) if self.bias_compensation else None
         )
 
         def weight(deck: PreparedDecklist) -> float:
@@ -1447,7 +1659,7 @@ class ArkhamPopularityEngine:
         active = [deck for deck in decks if not deck.is_ignore and deck.cycle is not None]
         cycle_weights = self.assign_cycle_weights(active, user_weights)
         inv_index = (
-            InvCycleIndex(self.mapper, active) if self.bias_compensation else None
+            InvCycleIndex(self.mapper, self._bias_compensation_decks(active)) if self.bias_compensation else None
         )
 
         buckets: dict[
@@ -1506,7 +1718,7 @@ class ArkhamPopularityEngine:
         user_weights = self.assign_user_weights(decks)
         cycle_weights = self.assign_cycle_weights(inv_decks, user_weights)
         inv_index = (
-            InvCycleIndex(self.mapper, decks) if self.bias_compensation else None
+            InvCycleIndex(self.mapper, self._bias_compensation_decks(decks)) if self.bias_compensation else None
         )
 
         slot_totals: dict[str, float] = defaultdict(float)
@@ -1658,18 +1870,64 @@ class ArkhamPopularityEngine:
         count = self.upgrades.count_option_in_slots(slots, canonical_id)
         return count < limit
 
-    def _slot_vector_for_card(self, canonical_id: str) -> dict[str, float]:
+    def _asset_slot_info(self, canonical_id: str) -> tuple[dict[str, Any], Any] | None:
         card = self.cards.get(canonical_id)
         info = self.canonical_cards.get(canonical_id)
         if card is None or info is None or card.get("type_code") != "asset":
+            return None
+        return card, info
+
+    def _slot_increment_for_copy(
+        self, canonical_id: str, slots: dict[str, int]
+    ) -> dict[str, float]:
+        """Marginal slot usage when adding one copy given current deck slots."""
+        pair = self._asset_slot_info(canonical_id)
+        if pair is None:
             return {}
-        return asset_slot_counts(
+        _card, info = pair
+        return asset_slot_increment(
             canonical_id,
             info.slot,
             info.real_slot,
-            1,
+            slots.get(canonical_id, 0),
+            copies_add=1,
             name=info.name,
         )
+
+    def _slot_usage_for_new_copies(
+        self, canonical_id: str, copies_before: int, copy_count: int
+    ) -> dict[str, float]:
+        pair = self._asset_slot_info(canonical_id)
+        if pair is None:
+            return {}
+        _card, info = pair
+        return asset_slot_increment(
+            canonical_id,
+            info.slot,
+            info.real_slot,
+            copies_before,
+            copies_add=copy_count,
+            name=info.name,
+        )
+
+    def _card_uses_asset_slot(self, canonical_id: str) -> bool:
+        pair = self._asset_slot_info(canonical_id)
+        if pair is None:
+            return False
+        _card, info = pair
+        return bool(
+            asset_slot_counts(
+                canonical_id,
+                info.slot,
+                info.real_slot,
+                1,
+                name=info.name,
+            )
+        )
+
+    def _slot_vector_for_card(self, canonical_id: str) -> dict[str, float]:
+        """Deprecated alias: marginal slot for one copy from an empty pile."""
+        return self._slot_usage_for_new_copies(canonical_id, 0, 1)
 
     def _permanent_set_in_slots(self, slots: dict[str, int]) -> frozenset[str]:
         return frozenset(
@@ -1698,7 +1956,7 @@ class ArkhamPopularityEngine:
         card = self.cards.get(canonical_id)
         if card is None or not card.get("permanent"):
             return False
-        if self._slot_vector_for_card(canonical_id).get(slot_type, 0) > 0:
+        if self._card_uses_asset_slot(canonical_id):
             return True
         text = get_card_text(card).lower()
         slot_lower = slot_type.lower()
@@ -1899,7 +2157,7 @@ class ArkhamPopularityEngine:
         user_weights = self.assign_user_weights(decks)
         cycle_weights = self.assign_cycle_weights(inv_decks, user_weights)
         inv_index = (
-            InvCycleIndex(self.mapper, decks) if self.bias_compensation else None
+            InvCycleIndex(self.mapper, self._bias_compensation_decks(decks)) if self.bias_compensation else None
         )
         permanent_set = required_permanents or frozenset()
         averages, meta = self._smoothed_slot_averages(
@@ -2002,7 +2260,7 @@ class ArkhamPopularityEngine:
         user_weights = self.assign_user_weights(decks)
         cycle_weights = self.assign_cycle_weights(active_inv, user_weights)
         inv_index = (
-            InvCycleIndex(self.mapper, decks) if self.bias_compensation else None
+            InvCycleIndex(self.mapper, self._bias_compensation_decks(decks)) if self.bias_compensation else None
         )
         weighted_decks = [
             (
@@ -2047,8 +2305,10 @@ class ArkhamPopularityEngine:
             slots[chosen_id] = slots.get(chosen_id, 0) + copy_count
             first_add_phase[chosen_id] = "requirement"
             if card is not None and card.get("type_code") == "asset":
-                for slot_type, amount in self._slot_vector_for_card(chosen_id).items():
-                    current_slots[slot_type] += amount * copy_count
+                for slot_type, amount in self._slot_usage_for_new_copies(
+                    chosen_id, 0, copy_count
+                ).items():
+                    current_slots[slot_type] += amount
 
         base_options_validator = DeckOptionsValidator.from_options(resolved_deck_options)
         base_options_validator.seed_counts_from_slots(
@@ -2186,8 +2446,9 @@ class ArkhamPopularityEngine:
                 return False
             if canonical_id not in first_add_phase:
                 first_add_phase[canonical_id] = phase
+            increment = self._slot_increment_for_copy(canonical_id, slots)
             slots[canonical_id] = slots.get(canonical_id, 0) + 1
-            for slot_type, amount in self._slot_vector_for_card(canonical_id).items():
+            for slot_type, amount in increment.items():
                 current_slots[slot_type] += amount
             options_validator.add_copy(card, xp)
             return True
@@ -2209,7 +2470,7 @@ class ArkhamPopularityEngine:
                 card = self.cards[canonical_id]
                 if card.get("type_code") != "asset":
                     continue
-                slot_vector = self._slot_vector_for_card(canonical_id)
+                slot_vector = self._slot_increment_for_copy(canonical_id, slots)
                 if not slot_vector:
                     continue
                 if not fits_phase1_cap(slot_vector):
@@ -2237,8 +2498,8 @@ class ArkhamPopularityEngine:
                 if slots_left <= remaining_skill_reserve():
                     continue
             if card.get("type_code") == "asset":
-                slot_vector = self._slot_vector_for_card(canonical_id)
-                if not fits_phase2_ceiling(slot_vector):
+                slot_vector = self._slot_increment_for_copy(canonical_id, slots)
+                if slot_vector and not fits_phase2_ceiling(slot_vector):
                     continue
             try_add_copy(canonical_id, "phase2")
 
@@ -2617,6 +2878,7 @@ def prepared_decks_to_dataframe(prepared: list[PreparedDecklist]):
                 "has_unknown_slots": deck.has_unknown_slots,
                 "has_chapter_2_cards": deck.has_chapter_2_cards,
                 "is_ignore": deck.is_ignore,
+                "excluded_from_published_pool": deck.excluded_from_published_pool,
                 "customizations": deck.customizations,
             }
         )

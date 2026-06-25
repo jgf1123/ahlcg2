@@ -1,3 +1,25 @@
+New b_C_D(k)
+
+Removed:
+- (08083, 1) Medical Student
+- (11024, 1) Ready for Anything
+
+Added:
+- (08127, 1) Sled Dog
+- (08127, 2) Sled Dog
+
+---
+
+Fix Uncanny Specimen (and Sled Dog) slots
+
+Removed:
+- (01020, 2) Machete
+
+Added:
+- (11024, 1) Ready for Anything
+
+---
+
 Fix asset slot target
 
 Removed:

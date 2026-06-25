@@ -1,5 +1,5 @@
 resolution_kind,option_name,choice,weighted_total,weight_share,selected
-signature_select,Hypnotic Therapy,05007,5.600557090550816,0.8576041578033484,True
-signature_select,Hypnotic Therapy,98011,0.929911587324978,0.1423958421966517,False
-signature_select,Rational Thought,05008,5.615933090511455,0.8595983380207092,True
-signature_select,Rational Thought,98012,0.9172729920439974,0.1404016619792908,False
+signature_select,Hypnotic Therapy,05007,49.07085247577487,1.0,True
+signature_select,Hypnotic Therapy,98011,0.0,0.0,False
+signature_select,Rational Thought,05008,49.07085247577487,1.0,True
+signature_select,Rational Thought,98012,0.0,0.0,False

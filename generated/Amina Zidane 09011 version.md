@@ -1,3 +1,29 @@
+New b_C_D(k)
+
+Removed:
+- (01060, 1) Shrivelling
+- (01060, 2) Shrivelling
+- (01063, 2) Arcane Initiate
+- (08059, 1) Down the Rabbit Hole
+- (11095, 1) Ascetic
+
+Added:
+- (03112, 1) David Renfield
+- (11070, 1) Sign of Xelotaph
+- (11070, 2) Sign of Xelotaph
+
+---
+
+Fix Uncanny Specimen (and Sled Dog) slots
+
+Removed:
+- (06201, 1) Spectral Razor
+
+Added:
+- (10084, 2) Cat Mask
+
+---
+
 Fix asset slot target
 
 Removed:

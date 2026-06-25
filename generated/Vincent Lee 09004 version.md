@@ -1,3 +1,23 @@
+New b_C_D(k)
+
+Removed:
+- (01033, 2) Dr. Milan Christopher
+
+Added:
+- (10043, 1) Mouse Mask
+
+---
+
+Fix Uncanny Specimen (and Sled Dog) slots
+
+Removed:
+- (none)
+
+Added:
+- (none)
+
+---
+
 Fix asset slot target
 
 Removed:

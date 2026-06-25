@@ -1,3 +1,23 @@
+New b_C_D(k)
+
+Removed:
+- (04157, 1) Enraptured
+
+Added:
+- (05032, 2) Deny Existence
+
+---
+
+Fix Uncanny Specimen (and Sled Dog) slots
+
+Removed:
+- (none)
+
+Added:
+- (none)
+
+---
+
 Fix asset slot target
 
 Removed:

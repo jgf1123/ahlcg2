@@ -1,5 +1,5 @@
 resolution_kind,option_name,choice,weighted_total,weight_share,selected
-signature_select,Trusty Bullwhip,08008,3.7896360698050744,0.9545407743100897,True
-signature_select,Trusty Bullwhip,90063,0.18047832634955546,0.04545922568991035,False
-signature_select,Buried Secrets,08009,3.7896360698050744,0.9545407743100897,True
-signature_select,Buried Secrets,90064,0.18047832634955546,0.04545922568991035,False
+signature_select,Trusty Bullwhip,08008,36.95936430171413,1.0,True
+signature_select,Trusty Bullwhip,90063,0.0,0.0,False
+signature_select,Buried Secrets,08009,36.95936430171413,1.0,True
+signature_select,Buried Secrets,90064,0.0,0.0,False
